@@ -1,0 +1,354 @@
+##
+## 							
+## English Translation File		
+##								
+##
+## Written by Carl Duff for Evo/Lution Linux (1st November 2014)
+##
+##
+
+# Check Evo Requirements and Identify System Type
+_ChkEvoTitle=" Checking Evo Requirements "
+_ChkEvoBody="\nChecking installer has been run as root and that there is an active internet connection. Please wait...\n\n"
+
+_RtFailTitle=" Root Failure "
+_RtFailBody"\nThe installer must be run as root. Exiting.\n\n"
+
+_ConFailTitle=" Connection Failure "
+_ConFailBody="\nInternet connection test failed. Exiting.\n\n"
+
+_ReqMetTitle=" Requirements Met "
+_ReqMetBody="\nAll checks passed! \n\n"
+
+_UefiDet="UEFI System Detected"
+_BiosDet="BIOS System Detected"
+
+# Installer Mirrorlist
+_MirrorlistTitle=" Mirrorlist "
+_MirrorlistBody="\nThe mirrorlist contains server addresses used by pacman to install packages. They are accessed by pacman in the order listed.\n\n"
+_MirrorbyCountry="Generate list by Country"
+_MirrorEdit="Manually edit mirrorlist"
+
+# Generate Mirrorlist by country
+_MirrorCntryTitle=" Select Country "
+_MirrorCntryBody="\nA list of mirrors by the selected country will be generated.\n\nOnce reviewed, you can choose to use it or not."
+_MirrorGenTitle=" Generating Mirrorlist "
+_MirrorGenBody="\nGenerating a mirrorlist. Please wait... "
+_MirrorGenQ="Use generated mirrorlist for installer?"
+_MirrorGenDone="\nDone! Original Mirrorlist has been saved as:\n\n/etc/pacman.d/mirrorlist.orig\n\n"
+
+# Set Keymap (vconsole)
+_KeymapTitle=" Select Keymap "
+_KeymapBody="\nUse the [pg up] and [pg dwn] keys for navigation, or press the first letter of the keymap if known."
+
+# Set Xkbmap (environment)
+_XkbmapTitle=" Select xkbmap "
+_XkbmapBody="Select Keyboard Layout"
+
+# Set Locale
+_LocateTitle=" Select locale "
+_localeBody="Select A Locale"
+
+# Set Timezone
+_TimeZTitle=" Select Time Zone "
+_TimeZBody="\nThe time zone is used to correctly set your system clock."
+_TimeSubZTitle=" Select Time Sub-Zone "
+_TimeSubZBody="\nSelect the city nearest to you."
+_TimeZQ="Set Time Zone as ?" # Note: "${ZONE}/${SUBZONE}" are two variables, so do not need to be translated
+
+# Set Hardware Clock
+_HwCTitle=" Set Hardware Clock " \
+_HwCBody="\nUTC is the universal time standard, and is recommended unless dual-booting with Windows."
+_HwCUTC="UTC"
+_HwLocal="Local Time" 
+
+# Generate FSTAB
+_FstabTitle=" Generate FSTAB "
+_FstabBody="\nThe FSTAB file (File System TABle) sets what storage devices and partitions are to be mounted, and how they are to be used.\n\nUUID/PARTUUID (Universally Unique IDentifier) is recommended.\n\nIf no labels were set for the partitions earlier, device names will be used for the label option."
+_FstabDev="Dev (partition code)"
+_FstabLabel="Label (user defined)"
+_FstabUUID="UUID/PARTUUID (unique code)"
+
+# Check FSTAB
+_FstabChkTitle=" Check FSTAB "
+_FstabChkBody="\nPlease check the FSTAB file, before closing it to continue.\n\n"
+
+# Set Hostname
+_HostNameTitle=" Configure Host Name "
+_HostNameBody="\nThe host name is used to identify the system on a network.\n\nIt is restricted to alphanumeric characters, can contain a hyphen (-) - but not at the start or end - and must be no longer than 63 characters.\n"
+
+# Set Root Password
+_PassRtTitle=" Set Root Password "
+_PassRtBody="\nEnter Root password\n\n"
+_PassRtBody2="\nRe-enter Root password\n\n"
+
+# Root Password Error
+_PassRtErrTitle=" Root Password Error "
+_PassRtErrBody="\nThe Root passwords entered do not match. Please try again.\n\n"
+
+# Create New User
+_NUsrTitle=" Create New User "
+_NUsrBody="\nEnter the user name. Letters MUST be lower case.\n"
+
+# Username Error
+_NUsrErrTitle=" User Name Error "
+_NUsrErrBody="\nAn incorrect user name was entered. Please try again.\n\n"
+
+# Set User Password
+_PassNUsrTitle=" Set User Password "
+_PassNUsrBody="\nEnter password for" # Note that "$USER" is a variable (no translation needed)
+_PassNUsrBody2="\nRe-enter password for" # Note that "$USER" is a variable (no translation needed)
+
+# Create New User
+_NUsrSetTitle=" Setting User "
+_NUsrSetBody="\nCreating User and setting groups...\n\n"
+
+# User Password Error
+_PassNUsrErrTitle=" User Password Error "
+_PassNUsrErrBody="\nThe User passwords entered do not match. Please try again.\n\n"
+
+# Mounting (Partitions)
+_MntStatusTitle=" Mount Status "
+_MntStatusSucc="\nMount Successful!\n"
+_MntStatusFail="Mount Failed!"
+
+# Select Device (installation)
+_DevSelTitle=" Select Device "
+_DevSelBody="\nDevices (/dev) are available hard-disks and USB-sticks to install on. The first is /sda, the second /sdb, and so on.\n\nWhere using a USB-stick to boot Evo, be careful as it will also be listed!"
+
+# Select Device (Grub) - seperate body text is not required (uses standard device selection text)
+_DevSelGrubTitle=" Select Grub Device "
+
+# Partitioning Tool
+_PartToolTitle=" Partitioning Tool "
+_PartToolBody="\nGParted is a recommended user-friendly graphical tool that supports both BIOS and UEFI systems.\n\nDO NOT select a UEFI/GPT-only partitioning tool for a BIOS/MBR system as this could cause serious problems, including an unbootable installation."
+
+# UEFI Partitioning Error
+_UefiPartErrTitle=" UEFI Partitioning Error " 
+_UefiPartErrBody="\nUEFI systems require a minimum of two partitions for installation (ROOT and UEFI).\n\nPlease configure your partitions.\n\n"
+
+# BIOS Partitioning Error
+_BiosPartErrTitle=" BIOS Partitioning Error "
+_BiosPartErrBody="\nBIOS systems require a minmum of one partition for installation (ROOT).\n\nPlease configure your partitions."
+
+# File System
+_FSTitle=" Choose Filesystem "
+_FSBody="\nExt4 is recommended. Not all filesystems are viable for Root or Boot partitions. All have different features and limitations."
+_FSSkip="Skip / None" 
+
+# Select Root
+_SelRootTitle=" Select ROOT Partition "
+_SelRootBody="\nThis is the partition where Arch will be installed."
+
+# Select SWAP
+_SelSwpTitle=" Select SWAP Partition "
+_SelSwpBody="\nIf using a Swapfile, it will be the same size as your RAM."
+_SelSwpNone="None"
+_SelSwpFile="Swapfile"
+
+# Select UEFI
+_SelUefiTitle=" Select UEFI Partition "
+_SelUefiBody="\nThis is a special partition for booting UEFI systems."
+
+# Format UEFI
+_FormUefiTitle=" UEFI Partition "
+_FormUefiBody="The UEFI partition"
+_FormUefiBody2="has already been formatted.\n\nReformat? Doing so will erase ALL data already on that partition.\n\n"
+
+# UEFI Options
+_OptUefiTitle=" UEFI Mountpoint Options "
+_OptUefiBody="\nThe bootloader(s) that can be installed later will depend on where the UEFI partition is mounted.\n\nSelect /boot for Gummiboot. This is recommended for beginners as the easiest option, especially where dual-booting.\n\nSelect /boot/efi for rEFInd. Although flashy, it is recommended for experienced users due to need to be manually updated.\n\nOtherwise, either mountpoint will work for Grub.\n\n"
+
+# UEFI Mountpoint
+_MntUefiTitle=" Select UEFI Mountpoint "
+_MntUefiBody="\nGummiboot (recommended) requires /boot, rEFInd requires /boot/efi, and Grub will work with either."
+
+# Extra Partitions
+_ExtPartTitle=" Select Additional Partition "
+_ExtPartBody="\nSelect additional partitions in any order, or 'Done' to finish."
+
+# Name Extra Partitions
+_ExtNameTitle=" Name Partition:"
+_ExtNameBodyUefi="\nExamples include: /home or /var.\n\nEnsure the name is preceeded by a forward slash (/)."  # UEFI Systems
+_ExtNameBodyBios="\nExamples include: /boot or /home.\n\nEnsure the name is preceeded by a forward slash (/)." # BIOS Systems
+
+# Extra Partition Naming Error
+_ExtErrTitle=" Partition Name Error "
+_ExtErrBody="\nPartition cannot be mounted. A name must be given after a forward slash.\n\n"
+
+# Install Base
+_InstBseTitle=" Install Base "
+_InstBseBody="\nThe latest kernel supports newer hardware. The LTS kernel is more stable, and is supported far longer.\n\nThe base-devel package group will be required to use the Arch User Repository (AUR)."
+_InstBaseLK="Latest Kernel"
+_InstBaseLKBD="Latest Kernel & base-devel"
+_InstBaseLTS="LTS Kernel"
+_InstBaseLTSBD="LTS Kernel & base-devel"
+
+# Install Wireless Packages
+_InstWirTitle=" Wireless Device Detected "
+_InstWirBody="\nInstalling supplementary wireless packages...\n\n"
+
+# Install BIOS Bootloader
+_InstBiosBtTitle=" Install BIOS Bootloader "
+_InstBiosBtBody="\nGrub2 is recommended for beginners. The installation device can also be selected.\n\nSyslinux is a lighter and simpler alternative, usually used to boot Linux installation media. It will only work with 'ext' filesystems, however."
+
+# Grub Installation
+_InstGrubDevTitle=" Select Grub Device "
+_InstGrubDevBody="\nInstall Grub on the same device/hard-drive as Root ($INST_DEV)?\n\nPick 'Yes' if you are only installing on one device."
+
+# Syslinux Installation
+_InstSysTitle=" Syslinux Configuration Check "
+_InstSysBody="\nPlease check the syslinux configuration file.\n\nIt should contain the command:\n" # "$ROOT_PART" is a variable
+
+# Install UEFI Bootloader
+_InstUefiBtTitle=" Install UEFI Bootloader "
+_InstUefiBtBody="\nGrub2 is the most popular and feature-rich option (no UEFI mount preference).\n\nGummiboot is a recommended alternative for beginners (UEFI partition must be at /boot).\n\nrEFInd is an alternative for more experienced users (UEFI partition must be at /boot/efi)."
+
+# Set UEFI Grub as default
+_SetGrubDefTitle=" Set Grub as Default Bootloader? "
+_SetGrubDefBody="\nSome UEFI firmware may not detect Grub unless it is set as the default bootloader, resulting in an unbootable system in such instances.\n\nDo you wish to set Grub as the default bootloader?\n\nIt is recommended to select 'Yes', especially for beginners. This will copy the bootable grubx64.efi stub to"
+_SetGrubDefBody2="and rename it to bootx64.efi, as required.\n\nOtherwise select 'No', particularly if there is already a default bootloader, and/or where intending to use multiple bootloaders."
+
+# Gummiboot Configuration Check
+_ChkGumTitle=" Gummiboot Configuration Check "
+_ChkGumBody="\nPlease check the arch and loader configuration files before closing them to continue.\n"
+
+# Set rEFInd as default
+_SetRefiDefTitle=" Set rEFInd as Default Bootloader? "
+_SetRefiDefBody="\nSome UEFI firmware may not detect rEFInd unless it is set as the default bootloader, resulting in an unbootable system in such instances.\n\nDo you wish to set rEFInd as the default bootloader?\n\nIt is recommended to select 'Yes', especially for beginners. This will install rEFInd to"
+_SetRefiDefBody2="with the bootx64.efi stub required.\n\nOtherwise select 'No', particularly if there is already a default bootloader, and/or where intending to use multiple bootloaders."
+
+
+# efi file set for Grub or Refind
+_SetDefDoneTitle=" UEFI File Copied "
+_SetDefDoneBody="has been set as the default bootloader.\n\n"
+
+# rEFInd Mountpoint error
+_RefiErrTitle=" rEFInd UEFI Mountpoint "
+_RefiErrBody="\nThe rEFInd installation script will not work unless the UEFI partition has been mounted to /boot/efi. Please select either Gummiboot (recommended) or Grub.\n\n"
+
+# ALSA, Xorg, Input
+_AXITitle=" ALSA, Xorg, and Input "
+_AXIBody="\nBefore installing graphics card driver(s) or desktop environments, other packages are needed first:\n\nalsa - Advanced Linux Sound Architecture\nxorg-* - open-source X window system for graphics\nxf86-input-* - open-source drivers for input devices\n\n"
+
+# Graphics Card Menu
+_GCtitle=" Graphics Card Menu "
+_GCBody="Pick Nouveau for older NVIDIA cards. If your card is not listed, pick 'Unknown / Generic'.\n"
+_GCUnknOpt="Unknown / Generic"
+
+# NVIDIA Configruation Check
+_NvidiaConfTitle=" NVIDIA Configuration Check "
+_NvidiaConfBody="\nA basic NVIDIA configuration file has been created. Please check it before closing to continue.\n"
+
+# Graphics Card Detection
+_GCDetTitle="Detected"
+_GCDetBody="\nIs your graphics card"
+_GCDetBody2="-Select 'Yes' to install its OPEN-SOURCE driver.\n\n-Select 'No' to open the graphics card menu, which includes proprietary NVIDIA drivers."
+
+#  Install DE Info
+_DEInfoTitle=" Install Desktop Environments "
+_DEInfoBody="\nThis option can be repeated to install multiple environments.\n\nGnome, KDE, and LXDE come with a display manager.\n\nCinnamon, Gnome and KDE come with a Network Manager.\n\n"
+
+# Install DE Menu
+_InstDETitle=" Install Desktop Environments  "
+_InstDEBody="\nDesktop Environments are listed first, and may have multiple download options.\n\nKDE is a 750MB+ download."
+
+# Install Common Packages
+_InstComTitle=" Install Common Packages? "
+_InstComBody="\nSome environments require common files to be installed, particularly for permissions, creation of home folders, and file manager functionality.\n\nPackages include: xterm, xdg-user-dirs, gksu, gnome-keyring, polkit, gvfs, and the gnome-icon-theme, etc. Those installing the full KDE desktop alone will not need to install these.\n\nInstall these packages? This option will only be presented ONCE.\n\n"
+
+# KDM
+_DmKdeTitle=" KDM Enabled "
+_DmKdeBody="\nAs KDE has been installed, its native display manager - KDM - has now been enabled.\n\n"
+
+# GDM
+_DmGdmTitle=" GDM Enabled "
+_DmGdmBody="\nAs Gnome has been installed, its native display manager - GDM - has now been enabled.\n\n"
+
+# KDM and GDM Installed
+_DmChTitle=" Choose GDM or KDM "
+_DmChBody="\nBoth Gnome and KDE have been installed. Please select your preferred display manager.\n\n"
+
+# KDM or GDM Choice Made
+_DmDoneTitle="Enabled "
+_DMDoneBody"has been enabled.\n\n"
+
+# LXDM
+_DmLxdmTitle=" LXDM Enabled "
+_DmLxdmBody="\nAs LXDE has been installed, its native display manager - LXDM - has now been enabled.\n\n"
+
+# LXDM or LightDM
+_DmChoiceTitle=" Choose Display Manager "
+_DmChoiceBody="\nPlease choose between LXDM or LightDM. LXDM is recommended for beginners.\n"
+
+# DM Already Installed
+_DmInstTitle=" Display Manager Installed "
+_DmInstBody="\nA display manager has already been installed and enabled.\n\n"
+
+# Network Manager
+_InstNMTitle=" Choose Network Manager "
+_InstNMBody="\nNetwork Manager is recommended, especially for wireless and PPPoE/DSL connections.\n"
+
+# Network Manager Installed
+_InstNMDoneTitle=" Network Manager Installed "
+_InstNMDoneBody="\nThe network connection manager has been installed and enabled."
+
+# Network Manager Already Installed (no need for seperate title)
+_InstNMErrBody="\nA network connection manager has already been installed and enabled."
+
+# Welcome
+_WelTitle=" Welcome to"
+_WelBody="\nHighlight options by pressing their numbers or by using the up/down arrow keys before pressing [enter] to confirm.\n\nSwitch between buttons by using [Tab] or the left/right arrow keys before pressing [enter] to confirm.\n\nA mouse/touchpad may also be used.\n\n"
+
+# Preparation Menu
+_PrepTitle=" Prepare Installation "
+_PrepBody="\nThe desktop keyboard layout will be used for both the installer and - where installing a desktop environment - the installed system.\n"
+_PrepKBLayout="Set Desktop Keyboard Layout"
+_PrepMirror="Configure Installer Mirrorlist (optional)"
+_PrepPartDisk="Partition Disk"
+_PrepMntPart="Mount Partitions"
+_Back="Back"
+
+# Install Base Menu
+_InstBsMenuTitle=" Install Base "
+_InstBseMenuBody="\nIt will not be necessary to install a bootloader where installing alongside an existing Linux distro that uses Grub; just update its Grub instead."
+_InstBse="Install Base"
+_InstBootldr="Install Bootloader"
+
+# Configure Base Menu
+_ConfBseTitle=" Configure Base"
+_ConfBseBody="\nBasic configuration of the base is required. This includes setting basic networking, time, language, and keyboard defaults for the installed system."
+_ConfBseFstab="Generate FSTAB"
+_ConfBseHost="Set Hostname"
+_ConfBseTime="Set Timezone"
+_ConfBseHWC="Set Hardware Clock"
+_ConfBseSysLoc="Set System Locale"
+_ConfBseVirtCon="Set Virtual Console"
+
+# User Menu
+_ConfUsrTitle=" Configure User(s)"
+_ConfUsrBody="\nRoot is the default 'super-user' or 'admin' account. The same password can be set for both Root and any personal user accounts created."
+_ConfUsrRoot="Set Root Pasword"
+_ConfUsrNew="Add New User(s)"
+
+# Desktop Menu
+_InstDEMenuTitle=" Install Desktop "
+_InstDEMenuBody="\nPrior to installing a desktop environment, graphics, input, and sound drivers MUST be installed first. This will include installing graphics card drivers."
+_InstDEMenuGISD="Install Graphics, Input, and Sound Drivers"
+_InstDEMenuDE="Install Desktop Environment(s)"
+_InstDEMenuNM="Install Network Connection Manager"
+_InstDEMenuDM="Install Display Manager / Login Screen"
+
+# Main Menu
+_MMTitle=" Main Menu "
+_MMBody="\nEach step must be followed IN ORDER. Once complete, select 'Done' to properly finalise the installation.\n"
+_MMPrep="Prepare Installation" \
+_MMInstBse="Install Base" \
+_MMConfBse="Configure Base" \
+_MMConfUsr="Configure User Account(s)" \
+_MMInstDE="Install Desktop(s)" \
+_MMRunMkinit="Run Mkinitcpio" \
+_Done="Done"
+
+# Close Installer
+_CloseInstBody="Close installer?"

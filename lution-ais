@@ -1,0 +1,1515 @@
+# !/bin/bash
+#
+# Lution-AIS installer (version 0.3.1 - November 2014)
+#
+# Written by Carl Duff for Evo/Lution Linux
+#
+# Some code has been used or adapted from the Arch Installation Script (AIS)
+# and Arch Ultimate Installer (AUI) written by helmuthdu, the Antergos 
+# CLI installer written by Alex Filgueira, and the Manjaro 0.8 installer
+# Written by Philip Muller.
+#
+# This program is free software, provided under the GNU General Public License
+# as published by the Free Software Foundation. So feel free to copy, distribute,
+# or modify it as you wish.
+#
+
+
+
+######################################################################
+##																	##
+##                   Installer Variables							##
+##																	##
+######################################################################
+
+# Create a temporary file to store menu selections
+ANSWER="/tmp/.lution"
+
+# Save retyping
+VERSION="Lution-AIS 0.3.1"
+
+# Installation
+  KDE_INSTALLED=0      	# Has KDE been installed? Used for display manager option
+  GNOME_INSTALLED=0    	# Has Gnome been installed? Used for display manager option
+  LXDE_INSTALLED=0     	# Has LXDE been installed? Used for display manager option
+  DM_INSTALLED=0       	# Has a display manager been installed?
+  COMMON_INSTALLED=0   	# Has the common-packages option been taken?
+  NM_INSTALLED=0       	# Has a network connection manager been installed and enabled?
+  KEYMAP="us"          	# Virtual console keymap. Default is "us"
+  XKBMAP="us"      	    # X11 keyboard layout. Default is "us"
+  ZONE=""               # For time
+  SUBZONE=""            # For time
+  LOCALE="en_US.UTF-8"  # System locale. Default is "en_US.UTF-8"
+  LTS=0                	# Has the LTS Kernel been installed?
+  GRAPHIC_CARD=`hwinfo --gfxcard|grep 'Model:[[:space:]]'`  # Auto-detect popular graphics cards
+  GC_DETECTED=""        # Name of Graphics Card Detected
+  NVIDIA_INST=0         # Indicates if NVIDIA proprietary driver has been installed
+  SHOW_ONCE=0           # Show de_wm information only once
+  
+# Architecture
+  ARCHI=`uname -m`     	# Display whether 32 or 64 bit system
+  UEFI=0               	# Is the system UEFI?
+  SYSTEM="Unknown"     	# Display whether system is BIOS or UEFI. Default is "unknown"
+  ROOT_PART=""          # ROOT partition
+  UEFI_PART=""			# UEFI partition
+  UEFI_MOUNT=""         # UEFI mountpoint
+  INST_DEV=""           # Device where system has been installed
+  HIGHLIGHT=0           # Highlight items for Main Menu
+  HIGHLIGHT_SUB=0	    # Highlight items for submenu
+  SUB_MENU=""           # Submenu to be highlighted
+
+# Installation
+  MOUNTPOINT="/mnt"
+
+
+######################################################################
+##																	##
+##                        Core Functions							##
+##																	##
+######################################################################
+
+# Multi-lingual support. Once we have more than one translation file, that is.
+select_language() {
+
+dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " Select Language " \
+    --menu "" 0 0 1 \
+ 	"1" $"English" 2>${ANSWER}
+
+	case $(cat ${ANSWER}) in
+        "1") source /home/carl/work2/lution-ais/english.trans
+         #   source /lution-ais-master/english.trans
+             ;;   
+          *) exit 0
+             ;;
+    esac
+
+}
+
+
+
+# Check user is root, and that there is an active internet connection
+# Seperated the checks into seperate "if" statements for readability.
+check_evo_requirements() {
+	
+  dialog --backtitle "$VERSION" --title "$_ChkEvoTitle" --infobox "$_ChkEvoBody" 0 0
+  sleep 2
+  
+  if [[ `whoami` != "root" ]]; then
+     dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_RtFailTitle" --infobox "$_RtFailBody" 0 0
+     sleep 2
+     exit 1
+  fi
+  
+  if [[ ! ` ping -c 1 google.com ` ]]; then
+     dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ConFailTitle" --infobox "$_ConFailBody" 0 0
+     sleep 2
+     exit 1
+  else
+     dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ReqMetTitle" --infobox "$_ReqMetBody" 0 0
+     sleep 2   
+     clear
+     pacman -Syy
+  fi
+
+}
+
+# Modified from the AIS check_boot_system function to identify if
+# system is made by Apple, and whether BIOS or UEFI is used.
+id_system() {
+    if [[ "$(cat /sys/class/dmi/id/sys_vendor)" == 'Apple Inc.' ]] || [[ "$(cat /sys/class/dmi/id/sys_vendor)" == 'Apple Computer, Inc.' ]]; then
+      modprobe -r -q efivars || true  # if MAC
+    else
+      modprobe -q efivarfs            # all others
+    fi
+    
+    if [[ -d "/sys/firmware/efi/" ]]; then
+      ## Mount efivarfs if it is not already mounted
+      if [[ -z $(mount | grep /sys/firmware/efi/efivars) ]]; then
+        mount -t efivarfs efivarfs /sys/firmware/efi/efivars
+      fi
+      UEFI=1
+      SYSTEM="UEFI"
+    else
+      UEFI=0
+      SYSTEM="BIOS"
+    fi
+}
+
+# Taken from AIS. An excellent bit of code!
+arch_chroot() {
+    arch-chroot $MOUNTPOINT /bin/bash -c "${1}"
+}  
+
+######################################################################
+##																	##
+##                 Configuration Functions							##
+##																	##
+######################################################################
+
+
+# Adapted from AIS. Added option to allow users to edit the mirrorlist.
+configure_mirrorlist() {
+
+# Generate a mirrorlist based on the country chosen.	
+mirror_by_country() {
+
+ COUNTRY_LIST=""
+ countries_list=("AU_Australia AT_Austria BY_Belarus BE_Belgium BR_Brazil BG_Bulgaria CA_Canada CL_Chile CN_China CO_Colombia CZ_Czech_Republic DK_Denmark EE_Estonia FI_Finland FR_France DE_Germany GB_United_Kingdom GR_Greece HU_Hungary IN_India IE_Ireland IL_Israel IT_Italy JP_Japan KZ_Kazakhstan KR_Korea LV_Latvia LU_Luxembourg MK_Macedonia NL_Netherlands NC_New_Caledonia NZ_New_Zealand NO_Norway PL_Poland PT_Portugal RO_Romania RU_Russia RS_Serbia SG_Singapore SK_Slovakia ZA_South_Africa ES_Spain LK_Sri_Lanka SE_Sweden CH_Switzerland TW_Taiwan TR_Turkey UA_Ukraine US_United_States UZ_Uzbekistan VN_Vietnam")
+
+ for i in ${countries_list}; do
+     COUNTRY_LIST="${COUNTRY_LIST} ${i} -"
+ done
+	
+ dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MirrorCntryTitle" --menu "$_MirrorCntryBody" 20 45 16 ${COUNTRY_LIST} 2>${ANSWER} || prep_menu
+ COUNTRY_CODE=$(cat ${ANSWER} |sed 's/_.*//')
+
+ URL="https://www.archlinux.org/mirrorlist/?country=${COUNTRY_CODE}&use_mirror_status=on"
+ MIRROR_TEMP=$(mktemp --suffix=-mirrorlist)
+
+ # Get latest mirror list and save to tmpfile
+ dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MirrorGenTitle" --infobox "$_MirrorGenBody" 7 40
+  
+ curl -so ${MIRROR_TEMP} ${URL}
+ sed -i 's/^#Server/Server/g' ${MIRROR_TEMP}
+ leafpad ${MIRROR_TEMP}
+
+ dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --yesno "$_MirrorGenQ" 0 0 \
+ && mv -i -f /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.orig \
+ && mv -i -f ${MIRROR_TEMP} /etc/pacman.d/mirrorlist \
+ && chmod +r /etc/pacman.d/mirrorlist \
+ && dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --msgbox "$_MirrorGenDone" 0 0 || prep_menu
+}
+
+dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MirrorlistTitle" \
+    --menu "$_MirrorlistBody" 13 45 2 \
+	"1" "$_MirrorbyCountry" \
+	"2" "$_MirrorEdit" 2>${ANSWER}	
+
+    case $(cat ${ANSWER}) in
+        "1") mirror_by_country
+             ;;
+        "2") gksu leafpad /etc/pacman.d/mirrorlist
+             ;;
+          *) prep_menu
+             ;;
+    esac  	
+
+}
+
+# Simplified from the Arch --> Cinnarch/Antergos --> Manjaro installer code.
+set_keymap() { 
+	
+	KEYMAPS=""
+    for i in $(find /usr/share/kbd/keymaps -follow -name "*.gz" | sed 's|^.*/||g' | sed 's/.map.*//' | sort); do
+        KEYMAPS="${KEYMAPS} ${i} -"
+    done
+    
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_KeymapTitle" \
+    --menu "$_KeymapBody" 20 40 16 ${KEYMAPS} 2>${ANSWER} || config_base_menu
+    KEYMAP=$(cat ${ANSWER})
+    echo "KEYMAP=$KEYMAP" > ${MOUNTPOINT}/etc/vconsole.conf
+    
+  }
+
+# Set keymap for X11
+ set_xkbmap() {
+	 
+	XKBMAP_LIST=""
+	keymaps_xkb=("af_Afghani al_Albanian am_Armenian ara_Arabic at_German-Austria az_Azerbaijani ba_Bosnian bd_Bangla be_Belgian bg_Bulgarian br_Portuguese-Brazil bt_Dzongkha bw_Tswana by_Belarusian ca_French-Canada cd_French-DR-Congo ch_German-Switzerland cm_English-Cameroon cn_Chinese cz_Czech de_German dk_Danishee_Estonian epo_Esperanto es_Spanish et_Amharic fo_Faroese fi_Finnish fr_French gb_English-UK ge_Georgian gh_English-Ghana gn_French-Guinea gr_Greek hr_Croatian hu_Hungarian ie_Irish il_Hebrew iq_Iraqi ir_Persian is_Icelandic it_Italian jp_Japanese ke_Swahili-Kenya kg_Kyrgyz kh_Khmer-Cambodia kr_Korean kz_Kazakh la_Lao latam_Spanish-Lat-American lk_Sinhala-phonetic lt_Lithuanian lv_Latvian ma_Arabic-Morocco mao_Maori md_Moldavian me_Montenegrin mk_Macedonian ml_Bambara mm_Burmese mn_Mongolian mt_Maltese mv_Dhivehi ng_English-Nigeria nl_Dutch no_Norwegian np_Nepali ph_Filipino pk_Urdu-Pakistan pl_Polish pt_Portuguese ro_Romanian rs_Serbian ru_Russian se_Swedish si_Slovenian sk_Slovak sn_Wolof sy_Arabic-Syria th_Thai tj_Tajik tm_Turkmen tr_Turkish tw_Taiwanese tz_Swahili-Tanzania ua_Ukrainian us_English-US uz_Uzbek vn_Vietnamese za_English-S-Africa")
+    
+	for i in ${keymaps_xkb}; do
+        XKBMAP_LIST="${XKBMAP_LIST} ${i} -"
+    done
+	
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_XkbmapTitle" --menu "$_XkbmapBody" 20 45 16 ${XKBMAP_LIST} 2>${ANSWER} || prep_menu
+    XKBMAP=$(cat ${ANSWER} |sed 's/_.*//')
+    echo -e "Section "\"InputClass"\"\nIdentifier "\"system-keyboard"\"\nMatchIsKeyboard "\"on"\"\nOption "\"XkbLayout"\" "\"${XKBMAP}"\"\nEndSection" > /tmp/00-keyboard.conf
+    setxkbmap $XKBMAP
+ 
+}
+
+# locale array generation code taken from the Manjaro 0.8 installer
+set_locale() {
+	
+  LOCALES=""	
+  for i in $(cat /etc/locale.gen | grep -v "#  " | sed 's/#//g' | sed 's/ UTF-8//g' | grep .UTF-8); do
+      LOCALES="${LOCALES} ${i} -"
+  done
+
+  dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LocateTitle" --menu "$_localeBody" 22 30 16 ${LOCALES} 2>${ANSWER} || config_base_menu 
+  LOCALE=$(cat ${ANSWER})
+  
+  echo 'LANG="'$LOCALE'"' > ${MOUNTPOINT}/etc/locale.conf  
+  arch_chroot "sed -i '/'${LOCALE}'/s/^#//' /etc/locale.gen"
+  arch_chroot "locale-gen"
+}
+
+# Zone and sub-zone array generation code taken from the Manjaro 0.8 Installer
+set_timezone() {
+
+    ZONE=""
+    for i in $(grep '^[A-Z]' /usr/share/zoneinfo/zone.tab | cut -f 3 | sed -e 's#/.*##g'| sort -u); do
+      ZONE="$ZONE ${i} -"
+    done
+    
+     dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_TimeZTitle" --menu "$_TimeZBody" 19 40 11 ${ZONE} 2>${ANSWER} || config_base_menu
+     ZONE=$(cat ${ANSWER}) 
+    
+     SUBZONE=""
+     for i in $(grep '^[A-Z]' /usr/share/zoneinfo/zone.tab | grep $ZONE/ | cut -f 3 | sed -e "s#$ZONE/##g"| sort -u); do
+        SUBZONE="$SUBZONE ${i} -"
+     done
+         
+     dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_TimeSubZTitle" --menu "$_TimeSubZBody" 19 40 11 ${SUBZONE} 2>${ANSWER} || config_base_menu
+     SUBZONE=$(cat ${ANSWER}) 
+    
+     dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --yesno "$_TimeZQ ${ZONE}/${SUBZONE} ?" 0 0 && arch_chroot "ln -s /usr/share/zoneinfo/${ZONE}/${SUBZONE} /etc/localtime" || config_base_menu
+    
+}
+
+set_hw_clock() {
+	
+   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_HwCTitle" \
+    --menu "$_HwCBody" 12 45 2 \
+ 	"1" "$_HwCUTC" \
+	"2" "$_HwLocal" 2>${ANSWER}	
+
+    case $(cat ${ANSWER}) in
+        "1") arch_chroot "hwclock --systohc --utc" 
+             ;;
+        "2") arch_chroot "hwclock --systohc --localtime"
+             ;;
+          *) config_base_menu
+             ;;
+     esac	
+}
+
+# Adapted from AIS. As with some other functions, decided that keeping the numbering for options
+# was worth repeating portions of code.
+generate_fstab() {
+
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_FstabTitle" \
+    --menu "$_FstabBody" 19 60 3 \
+	"1" "$_FstabDev" \
+	"2" "$_FstabLabel" \
+	"3" "$_FstabUUID" 2>${ANSWER}
+
+    case $(cat ${ANSWER}) in
+        "1") genfstab -p ${MOUNTPOINT} >> ${MOUNTPOINT}/etc/fstab
+             ;;
+        "2") genfstab -L -p ${MOUNTPOINT} >> ${MOUNTPOINT}/etc/fstab
+             ;;
+        "3") if [[ $UEFI -eq 1 ]]; then
+                genfstab -t PARTUUID -p ${MOUNTPOINT} >> ${MOUNTPOINT}/etc/fstab
+             else 
+                genfstab -U -p ${MOUNTPOINT} >> ${MOUNTPOINT}/etc/fstab
+             fi
+             ;;
+          *) config_base_menu
+             ;;
+    esac
+
+    #[[ $SWAPFILE -eq 1 ]] && sed -i "s/\/mnt//" ${MOUNTPOINT}/etc/fstab
+    [[ -f ${MOUNTPOINT}/swapfile ]] && sed -i "s/\\${MOUNTPOINT}//" ${MOUNTPOINT}/etc/fstab
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_FstabChkTitle" --msgbox "$_FstabChkBody" 0 0
+    gksu leafpad ${MOUNTPOINT}/etc/fstab
+}
+
+# Adapted from AIS.
+set_hostname() {
+
+   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_HostNameTitle" --inputbox "$_HostNameBody" 12 65 "evo" 2>${ANSWER} || config_base_menu
+   HOST_NAME=$(cat ${ANSWER})
+
+   echo "$HOST_NAME" > ${MOUNTPOINT}/etc/hostname
+   arch_chroot "sed -i '/127.0.0.1/s/$/ '${HOST_NAME}'/' /etc/hosts"
+   arch_chroot "sed -i '/::1/s/$/ '${HOST_NAME}'/' /etc/hosts"
+}
+
+# Adapted and simplified from the Manjaro 0.8 and Antergos 2.0 installers
+set_root_password() {
+
+
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassRtTitle" --clear --insecure --passwordbox "$_PassRtBody" 10 55 2> ${ANSWER} || config_user_menu
+    PASSWD=$(cat ${ANSWER})
+    
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassRtTitle" --clear --insecure --passwordbox "$_PassRtBody2" 10 55 2> ${ANSWER} || config_user_menu
+    PASSWD2=$(cat ${ANSWER})
+    
+    if [[ $PASSWD == $PASSWD2 ]]; then 
+       echo -e "${PASSWD}\n${PASSWD}" > /tmp/.passwd
+       arch_chroot "passwd root" < /tmp/.passwd >/dev/null 2>&1
+       rm /tmp/.passwd
+    else
+       dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassRtErrTitle" --msgbox "$_PassRtErrBody" 8 35
+       set_root_password
+    fi
+
+}
+
+# Adapted and simplified from the Antergos 2.0 installer
+create_new_user() {
+
+        dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NUsrTitle" --inputbox "$_NUsrBody" 9 55 "" 2>${ANSWER} || config_user_menu
+        USER=$(cat ${ANSWER})
+        
+        if [[ ${#USER} < 1 ]] || [[ ${USER:0:1} == " " ]]; then
+           dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NUsrErrTitle" --msgbox "$_NUsrErrBody" 0 0
+           create_new_user
+        else
+           dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrTitle" --clear --insecure --passwordbox "$_PassNUsrBody $USER\n\n" 9 55 2> ${ANSWER} || config_user_menu
+           PASSWD=$(cat ${ANSWER}) 
+    
+           dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrTitle" --clear --insecure --passwordbox "$_PassNUsrBody2 $USER\n\n" 9 55 2> ${ANSWER} || config_user_menu
+           PASSWD2=$(cat ${ANSWER}) 
+    
+           if [[ $PASSWD == $PASSWD2 ]]; then         
+              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NUsrSetTitle" --infobox "$_NUsrSetBody" 0 0
+              sleep 2
+              arch_chroot "useradd ${USER} -m -g users -G wheel,storage,power,network,video,audio,lp -s /bin/bash"
+              echo -e "${PASSWD}\n${PASSWD}" > /tmp/.passwd
+              arch_chroot "passwd ${USER}" < /tmp/.passwd >/dev/null 2>&1
+              rm /tmp/.passwd
+              arch_chroot "sed -i '/%wheel ALL=(ALL) ALL/s/^#//' /etc/sudoers"
+           else
+              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrErrTitle" --msgbox "$_PassNUsrErrBody" 0 0
+              create_new_user
+           fi
+         fi
+}
+
+run_mkinitcpio() {
+	
+  clear
+  if [[ $LTS -eq 1 ]]; then
+     arch_chroot "mkinitcpio -p linux-lts"
+  else
+     arch_chroot "mkinitcpio -p linux"
+  fi
+
+}
+
+######################################################################
+##																	##
+##            System and Partitioning Functions						##
+##																	##
+######################################################################
+
+
+
+# Unmount partitions (AIS)
+umount_partitions(){
+  mounted_partitions=(`lsblk | grep ${MOUNTPOINT} | awk '{print $7}' | sort -r`)
+  swapoff -a
+  for i in ${mounted_partitions[@]}; do
+    umount $i
+  done
+}
+
+# Adapted from AIS
+confirm_mount() {
+    if mount | grep $1; then
+      dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MntStatusTitle" --infobox "$_MntStatusSucc" 0 0
+      sleep 2
+      PARTITIONS="$(echo $PARTITIONS | sed s/${PARTITION}$' -'//)"
+      NUMBER_PARTITIONS=$(( NUMBER_PARTITIONS - 1 ))
+    else
+      dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MntStatusTitle" --infobox "$_MntStatusFail" 0 0
+      sleep 2
+      prep_menu
+    fi
+}
+
+# Adapted from AIS. However, this does not assume that the formatted device is the Root
+# installation device; more than one device may be formatted. This is now set in the
+# mount_partitions function, when the Root is chosen.
+select_device() {
+	
+    DEVICE=""
+    devices_list=(`lsblk -d | awk '{print "/dev/" $1}' | grep 'sd\|hd\|vd'`);
+    
+    for i in ${devices_list[@]}; do
+        DEVICE="${DEVICE} ${i} -"
+    done
+    
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DevSelTitle" --menu "$_DevSelBody" 16 45 3 ${DEVICE} 2>${ANSWER} || prep_menu
+    DEVICE=$(cat ${ANSWER})
+ 
+  }
+
+# Same as above, but goes to install_base_menu instead where cancelling
+select_grub_device() {
+	
+    GRUB_DEVICE=""
+    grub_devices_list=(`lsblk -d | awk '{print "/dev/" $1}' | grep 'sd\|hd\|vd'`);
+    
+    for i in ${grub_devices_list[@]}; do
+        GRUB_DEVICE="${GRUB_DEVICE} ${i} -"
+    done
+    
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DevSelGrubTitle" --menu "$_DevSelBody" 16 45 3 ${GRUB_DEVICE} 2>${ANSWER} || install_base_menu
+    GRUB_DEVICE=$(cat ${ANSWER})
+    clear
+    arch_chroot "grub-install --target=i386-pc --recheck ${GRUB_DEVICE}"
+ 
+  }
+
+# Adapted from AIS. Integrated Gparted, and dropped most of the other partitioning tools.
+create_partitions(){
+
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PartToolTitle" \
+    --menu "$_PartToolBody" 17 55 4 \
+ 	"1" $"GParted (GUI - BIOS & UEFI)" \
+	"2" $"CFDisk  (CLI - BIOS/MBR)" \
+	"3" $"CGDisk  (CLI - UEFI/GPT)" \
+	"4" $"GDisk   (CLI - UEFI/GPT)" 2>${ANSWER}	
+
+    case $(cat ${ANSWER}) in
+        "1") gksu gparted ${DEVICE} >/dev/null 2>&1
+             ;;
+        "2") cfdisk ${DEVICE}
+             ;;
+        "3") cgdisk ${DEVICE}
+             ;;       
+        "4") gdisk ${DEVICE}
+             ;;
+          *) prep_menu
+             ;;
+    esac  	
+}	
+
+# find all available partitions and generate a list of them
+# This also includes partitions on different devices.
+find_partitions() {
+
+	PARTITIONS=""
+    partition_list=(`lsblk | grep 'part\|lvm' | awk '{print substr($1,3)}'`)
+	
+    for i in ${partition_list[@]}; do
+        PARTITIONS="${PARTITIONS} ${i} -"
+    done
+    
+    echo $PARTITIONS
+    NUMBER_PARTITIONS=${#partition_list[@]}
+    
+    # Deal with incorrect partitioning
+    if [[ $NUMBER_PARTITIONS < 2 ]] && [[ $UEFI -eq 1 ]]; then
+        dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_UefiPartErrTitle" --msgbox "$_UefiPartErrBody" 0 0
+        create_partitions
+    fi
+    
+    if [[ $NUMBER_PARTITIONS -eq 0 ]] && [[ $UEFI -eq 0 ]]; then
+        dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_BiosPartErrTitle" --msgbox "$_BiosPartErrBody" 0 0	
+        create_partitions
+    fi
+}
+
+# Set static list of filesystems rather than on-the-fly. Partially as most require additional flags, and partially because some don't seem
+# to be remotely viable choices.
+select_filesystem(){
+
+dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_FSTitle" \
+    --menu "$_FSBody" 19 40 8 \
+ 	"1" "$_FSSkip" \
+	"2" $"ext2" \
+ 	"3" $"ext3" \
+	"4" $"ext4" \
+	"5" $"jfs" \
+ 	"6" $"nilfs2" \
+	"7" $"ntfs" \
+	"8" $"reiserfs" \
+ 	"9" $"vfat" \
+	"10" $"xfs" 2>${ANSWER}	
+
+    case $(cat ${ANSWER}) in
+        "1") FILESYSTEM="skip"
+             ;;
+        "2") FILESYSTEM="mkfs.ext2 -F"
+             ;;
+        "3") FILESYSTEM="mkfs.ext3 -F"
+             ;;            
+        "4") FILESYSTEM="mkfs.ext4 -F"
+             ;;
+        "5") FILESYSTEM="mkfs.jfs -q"
+             ;;
+        "6") FILESYSTEM="mkfs.nilfs2 -f"
+             ;;  
+        "7") FILESYSTEM="mkfs.ntfs -q"
+             ;;  
+        "8") FILESYSTEM="mkfs.reiserfs -f -f"
+             ;;  
+       "9") FILESYSTEM="mkfs.vfat -F32"
+             ;;  
+       "10") FILESYSTEM="mkfs.xfs -f"
+             ;;      
+          *) prep_menu
+             ;;
+    esac
+
+  }
+  
+mount_partitions() {
+	
+	# Ensure all partitions are unmounted (e.g. could still be mounted from the partitioning tool)
+    # Then list available partitions
+	find_partitions
+	
+	# Identify and mount root
+	dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SelRootTitle" --menu "$_SelRootBody" 13 40 4 ${PARTITIONS} 2>${ANSWER} || prep_menu
+	PARTITION=$(cat ${ANSWER})
+    ROOT_PART=${PARTITION}
+	INST_DEV=$"/dev/"$(cat ${ANSWER} | sed 's/[0-9]*//g')
+	
+	select_filesystem
+	if [[ $FILESYSTEM != "skip" ]]; then	
+	   ${FILESYSTEM} $"/dev/"${PARTITION} >/dev/null 2>&1
+	fi
+	
+	mkdir -p ${MOUNTPOINT}
+	mount $"/dev/"${PARTITION} ${MOUNTPOINT}
+    confirm_mount ${MOUNTPOINT}
+	
+	# Identify and create swap, if applicable
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SelSwpTitle" --menu "$_SelSwpBody" 13 40 4 "$_SelSwpNone" $"-" "$_SelSwpFile" $"-" ${PARTITIONS} 2>${ANSWER} || prep_menu  
+    if [[ $(cat ${ANSWER}) != "None" ]]; then    
+       PARTITION=$(cat ${ANSWER})
+       
+       if [[ $PARTITION == "Swapfile" ]]; then
+          total_memory=`grep MemTotal /proc/meminfo | awk '{print $2/1024}' | sed 's/\..*//'`
+          fallocate -l ${total_memory}M ${MOUNTPOINT}/swapfile >/dev/null 2>&1
+          chmod 600 ${MOUNTPOINT}/swapfile >/dev/null 2>&1
+          mkswap ${MOUNTPOINT}/swapfile >/dev/null 2>&1
+          swapon ${MOUNTPOINT}/swapfile >/dev/null 2>&1
+       else
+          mkswap  $"/dev/"${PARTITION} >/dev/null 2>&1
+          swapon  $"/dev/"${PARTITION} >/dev/null 2>&1
+          # Since a partition was used, remove that partition from the list
+          PARTITIONS="$(echo $PARTITIONS | sed s/${PARTITION}$' -'//)"
+          NUMBER_PARTITIONS=$(( NUMBER_PARTITIONS - 1 ))
+       fi
+    fi
+    
+    # Extra Step for VFAT UEFI Partition
+    if [[ $UEFI -eq 1 ]]; then
+    
+       dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SelUefiTitle" --menu "$_SelUefiBody" 13 40 4 ${PARTITIONS} 2>${ANSWER} || config_base_menu  
+       PARTITION=$(cat ${ANSWER})
+       UEFI_PART=$"/dev/"${PARTITION}
+       
+       # If there is already a fat/vfat partition...
+       if [[ $(fsck -N /dev/$PARTITION | grep fat) ]]; then
+          dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_FormUefiTitle" --yesno "$_FormUefiBody $PARTITION $_FormUefiBody2" 0 0 && mkfs.vfat -F32 $"/dev/"${PARTITION} >/dev/null 2>&1
+       else 
+          mkfs.vfat -F32 $"/dev/"${PARTITION} >/dev/null 2>&1
+       fi   
+       
+       # Inform users of the mountpoint options and consequences
+       dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_OptUefiTitle" --msgbox "$_OptUefiBody" 0 0
+       
+       dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MntUefiTitle" --menu "$_MntUefiBody" 12 40 2 \
+ 	   "1" $"/boot" \
+	   "2" $"/boot/efi" 2>${ANSWER}
+       
+       case $(cat ${ANSWER}) in
+        "1") UEFI_MOUNT="/boot"
+             ;;
+        "2") UEFI_MOUNT="/boot/efi"
+             ;;
+          *) config_base_menu
+             ;;
+       esac
+       
+       mkdir -p ${MOUNTPOINT}${UEFI_MOUNT}
+       mount $"/dev/"${PARTITION} ${MOUNTPOINT}${UEFI_MOUNT}
+       confirm_mount ${MOUNTPOINT}${UEFI_MOUNT}     
+       
+    fi
+    
+    # All other partitions
+       while [[ $NUMBER_PARTITIONS > 0 ]]; do 
+             dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtPartTitle" --menu "$_ExtPartBody" 13 40 4 $"Done" $"-" ${PARTITIONS} 2>${ANSWER} || config_base_menu 
+             PARTITION=$(cat ${ANSWER})
+             
+             if [[ $PARTITION == "Done" ]]; then
+                break;
+             else
+                MOUNT=""
+                
+                select_filesystem
+	            if [[ $FILESYSTEM != "skip" ]]; then	
+	               ${FILESYSTEM} $"/dev/"${PARTITION} >/dev/null 2>&1
+	            fi
+                
+                # Don't give /boot as an example for UEFI systems!
+                if [[ $UEFI -eq 1 ]]; then
+                   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyUefi" 11 65 "/" 2>${ANSWER} || config_base_menu
+                else
+                   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyBios" 11 65 "/" 2>${ANSWER} || config_base_menu
+                fi
+                MOUNT=$(cat ${ANSWER})
+                
+                # Ensure that partitions to mount are properly named
+                if [[ ${MOUNT:0:1} == "/" ]] && [[ ${MOUNT:1:1} != "/" ]] && [[ ${MOUNT:1:1} != " " ]] && [[ ${#MOUNT} > 1 ]]; then     
+                      mkdir -p ${MOUNTPOINT}${MOUNT}
+                      mount $"/dev/"${PARTITION} ${MOUNTPOINT}${MOUNT}
+                      confirm_mount ${MOUNTPOINT}${MOUNT}
+                else
+                   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtErrTitle" --msgbox "$_ExtErrBody" 0 0
+                fi
+                
+             fi
+       done
+}	
+	
+######################################################################
+##																	##
+##                    Installation Functions						##
+##																	##
+######################################################################	
+
+install_base() {
+    
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstBseTitle" \
+    --menu "$_InstBseBody" 18 45 4 \
+ 	"1" "$_InstBaseLK" \
+	"2" "$_InstBaseLKBD" \
+	"3" "$_InstBaseLTS" \
+	"4" "$_InstBaseLTSBD" 2>${ANSWER}	
+
+    case $(cat ${ANSWER}) in
+        "1") # Latest Kernel
+             clear
+             pacstrap ${MOUNTPOINT} base btrfs-progs ntp sudo 
+             ;;
+        "2") # Latest Kernel and base-devel
+             clear
+             pacstrap ${MOUNTPOINT} base base-devel btrfs-progs ntp sudo
+             ;;
+        "3") # LTS Kernel
+             clear
+             pacstrap ${MOUNTPOINT} bash bzip2 coreutils cryptsetup device-mapper dhcpcd diffutils e2fsprogs file filesystem findutils gawk gcc-libs gettext glibc grep gzip inetutils iproute2 iputils jfsutils less licenses linux-lts logrotate lvm2 man-db man-pages mdadm nano netctl pacman pciutils pcmciautils perl procps-ng psmisc reiserfsprogs s-nail sed shadow sysfsutils systemd-sysvcompat tar texinfo usbutils util-linux vi which xfsprogs btrfs-progs ntp sudo
+             LTS=1
+             ;;
+        "4") # LTS Kernel and base-devel
+             clear
+             pacstrap ${MOUNTPOINT} bash bzip2 coreutils cryptsetup device-mapper dhcpcd diffutils e2fsprogs file filesystem findutils gawk gcc-libs gettext glibc grep gzip inetutils iproute2 iputils jfsutils less licenses linux-lts logrotate lvm2 man-db man-pages mdadm nano netctl pacman pciutils pcmciautils perl procps-ng psmisc reiserfsprogs s-nail sed shadow sysfsutils systemd-sysvcompat tar texinfo usbutils util-linux vi which xfsprogs base-devel btrfs-progs ntp sudo
+             LTS=1
+             ;;
+          *) install_base_menu
+             ;;
+    esac  	
+
+  #check for a wireless device
+  WIRELESS_DEV=`ip link | grep wlp | awk '{print $2}'| sed 's/://' | sed '1!d'`
+  if [[ -n $WIRELESS_DEV ]]; then
+     dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstWirTitle" --infobox "$_InstWirBody" 0 0 
+     sleep 2
+     clear
+     pacstrap ${MOUNTPOINT} iw wireless_tools wpa_actiond wpa_supplicant dialog
+  fi
+
+}
+
+# Adapted from AIS. Integrated the configuration elements. For UEFI systems fixed the 
+# gummiboot installation and dropped Syslinux.
+install_bootloader() {
+
+bios_bootloader() {	
+	
+   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstBiosBtTitle" \
+    --menu "$_InstBiosBtBody" 16 50 2 \
+ 	"1" $"Grub2" \
+	"2" $"Syslinux" 2>${ANSWER}
+	
+	case $(cat ${ANSWER}) in
+        "1") clear
+             pacstrap ${MOUNTPOINT} grub os-prober
+             dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstGrubDevTitle" --yesno "$_InstGrubDevBody" 0 0 \
+			 && clear && arch_chroot "grub-install --target=i386-pc --recheck ${INST_DEV}" || select_grub_device
+             # Whatever the choice, same configuration process
+             arch_chroot "grub-mkconfig -o /boot/grub/grub.cfg"
+             ;;
+        "2") clear
+             pacstrap ${MOUNTPOINT} syslinux
+             arch_chroot "syslinux-install_update -iam"
+             sed -i "s/sda[0-9]/${ROOT_PART}/g" ${MOUNTPOINT}/boot/syslinux/syslinux.cfg
+             # If the LTS kernel has been installed amend the config file accordingly
+             [[ $LTS -eq 1 ]] && sed -i 's/linux/linux-lts/g' ${MOUNTPOINT}/boot/syslinux/syslinux.cfg
+             dialog --title "$_InstSysTitle" --msgbox "$_InstSysBody APPEND root=/dev/$ROOT_PART rw\n" 0 0
+             gksu leafpad ${MOUNTPOINT}/boot/syslinux/syslinux.cfg
+             ;;
+          *) install_base_menu
+             ;;
+    esac  
+}
+
+uefi_bootloader() {
+
+    #Ensure again that efivarfs is mounted
+	[[ -z $(mount | grep /sys/firmware/efi/efivars) ]] && mount -t efivarfs efivarfs /sys/firmware/efi/efivars
+     
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstUefiBtTitle" \
+    --menu "$_InstUefiBtBody" 18 50 3 \
+    "1" $"Grub2" \
+    "2" $"Gummiboot" \
+    "3" $"rEFInd" 2>${ANSWER}
+
+     case $(cat ${ANSWER}) in
+     "1") # Grub2
+          clear
+          pacstrap ${MOUNTPOINT} grub os-prober efibootmgr dosfstools
+          arch_chroot "grub-install --target=x86_64-efi --efi-directory=${UEFI_MOUNT} --bootloader-id=arch_grub --recheck"
+          arch_chroot "grub-mkconfig -o /boot/grub/grub.cfg"
+
+          # Ask if user wishes to set Grub as the default bootloader and act accordingly
+          dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SetGrubDefTitle" --yesno "$_SetGrubDefBody ${UEFI_MOUNT}/EFI/boot $_SetGrubDefBody2" 18 65 \
+          && arch_chroot "mkdir ${UEFI_MOUNT}/EFI/boot" \
+          && arch_chroot "cp -r ${UEFI_MOUNT}/EFI/arch_grub/grubx64.efi ${UEFI_MOUNT}/EFI/boot/bootx64.efi" \
+          && dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "_SetDefDoneTitle" --infobox "\nGrub $_SetDefDoneBody" 0 0 \
+          && sleep 2
+          ;;
+          
+     "2") # Gummiboot
+          clear
+          pacstrap ${MOUNTPOINT} gummiboot efibootmgr dosfstools
+          arch_chroot "gummiboot --path=${UEFI_MOUNT} install"
+          partuuid=`blkid -s PARTUUID $"/dev/"${ROOT_PART} | awk '{print $2}' | sed 's/"//g' | sed 's/^.*=//'`
+             
+          # Deal with LTS Kernel
+          if [[ $LTS -eq 1 ]]; then
+             echo -e "title\tArch Linux\nlinux\t/vmlinuz-linux-lts\ninitrd\t/initramfs-linux-lts.img\noptions\troot=PARTUUID=${partuuid} rw" > ${MOUNTPOINT}/boot/loader/entries/arch.conf
+          else
+             echo -e "title\tArch Linux\nlinux\t/vmlinuz-linux\ninitrd\t/initramfs-linux.img\noptions\troot=PARTUUID=${partuuid} rw" > ${MOUNTPOINT}/boot/loader/entries/arch.conf
+          fi
+          
+          # Set and check the config files  
+          echo -e "default  arch\ntimeout  5" > ${MOUNTPOINT}${UEFI_MOUNT}/loader/loader.conf
+          dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ChkGumTitle" --msgbox "$_ChkGumBody" 0 0
+          gksu leafpad ${MOUNTPOINT}${UEFI_MOUNT}/loader/entries/arch.conf
+          gksu leafpad ${MOUNTPOINT}${UEFI_MOUNT}/loader/loader.conf
+          ;;
+          
+      "3") # rEFInd
+           # Ensure that UEFI partition has been mounted to /boot/efi due to bug in script. Could "fix" it for installation, but
+           # This could result in unknown consequences should the script be updated at some point.
+           if [[ $UEFI_MOUNT == "/boot/efi" ]]; then      
+              clear
+              pacstrap ${MOUNTPOINT} refind-efi efibootmgr dosfstools    
+              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SetRefiDefTitle" --yesno "$_SetRefiDefBody ${UEFI_MOUNT}/EFI/boot $_SetRefiDefBody2" 18 65 \
+              && clear && arch_chroot "refind-install --usedefault ${UEFI_PART} --alldrivers" || clear && arch_chroot "refind-install"
+           else 
+              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_RefiErrTitle" --msgbox $"_RefiErrBody" 0 0
+              uefi_bootloader
+           fi
+           ;;
+      
+      *) install_base_menu
+         ;;
+      esac 
+
+}
+
+    # Set the default PATH variable
+    arch_chroot "PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl"
+
+    if [[ $UEFI -eq 0 ]]; then
+       bios_bootloader
+    else
+       uefi_bootloader
+    fi
+}
+
+# Install alsa, xorg and input drivers
+# Also copy the xkbmap configuration file created earlier to the installed system
+install_alsa_xorg_input() {
+
+  dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_AXITitle" --msgbox "$_AXIBody" 0 0
+  clear	
+  pacstrap ${MOUNTPOINT} alsa-utils xorg-server xorg-server-utils xorg-xinit xf86-input-synaptics xf86-input-keyboard xf86-input-mouse
+  cp /tmp/00-keyboard.conf ${MOUNTPOINT}/etc/X11/xorg.conf.d/00-keyboard.conf
+
+}
+
+setup_graphics_card() {
+
+# basically this is used to manually set the GC_DETECTED variable. Includes proprietary NVIDIA drivers.
+gc_driver_menu() {
+
+   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_GCtitle" \
+    --menu "$_GCBody" 19 45 10 \
+ 	"1" $"AMD/ATI" \
+	"2" $"Intel" \
+	"3" $"Nouveau (NVIDIA open-source)" \
+	"4" $"NVIDIA GeForce 400 +" \
+	"5" $"NVIDIA GeForce 8/9/100-300" \
+	"6" $"NVIDIA GeForce 6/7" \
+	"7" $"Via" \
+	"8" $"VirtualBox" \
+    "9" $"VMWare" \
+	"10" "$_GCUnknOpt" 2>${ANSWER}
+
+   case $(cat ${ANSWER}) in
+        "1") GC_DETECTED="ATI"
+             ;;
+        "2") GC_DETECTED="Intel"
+             ;;
+        "3") GC_DETECTED="NVIDIA"
+             ;;
+        "4") GC_DETECTED="NVIDIA-GF"
+             ;;
+        "5") GC_DETECTED="NVIDIA-340"
+             ;;
+        "6") GC_DETECTED="NVIDIA-304"
+             ;;              
+        "7") GC_DETECTED="Via"
+             ;;            
+        "8") GC_DETECTED="VirtualBox"
+             ;;
+        "9") GC_DETECTED="VMware"
+             ;;
+        "10") GC_DETECTED="Generic"
+             ;;
+          *) install_desktop_menu
+             ;;
+    esac  
+    install_gc
+}
+
+# Adapted from Anterogos' CLI installer
+detect_graphics_card() {
+	
+    if   [[ `echo ${GRAPHIC_CARD}|grep -i 'ati[[:space:]]'` != "" ]]; then
+         GC_DETECTED="ATI" 
+    elif [[ `echo ${GRAPHIC_CARD}|grep -i 'nvidia[[:space:]]'` != "" ]]; then
+         GC_DETECTED="NVIDIA" 
+    elif [[ `echo ${GRAPHIC_CARD}|grep -i 'intel[[:space:]]'` != "" ]] || [ `echo ${GRAPHIC_CARD}|grep -i 'lenovo[[:space:]]'` != "" ]]; then
+         GC_DETECTED="Intel"
+    elif [[ `echo ${GRAPHIC_CARD}|grep -i 'virtualbox[[:space:]]'` != "" ]]; then
+         GC_DETECTED="VirtualBox"
+    elif [[ `echo ${GRAPHIC_CARD}|grep -i 'vmware[[:space:]]'` != "" ]]; then
+         GC_DETECTED="VMware"
+    elif [[ `echo ${GRAPHIC_CARD}|grep -i 'via[[:space:]]'` != "" ]]; then
+         GC_DETECTED="Via"
+    else
+         GC_DETECTED="Unknown"
+    fi
+
+}
+
+install_gc() {
+
+ clear
+ 
+ case $GC_DETECTED in
+        "ATI") pacstrap ${MOUNTPOINT} xf86-video-ati mesa-libgl mesa
+               sed -i 's/^MODULES=(/MODULES=(radeon /' ${MOUNTPOINT}/etc/mkinitcpio.conf
+               ;;
+     "NVIDIA") pacstrap ${MOUNTPOINT} xf86-video-nouveau mesa-libgl mesa
+               sed -i 's/^MODULES=(/MODULES=(nouveau /' ${MOUNTPOINT}/etc/mkinitcpio.conf
+               ;;
+  "NVIDIA-GF") #first remove mesa to avoid file conflicts
+               arch_chroot "pacman -Rdds --noconfirm mesa-libgl mesa"
+  
+               # Now deal with kernel installed
+               [[ $LTS == 0 ]] && pacstrap ${MOUNTPOINT} nvidia nvidia-libgl nvidia-utils pangox-compat \
+               || pacstrap ${MOUNTPOINT} nvidia-lts nvidia-libgl nvidia-utils pangox-compat
+               NVIDIA_INST=1
+               ;;
+ "NVIDIA-340") #first remove mesa to avoid file conflicts
+               arch_chroot "pacman -Rdds --noconfirm mesa-libgl mesa"
+  
+               # Now deal with kernel installed
+               [[ $LTS == 0 ]] && pacstrap ${MOUNTPOINT} nvidia-340xx nvidia-340xx-libgl nvidia-340xx-utils \
+               || pacstrap ${MOUNTPOINT} nvidia-340xx-lts nvidia-340xx-libgl nvidia-340xx-utils
+               NVIDIA_INST=1
+               ;;
+ "NVIDIA-304") #first remove mesa to avoid file conflicts
+               arch_chroot "pacman -Rdds --noconfirm mesa-libgl mesa"
+ 
+               # Now deal with kernel installed
+               [[ $LTS == 0 ]] && pacstrap ${MOUNTPOINT} nvidia-304xx nvidia-304xx-libgl nvidia-304xx-utils \
+               || pacstrap ${MOUNTPOINT}  nvidia-304xx-lts nvidia-304xx-libgl nvidia-304xx-utils
+               NVIDIA_INST=1
+               ;;
+      "Intel") pacstrap ${MOUNTPOINT} xf86-video-intel libva-intel-driver mesa-libgl mesa
+               sed -i 's/^MODULES=(/MODULES=(i915 /' ${MOUNTPOINT}/etc/mkinitcpio.conf
+               ;;
+ "VirtualBox") dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " VirtualBox Installation " --msgbox "\nIf for any reason the VirtualBox guest modules do not load for the installed system (e.g. low resolution and scrollbars after booting), a one-off series of commands will fix this:\n\n$ su\n# depmod -a\n# modprobe -a vboxvideo vboxguest vboxsf\n# reboot" 0 0
+               clear
+               [[ $LTS == 0 ]] && pacstrap ${MOUNTPOINT} virtualbox-guest-utils virtualbox-guest-modules mesa-libgl \
+               || pacstrap ${MOUNTPOINT} virtualbox-guest-utils virtualbox-guest-modules-lts mesa-libgl
+      
+               # Load modules and enable vboxservice whatever the kernel
+               arch_chroot "modprobe -a vboxguest vboxsf vboxvideo"  
+               arch_chroot "systemctl enable vboxservice"
+               ;;
+     "VMWare") pacstrap ${MOUNTPOINT} xf86-video-vmware xf86-input-vmmouse mesa-libgl mesa
+               ;;
+        "Via") pacstrap ${MOUNTPOINT} xf86-video-openchrome
+               ;;
+    "Generic") pacstrap ${MOUNTPOINT} xf86-video-modesetting mesa-libgl mesa
+               ;;
+            *) gc_driver_menu  
+               ;;
+ esac
+
+ # Create a basic xorg configuration file for NVIDIA proprietary drivers where installed
+ if [[ $NVIDIA_INST == 1 ]]; then
+    echo "Section "\"Device"\"" >> ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
+    echo "        Identifier "\"Nvidia Card"\"" >> ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
+    echo "        Driver "\"nvidia"\"" >> ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
+    echo "        VendorName "\"NVIDIA Corporation"\"" >> ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
+    echo "        Option "\"NoLogo"\" "\"true"\"" >> ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
+    echo "        #Option "\"UseEDID"\" "\"false"\"" >> ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
+    echo "        #Option "\"ConnectedMonitor"\" "\"DFP"\"" >> ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
+    echo "        # ..." >> ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
+    echo "EndSection" >> ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
+
+    # Allow user to check and amend the file
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NvidiaConfTitle" --msgbox "$_NvidiaConfBody" 0 0
+    gksu leafpad ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
+ fi
+
+}
+
+    detect_graphics_card
+    if [[ $GC_DETECTED == "Unknown" ]]; then
+       gc_driver_menu
+    else
+       dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " $GC_DETECTED $_GCDetTitle " --yesno "$_GCDetBody $GC_DETECTED?\n\n $_GCDetBody2" 0 0 && install_gc || gc_driver_menu
+    fi
+
+}
+
+
+install_de_wm() {
+
+   # Only show this information box once
+   if [[ $SHOW_ONCE -eq 0 ]]; then
+      dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DEInfoTitle" --msgbox "$_DEInfoBody" 0 0
+      SHOW_ONCE=1
+   fi
+   
+	dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstDETitle" \
+    --menu "_InstDEBody" 19 45 8 \
+ 	"1" $"Cinnamon" \
+	"2" $"Enlightenment" \
+	"3" $"Gnome-Shell (minimal)" \
+	"4" $"Gnome" \
+	"5" $"Gnome + Extras" \
+    "6" $"KDE Base (minimal)" \
+    "7" $"KDE" \
+    "8" $"LXDE" \
+    "9" $"MATE" \
+    "10" $"MATE + Extras" \
+    "11" $"Xfce" \
+    "12" $"Xfce + extras" \
+    "13" $"Awesome WM" \
+    "14" $"Fluxbox WM" \
+	"15" $"i3 WM" \
+    "16" $"Ice WM" \
+    "17" $"Openbox WM" \
+    "18" $"Pek WM" 2>${ANSWER}
+
+   case $(cat ${ANSWER}) in
+        "1") # Cinnamon
+             clear
+             pacstrap ${MOUNTPOINT} cinnamon
+             ;;
+        "2") # Enlightement
+             clear
+             pacstrap ${MOUNTPOINT} enlightenment terminology polkit-gnome
+             ;;
+        "3") # Gnome-Shell
+             clear
+             pacstrap ${MOUNTPOINT} gnome-shell gdm
+             GNOME_INSTALLED=1
+             ;;
+        "4") # Gnome
+             clear
+             pacstrap ${MOUNTPOINT} gnome rp-pppoe
+
+             if [[ $NM_INSTALLED -eq 0 ]]; then         
+                arch_chroot "systemctl enable NetworkManager.service && systemctl enable NetworkManager-dispatcher.service"
+                NM_INSTALLED=1
+             fi
+           
+             GNOME_INSTALLED=1
+             ;;            
+        "5") # Gnome + Extras
+             clear
+             pacstrap ${MOUNTPOINT} gnome gnome-extra rp-pppoe
+
+             if [[ $NM_INSTALLED -eq 0 ]]; then         
+                arch_chroot "systemctl enable NetworkManager.service && systemctl enable NetworkManager-dispatcher.service"
+                NM_INSTALLED=1
+             fi
+           
+             GNOME_INSTALLED=1
+             ;;
+        "6") # KDE BASE
+             clear
+             pacstrap ${MOUNTPOINT} kdebase-workspace kdeplasma-applets-plasma-nm
+             KDE_INSTALLED=1
+             ;;
+        "7") # KDE 
+             clear
+             pacstrap ${MOUNTPOINT} kde kdeplasma-applets-plasma-nm xdg-user-dirs xdg-utils rp-pppoe
+
+             if [[ $NM_INSTALLED -eq 0 ]]; then          
+                arch_chroot "systemctl enable NetworkManager.service && systemctl enable NetworkManager-dispatcher.service"
+                NM_INSTALLED=1
+             fi
+               
+             KDE_INSTALLED=1
+             ;;
+         "8") # LXDE
+              clear
+              pacstrap ${MOUNTPOINT} lxde
+              LXDE_INSTALLED=1
+             ;;
+         "9") # MATE
+              clear
+              pacstrap ${MOUNTPOINT} mate
+             ;;
+        "10") # MATE + Extras
+               clear
+               pacstrap ${MOUNTPOINT} mate mate-extra
+             ;;                 
+        "11") # Xfce
+              clear
+              pacstrap ${MOUNTPOINT} xfce4 polkit-gnome
+             ;;            
+        "12") # Xfce + Extras
+              clear
+              pacstrap ${MOUNTPOINT} xfce4 xfce4-goodies polkit-gnome
+             ;;
+        "13") # Awesome
+              clear
+              pacstrap ${MOUNTPOINT} awesome vicious polkit-gnome
+             ;;
+        "14") #Fluxbox
+              clear 
+              pacstrap ${MOUNTPOINT} fluxbox fbnews fluxter polkit-gnome
+             ;; 
+        "15") #i3
+              clear
+              pacstrap ${MOUNTPOINT} i3-wm i3lock i3status dmenu polkit-gnome
+             ;; 
+        "16") #IceWM
+              clear
+              pacstrap ${MOUNTPOINT} icewm icewm-themes polkit-gnome
+             ;; 
+        "17") #Openbox
+              clear
+              pacstrap ${MOUNTPOINT} openbox openbox-themes polkit-gnome
+             ;; 
+        "18") #PekWM
+              clear
+              pacstrap ${MOUNTPOINT} pekwm pekwm-themes polkit-gnome
+             ;;            
+          *) install_desktop_menu
+             ;;
+    esac  
+    
+    # Offer to install common packages
+    if [[ $COMMON_INSTALLED -eq 0 ]]; then
+       dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstComTitle" --yesno "$_InstComBody" 0 0 \
+       && clear && pacstrap ${MOUNTPOINT} xterm gksu gnome-keyring polkit xdg-user-dirs xdg-utils gamin gvfs gvfs-afc gvfs-smb ttf-dejavu gnome-icon-theme python2-xdg bash-completion
+    fi
+    
+    # Either way, the option will no longer be presented.
+    COMMON_INSTALLED=1
+
+}
+
+# Determine if LXDE, Gnome, and/or KDE has been installed, and act accordingly.
+install_dm() {
+
+ if 	[[ $DM_INSTALLED -eq 0 ]]; then
+	
+         if    [[ $KDE_INSTALLED -eq 1 ]] && [[ $GNOME_INSTALLED -eq 0 ]]; then
+               arch_chroot "systemctl enable kdm.service" >/dev/null 2>&1
+               dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmKdeTitle" --msgbox "$_DmKdeBody" 0 0
+    
+         elif  [[ $KDE_INSTALLED -eq 0 ]] && [[ $GNOME_INSTALLED -eq 1 ]]; then
+               arch_chroot "systemctl enable gdm.service" >/dev/null 2>&1
+               dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmGdmTitle" --msgbox "$_DmGdmBody" 0 0
+
+         elif  [[ $KDE_INSTALLED -eq 1 ]] && [[ $GNOME_INSTALLED -eq 1 ]]; then
+         
+               dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmChTitle" \
+               --menu "$_DmChBody" 12 45 2 \
+ 	           "1" $"GDM (Gnome)" \
+	           "2" $"KDM (KDE)" 2>${ANSWER}	
+	
+	          case $(cat ${ANSWER}) in
+              "1") arch_chroot "systemctl enable gdm.service" >/dev/null 2>&1
+                   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " GDM $_DmDoneTitle" --msgbox "\nGDM $_DMDoneBody" 0 0
+                ;;
+              "2") arch_chroot "systemctl enable kdm.service" >/dev/null 2>&1
+                   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " KDM $_DmDoneTitle" --msgbox "\nKDM $_DMDoneBody" 0 0
+                ;;
+                *) install_desktop_menu
+                ;;
+              esac 
+         
+         elif [[ $LXDE_INSTALLED -eq 1 ]]; then
+              arch_chroot "systemctl enable lxdm.service" >/dev/null 2>&1
+              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmLxdmTitle" --msgbox "$_DmLxdmBody" 0 0
+         
+         else 
+               dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmChoiceTitle" \
+               --menu "$_DmChoiceBody" 11 45 2 \
+ 	           "1" $"LXDM" \
+	           "2" $"LightDM" 2>${ANSWER}	
+	
+	          case $(cat ${ANSWER}) in
+              "1") # LXDM
+                   clear
+                   pacstrap ${MOUNTPOINT} lxdm
+                   arch_chroot "systemctl enable lxdm.service" >/dev/null 2>&1
+                   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " LXDM $_DmDoneTitle" --msgbox "\nLXDM $_DMDoneBody" 0 0
+                ;;
+              "2") # LIGHTDM
+                   clear
+                   pacstrap ${MOUNTPOINT} lightdm lightdm-gtk3-greeter
+                   arch_chroot "systemctl enable lightdm.service" >/dev/null 2>&1
+                   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " LightDM $_DmDoneTitle" --msgbox "\nLightDM $_DMDoneBody" 0 0
+                ;;
+                *) install_desktop_menu
+                ;;
+              esac 
+         fi
+         
+         # Ensure DM option can only be run once.
+         DM_INSTALLED=1
+         
+   # if A display manager has already been installed and enabled (DM_INSTALLED=1), show a message instead.
+   else  
+         dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmInstTitle" --msgbox "$_DmInstBody" 0 0
+   fi       
+
+}
+
+install_nm() {
+   # Check to see if a NM has already been installed and enabled
+   if [[ $NM_INSTALLED -eq 0 ]]; then
+      dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstNMTitle" \
+      --menu "$_InstNMBody" 14 45 4 \
+ 	  "1" $"Connman (CLI)" \
+	  "2" $"dhcpcd  (CLI)" \
+	  "3" $"Network Manager (GUI)" \
+	  "4" $"WICD (GUI)" 2>${ANSWER}	
+	
+	  case $(cat ${ANSWER}) in
+      "1") # connman
+           clear
+           pacstrap ${MOUNTPOINT} connman 
+           arch_chroot "systemctl enable connman.service" 
+           ;;
+      "2") # dhcpcd
+           clear
+           arch_chroot "systemctl enable dhcpcd.service"
+           ;;
+      "3") # Network Manager
+           clear
+           pacstrap ${MOUNTPOINT} networkmanager network-manager-applet rp-pppoe
+           arch_chroot "systemctl enable NetworkManager.service && systemctl enable NetworkManager-dispatcher.service"
+           ;;
+      "4") # WICD
+           clear
+           pacstrap ${MOUNTPOINT} wicd-gtk
+           arch_chroot "systemctl enable wicd.service"
+           ;;
+        *) install_desktop_menu
+           ;;
+      esac
+      
+      dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstNMDoneTitle" --msgbox "$_InstNMDoneBody" 0 0
+      NM_INSTALLED=1
+   
+   else
+      dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstNMDoneTitle" --msgbox "_InstNMErrBody" 0 0
+   fi
+}
+
+
+test() {
+	
+	ping -c 3 google.com > /tmp/.outfile &
+    dialog --title "checking" --no-kill --tailboxbg /tmp/.outfile 20 60 
+
+}
+	
+
+
+######################################################################
+##																	##
+##                 Main Interfaces       							##
+##																	##
+######################################################################
+
+# Greet the user when first starting the installer
+greeting() {
+
+dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_WelTitle $VERSION " --msgbox "$_WelBody" 0 0	
+
+}
+
+# Preparation
+prep_menu() {
+	
+	if [[ $SUB_MENU != "prep_menu" ]]; then
+	   SUB_MENU="prep_menu"
+	   HIGHLIGHT_SUB=1
+	else
+	   if [[ $HIGHLIGHT_SUB != 5 ]]; then
+	      HIGHLIGHT_SUB=$(( HIGHLIGHT_SUB + 1 ))
+	   fi
+	fi
+	
+   dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PrepTitle" \
+    --menu "$_PrepBody" 15 50 5 \
+ 	"1" "$_PrepKBLayout" \
+	"2" "$_PrepMirror" \
+	"3" "$_PrepPartDisk" \
+	"4" "$_PrepMntPart" \
+	"5" "$_Back" 2>${ANSWER}
+
+    HIGHLIGHT_SUB=$(cat ${ANSWER})
+	case $(cat ${ANSWER}) in
+        "1") set_xkbmap 
+             ;;
+        "2") configure_mirrorlist
+             ;;
+        "3") umount_partitions
+             select_device
+             create_partitions
+             ;;
+        "4") mount_partitions
+             ;;        
+          *) main_menu_online
+             ;;
+    esac
+    
+    prep_menu  	
+	
+}
+
+# Base Installation
+install_base_menu() {
+
+	if [[ $SUB_MENU != "install_base_menu" ]]; then
+	   SUB_MENU="install_base_menu"
+	   HIGHLIGHT_SUB=1
+	else
+	   if [[ $HIGHLIGHT_SUB != 3 ]]; then
+	      HIGHLIGHT_SUB=$(( HIGHLIGHT_SUB + 1 ))
+	   fi
+	fi
+
+   dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstBsMenuTitle" --menu "$_InstBseMenuBody" 14 45 3 \
+ 	"1" "$_InstBse" \
+	"2" "$_InstBootldr" \
+	"3" "$_Back" 2>${ANSWER}	
+	
+	HIGHLIGHT_SUB=$(cat ${ANSWER})
+	case $(cat ${ANSWER}) in
+        "1") install_base 
+             ;;
+        "2") install_bootloader
+             ;;
+          *) main_menu_online
+             ;;
+    esac
+    
+    install_base_menu 	
+}
+
+# Base Configuration
+config_base_menu() {
+	
+	# Set the default PATH variable
+    arch_chroot "PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl"
+	
+	if [[ $SUB_MENU != "config_base_menu" ]]; then
+	   SUB_MENU="config_base_menu"
+	   HIGHLIGHT_SUB=1
+	else
+	   if [[ $HIGHLIGHT_SUB != 7 ]]; then
+	      HIGHLIGHT_SUB=$(( HIGHLIGHT_SUB + 1 ))
+	   fi
+	fi
+
+    dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ConfBseTitle" --menu "$_ConfBseBody" 18 50 7 \
+ 	"1" "$_ConfBseFstab" \
+	"2" "$_ConfBseHost" \
+	"3" "$_ConfBseTime" \
+	"4" "$_ConfBseHWC" \
+	"5" "$_ConfBseSysLoc" \
+	"6" "$_ConfBseVirtCon" \
+	"7" "$_Back" 2>${ANSWER}	
+	
+	HIGHLIGHT_SUB=$(cat ${ANSWER})
+	case $(cat ${ANSWER}) in
+        "1") generate_fstab 
+             ;;
+        "2") set_hostname
+             ;;
+        "3") set_timezone
+             ;;
+        "4") set_hw_clock
+             ;;            
+        "5") set_locale
+             ;;
+        "6") set_keymap
+             ;;            
+          *) main_menu_online
+             ;;
+    esac
+    
+    config_base_menu
+
+}
+
+# Root and User Configuration
+config_user_menu() {
+
+	if [[ $SUB_MENU != "config_user_menu" ]]; then
+	   SUB_MENU="config_user_menu"
+	   HIGHLIGHT_SUB=1
+	else
+	   if [[ $HIGHLIGHT_SUB != 3 ]]; then
+	      HIGHLIGHT_SUB=$(( HIGHLIGHT_SUB + 1 ))
+	   fi
+	fi
+
+    dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ConfUsrTitle" --menu "$_ConfUsrBody" 13 50 3 \
+ 	"1" "$_ConfUsrRoot" \
+	"2" "$_ConfUsrNew" \
+	"3" "$_Back" 2>${ANSWER}
+	
+	HIGHLIGHT_SUB=$(cat ${ANSWER})
+    case $(cat ${ANSWER}) in
+    "1") set_root_password 
+         ;;
+    "2") create_new_user
+         ;;     
+      *) main_menu_online
+         ;;
+    esac
+    
+    config_user_menu
+}
+
+
+install_desktop_menu() {
+
+	if [[ $SUB_MENU != "install_deskop_menu" ]]; then
+	   SUB_MENU="install_deskop_menu"
+	   HIGHLIGHT_SUB=1
+	else
+	   if [[ $HIGHLIGHT_SUB != 5 ]]; then
+	      HIGHLIGHT_SUB=$(( HIGHLIGHT_SUB + 1 ))
+	   fi
+	fi
+
+    dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstDEMenuTitle" --menu "$_InstDEMenuBody" 16 55 5 \
+ 	"1" "$_InstDEMenuGISD" \
+	"2" "$_InstDEMenuDE" \
+	"3" "$_InstDEMenuNM" \
+	"4" "$_InstDEMenuDM" \
+	"5" "$_Back" 2>${ANSWER}
+	
+	HIGHLIGHT_SUB=$(cat ${ANSWER})
+	case $(cat ${ANSWER}) in
+        "1") install_alsa_xorg_input
+             setup_graphics_card 
+             ;;
+        "2") install_de_wm
+             ;;
+        "3") install_nm
+             ;;
+        "4") install_dm
+             ;;            
+          *) main_menu_online
+             ;;
+    esac
+    
+    install_desktop_menu
+	
+}
+
+main_menu_online() {
+	
+	if [[ $HIGHLIGHT != 7 ]]; then
+	   HIGHLIGHT=$(( HIGHLIGHT + 1 ))
+	fi
+	
+    dialog --default-item ${HIGHLIGHT} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MMTitle" \
+    --menu "$_MMBody" 17 50 7 \
+ 	"1" "$_MMPrep" \
+	"2" "$_MMInstBse" \
+	"3" "$_MMConfBse" \
+	"4" "$_MMConfUsr" \
+	"5" "$_MMInstDE" \
+    "6" "$_MMRunMkinit" \
+	"7" "$_Done" 2>${ANSWER}
+
+    HIGHLIGHT=$(cat ${ANSWER})
+    case $(cat ${ANSWER}) in
+        "1") prep_menu 
+             ;;
+        "2") install_base_menu
+             ;;
+        "3") config_base_menu
+             ;;
+        "4") config_user_menu
+             ;;            
+        "5") install_desktop_menu
+             ;;
+        "6") run_mkinitcpio
+             ;;            
+          *) (dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --yesno "_CloseInstBody" 0 0) && umount_partitions && exit 0 || main_menu_online
+             ;;
+    esac
+    
+    main_menu_online 
+    
+}
+
+# Not used yet.
+mode_menu() {
+
+   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " Installation Mode " \
+    --menu $"\nOn-line: Install the latest packages from the Arch repositories to build a custom system.\nInternet connection required.\n\nOff-line: Install Evo from this ISO.\nNo internet connection required.\n" 15 50 2 \
+ 	"1" $"On-line  Mode" \
+	"2" $"Off-line Mode" 2>${ANSWER}
+	MODE=$(cat ${ANSWER})
+	
+	while true; do
+      if   [[ $MODE == "1" ]]; then
+           main_menu_online
+      elif [[ $MODE == "2" ]]; then
+           dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --msgbox $"This option is not available yet" 6 50 && mode_menu
+      else         
+          (dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " End Installation "--yesno $"Close installer?" 0 0) && exit 0 || mode_menu
+      fi         
+     done
+	
+}
+
+######################################################################
+##																	##
+##                        Execution     							##
+##																	##
+######################################################################
+id_system
+select_language
+check_evo_requirements
+greeting
+
+	while true; do
+          main_menu_online      
+    done
