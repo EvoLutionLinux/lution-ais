@@ -1,6 +1,6 @@
 # !/bin/bash
 #
-# Lution-AIS installer (version 0.3.1 - November 2014)
+# Lution-AIS installer (version 0.4 - November 2014)
 #
 # Written by Carl Duff for Evo/Lution Linux
 #
@@ -26,7 +26,7 @@
 ANSWER="/tmp/.lution"
 
 # Save retyping
-VERSION="Lution-AIS 0.3.1"
+VERSION="Lution-AIS 0.4"
 
 # Installation
   KDE_INSTALLED=0      	# Has KDE been installed? Used for display manager option
@@ -723,7 +723,7 @@ bios_bootloader() {
 	case $(cat ${ANSWER}) in
         "1") clear
              pacstrap ${MOUNTPOINT} grub os-prober
-             dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstGrubDevTitle" --yesno "$_InstGrubDevBody" 0 0 \
+             dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstGrubDevTitle" --yesno "$_InstGrubDevBody ($INST_DEV)?$_InstGrubDevBody2" 0 0 \
 			 && clear && arch_chroot "grub-install --target=i386-pc --recheck ${INST_DEV}" || select_grub_device
              # Whatever the choice, same configuration process
              arch_chroot "grub-mkconfig -o /boot/grub/grub.cfg"
@@ -990,7 +990,7 @@ install_de_wm() {
    fi
    
 	dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstDETitle" \
-    --menu "_InstDEBody" 19 45 8 \
+    --menu "$_InstDEBody" 19 45 8 \
  	"1" $"Cinnamon" \
 	"2" $"Enlightenment" \
 	"3" $"Gnome-Shell (minimal)" \
@@ -1470,7 +1470,7 @@ main_menu_online() {
              ;;
         "6") run_mkinitcpio
              ;;            
-          *) (dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --yesno "_CloseInstBody" 0 0) && umount_partitions && exit 0 || main_menu_online
+          *) (dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --yesno "$_CloseInstBody" 0 0) && umount_partitions && exit 0 || main_menu_online
              ;;
     esac
     

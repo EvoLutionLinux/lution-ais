@@ -194,7 +194,8 @@ _InstBiosBtBody="\nGrub2 is recommended for beginners. The installation device c
 
 # Grub Installation
 _InstGrubDevTitle=" Select Grub Device "
-_InstGrubDevBody="\nInstall Grub on the same device/hard-drive as Root ($INST_DEV)?\n\nPick 'Yes' if you are only installing on one device."
+_InstGrubDevBody="\nInstall Grub on the same device/hard-drive as Root"
+_InstGrubDevBody2="\n\nPick 'Yes' if you are only installing on one device."
 
 # Syslinux Installation
 _InstSysTitle=" Syslinux Configuration Check "
@@ -298,7 +299,7 @@ _InstNMErrBody="\nA network connection manager has already been installed and en
 
 # Welcome
 _WelTitle=" Welcome to"
-_WelBody="\nHighlight options by pressing their numbers or by using the up/down arrow keys before pressing [enter] to confirm.\n\nSwitch between buttons by using [Tab] or the left/right arrow keys before pressing [enter] to confirm.\n\nA mouse/touchpad may also be used.\n\n"
+_WelBody="\nHighlight options by pressing their numbers or by using the up/down arrow keys before pressing [enter] to confirm.\n\nSwitch between buttons by using [Tab] or the left/right arrow keys before pressing [enter] to confirm.\n\nA mouse/touchpad may also be used.\n"
 
 # Preparation Menu
 _PrepTitle=" Prepare Installation "
