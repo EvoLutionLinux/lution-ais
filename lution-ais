@@ -76,8 +76,7 @@ dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " Select Language " \
  	"1" $"English" 2>${ANSWER}
 
 	case $(cat ${ANSWER}) in
-        "1") source /home/carl/work2/lution-ais/english.trans
-         #   source /lution-ais-master/english.trans
+        "1") source /lution-ais-master/english.trans
              ;;   
           *) exit 0
              ;;
