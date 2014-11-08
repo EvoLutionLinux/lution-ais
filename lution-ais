@@ -1475,7 +1475,7 @@ main_menu_online() {
 	fi
 	
     dialog --default-item ${HIGHLIGHT} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MMTitle" \
-    --menu "$_MMBody" 17 50 7 \
+    --menu "$_MMBody" 0 0 7 \
  	"1" "$_MMPrep" \
 	"2" "$_MMInstBse" \
 	"3" "$_MMConfBse" \
