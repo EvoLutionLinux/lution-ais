@@ -1,0 +1,350 @@
+##
+##
+## German/Deutsch Translation File
+##
+##
+## Written by freecaster for Evo/Lution Linux (08th November 2014)
+##
+##
+
+# Check Evo Requirements and Identify System Type
+_ChkEvoTitle="Überpüfung der Evo-Abhändigkeiten "
+_ChkEvoBody="\nDie Vorbereitung der Installation wurde mit Superuser-Rechten gestartet. Internerverbindung ist aktiviert, bitte warten...\n\n"
+
+_RtFailTitle=" Der Installer muss mit Superuser-Rechten gestartet werden. Schließe.."
+_RtFailBody"\nThe installer must be run as root. Exiting.\n\n"
+
+_ConFailTitle=" Verbindung gescheitert "
+_ConFailBody="\nEs konnte keine Verbindung zum Internet hergestellt werden. Schließe.\n\n"
+
+_ReqMetTitle=" Alle Abhändigkeiten sind erfüllt! "
+_ReqMetBody="\nAlle Überprüfungen erfolgreich abgeschlossen! \n\n"
+
+_UefiDet="UEFI System erkannt"
+_BiosDet="BIOS System erkannt"
+
+# Installer Mirrorlist
+_MirrorlistTitle=" Spiegelserverliste "
+_MirrorlistBody="\nDie Spiegelserverliste enthält alle für pacman benötigten Server-Adressen zum Installieren von Paketen.Sie werden von pacman in der aufgeführten Reihenfolge abgerufen.\n\n"
+_MirrorbyCountry="Erzeuge die Liste nach Land"
+_MirrorEdit="Manuelle Erzeugung der Liste"
+
+# Generate Mirrorlist by country
+_MirrorCntryTitle=" Wählen Sie Ihr Land "
+_MirrorCntryBody="\nDie Liste von Spiegelservern des ausgewählten Landes wird erzeugt.\n\nNach der Überprüfung können Sie fortfahren oder abbrechen."
+_MirrorGenTitle=" Erzeugung der Spiegelserverliste "
+_MirrorGenBody="\nErzeugung der Spiegelserverliste, bitte warten... "
+_MirrorGenQ="Soll der Installer diese Spiegelserverliste benutzen?"
+_MirrorGenDone="\nFertig! Die originale Spiegelserverliste wurde in dieser Verzeichnis gespeichert:\n\n/etc/pacman.d/mirrorlist.orig\n\n"
+
+# Set Keymap (vconsole)
+_KeymapTitle=" Ihr Tastaturmodell "
+_KeymapBody="\nBenutzen Sie die Tasten [pg up] und [pg dwn] zum navigieren, oder drücken Sie die beliebige Taste."
+
+# Set Xkbmap (environment)
+_XkbmapTitle="Ihre xkbmap "
+_XkbmapBody="Bitte wählen Sie Ihre Tastaturbelegung"
+
+# Set Locale
+_LocateTitle="Systemsprache "
+_localeBody="Systemsprache einstellen"
+
+# Set Timezone
+_TimeZTitle=" Zeitzone"
+_TimeZBody="\nDie Zeitzone wird benutzt um die korrekte Uhrzeit von Ihrem System einzustellen."
+_TimeSubZTitle="nIhr Kontinent"
+_TimeSubZBody="\nIhre näheste Stadt"
+_TimeZQ="Zeitzone einstellen als ?" # Note: "${ZONE}/${SUBZONE}" are two variables, so do not need to be translated
+
+# Set Hardware Clock
+_HwCTitle="Hardware-Uhrzeit " \
+_HwCBody="\nUTC ist das universelle Zeitstandard, und wird besonders für dual-booting mit Windows empfohlen."
+_HwCUTC="UTC"
+_HwLocal=“Lokale Zeit"
+
+# Generate FSTAB
+_FstabTitle=" FSTAB-Generierung "
+_FstabBody="\nDie Datei FSTAB (File System Table) ermöglicht saubere Anbindung und Funktionsbezeichung von Wechseldatenträgern und Partitionen.\n\nUUID/PARTUUID (Universally Unique IDentifier) wird empfohlen.\n\n Wurden früher noch keine extra Bezeichnungen vergeben, so werden die Namen der Wechselträger gemäß dieser Option benutzt."
+_FstabDev="Dev (partition code)"
+_FstabLabel="Markierung (benutzerdefiniert)"
+_FstabUUID="UUID/PARTUUID (Einzigartiger Code)"
+
+# Check FSTAB
+_FstabChkTitle=" Überprüfe FSTAB "
+_FstabChkBody="\nBitte überpüfen Sie die FSTAB-Datei, bevor Sie mit der nächster Stufe fortfahren.\n\n"
+
+# Set Hostname
+_HostNameTitle=" Hostname"
+_HostNameBody="\nDer Hostname wird zur Identifizierung des System in einem Netzwerk verwendent.\n\nEs sind alle alphanumerische Zeichen erlaubt, es kann auch einen Bindestrich enthalten (-) - jedoch nicht am Anfang oder Ende des Hostnamens – und darf nicht länger als 63 Zeichen betragen.\n"
+
+# Set Root Password
+_PassRtTitle=" Root-Passwort "
+_PassRtBody="\nBitte geben Sie den Root-Passwort ein\n\n"
+_PassRtBody2="\nBitte wiederholen Sie Ihren Root-Passwort \n\n"
+
+# Root Password Error
+_PassRtErrTitle=" Vergabe des Roots-Passwortes gescheitert! "
+_PassRtErrBody="\nDas Root-Passwort und seine Wiederholung stimmen nicht überein.Bitte versuchen Sie erneut.\n\n"
+
+# Create New User
+_NUsrTitle="Benutzerkonto "
+_NusrBody="\nBitte geben Sie den Namen des Benutzers ein.Der Name des Benutzers MUSS kleingeschrieben werden.\n"
+
+# Username Error
+_NUsrErrTitle=" Erstellung des Benutzerkontos gescheitert!"
+_NusrErrBody="\nDer Name des Benutzers stimmt nicht überein.Bitte versuchen Sie es erneut.\n\n"
+
+# Set User Password
+_PassNUsrTitle=" Benutzer-Passwort"
+_PassNUsrBody="\nBitte geben Sie einen Passwort für den Benutzer ein." # Note that "$USER" is a variable (no translation needed)
+_PassNUsrBody2="\nBitte wiederholen Sie den Passwort" # Note that "$USER" is a variable (no translation needed)
+
+# Create New User
+_NusrSetTitle="Erstellung des Benutzerkontos "
+_NusrSetBody="\nErstelle Benutzerkonto und stelle Gruppen ein...\n\n"
+
+# User Password Error
+_PassNUsrErrTitle=" Benutzer-Passwortvergabe gescheitert! "
+_PassNUsrErrBody="\nDer Benutzerpasswort und seine Wiederholung stimmen nicht überein. Bitte versuchen Sie es erneut.\n\n"
+
+# Mounting (Partitions)
+_MntStatusTitle=" Anbindungsstatus "
+_MntStatusSucc="\nAnbindung erfolgreich!\n"
+_MntStatusFail="Anbindung durchgefallen!"
+
+# Select Device (installation)
+_DevSelTitle=" Auswahl des Datenträgers "
+_DevSelBody="\nDatenträger (/dev) sind eingebaute und angebundene Festplatten oder USB-sticks für einen Installationsvorgang. Die Partitionen haben je nach Anzahl der Partitionen hinter der Bezeichnung /sda eine Nummer, die Wechseldatenträger haben je nach Anzahl der Partitionen hinter der Bezeichnung /sdb ebenso eine Nummer usw.\n\nFalls ein USB-Stick mit dem hochgefahrenem Evo/Lution-Installer benutzt wird, bitte vorsichtig sein: es wird unter Installationsmedien mitaufgelistet!!!"
+
+# Select Device (Grub) - seperate body text is not required (uses standard device selection text)
+_DevSelGrubTitle=" Auswahl des GRUB-Datenträgers "
+
+# Partitioning Tool
+_PartToolTitle=" Partitionsmanager"
+_PartToolBody="\nGParted ist ein sehr empfohlener, benutzerfreundlicher Partitionsmanager mit grafischer Oberfläche, welches beide Systeme BIOS und UEFI vollständig unterstüzt.\n\n BITTE NICHT den UEFI/GPT-Partitionmanager als einzigen Manager neben vom Installer angebotenen Alternativen für ein BIOS/MBR system verwenden, dies kann im schlimmsten Fall zum bootunfähigen System führen."
+
+# UEFI Partitioning Error
+_UefiPartErrTitle=" UEFI-Partionierung fehlgeschlagen "
+_UefiPartErrBody="\nDie UEFI-Systeme benötigen als für die Installation mindestens 2 Partitionen auf dem Datenträger (ROOT und UEFI).\n\nBitte erstellen Sie diese Partitionen und stellen sie ein.\n\n"
+
+# BIOS Partitioning Error
+_BiosPartErrTitle=" BIOS-Partitionierung fehlgeschlagen "
+_BiosPartErrBody="\n Die BIOS-Systeme benötigen für die Installation mindestens eine Partition (ROOT).\nBitte erstellen Sie diese Partition und stellen sie ein\n."
+
+# File System
+_FSTitle=" Auswahl des Dateisystems "
+_FSBody="\n Es wird das Dateisystem „ext4“ empfohlen. Nicht alle Dateisysteme sind brauchbar für Root-oder Boot-Partitionen. Alle haben ihre Vor-und Nachteile."
+_FSSkip="Überspringe / Abbrechen"
+
+# Select Root
+_SelRootTitle="Partition für ROOT "
+_SelRootBody="\nDies wird die Partition sein, wo später Arch installiert wird."
+
+# Select SWAP
+_SelSwpTitle="SWAP-Partition"
+_SelSwpBody="\n Falle, dass Swapdatei benutzt wird, sollte diese die Größe Ihres Arbeitsspeichers betragen."
+_SelSwpNone="Nein"
+_SelSwpFile="Swapdatei"
+
+# Select UEFI
+_SelUefiTitle="UEFI-Partition "
+_SelUefiBody="\nDas ist die besondere Partition für bootfähige UEFI-Systeme."
+
+# Format UEFI
+_FormUefiTitle=" UEFI-Partition "
+_FormUefiBody="Die UEFI-Partition"
+_FormUefiBody2="Wurde bereits formatiert.\n\nFormatieren? Wenn das gemacht wird, werden ALLE Daten auf der Partition gelöscht!\n\n"
+
+# UEFI Options
+_OptUefiTitle=" UEFI Anbindungspunktoptionen "
+_OptUefiBody="\nDer Bootloader kann später installiert werden, abhändig davon wo die UEFI-Partition angebunden ist.\n\nWählen Sie /boot für Gummiboot.Das wird für alle Anfänger empfohlen, besonders für Dual-Booting.\n\nWählen Sie /boot/efi für rEFInd. Obwohl es die Möglichkeit gibt, Bootloader auf dem USB-Stick zu installieren, wird diese Option nur für erfahrene User empfohlen.\n\nSonst wird die angebundene Partition mit Grub arbeiten.\n\n"
+
+# UEFI Mountpoint
+_MntUefiTitle=" Wählen Sie UEFI Anbindungspunkt "
+_MntUefiBody="\nGummiboot (empfohlen) benötigt /boot, rEFInd benötigt /boot/efi,und GRUB-Bootloader wird mit beiden funktionieren."
+
+# Extra Partitions
+_ExtPartTitle=" Zusätzliche Partition"
+_ExtPartBody="\nWählen Sie die zusätzliche Partitionen in beliebiger Reihefolge, oder drücken 'Fertig' um zu beenden."
+
+# Name Extra Partitions
+_ExtNameTitle=" Name der Partition:"
+_ExtNameBodyUefi="\nBeispiele dafür: /home oder /var.\n\nStellen Sie sicher,dass der Name durch einen Bruchstrich vorangestellt ist (/)." # UEFI Systems
+_ExtNameBodyBios="\nBeispiele dafür: /boot or /home.\n\nStellen Sie sicher,dass der Name durch einen Bruchstrich vorangestellt ist (/)." # BIOS Systems
+
+# Extra Partition Naming Error
+_ExtErrTitle="Name der Partition ist falsch! "
+_ExtErrBody="\nPartition konnte nicht angebunden werden. Es muss ein Name nach dem Slash (/) eingegeben werden.\n\n"
+
+# Install Base
+_InstBseTitle=" Installation von Grundsystem-Paketen "
+_InstBseBody="\nDer neueste Kernel unterstützt neuere Hardware. Der LTS- Kernel setzt auf bessere Stabilität, und wird länger mit Sicherheitsupdates versorgt.\n\nDie base-devel-Paketsbund wird für die Funktionalität mit der Arch User Repository (AUR) vorausgesetzt."
+_InstBaseLK="Neueste Kernel"
+_InstBaseLKBD="Neueste Kernel & base-devel"
+_InstBaseLTS="LTS Kernel"
+_InstBaseLTSBD="LTS-Kernel & base-devel"
+
+# Install Wireless Packages
+_InstWirTitle=" Es wurde ein Drahtlosverbindungsgerät gefunden "
+_InstWirBody="\nInstalliere Zusatzpakete für die drahtlose Netzwerkverbindungen...\n\n"
+
+# Install BIOS Bootloader
+_InstBiosBtTitle=" Installeire BIOS-Bootloader "
+_InstBiosBtBody="\nGrub2 wird für alle Anfänger empfohlen. Das Installationsgerät kann ausgewählt werden.\n\nSyslinux is eine schlankere und einfachere Alternative, gewöhlicher Einsatz gilt für die zum Hochfahren von Linux-Installationsmedia. Es wird jedoch nur mit dem Dateissystem'ext' funktionieren."
+
+# Grub Installation
+_InstGrubDevTitle=" Auswahl des Grub-Geräts "
+_InstGrubDevBody="\nInstalliere Grub auf dem gleichen Gerät /Festplatte als Root" 
+_InstGrubDevBody2="\n\nBestätigen Sie mit 'Yes' wenn Sie die Installation nur auf dem Gerät fortführen wollen."
+
+# Syslinux Installation
+_InstSysTitle=" Syslinux Konfigurationscheck "
+_InstSysBody="\nBitte prürfen Sie die syslinux Konfigurationsdatei.\n\nEs sollte einen Befehl beinhalten:\n" # "$ROOT_PART" is a variable
+
+# Install UEFI Bootloader
+_InstUefiBtTitle=" Installiere UEFI-Bootloader "
+_InstUefiBtBody="\nGrub2 am meisten eingesetzte und funktionsreiche Option (keine UEFI Anbindungspräferenz).\n\nGummiboot ist die empfohlene Option für Anfänger (UEFI-Partition muss am /boot gebunden werden).\n\nrEFInd ist eine Alternative für erfahrene User(UEFI-Partition muss am /boot/efi gebunden werden)."
+
+# Set UEFI Grub as default
+_SetGrubDefTitle=" Grub als Standardbootloader installieren? "
+_SetGrubDefBody="\nManche UEFI-Firmware findet keinen Grub,es sei denn es wurde als Standardbootloader eingestellt,was dazu führt,dass Sie startunfähiges System haben.\n\nMöchten Sie Grub als Standardbootloader setzen?\n\nEs wird empfohlen ein 'Yes' auszuwählen,insbesondere als Anfänger. Es wird eine Kopie der bootfähiger Datei grubx64.efi nach"_SetGrubDefBody2=" erzeugt, und als voraussetzende bootx64.efi umbenannt.\n\n Andernfalls wählen Sie'No', insbesondere dann, wenn bereits ein Standard-Bootloader ausgewählt wurde,und/oder wenn Sie beabsichtigen mehrere Bootloader zu verwenden."
+
+# Gummiboot Configuration Check
+_ChkGumTitle=" Gummiboot Konfigurationscheck "
+_ChkGumBody="\nBitte prüfen Sie die arch und loader Konfigurationsdateien bevor der nächster Installationsschritt geleitet wird.\n"
+
+# Set rEFInd as default
+_SetRefiDefTitle="rEFInd als Standardbootloader installieren? "
+_SetRefiDefBody="\nManche UEFI-Firmware findet keinen rEFInd,es sei denn es wurde als Standardbootloader eingestellt,was dazu führt,dass Sie startunfähiges System haben.\n\nMöchten Sie rEFInd als Standardbootloader setzen?\n\nEs wird empfohlen ein 'Yes'auszuwählen,insbesondere als Anfänger. Es wird eine Kopie der Datei rEFInd nach "_SetRefiDefBody2=" erzeugt und als voraussetzende bootx64.efi umbenannt.\n\n Andernfalls wählen Sie'No', insbesondere dann, wenn bereits ein Standard-Bootloader ausgewählt wurde,und/oder wenn Sie beabsichtigen mehrere Bootloader zu verwenden."
+
+# efi file set for Grub or Refind
+_SetDefDoneTitle=" UEFI-Datei wurde kopiert "
+_SetDefDoneBody="Wurde erfolgreich als Standard-Bootloader gesetzt.\n\n"
+
+# rEFInd Mountpoint error
+_RefiErrTitle=" rEFInd UEFI-Anbindungspunkt"
+_RefiErrBody="\nDer rEFInd-Installationsscript wird nicht funktionieren, es sei denn, die UEFI-Partition wurde nach /boot/efi gebunden.Bitte wählen Sie entweder Gummiboot (empfohlen) oder Grub.\n\n"
+
+# ALSA, Xorg, Input
+_AXITitle=" ALSA, Xorg, und Eingabegeräte "
+_AXIBody="\nVor der Installation von Grafiktreiber(n) oder Desktop-Oberflächen, werden als Erstes folgende Pakete benötigt:\n\n ALSA - Advanced Linux Sound Architecture\nxorg-* - open-source X-window-system für Grafik \nxf86-input-* - open-source Treiber für Eingabegeräte\n\n"
+
+# Graphics Card Menu
+_GCtitle=" Grafikkartenmenü "
+_GCBody="Wählen Sie den quelloffenen nouveau-Treiber für ältere NVIDIA-Modelle. Wenn Sie Ihre Grafiikarte nicht kennen,wählen Sie 'Unbekannt / Automatische Erkennung'.\n"
+_GCUnknOpt="Unbekannt/ Automatische Erkennung"
+
+# NVIDIA Configruation Check
+_NvidiaConfTitle=" NVIDIA-Konfigurationscheck "
+_NvidiaConfBody="\n Die Basiskonfigurationsdatei Ihrer NVIDIA-Grafikkarte wurde erstellt.Bitte überprüfen Sie diese, bevor Sie fortfahren.\n"
+
+# Graphics Card Detection
+_GCDetTitle="Grafikkarten-Erkennung"
+_GCDetBody="\nIst das Ihre Grafikkarte?"
+_GCDetBody2="-Bitte wählen Sie 'Ja' um einen quelloffenen nouveau-Treiber zu installieren.\n\n-Wählen Sie 'Nein' um das Grafikkartenmenü aufzurufen, welches die Installation von proprietären NVIDIA-Treibern ermöglicht."
+
+# Install DE Info
+_DEInfoTitle="Desktopoberflächen"
+_DEInfoBody="\nDiese Option kann wiederholt werden, um verschiedene Desktopoberflächen zu installieren.\n\nGnome, KDE, und LXDE installieren automatisch einen eigenen Loginmanager.\n\nCinnamon, Gnome und KDE installieren einen Netzwerkmanager.\n\n"
+
+# Install DE Menu
+_InstDETitle=" Installiere Desktopoberflächen "
+_InstDEBody="\nDie Desktopoberflächen werden zuerst aufgelistetund haben verschiedene Installationsvarianten.\n\nKDE hat einen ungefähren Downloadvolumen von 750MB und mehr.."
+
+# Install Common Packages
+_InstComTitle=" Installiere Zusatzpakete? "
+_InstComBody="\nManche Desktopoberflächen benötigen zur Installation Zusatzpakete,insbesondere für Userberechtigungen, Erstellung von Ordnern, und vollständiger Funktionalität von Dateimanagern.\n\nDie Sammlung umfasst: xterm, xdg-user-dirs, gksu, gnome-keyring, polkit, gvfs, und gnome-icon-theme, etc. Wurde KDE-full installiert, wird keines von genannten Paketen benötigt.\n\nSollen diese Pakete installiert werden?? Diese Option kann nur EINMAL betätigt werden!.\n\n"
+# KDM
+_DmKdeTitle=" KDM aktiviert "
+_DmKdeBody="\nEs wurde KDE-Desktopoberfläche installiert, KDM ist nun als Standard-Loginmanager aktiviert.\n\n"
+
+# GDM
+_DmGdmTitle=" GDM aktiviert "
+_DmGdmBody="\nEs wurde Gnome installiert, GDM ist nun als Standard-Loginmanager aktiviert.\n\n"
+
+# KDM and GDM Installed
+_DmChTitle=" Wählen Sie GDM oder KDM "
+_DmChBody="\nBeide Desktopoberflächen Gnome und KDE wurden installiert. Bitte wählen Sie einen von beiden Loginmanagern aus.\n\n"
+
+# KDM or GDM Choice Made
+_DmDoneTitle="Aktiviert "
+_DMDoneBody"Wurde erfolgreich aktiviert.\n\n"
+
+# LXDM
+_DmLxdmTitle=" LXDM Enabled "
+_DmLxdmBody="\nEs wurde LXDE installiert, LXDM ist nun als Standard-Loginmanager aktiviert .\n\n"
+
+# LXDM or LightDM
+_DmChoiceTitle="Auswahl des Loginmanagers "
+_DmChoiceBody="\nBitte wählen Sie zwischen LXDM oder LightDM. LXDM wird für Anfänger empfohlen.\n"
+
+# DM Already Installed
+_DmInstTitle=" Display Manager wurde erfolgreich installiert "
+_DmInstBody="\nDer Loginmanager wurde bereits installiert und aktiviert.\n\n"
+
+# Network Manager
+_InstNMTitle=" Auswahl des Netzwerkmanagers "
+_InstNMBody="\n Das Paket Network -Manager wird zur Installation empfohlen,inbesondere für Drahtlosnetzwerkenverbindungen und PPPoE/DSL-Verbidungen.\n
+# Network Manager Installed
+_InstNMDoneTitle=" Netzwerk-Manager wurde erfolgreich installiert "
+_InstNMDoneBody="\nDer Netzwerk-Manager wurde installiert und aktiviert."
+
+# Network Manager Already Installed (no need for seperate title)
+_InstNMErrBody="\nEin Netzwerkmanager wurde bereits installiert und aktiviert.“
+
+# Welcome
+_WelTitle=" Willkommen!"
+_WelBody="\nDie hellgekennzeicheneten Optionen können mit der Eingabe ihrer Nummer oder mit den Tasten oben/unten vor der Bestätigung mit ENTER-Taste navigiert werden.\n\nMit der TAB-Taste können Sie zwischen diesen Optionen wechseln oder mit links/rechts-Tasten vor der Bestätigung mit der ENTER-Taste navigiert werden.\n\nEine Maus-oder Touchpadbedienung ist nicht ausgeschlossen.\n\n"
+
+# Preparation Menu
+_PrepTitle=" Installationsvorbereitung "
+_PrepBody="\nDie Tastaturbelegung wird sowohl für den Installer als auch für die installierte Desktopoberfläche im installiertem System als Standard gesetzt.\n"
+_PrepKBLayout="Tastaturbelegung"
+_PrepMirror="Konfiguration der Spiegelserverliste für den Installer(als Option)"
+_PrepPartDisk="Datenträger-Partitionierung"
+_PrepMntPart="Anbindungspunkte von Partitionen"
+_Back="Back"
+
+# Install Base Menu
+_InstBsMenuTitle=" Installation von Grundssystem "
+_InstBseMenuBody="\nEine Extra-Installation von GRUB auf Datenträgenrn mit bereits installierten Linux-Distributionen ist nicht notwendig; es reicht einen GRUB-update durchzuführen."
+_InstBse="Installiere Grundsyste,"
+_InstBootldr="Installiere Bootloader"
+
+# Configure Base Menu
+_ConfBseTitle=" Konfiguration des Grundsystems"
+_ConfBseBody="\nEs ist notwendig ein Grundsystem zu installieren. Dieses beeinhaltet Netzwerkverbindungsoptionen, Zeit-und Spracheinstellungen,und Standard-Tastaturbelegung für das System."
+_ConfBseFstab="Generiere FSTAB"
+_ConfBseHost="Stelle Hostname ein"
+_ConfBseTime="Stelle Timezone ein"
+_ConfBseHWC="Stelle Hardware-Uhrzeit ein"
+_ConfBseSysLoc="Stelle Systemsprache ein"
+_ConfBseVirtCon="Stelle Virtual-Konsole ein"
+
+# User Menu
+_ConfUsrTitle="Konfiguration von Benutzerkonten/Gruppen"
+_ConfUsrBody="\nDas root-Passwort bedeutet „Super-user“ oder Administratorkonto. Das gleiche Passwort kann für root sowohl auch als für Benutzer angelegt werden."
+_ConfUsrRoot="Setze root-Passwort"
+_ConfUsrNew="Füge neue Benutzer ein"
+
+# Desktop Menu
+_InstDEMenuTitle=" Installiere Desktopoberfläche "
+_InstDEMenuBody="\n Vor der Installation einer Desktopoberfläche, MÜSSEN zuerst alle Grafikeinheits, Ein-und Ausgabegeräte -und Soundtreiber installiert werden.Die Installation von Grafikkartentreibern gehört ebenso dazu."
+_InstDEMenuGISD="Installiere Grafik, Ein-und Ausgabegeräte, und Soundtreiber"
+_InstDEMenuDE="Installiere Desktopoberfläche(n)"
+_InstDEMenuNM="Installiere Netzwerkverbindungsmanager"
+_InstDEMenuDM="Installiere Loginmanager"
+
+# Main Menu
+_MMTitle="Hauptmenü "
+_MMBody="\nAlle Schritte müssen nach der Reihenfolge fertig sein. Wenn alles erledigt wurde, wählen Sie bitte 'Fertig' um die Installation vollständig abzuschließen.\n"
+_MMPrep="Bereite den Abschluss der Installation vor"
+_MMInstBse="Installiere Grundsystem"
+_MMConfBse="Konfiguriere Grundsystem" 
+_MMConfUsr="Konfiguriere Benutzerkonto(konten)" 
+_MMInstDE="Installiere Desktopoberfläche(n)" 
+_MMRunMkinit="Führe Mkinitcpio durch" 
+_Done="Fertig"
+
+# Close Installer
+_CloseInstBody="Soll Installer geschlossen werden?"

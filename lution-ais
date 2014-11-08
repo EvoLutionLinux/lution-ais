@@ -1,6 +1,6 @@
 # !/bin/bash
 #
-# Lution-AIS installer (version 0.4 - November 2014)
+# Lution-AIS installer (version 0.4 - 8th November 2014)
 #
 # Written by Carl Duff for Evo/Lution Linux
 #
@@ -73,11 +73,14 @@ select_language() {
 
 dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " Select Language " \
     --menu "" 0 0 1 \
- 	"1" $"English" 2>${ANSWER}
+ 	"1" $"English" \
+ 	"2" $"Deutsch" 2>${ANSWER}
 
 	case $(cat ${ANSWER}) in
         "1") source /lution-ais-master/english.trans
-             ;;   
+             ;;
+        "2") source /lution-ais-master/german.trans
+             ;;
           *) exit 0
              ;;
     esac
@@ -138,6 +141,13 @@ id_system() {
 arch_chroot() {
     arch-chroot $MOUNTPOINT /bin/bash -c "${1}"
 }  
+
+# Simple code to show devices / partitions. Also provided as a seperate
+# program.
+show_devices() {
+    lsblk -o NAME,MODEL,MOUNTPOINT,FSTYPE,SIZE > /tmp/.devlist
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DevShowTitle" --textbox /tmp/.devlist 0 0
+}
 
 ######################################################################
 ##																	##
@@ -365,10 +375,15 @@ create_new_user() {
            if [[ $PASSWD == $PASSWD2 ]]; then         
               dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NUsrSetTitle" --infobox "$_NUsrSetBody" 0 0
               sleep 2
+              # Create the user, set password, then remove temporary password file
               arch_chroot "useradd ${USER} -m -g users -G wheel,storage,power,network,video,audio,lp -s /bin/bash"
               echo -e "${PASSWD}\n${PASSWD}" > /tmp/.passwd
               arch_chroot "passwd ${USER}" < /tmp/.passwd >/dev/null 2>&1
               rm /tmp/.passwd
+              # Set up basic configuration files and permissions for user
+              arch_chroot "cp /etc/skel/.bashrc /home/${USER}"
+              arch_chroot "cp /etc/skel/.xinitrc /home/${USER}"
+              arch_chroot "chown -R ${USER}:users /home/${USER}"
               arch_chroot "sed -i '/%wheel ALL=(ALL) ALL/s/^#//' /etc/sudoers"
            else
               dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrErrTitle" --msgbox "$_PassNUsrErrBody" 0 0
@@ -953,7 +968,8 @@ install_gc() {
  esac
 
  # Create a basic xorg configuration file for NVIDIA proprietary drivers where installed
- if [[ $NVIDIA_INST == 1 ]]; then
+ # if that file does not already exist.
+ if [[ $NVIDIA_INST == 1 ]] && [[ ! -e ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf ]]; then
     echo "Section "\"Device"\"" >> ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
     echo "        Identifier "\"Nvidia Card"\"" >> ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
     echo "        Driver "\"nvidia"\"" >> ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
@@ -963,8 +979,10 @@ install_gc() {
     echo "        #Option "\"ConnectedMonitor"\" "\"DFP"\"" >> ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
     echo "        # ..." >> ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
     echo "EndSection" >> ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
-
-    # Allow user to check and amend the file
+ fi
+ 
+ # Where NVIDIA has been installed allow user to check and amend the file
+ if [[ $NVIDIA_INST == 1 ]]; then
     dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NvidiaConfTitle" --msgbox "$_NvidiaConfBody" 0 0
     gksu leafpad ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
  fi
@@ -1159,9 +1177,10 @@ install_dm() {
          
          else 
                dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmChoiceTitle" \
-               --menu "$_DmChoiceBody" 11 45 2 \
+               --menu "$_DmChoiceBody" 0 0 3 \
  	           "1" $"LXDM" \
-	           "2" $"LightDM" 2>${ANSWER}	
+	           "2" $"LightDM" \
+	           "3" $"SDDM" 2>${ANSWER}	
 	
 	          case $(cat ${ANSWER}) in
               "1") # LXDM
@@ -1176,6 +1195,13 @@ install_dm() {
                    arch_chroot "systemctl enable lightdm.service" >/dev/null 2>&1
                    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " LightDM $_DmDoneTitle" --msgbox "\nLightDM $_DMDoneBody" 0 0
                 ;;
+              "3") # SDDM
+                   clear
+                   pacstrap ${MOUNTPOINT} sddm
+                   arch_chroot "sddm --example-config > /etc/sddm.conf"
+                   arch_chroot "systemctl enable lightdm.service" >/dev/null 2>&1
+                   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " SDDM $_DmDoneTitle" --msgbox "\nSDDM $_DMDoneBody" 0 0
+                ;;                               
                 *) install_desktop_menu
                 ;;
               esac 
@@ -1269,12 +1295,13 @@ prep_menu() {
 	fi
 	
    dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PrepTitle" \
-    --menu "$_PrepBody" 15 50 5 \
+    --menu "$_PrepBody" 0 0 6 \
  	"1" "$_PrepKBLayout" \
 	"2" "$_PrepMirror" \
-	"3" "$_PrepPartDisk" \
-	"4" "$_PrepMntPart" \
-	"5" "$_Back" 2>${ANSWER}
+	"3" "$_DevShowOpt" \
+	"4" "$_PrepPartDisk" \
+	"5" "$_PrepMntPart" \
+	"6" "$_Back" 2>${ANSWER}
 
     HIGHLIGHT_SUB=$(cat ${ANSWER})
 	case $(cat ${ANSWER}) in
@@ -1282,11 +1309,13 @@ prep_menu() {
              ;;
         "2") configure_mirrorlist
              ;;
-        "3") umount_partitions
+        "3") show_devices
+             ;;
+        "4") umount_partitions
              select_device
              create_partitions
              ;;
-        "4") mount_partitions
+        "5") mount_partitions
              ;;        
           *) main_menu_online
              ;;

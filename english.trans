@@ -7,6 +7,10 @@
 ##
 ##
 
+# Show devices and partitions
+_DevShowTitle=" Devices / Partitions "
+_DevShowOpt="List Devices (optional)"
+
 # Check Evo Requirements and Identify System Type
 _ChkEvoTitle=" Checking Evo Requirements "
 _ChkEvoBody="\nChecking installer has been run as root and that there is an active internet connection. Please wait...\n\n"
