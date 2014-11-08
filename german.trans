@@ -60,7 +60,7 @@ _TimeZQ="Zeitzone einstellen als ?" # Note: "${ZONE}/${SUBZONE}" are two variabl
 _HwCTitle="Hardware-Uhrzeit " \
 _HwCBody="\nUTC ist das universelle Zeitstandard, und wird besonders für dual-booting mit Windows empfohlen."
 _HwCUTC="UTC"
-_HwLocal=“Lokale Zeit"
+_HwLocal="Lokale Zeit"
 
 # Generate FSTAB
 _FstabTitle=" FSTAB-Generierung "
