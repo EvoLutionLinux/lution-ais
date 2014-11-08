@@ -71,7 +71,7 @@ VERSION="Lution-AIS 0.4"
 # Multi-lingual support. Once we have more than one translation file, that is.
 select_language() {
 
-dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " Select Language " --menu "" 0 0 2 \
+dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " Select Language " --menu "" 8 30 2 \
  	"1" $"English" \
  	"2" $"Deutsch" 2>${ANSWER}
 
