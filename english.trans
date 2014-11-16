@@ -333,7 +333,7 @@ _ConfBseVirtCon="Set Virtual Console"
 # User Menu
 _ConfUsrTitle=" Configure User(s)"
 _ConfUsrBody="\nRoot is the default 'super-user' or 'admin' account. The same password can be set for both Root and any personal user accounts created."
-_ConfUsrRoot="Set Root Pasword"
+_ConfUsrRoot="Set Root Password"
 _ConfUsrNew="Add New User(s)"
 
 # Desktop Menu
