@@ -1,0 +1,429 @@
+##
+##
+## Russian/Русский Translation File (Partial)
+##
+##
+## Written by Paul Kaminski for Evo/Lution Linux (17th November 2014)
+##
+##
+
+# Select Config Files
+_SeeConfOpt="Review Configuration Files (optional)"
+_SeeConfOptTitle=" Configuration Files "
+_SeeConfOptBody="\n.Select any file listed below to be reviewed or amended.\n"
+_SeeConfErrTitle=" Review Error "
+_SeeConfErrBody1="\nFile does not exist.\n\n"
+_SeeConfErrBody2="\nThe Base System must be installed first.\n\n"
+
+# Pacman
+_PrepPacKey="Refresh Pacman Keys (optional)"
+
+# Logical Volume Management
+_PrepLVM="Logical Volume Management (optional)"
+
+_LvmDetTitle=" LVM Detected "
+_LvmDetBody1="\nExisting Logical Volume Management (LVM) has been detected. Partitions already used for LVM cannot be selected. Do you wish to de-active existing LVM?\n\nSelect 'Yes' to remove existing LVM.\nSelect 'No' to keep it.\n"
+_LvmRmTitle=" Deactivating LVM "
+_LvmDetBody2="\nExisting Logical Volume Management (LVM) detected. Activating. Please Wait...\n\n"
+_LvmRmBody="\nDeactivating all existing Physical Volumes (PV), Volume Groups (VG), and Logical Volumes (LV).\n\nPlease wait...\n\n"
+
+_LvmPartErrTitle=" LVM Partition Error "
+_LvmPartErrBody="\nThere are no viable partitions available to use for Logical Volume Management. A minimum of one is required.\n\nIf LVM is already in use, deactivating it will allow the partition(s) used for its Physical Volume(s) to be used again.\n\n"
+
+_LvmNameVgTitle=" LVM - Name Volume Group "
+_LvmNameVgBody="\nEnter the name of the Volume Group (VG) to create.\n\nThe VG is the new 'virtual device / hard-disk' to create out of the partition(s) selected next.\n"
+
+_LvmNameVgErrTitle=" LVM - VG Name Error "
+_LvmNameVgErr="\nInvalid Name Entered. The Volume Group name may be alpha-numeric, but may not contain spaces, start with a '/', or already be in use.\n\n"
+
+
+_LvmPvSelTitle=" LVM - Select Partitions "
+_LvmPvSelBody="\nSelect the partition(s) to use for the Physical Volume (PV).\n"
+_LvmPvCreateTitle=" LVM - Parition Added "
+
+_LvmPvConfTitle=" LVM - Create Volume Group "
+_LvmPvConfBody1="\nConfirm creation of Volume Group "
+_LvmPvConfBody2="with the following partitions:\n\n"
+
+_LvmPvActTitle=" LVM - Creating VG "
+_LvmPvActBody1="\nCreating and activating Volume Group "
+_LvmPvActBody2="\n\nPlease wait...\n\n"
+
+_LvmPvDoneTitle=" LVM - VG Created "
+_LvmPvDoneBody1="\nVolume Group "
+_LvmPvDoneBody2="has been created"
+
+_LvmLvNumTitle=" LVM - Create Logical Volumes "
+_LvmLvNumBody1="\nEnter the number of Logical Volumes (LVs) to create in "
+_LvmLvNumBody2="Minimum is 1, maximum is 9.\n\nLVs are essentially partitions. The last (or only) LV will automatically use 100% of the remaining space in the Volume Group."
+
+_LvmLvNumErrTitle=" LVM - LV Number Error "
+_LvmLvNumErrBody="\nInvalid Number entered. Minimum is 1, maximum is 9.\n\n"
+
+_LvmLvNameTitle=" LVM - Name LV " 
+_LvmLvNameBody1="\nEnter the name of the Logical Volume (LV) to create.\n\nThis is like setting a name / label for a partition.\n"
+_LvmLvNameBody2="\nNOTE: This LV will automatically use up all space remaining on the Volume Group"
+
+_LvmLvNameErrTitle=" LVM - Name LV Error "
+_LvmLvNameErrBody="\nInvalid Name Entered. The Logical Volume (LV) name may be alpha-numeric, but may not contain spaces or be preceeded with a '/'.\n\n"
+
+_LvmLvSizeTitle=" LVM - Set LV Size "
+_LvmLvSizeBody1="remaining"
+_LvmLvSizeBody2="\n\nEnter the size of the Logical Volume (LV) in Megabytes (M) or Gigabytes (G). For example, 100M will create a 100 Megabyte LV. 10G will create a 10 Gigabyte LV.\n"
+
+_LvmLvSizeErrTitle=" LVM - Set LV Size Error "
+_LvmLvSizeErrBody="\nInvalid value Entered. A numeric value must be entered with an 'M' (Megabytes) or a 'G' (Gigabytes) at the end.\n\nExamples include, 100M, 10G, or 250M. The value may also not be equal to or greater than the remaining size of the VG.\n\n"
+
+_LvmLvDoneTitle=" LVM - Logical Volume Created "
+
+_LvmCompTitle=" LVM - Process Complete "
+_LvmCompBody="\nDone! All Logical Volumes have been created for the Volume Group.\n\nDo you wish to view the new LVM scheme?\n\n"
+
+
+# Show devices and partitions
+_DevShowTitle=" Devices / Partitions "
+_DevShowOpt="List Devices (optional)"
+
+# Check Evo Requirements and Identify System Type
+_ChkEvoTitle=" Проверка требований для Evo "
+_ChkEvoBody="\nПроверка скрипта для установки была проведена с правами администратора (root) и соедение с Интернетом активировано.Пожалуйста подождите...\n\n"
+
+_RtFailTitle=" Проверка отказана"
+_RtFailBody"\nСкрипт установки Evo должен быть запущеным только с правами администратора. Выход из скрипта.\n\n"
+
+_ConFailTitle=" Соедение в Интернет отказано "
+_ConFailBody="\Нет связи с Интернетом. Выход из скрипта.\n\n"
+
+_ReqMetTitle=" Проверки закончены"
+_ReqMetBody="\nВсе проверки были удачно завершены! \n\n"
+
+_UefiDet="Найдена система UEFI"
+_BiosDet="Найдена система BIOS"
+
+# Installer Mirrorlist
+_MirrorlistTitle=" Установка списка зеркал"
+_MirrorlistBody="\nСписок зеркал содержить ссылки к серверам arch linux и система управления пакетов pacman скачивает с этих веб-серверах все для вашей инсталляции нужные пакеты.Они доступны в указаном порядке.\n\n"
+_MirrorbyCountry="Генерация списка по стране"
+_MirrorEdit="Редактировать список зеркал вручную"
+
+# Generate Mirrorlist by country
+_MirrorCntryTitle=" Установка страны "
+_MirrorCntryBody="\nГенерация списка зеркал.\n\nПосле проверки, вы можете позволить использовать этот список или нет."
+_MirrorGenTitle=" Генерация списка зеркал "
+_MirrorGenBody="\nГенерирует список зеркал. Пожалуйста подождите... "
+_MirrorGenQ="Использовать этот список зеркал для инсталляции?"
+_MirrorGenDone="\nГотово! Оригальный список зеркал был сохранен в:\n\n/etc/pacman.d/mirrorlist.orig\n\n"
+
+# Set Keymap (vconsole)
+_KeymapTitle="Установка клавиатуры "
+_KeymapBody="\nПользуйтесь клавишами 'вверх' и 'вниз' для навигации,или нажмите любую клавишу вашей клавиатуры."
+
+# Set Xkbmap (environment)
+_XkbmapTitle=" Установка xkbmap "
+_XkbmapBody="Выберите расладку клавиатуры"
+
+# Set Locale
+_LocateTitle="Установка языка системы "
+_localeBody="Выберите язык системы"
+
+# Set Timezone
+_TimeZTitle=" Установка часового пояса"
+_TimeZBody="\nЧасовой пояс используется для того,чтобы правильно наставить системные часы."
+_TimeSubZTitle=" Выбор города "
+_TimeSubZBody="\nВыберите ближайщий к вам город."
+_TimeZQ="Установить часовой пояс как"
+
+# Set Hardware Clock
+_HwCTitle=" Установка аппаратных часов"
+_HwCBody="\nUTC является универсальным стандартом, и рекомендуется , для двойной загрузки с Windows."
+_HwCUTC="UTC"
+_HwLocal="Местное время"
+
+# Generate FSTAB
+_FstabTitle=" Генерация FSTAB "
+_FstabBody="\nФайл FSTAB (File System Tаble) установливает и связывает устройства для хранения данных и разделов на диске,и добавляет для них функции.\n\nUUID/PARTUUID Здесь также рекомендуется (Universally Unique IDentifier) .\n\nЕсли раньше не были установлены метки для предыдущих разделах, то имена устройств будет использоваться для варианта меток."
+_FstabDev="Dev (код раздела)"
+_FstabLabel="Label (определяется пользователем)"
+_FstabUUID="UUID/PARTUUID (уникальный код)"
+
+# Check FSTAB
+_FstabChkTitle="Проверка FSTAB "
+_FstabChkBody="\nПожалуйста проверьте файл FSTAB, перед его закрытием и продолжения исталляции\n\n"
+
+# Set Hostname
+_HostNameTitle="Настройка имени хоста"
+_HostNameBody="\nИмя хоста используется для идентификации системы в сети.\n\nОно ограничивается с буквенно-цифровыми символами, может содержать минус (-) но не в начале или в конце – и не должно быть долгим чем на максимально 63 знаков.\n"
+
+# Set Root Password
+_PassRtTitle="Настройка пароля администратора "
+_PassRtBody="\nНаберите пароль админстратора\n\n"
+_PassRtBody2="\nПовторите пароль администратра\n\n"
+
+# Root Password Error
+_PassRtErrTitle=" Ошибка ввода пароля"
+_PassRtErrBody="\nПовтор пароля для администратора не совпадает! Пожалуйста повторите.\n\n"
+
+# Create New User
+_NusrTitle="Создание пользователя"
+_NusrBody="\nВведите имя пользователя. Буквы ДОЛЖНЫ быть маленькими!\n"
+
+# Username Error
+_NusrErrTitle="Ошибка ввода имени пользователя"
+_NusrErrBody="\nВозникла ошибка при вводе имени пользователя. Пожалуйста повторите еще раз.\n\n"
+
+# Set User Password
+_PassNUsrTitle="Пароль пользователя"
+_PassNUsrBody="\nВведите пароль для" 
+_PassNUsrBody2="\nПовторите пароль для"
+
+# Create New User
+_NusrSetTitle="Установка пользователя"
+_NusrSetBody="\nСоздание пользователя и установка групп...\n\n"
+
+# User Password Error
+_PassNUsrErrTitle=" Ошибка пароля для пользователя"
+_PassNUsrErrBody="\nВведенный пароль для пользователя не совпадает с его повтором. Пожалуйста повторите еще раз.\n\n"
+
+# Mounting (Partitions)
+_MntStatusTitle=" Статус Mount "
+_MntStatusSucc="\nПроцесс монтирования раздела удачно проведен!\n"
+_MntStatusFail="Не удалось провести монтирования раздела!"
+
+# Select Device (installation)
+_DevSelTitle=" Выберите устройство"
+_DevSelBody="\nУстройства (/dev) это свободные места на жёстких дисках и USB-флэшках для инсталляции. Первое устройство это /sda,второе это /sdb, и так далее.\n\nЕсли вы используете USB-флэшку в качестве способа установки EVO,будьте осторожны: устройство будет видным в списке устройств!"
+
+# Select Device (Grub) - seperate body text is not required (uses standard device selection text)
+_DevSelGrubTitle="Выбор устройства для установки менеджера загрузки GRUB"
+
+# Partitioning Tool
+_PartToolTitle=" Создание разделов"
+_PartToolBody="\nПрограмма GParted это рекомендованый удобный графический инструмент для разделения жёстких дисков, который поддерживает BIOS и UEFI системы.\n\nНе берите UEFI/GPT- программу только для разделения BIOS/MBR систем, потому что это может вызвать серьёзные проблемы в этом случае не загружаемую систему."
+
+# UEFI Partitioning Error
+_UefiPartErrTitle="Ошибка создания разделов для системы UEFI"
+_UefiPartErrBody="\nUEFI системы требуют минимально два раздела для исталляции, это разделы ROOT и UEFI.\n\nПожалуйста настройте ваши разделы.\n\n"
+
+# BIOS Partitioning Error
+_BiosPartErrTitle="Ошибка создания раздела для системы BIOS"
+_BiosPartErrBody="\nBIOS системы требуют минимально один раздел для инсталляции, это раздел ROOT.\n\nПожалуйста настройте ваши разделы."
+
+# File System
+_FSTitle=" Выбор файловой системы"
+_FSBody="\nExt4 рекомендуется как лучшая файловая система. Не все файловые системы являются годными для разделов Root или Boot. Все они имеют различные свойства и ограничения."
+_FSSkip="Skip / None"
+
+# Select Root
+_SelRootTitle=" Выбор раздела для ROOT"
+_SelRootBody="\nЭто есть раздел где будет позже установлена система Arch Linux."
+
+# Select SWAP
+_SelSwpTitle=" Выбор раздела SWAP"
+_SelSwpBody="\nЕсли вы желаете использовать файл Swape,дайте ему такой же размер как и ваша рабочая память RAM."
+_SelSwpNone="None"
+_SelSwpFile="Swapfile"
+
+# Select UEFI
+_SelUefiTitle="Выбор раздела для UEFI "
+_SelUefiBody="\nЭто специальный раздел для загрузки систем UEFI."
+
+# Format UEFI
+_FormUefiTitle=" UEFI Partition "
+_FormUefiBody=" Раздел UEFI "
+_FormUefiBody2="Раздел уже был отформатирован.\n\nЕще раз отформатировать? Если вы это сделаете,ВСЕ данные на устройстве будут УДАЛЕНЫ!.\n\n"
+
+# UEFI Options
+_OptUefiTitle=" Опции для подсоедения раздела UEFI "
+_OptUefiBody="\n Раздел для загрузчиков системы который может быть установлен позже зависить от раздела UEFI \n\nВыберите /boot для Gummiboot. Этот режим рекомендуется для новичков как самый простой вариант особенно там, где есть две системы.\n\nВыберите /boot/efi для rEFInd. Этот вариант для тех, которые имеют опыт, и для тех которы нуждаются в ручном обновлени.\n\nВо всяком случае, любая точка монтирования будет работать с загрузчиком Grub.\n\n"
+
+# UEFI Mountpoint
+_MntUefiTitle=" Выбот точки монтирования системы UEFI"
+_MntUefiBody="\nGummiboot (рекомедованый) требует раздела /boot, rEFInd требудет раздел /boot/efi, и Grub будет работать с любым разделом."
+
+# Extra Partitions
+_ExtPartTitle=" Выберите дополнительный раздел"
+_ExtPartBody="\nВыберите дополнительные разделы или нажмите на 'Готово' чтобы закрыть опцию."
+
+# Name Extra Partitions
+_ExtNameTitle=" Имя раздела:"
+_ExtNameBodyUefi="\nПримеры есть в разделах: /home или /var.\n\nУбедитесь, что имя предшествует косой чертой (/)." # UEFI Systems
+_ExtNameBodyBios="\nПримеры есть в разделах /boot or /home.\n\nУбедитесь, что имя предшествует косой чертой (/)." # BIOS Systems
+
+# Extra Partition Naming Error
+_ExtErrTitle="Ошибка в имени раздела"
+_ExtErrBody="\nРаздел не может быть смонтированным.Имя должно быть дано после косой черты.\n\n"
+
+# Install Base
+_InstBseTitle="Установка базовой системы"
+_InstBseBody="\nНовейшее ядро Linux поддерживает новую аппаратуру. Ядро Linux-LTS являеться более стабильным,и имеет долгую поддержку через разработчиков ядра.\n\n Группа пакетов base-devel  нужна для использования репозитория Arch User Repository (AUR)."
+_InstBaseLK="Самое новейшее ядро Linux"
+_InstBaseLKBD="Самое новейшее ядро Linux & base-devel"
+_InstBaseLTS="Ядро Linux-LTS"
+_InstBaseLTSBD="Ядро Linux-LTS & base-devel"
+
+# Install Wireless Packages
+_InstWirTitle="Обнаруженo беспроводное устройство"
+_InstWirBody="\nУстановка дополнительных пакетов для беспроводных устройств...\n\n"
+
+# Install BIOS Bootloader
+_InstBiosBtTitle=" Установка загрузчика для BIOS"
+_InstBiosBtBody="\n Загрузчик Grub2 рекомендуется для новичков. Устройство для уставки может быть выбраным.\n\nSyslinux это легкая и простая альтернатива для GRUB,используется для загрузок систем Linux для инсталляци. Для установки Syslinux требуется файловая система EXT"
+
+# Grub Installation
+_InstGrubDevTitle="Выбор устройства для GRUB "
+_InstGrubDevBody="\nУстановите загрузчика GRUB на разделе Root"
+_InstGrubDevBody2="\n\nНажмите 'Да' если вы установливаете его только на одном устройстве."
+
+# Syslinux Installation
+_InstSysTitle="Проверка конфигурации Syslinux"
+_InstSysBody="\nПожауйста проверьте конфигурацию syslinux.\n\nОна должно иметь команду:\n"
+
+# Install UEFI Bootloader
+_InstUefiBtTitle=" Установка загрузчика для UEFI"
+_InstUefiBtBody="\nGrub2 является самым популярным и многофункциональным вариантом для загрузок систем (без разделов для систем UEFI).\n\nGummiboot является альтернативой для новичков (раздел UEFI должен быть в разделе /boot).\n\nrEFInd является альтернативой для более опытных пользователей.Раздел UEFI должен быть в разделе  /boot/efi)."
+
+# Set UEFI Grub as default
+_SetGrubDefTitle=" Установить  загрузчика Grub по умолчанию? "
+_SetGrubDefBody="\nНекоторые пришивки систем UEFI  не может обнаружить Grub,если он не установлен в качестве загрузчика по умолчанию,в результате чего загрузка системы может стать невозможной.\n\nВы хотите установить Grub в качестве загрузчика по умолчанию?\n\nРекомендовано выбрать опцию 'Да', особенно для новичков. Это скопирует файл загрузки grubx64.efi к разделу "
+_SetGrubDefBody2="и переименует его на требовательный файл bootx64.efi в.\n\nВо всяком случае выберете опцию 'Нет' особенно если уже есть загрузчик по умолчанию и/или вы намерены использовать несколько загрузчиков."
+
+# Gummiboot Configuration Check
+_ChkGumTitle="Проверка конфигурации Gummiboot"
+_ChkGumBody="\nПожалуйста проверьте конфигурации файлов arch и загрузчика перед закрытием и продолжанием процесса установки.\n"
+
+# Set rEFInd as default
+_SetRefiDefTitle=" Установить загрузчка rEFInd по умолчанию ? "
+_SetRefiDefBody="\nНекоторые пришивки систем UEFI  не может обнаружить rEFInd если он не установлен в качестве загрузчика по умолчанию,в результате чего загрузка системы может стать невозможной.\n\nВы хотите установить rEFInd в качестве загрузчика по умолчанию?\n\nРекомендовано выбрать опцию 'Да', особенно для новичков. Это установить файл загрузкика rEFInd к разделу"_SetRefiDefBody2="с требовательным файлом bootx64.efi.\n\nВо всяком случае выберете опцию 'Нет' особенно если уже есть загрузчик по умолчанию и/или вы намерены использовать несколько загрузчиков."
+
+# efi file set for Grub or Refind
+_SetDefDoneTitle=" Файл загрузки UEFI удачно скопирован!"
+_SetDefDoneBody="был установлен в качестве загрузчика по умолчанию.\n\n"
+
+# rEFInd Mountpoint error
+_RefiErrTitle=" Точка монтирования для загрузчика rEFInd- UEFI "
+_RefiErrBody="\nСкрипт для установки загрузчика rEFInd не будет работать, пока вы не смонтируете раздел UEFI к разделу /boot/efi. Пожалуйста, выберите либо Gummiboot (рекомендован) или Grub.\n\n"
+
+# ALSA, Xorg, Input
+_AXITitle=" ALSA, Xorg, и вводная аппаратура"
+_AXIBody="\nПеред установкой драйвера для графической карты(т) или окружения рабочего стола,необходимо установить в первую очередь эти пакеты:\n\nalsa - Advanced Linux Sound Architecture\nxorg-* -  X window система с открытым кодом для графики\nxf86-input-* -драйверы с открытым кодом для устройств ввода.\n\n"
+
+# Graphics Card Menu
+_GCtitle=" Меню графической карты"
+_GCBody="Выберите драйвер nouveau с открытым кодом nouveau для устаревших моделей карт NVIDIA. Если вашей карты нет в списке, выберите 'Неизвестно / Общий'.\n"_GCUnknOpt="Неизвестно/Общий"
+
+# NVIDIA Configruation Check
+_NvidiaConfTitle="Проверка конфигурации карты NVIDIA"
+_NvidiaConfBody="\nСоздан базовый конфигурационный файл для NVIDIA. Перед тем как закрыть его и продолжить установку, проверьте его.\n"
+
+# Graphics Card Detection
+_GCDetTitle="Найдено!"
+_GCDetBody="\nЭто ваша графическая карта?"
+_GCDetBody2="-Выберите 'Да' чтобы установить nouveau драйвер с ОТКРЫТЫМ КОДОМ.\n\n-Выберите 'Нет' чтобы открыть меню для графической карты, где можно установить дравейры NVIDIA с закрытым кодом."
+
+# Install DE Info
+_DEInfoTitle="Окружения рабочего стола"
+_DEInfoBody="\nЭту опцию вы можете повторять, чтобы установить несколько окружений рабочего стола.\n\n Для окружений Gnome, KDE, и LXDE есть свой менеджер дисплея.\n\n Для окружений Cinnamon, Gnome и KDE есть графический менеджер сети Network Manager.\n\n"
+
+# Install DE Menu
+_InstDETitle=" Установка окружений рабочего стола "
+_InstDEBody="\nСначала указаны в списке стандартные окружения рабочего стола, к ним можно установить дополнительные пакеты.\n\n Обратите внимание, что окружение KDE требует закачку из Интернета примерно на 750 мегабайт и больше."
+
+# Install Common Packages
+_InstComTitle="Установить дополнительные пакеты? "
+_InstComBody="\nНекоторые окружения рабочего стола требуют установку дополнительных пакетов, как например для различия прав пользователей, создания папок в собственной папке в системе,и полной функциональности файлового менеджера.\n\nЭти пакетами являются: xterm, xdg-user-dirs, gksu, gnome-keyring, polkit, gvfs, и gnome-icon-theme и так далее. Если вы установили KDE-full как окружение рабочего стола, вам эти пакеты не нужны.\n\nУстановить эти пакеты? Эта опция будет представлена только ОДИН раз.\n\n"
+
+# KDM
+_DmKdeTitle=" KDM активирован "
+_DmKdeBody="\nВы установили KDE как окружение рабочего стола, и его менеджер дисплея KDM был автоматически активирован.\n\n"
+
+# GDM
+_DmGdmTitle=" GDM активирован "
+_DmGdmBody="\nВы установили Gnome как окружение рабочего стола, и его менеджер дисплея GDM был автоматически активирован.\n\n"
+
+# KDM and GDM Installed
+_DmChTitle=" Выберите GDM или KDM "
+_DmChBody="\nВы установили два окружания рабочего стола Gnome и KDE. Пожалуйста выберите вам подходяший менеджер дисплея GDM или KDM.\n\n"
+
+# KDM or GDM Choice Made
+_DmDoneTitle="Aктивирован "
+_DMDoneBody"Aктивирован.\n\n"
+
+# LXDM
+_DmLxdmTitle="LXDM активирован"
+_DmLxdmBody="\nВы установили LXDE как окружение рабочего стола, и eго менеджер дисплея LXDM был автоматически активирован.\n\n"
+
+# LXDM or LightDM
+_DmChoiceTitle="Выбор менеджера дисплея "
+_DmChoiceBody="\nПожалуйсте сделайте выбор между менеджерами LXDM или LightDM. LXDM рекомендован для новичков.\n"
+
+# DM Already Installed
+_DmInstTitle="Менеджер дисплея установлен"
+_DmInstBody="\nМенеджер дисплея установлен и успешно активирован.\n\n"
+
+# Network Manager
+_InstNMTitle="Менеджер сети Network Manager "
+_InstNMBody="\n Рекомендуется установить менеджера сети Network Manager,особенно для беспроводного и PPPoE/DSL соедений в Интернет.\n"
+
+# Network Manager Installed
+_InstNMDoneTitle="Менеджер сети Network Manager установлен"
+_InstNMDoneBody="\nМенеджер сети для соедения в сеть был успешно установлен и активирован."
+
+# Network Manager Already Installed (no need for seperate title)
+_InstNMErrBody="\nМенеджер сети для соедения в сеть был уже установлен и активирован."
+
+# Welcome
+_WelTitle="Добро пожаловать в скрипт установки системы Evo/Lution Linux!"
+_WelBody="\n Для навигации через шаги скрипта для исталляции Evo/Lution Linux, вводите их номера или используйте клавишы вверх/вниз, и чтобы перейти в следущий шаг нажимайте клавишу ENTER.\n\nЧтобы менять шаги инсталляции местами,пользуйтесь клавишей TAB или клавишами налево/направо перед нажиманием финальной клавишы ENTER.\n\nРазрешаеться также использование мыши или сенсорной панели.\n\n"
+
+# Preparation Menu
+_PrepTitle="Подготовка установки"
+_PrepBody="\n Стандартная рабочая английская рассладка клавиатуры будет использоваться как для инсталлятора и – и при установленой окружения рабочего стола и базовой системы.\n"
+_PrepKBLayout="Настройка рабочей рассладки клавиатуры"
+_PrepMirror="Конфигурация списка зеркал (как опция)"
+_PrepPartDisk="Раздел жёсткого диска"
+_PrepMntPart="Монтироване разделов диска"
+_Back="Назад"
+
+# Install Base Menu
+_InstBsMenuTitle="Установка базовой системы"
+_InstBseMenuBody="\nВам не будет необходимо установить дополнительно загрузчика системы,если вы уже имеете на вашем компьютере Linux-дистрибутив, который уже использует Grub;просто обновите его через команду обновления менеджера загрузки."
+_InstBse="Установить базовую систему"
+_InstBootldr="Установить загрузчика системы"
+
+# Configure Base Menu
+_ConfBseTitle="Конфигурация базовой системы"
+_ConfBseBody="\nНужна начальная конфигурация базовой системы.Эта операция установливает базовый вход в сеть, время и язык системы,и установленая по умолчанию расскладка клавиатуры для установленной системы."
+_ConfBseFstab="Генерация FSTAB"
+_ConfBseHost="Настройка hostname"
+_ConfBseTime="Настройка часового пояса"
+_ConfBseHWC="Настройка аппаратных часов"
+_ConfBseSysLoc="Настройка языка системы"
+_ConfBseVirtCon="Настройка виртуальной оболочки"
+
+# User Menu
+_ConfUsrTitle="Настройка пользователя(лей)"
+_ConfUsrBody="\nRoot это стандартный аккаунт для супериспользователя, или админстратора системы. Вы можете использовать пароль для root для любый созданых аккаунтах для пользователей."
+_ConfUsrRoot="Настройка пароля root"
+_ConfUsrNew="Добавка пользователя(лей)"
+
+# Desktop Menu
+_InstDEMenuTitle="Настройка окружения рабочего стола"
+_InstDEMenuBody="\nДо установки окружения рабочего стола вы ДОЛЖНЫ установить ВСЕ драйверы для графических карт, а также драйверы для вводной аппаратуры и звука."
+_InstDEMenuGISD="Настройка драйверов для графики,вводной аппаратуры, и звука"
+_InstDEMenuDE="Настройка окружения рабочего стола"
+_InstDEMenuNM="Настройка менеджера подключения в сети"
+_InstDEMenuDM="Настройка менеджера дисплея"
+
+# Main Menu
+_MMTitle="Главное меню"
+_MMBody="\nКаждый шаг установки должен быть сделан за данным порядком. Если все готово,выберите ''Завершить установку'чтобы заключить операцию установки.\n"
+_MMPrep="Подготовка установки" 
+_MMInstBse="Установка базовой системы" 
+_MMConfBse="Конфигурация базовой системы" 
+_MMConfUsr="Настройка окружения рабочего стола" 
+_MMInstDE="Установка окружения рабочего стола" 
+_MMRunMkinit="Запуск Mkinitcpio" 
+_Done="Завершить установку"
+
+# Close Installer
+_CloseInstBody="Закрыть скрипт установки?"

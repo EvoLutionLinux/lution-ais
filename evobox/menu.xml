@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+
+<menu id="root-menu" label="Openbox 3">
+  <separator label="EvoBox" />
+<item label="LXTerminal">
+<action name="Execute"><command>lxterminal</command></action>
+  </item>
+  <item label="Thunar">
+<action name="Execute"><command>thunar</command></action>
+  </item>
+  <item label="Firefox">
+<action name="Execute"><command>firefox</command></action>
+  </item>
+  <item label="DMenu">
+<action name="Execute"><command>dmenu_run -fn -misc-fixed-*-*-*-*-20-200-*-*-*-*-*-*  -i -nf 'gray' -sb '#1793D1' -nb 'dim gray'</command></action>
+  </item>
+  <separator />
+  <item label="OBConf">
+<action name="Execute"><command>obconf</command></action>
+  </item>
+  <item label="LXAppearance">
+<action name="Execute"><command>lxappearance</command></action>
+  </item>
+  <item label="LXRandr">
+<action name="Execute"><command>lxrandr</command></action>
+  </item>
+  <item label="LXInput">
+<action name="Execute"><command>lxinput</command></action>
+  </item>
+  <separator />
+  <item label="Logout...">
+     <action name="Execute"><command>oblogout</command></action>
+  </item>
+</menu>
+
+</openbox_menu>

@@ -1,0 +1,59 @@
+    ## Evo/Lution Conky Configuration Script
+    ##
+    ## Forum: http://www.evolutionlinux.com/forums/index.php
+    ##
+     
+    #  Basic Settings
+ 
+    background yes
+    use_xft yes
+    xftfont sans:size=11
+    xftalpha 1
+    update_interval 1.0
+    total_run_times 0
+    own_window yes
+    own_window_transparent yes
+    own_window_type override #desktop
+    own_window_hints below,sticky,skip_taskbar,skip_pager
+    double_buffer yes
+    minimum_size 550 1
+    maximum_width 550
+    draw_shades no
+    draw_outline no
+    draw_borders no
+    draw_graph_borders no
+    default_color Black
+    default_shade_color 000000
+    default_outline_color d9d7d6
+    alignment tr
+    gap_x 5
+    gap_y 20
+    no_buffers yes
+    uppercase no
+    cpu_avg_samples 2
+    override_utf8_locale yes
+     
+    ## Evo/Lution Conky Display
+    ##
+    ##
+    TEXT
+    ${font sans:bold:size=22}${alignr}${color #d64937}${time %e} ${color #BEBEBE}${time %B}${color #d64937} ${time %Y}${color #BEBEBE} ${time %l:%M}${font sans:bold:size=18}${time %p}${voffset -8}
+    ${voffset -3}${color #BEBEBE}${hr 1}
+    ${font sans:bold:size=18}${alignr}${color #d64937}Kernel ${color #BEBEBE}$kernel ${voffset -2}${font sans:bold:size=16}(${color #1793D1}$machine${color #BEBEBE})${voffset -2}
+    ${font sans:bold:size=11}${alignr}${color #d64937}${color #d64937}CPU ${color #BEBEBE}${cpu cpu0}% ${color #B22222} / ${color #BEBEBE}${freq_g}Ghz ${color #BEBEBE} -  ${color #1793D1}${color #d64937}RAM ${color #BEBEBE}$mem ${color #B22222} / ${color #BEBEBE}$memmax${voffset 2} 
+    ${font sans:bold:size=11}${alignr}${color #d64937}Battery ${color #BEBEBE}${battery_percent BAT0}%  -  ${color #d64937}Uptime ${color #BEBEBE}$uptime_short 
+    ${voffset 1}
+    ${font sans:bold:size=10}${alignr}${color #1793D1}Alt + t 
+    ${alignr}${color #BEBEBE}Terminal${voffset -5} 
+
+    ${font sans:bold:size=10}${alignr}${color #1793D1}Alt + f 
+    ${alignr}${color #BEBEBE}Thunar${voffset -5} 
+
+    ${font sans:bold:size=10}${alignr}${color #1793D1}Alt + i 
+    ${alignr}${color #BEBEBE}Firefox${voffset -5} 
+
+    ${font sans:bold:size=10}${alignr}${color #1793D1}Alt + d 
+    ${alignr}${color #BEBEBE}DMenu${voffset -5} 
+     
+    ${font sans:bold:size=10}${alignr}${color #1793D1}Alt + x 
+    ${alignr}${color #BEBEBE}Logout...
