@@ -3,19 +3,96 @@
 ## German/Deutsch Translation File
 ##
 ##
-## Written by freecaster for Evo/Lution Linux (08th November 2014)
+## Written by Paul Kaminski for Evo/Lution Linux (23rd November 2014)
 ##
 ##
+
+# Select Config Files
+_SeeConfOpt="Überprüfung der Konfigurationsdateien (optional)"
+_SeeConfOptTitle=" Konfigurationsdateien "
+_SeeConfOptBody="\n.Wählen Sie unten eine beliebige Datei, welche überprüft oder geändert werden soll.\n"
+_SeeConfErrTitle=" Überprüfung gescheitert! "
+_SeeConfErrBody1="\nDie Datei existiert nicht.\n\n"
+_SeeConfErrBody2="\nDas Base-System muss zuerst installiert werden.\n\n"
+
+# Pacman
+_PrepPacKey="Erneuerung der pacman-keys"
+
+# Logical Volume Management
+_PrepLVM="Logical Volume Management (optional)"
+
+_LvmDetTitle=" Ein LVM wurde gefunden "
+_LvmDetBody1="\nDer vorhandene Logical Volume Management (LVM) wurde gefunden.Die Partitionen die bereits für LVM benutzt werden, können nicht ausgewählt werden.Wollen Sie das existierende LVM löschen?\n\nWählen Sie 'Ja' um  LVM zu entfernen.\nWählen Sie 'Nein' um abzubrechen.\n"
+_LvmRmTitle=" Deaktivierung LVM " #_LvmRmTitle=" Aktivierung des LVM "
+_LvmDetBody2="\nDas existierende Logical Volume Management (LVM) wurde gefunden. Aktiverung läuft.Bitte warten...\n\n"
+_LvmRmBody="\nDeaktivierung aller vorhanden Physical Volumes (PV), Volume Groups (VG), and Logical Volumes (LV).\n\nBitte warten...\n\n"
+
+_LvmPartErrTitle=" LVM Partition Error "
+_LvmPartErrBody="\nEs wurde keines der für LVM passenden Partitionen gefunden.Mindestens eine wird vorausgesetzt.\n\nWenn LVM bereits benutzt wird, wird die Deaktivierung der/den Partition/en die erneute Benutzung  für ihre Psycial Volumes wieder erlauben.\n\n"
+
+_LvmNameVgTitle=" LVM - Name Volume Group "
+_LvmNameVgBody="\nBitte geben den Namen zur Erstellung von Volume Group (VG) ein.\n\n Volumen Group ist das neue virtuelle Gerät/Festplatte um nachher die ausgewählten Partitionen zu übernehmen.\n"
+
+_LvmNameVgErrTitle=" LVM – VG Fehler bei der Eingabe des Namens "
+_LvmNameVgErr="\nEs wurde ein falscher Name vergeben. Der Name von Volume Group darf alphanumerisch geschrieben werden,darf aber keine Leerzeichen, einen Querstrich '/' am Anfang haben, oder bereits vergeben sein.\n\n"
+
+
+_LvmPvSelTitle=" Auswahl der Partitionen für LVM "
+_LvmPvSelBody="\nWählen Sie die Partition/Partitionen,welches/welche Physical Volume  (PV) benutzen soll.\n"
+_LvmPvCreateTitle="Eine für LVM Partition wurde hinzugefügt."
+
+_LvmPvConfTitle=" Erstellung der Volume Group für LVM "
+_LvmPvConfBody1="\nBestätigung der Erstellung von Volume Group "
+_LvmPvConfBody2="mit folgenden Partitionen:\n\n"
+
+_LvmPvActTitle=" LVM – Erstellung von VG "
+_LvmPvActBody1="\nErstellung und Aktivierung von Volume Group "
+_LvmPvActBody2="\n\nBitte warten...\n\n"
+
+_LvmPvDoneTitle=" LVM – VG-Erstellung beendet "
+_LvmPvDoneBody1="\nVolume Group "
+_LvmPvDoneBody2="wurde erfolgreich erstellt"
+
+_LvmLvNumTitle=" LVM -Erstellung von Logical Volumes "
+_LvmLvNumBody1="\nGeben Sie die Nummer zur Erstellung von  Logical Volumes (Lvs) ein."
+_LvmLvNumBody2="Die kleinste,erlaubte Zahl ist die 1,die größte ist die 9.\n\nLV sind im Wesentlichen unterteilt. Die letzte (oder nur die letzte) LV wird automatisch volle 100% des Speicherplatzes in der Volume Group belegen."
+
+_LvmLvNumErrTitle=" LVM - LV Fehler in der Nummer"
+_LvmLvNumErrBody="\n.Eine falsche Zahl wurde eingegeben.Zur Erinnerung: die kleinste Zahl ist die 1, die größte ist die 9.\n\n"
+
+_LvmLvNameTitle=" LVM – Name des LV "
+_LvmLvNameBody1="\nGeben Sie den Namen zur Erstellung des Logical Volume (LV).\n\nDas funktioniert genauso wie die Vergabe des Namens einer Partition.\n"
+_LvmLvNameBody2="\n\nACHTUNG: Diese LV wird automatisch den gesamten Speicherplatz für Volume Group beanspruchen."
+
+_LvmLvNameErrTitle=" LVM -Fehler im Namen "
+_LvmLvNameErrBody="\nEs wurde ein falscher Name vergeben. Der Name des Logical Volume (LV) darf alphanumerisch geschrieben werden,aber keine Leerzeichen, einen Querstrich '/' am Anfang haben.\n\n"
+
+_LvmLvSizeTitle=" LVM – Vergabe der Größe "
+_LvmLvSizeBody1="Übrig"
+_LvmLvSizeBody2="\n\nGeben Sie die Größe der Logical Volume (LV) in Megabytes (M) or Gigabytes (G) ein. Zum Beispiel 100M werden 100 Megabyte des Logical Volume erstellen. 10G werden 10 Gigabyte des LV erstellen.\n"
+
+_LvmLvSizeErrTitle=" LVM-LV Fehler in der Vergabe der Größe"
+_LvmLvSizeErrBody="\nEs wurde eine falsche Speichergröße vergeben.Der Wert muss mit einem 'M' ( für Megabytes) beginnen oder mit einem 'G' (für Gigabytes) am Ende anfangen.\n\nBeispiel:100M, 10G, oder 250M. Der Wert kann nicht gleich oder größer sein als die Restgröße des VG.\n\n"
+
+_LvmLvDoneTitle=" LVM - Logical Volume wurde erstellt "
+
+_LvmCompTitle=" LVM – Prozess beendet "
+_LvmCompBody="\nFertig! Alle Logical Volumes wurden für die  Volume Group erstellt.\n\nWollen Sie sich das neue  LVM-Schema ansehen?\n\n"
+
+
+# Show devices and partitions
+_DevShowTitle=" Geräte/ Partitionen "
+_DevShowOpt="Liste der Geräte ( als Option)"
 
 # Check Evo Requirements and Identify System Type
 _ChkEvoTitle="Überpüfung der Evo-Abhändigkeiten "
-_ChkEvoBody="\nDie Vorbereitung der Installation wurde mit Superuser-Rechten gestartet. Internerverbindung ist aktiviert, bitte warten...\n\n"
+_ChkEvoBody="\nDie Vorbereitung der Installation wurde mit Superuser-Rechten gestartet. Internetverbindung ist aktiviert, bitte warten...\n\n"
 
-_RtFailTitle=" Der Installer muss mit Superuser-Rechten gestartet werden. Schließe.."
+_RtFailTitle="Der Installer muss mit Superuser-Rechten gestartet werden.Schließe.."
 _RtFailBody"\nThe installer must be run as root. Exiting.\n\n"
 
 _ConFailTitle=" Verbindung gescheitert "
-_ConFailBody="\nEs konnte keine Verbindung zum Internet hergestellt werden. Schließe.\n\n"
+_ConFailBody="\nEs konnte keine Verbindung zum Internet hergestellt werden.Schließe.\n\n"
 
 _ReqMetTitle=" Alle Abhändigkeiten sind erfüllt! "
 _ReqMetBody="\nAlle Überprüfungen erfolgreich abgeschlossen! \n\n"
@@ -25,12 +102,12 @@ _BiosDet="BIOS System erkannt"
 
 # Installer Mirrorlist
 _MirrorlistTitle=" Spiegelserverliste "
-_MirrorlistBody="\nDie Spiegelserverliste enthält alle für pacman benötigten Server-Adressen zum Installieren von Paketen.Sie werden von pacman in der aufgeführten Reihenfolge abgerufen.\n\n"
+_MirrorlistBody="\nDie Spiegelserverliste enthält alle für pacman benötigten Server-Adressen zum Herunterladen aus dem Internet und  Installieren von Paketen.Sie werden von pacman in der aufgeführten Reihenfolge abgerufen.\n\n"
 _MirrorbyCountry="Erzeuge die Liste nach Land"
 _MirrorEdit="Manuelle Erzeugung der Liste"
 
 # Generate Mirrorlist by country
-_MirrorCntryTitle=" Wählen Sie Ihr Land "
+_MirrorCntryTitle=" Wählen Sie Ihr Land"
 _MirrorCntryBody="\nDie Liste von Spiegelservern des ausgewählten Landes wird erzeugt.\n\nNach der Überprüfung können Sie fortfahren oder abbrechen."
 _MirrorGenTitle=" Erzeugung der Spiegelserverliste "
 _MirrorGenBody="\nErzeugung der Spiegelserverliste, bitte warten... "
@@ -39,7 +116,7 @@ _MirrorGenDone="\nFertig! Die originale Spiegelserverliste wurde in dieser Verze
 
 # Set Keymap (vconsole)
 _KeymapTitle=" Ihr Tastaturmodell "
-_KeymapBody="\nBenutzen Sie die Tasten [pg up] und [pg dwn] zum navigieren, oder drücken Sie die beliebige Taste."
+_KeymapBody="\nBenutzen Sie die Tasten [pfeile hoch] und [pfeile runter] zum navigieren,oder drücken Sie die beliebige Taste."
 
 # Set Xkbmap (environment)
 _XkbmapTitle="Ihre xkbmap "
@@ -50,21 +127,21 @@ _LocateTitle="Systemsprache "
 _localeBody="Systemsprache einstellen"
 
 # Set Timezone
-_TimeZTitle=" Zeitzone"
+_TimeZTitle="Zeitzone"
 _TimeZBody="\nDie Zeitzone wird benutzt um die korrekte Uhrzeit von Ihrem System einzustellen."
 _TimeSubZTitle="nIhr Kontinent"
 _TimeSubZBody="\nIhre näheste Stadt"
-_TimeZQ="Zeitzone einstellen als ?" # Note: "${ZONE}/${SUBZONE}" are two variables, so do not need to be translated
+_TimeZQ="Zeitzone einstellen als" 
 
 # Set Hardware Clock
-_HwCTitle="Hardware-Uhrzeit " \
+_HwCTitle="Hardware-Uhrzeit " 
 _HwCBody="\nUTC ist das universelle Zeitstandard, und wird besonders für dual-booting mit Windows empfohlen."
 _HwCUTC="UTC"
-_HwLocal="Lokale Zeit"
+_HwLocal="Ortszeit"
 
 # Generate FSTAB
 _FstabTitle=" FSTAB-Generierung "
-_FstabBody="\nDie Datei FSTAB (File System Table) ermöglicht saubere Anbindung und Funktionsbezeichung von Wechseldatenträgern und Partitionen.\n\nUUID/PARTUUID (Universally Unique IDentifier) wird empfohlen.\n\n Wurden früher noch keine extra Bezeichnungen vergeben, so werden die Namen der Wechselträger gemäß dieser Option benutzt."
+_FstabBody="\nDie Datei FSTAB (File System Table) ermöglicht saubere Anbindung und Funktionsbezeichung von [color=#00BFFF]Speichermedien  und Partitionen.\n\nUUID/PARTUUID (Universally Unique IDentifier) wird empfohlen.\n\n Wurden früher noch keine extra Bezeichnungen vergeben, so werden die Namen der Wechselträger gemäß dieser Option benutzt."
 _FstabDev="Dev (partition code)"
 _FstabLabel="Markierung (benutzerdefiniert)"
 _FstabUUID="UUID/PARTUUID (Einzigartiger Code)"
@@ -96,8 +173,8 @@ _NusrErrBody="\nDer Name des Benutzers stimmt nicht überein.Bitte versuchen Sie
 
 # Set User Password
 _PassNUsrTitle=" Benutzer-Passwort"
-_PassNUsrBody="\nBitte geben Sie einen Passwort für den Benutzer ein." # Note that "$USER" is a variable (no translation needed)
-_PassNUsrBody2="\nBitte wiederholen Sie den Passwort" # Note that "$USER" is a variable (no translation needed)
+_PassNUsrBody="\nBitte geben Sie einen Passwort für den Benutzer ein." 
+_PassNUsrBody2="\nBitte wiederholen Sie den Passwort"
 
 # Create New User
 _NusrSetTitle="Erstellung des Benutzerkontos "
@@ -153,11 +230,11 @@ _SelUefiBody="\nDas ist die besondere Partition für bootfähige UEFI-Systeme."
 # Format UEFI
 _FormUefiTitle=" UEFI-Partition "
 _FormUefiBody="Die UEFI-Partition"
-_FormUefiBody2="Wurde bereits formatiert.\n\nFormatieren? Wenn das gemacht wird, werden ALLE Daten auf der Partition gelöscht!\n\n"
+_FormUefiBody2="Die Partition wurde bereits formatiert.\n\n Erneut formatieren? Wenn das gemacht wird, werden ALLE Daten auf der Partition gelöscht!\n\n"
 
 # UEFI Options
 _OptUefiTitle=" UEFI Anbindungspunktoptionen "
-_OptUefiBody="\nDer Bootloader kann später installiert werden, abhändig davon wo die UEFI-Partition angebunden ist.\n\nWählen Sie /boot für Gummiboot.Das wird für alle Anfänger empfohlen, besonders für Dual-Booting.\n\nWählen Sie /boot/efi für rEFInd. Obwohl es die Möglichkeit gibt, Bootloader auf dem USB-Stick zu installieren, wird diese Option nur für erfahrene User empfohlen.\n\nSonst wird die angebundene Partition mit Grub arbeiten.\n\n"
+_OptUefiBody="\nDer Bootloader kann später installiert werden, abhändig davon wo die UEFI-Partition angebunden ist.\n\nWählen Sie /boot für Gummiboot.Das wird für alle Anfänger empfohlen, besonders für Dual-Booting mit Windows.\n\nWählen Sie /boot/efi für rEFInd. Obwohl es die Möglichkeit gibt einen Bootloader auf dem USB-Stick zu installieren,wird diese Option nur für erfahrene User empfohlen.\n\nSonst wird die angebundene Partition mit Grub hochfahren.\n\n"
 
 # UEFI Mountpoint
 _MntUefiTitle=" Wählen Sie UEFI Anbindungspunkt "
@@ -177,8 +254,8 @@ _ExtErrTitle="Name der Partition ist falsch! "
 _ExtErrBody="\nPartition konnte nicht angebunden werden. Es muss ein Name nach dem Slash (/) eingegeben werden.\n\n"
 
 # Install Base
-_InstBseTitle=" Installation von Grundsystem-Paketen "
-_InstBseBody="\nDer neueste Kernel unterstützt neuere Hardware. Der LTS- Kernel setzt auf bessere Stabilität, und wird länger mit Sicherheitsupdates versorgt.\n\nDie base-devel-Paketsbund wird für die Funktionalität mit der Arch User Repository (AUR) vorausgesetzt."
+_InstBseTitle="Installation des Grundsystems"
+_InstBseBody="\nDer neueste Kernel unterstützt neuere Hardware.Der LTS-Kernel setzt auf bessere Stabilität sowie eine Langzeitversorgung mit Sicherheitsupdates.\n\nDer base-devel-Paketsbund wird für die Funktionalität mit der Arch User Repository (AUR)vorausgesetzt."
 _InstBaseLK="Neueste Kernel"
 _InstBaseLKBD="Neueste Kernel & base-devel"
 _InstBaseLTS="LTS Kernel"
@@ -190,16 +267,16 @@ _InstWirBody="\nInstalliere Zusatzpakete für die drahtlose Netzwerkverbindungen
 
 # Install BIOS Bootloader
 _InstBiosBtTitle=" Installeire BIOS-Bootloader "
-_InstBiosBtBody="\nGrub2 wird für alle Anfänger empfohlen. Das Installationsgerät kann ausgewählt werden.\n\nSyslinux is eine schlankere und einfachere Alternative, gewöhlicher Einsatz gilt für die zum Hochfahren von Linux-Installationsmedia. Es wird jedoch nur mit dem Dateissystem'ext' funktionieren."
+_InstBiosBtBody="\nGrub2 wird für alle Anfänger empfohlen. Das Installationsgerät kann ausgewählt werden.\n\nSyslinux is eine schlankere und einfachere Alternative, gewöhlicher Einsatz gilt für die zum Hochfahren von Linux-Installationsmedia. Es wird jedoch nur mit dem Dateissystem'EXT'funktionieren."
 
 # Grub Installation
-_InstGrubDevTitle=" Auswahl des Grub-Geräts "
-_InstGrubDevBody="\nInstalliere Grub auf dem gleichen Gerät /Festplatte als Root" 
-_InstGrubDevBody2="\n\nBestätigen Sie mit 'Yes' wenn Sie die Installation nur auf dem Gerät fortführen wollen."
+_InstGrubDevTitle=" Auswahl des Grub-Gerätes "
+_InstGrubDevBody="\nInstalliere Grub auf dem gleichen Gerät/Datenträger als Root"
+_InstGrubDevBody2="\n\nBestätigen Sie mit 'Ja' wenn Sie die Installation nur auf dem Gerät fortführen wollen."
 
 # Syslinux Installation
 _InstSysTitle=" Syslinux Konfigurationscheck "
-_InstSysBody="\nBitte prürfen Sie die syslinux Konfigurationsdatei.\n\nEs sollte einen Befehl beinhalten:\n" # "$ROOT_PART" is a variable
+_InstSysBody="\nBitte prüfen Sie die syslinux- Konfigurationsdatei.\n\nEs sollte einen Befehl beinhalten:\n" # "$ROOT_PART" is a variable
 
 # Install UEFI Bootloader
 _InstUefiBtTitle=" Installiere UEFI-Bootloader "
@@ -207,7 +284,8 @@ _InstUefiBtBody="\nGrub2 am meisten eingesetzte und funktionsreiche Option (kein
 
 # Set UEFI Grub as default
 _SetGrubDefTitle=" Grub als Standardbootloader installieren? "
-_SetGrubDefBody="\nManche UEFI-Firmware findet keinen Grub,es sei denn es wurde als Standardbootloader eingestellt,was dazu führt,dass Sie startunfähiges System haben.\n\nMöchten Sie Grub als Standardbootloader setzen?\n\nEs wird empfohlen ein 'Yes' auszuwählen,insbesondere als Anfänger. Es wird eine Kopie der bootfähiger Datei grubx64.efi nach"_SetGrubDefBody2=" erzeugt, und als voraussetzende bootx64.efi umbenannt.\n\n Andernfalls wählen Sie'No', insbesondere dann, wenn bereits ein Standard-Bootloader ausgewählt wurde,und/oder wenn Sie beabsichtigen mehrere Bootloader zu verwenden."
+_SetGrubDefBody="\nManche UEFI-Firmware findet keinen Grub-Manager,es sei denn es wurde als Standardbootloader eingestellt,was dazu führt,dass Sie startunfähiges System haben.\n\nMöchten Sie Grub als Standardbootloader setzen?\n\nEs wird empfohlen ein 'Ja' auszuwählen,insbesondere als Anfänger. Es wird eine Kopie der bootfähiger Datei grubx64.efi nach"
+_SetGrubDefBody2="erzeugt,und als voraussetzende bootx64.efi umbenannt.\n\n Andernfalls wählen Sie'No', insbesondere dann, wenn bereits ein Standard-Bootloader ausgewählt wurde,und/oder wenn Sie die Verwendung von mehreren Bootloadern beabsichtigen."
 
 # Gummiboot Configuration Check
 _ChkGumTitle=" Gummiboot Konfigurationscheck "
@@ -215,7 +293,9 @@ _ChkGumBody="\nBitte prüfen Sie die arch und loader Konfigurationsdateien bevor
 
 # Set rEFInd as default
 _SetRefiDefTitle="rEFInd als Standardbootloader installieren? "
-_SetRefiDefBody="\nManche UEFI-Firmware findet keinen rEFInd,es sei denn es wurde als Standardbootloader eingestellt,was dazu führt,dass Sie startunfähiges System haben.\n\nMöchten Sie rEFInd als Standardbootloader setzen?\n\nEs wird empfohlen ein 'Yes'auszuwählen,insbesondere als Anfänger. Es wird eine Kopie der Datei rEFInd nach "_SetRefiDefBody2=" erzeugt und als voraussetzende bootx64.efi umbenannt.\n\n Andernfalls wählen Sie'No', insbesondere dann, wenn bereits ein Standard-Bootloader ausgewählt wurde,und/oder wenn Sie beabsichtigen mehrere Bootloader zu verwenden."
+_SetRefiDefBody="\nManche UEFI-Firmware findet keinen rEFInd-Bootloader,es sei denn es wurde als Standardbootloader eingestellt,was dazu führt,dass Sie startunfähiges System haben.\n\nMöchten Sie rEFInd als Standardbootloader setzen?\n\nEs wird empfohlen ein 'Ja'auszuwählen,insbesondere als Anfänger. Es wird eine Kopie der Datei rEFInd nach "
+_SetRefiDefBody2="erzeugt und als voraussetzende bootx64.efi umbenannt.\n\n Andernfalls wählen Sie'Nein', insbesondere dann, wenn bereits ein Standard-Bootloader ausgewählt wurde,und/oder wenn Sie die Verwendung von mehreren Bootloadern beabsichtigen."
+
 
 # efi file set for Grub or Refind
 _SetDefDoneTitle=" UEFI-Datei wurde kopiert "
@@ -231,7 +311,7 @@ _AXIBody="\nVor der Installation von Grafiktreiber(n) oder Desktop-Oberflächen,
 
 # Graphics Card Menu
 _GCtitle=" Grafikkartenmenü "
-_GCBody="Wählen Sie den quelloffenen nouveau-Treiber für ältere NVIDIA-Modelle. Wenn Sie Ihre Grafiikarte nicht kennen,wählen Sie 'Unbekannt / Automatische Erkennung'.\n"
+_GCBody="Wählen Sie den quelloffenen nouveau-Treiber für ältere NVIDIA-Modelle. Wenn Sie Ihre Grafiikarte nicht kennen,wählen Sie 'Unbekannt /Automatische Erkennung'.\n"
 _GCUnknOpt="Unbekannt/ Automatische Erkennung"
 
 # NVIDIA Configruation Check
@@ -249,11 +329,12 @@ _DEInfoBody="\nDiese Option kann wiederholt werden, um verschiedene Desktopoberf
 
 # Install DE Menu
 _InstDETitle=" Installiere Desktopoberflächen "
-_InstDEBody="\nDie Desktopoberflächen werden zuerst aufgelistetund haben verschiedene Installationsvarianten.\n\nKDE hat einen ungefähren Downloadvolumen von 750MB und mehr.."
+_InstDEBody="\nDie Desktopoberflächen werden zuerst aufgelistetund haben verschiedene Installationsvarianten.\n\nDie Desktopoberfläche KDE hat einen ungefähren Downloadvolumen von 750MB und mehr..."
 
 # Install Common Packages
-_InstComTitle=" Installiere Zusatzpakete? "
-_InstComBody="\nManche Desktopoberflächen benötigen zur Installation Zusatzpakete,insbesondere für Userberechtigungen, Erstellung von Ordnern, und vollständiger Funktionalität von Dateimanagern.\n\nDie Sammlung umfasst: xterm, xdg-user-dirs, gksu, gnome-keyring, polkit, gvfs, und gnome-icon-theme, etc. Wurde KDE-full installiert, wird keines von genannten Paketen benötigt.\n\nSollen diese Pakete installiert werden?? Diese Option kann nur EINMAL betätigt werden!.\n\n"
+_InstComTitle=" Installiere Zusatzpakete für Desktopoberflächen?"
+_InstComBody="\nManche Desktopoberflächen benötigen für bessere Funktionalität eine Installation von Zusatzpaketen,insbesondere für Userberechtigungen, Erstellung von Ordnern, und vollständiger Funktionalität von Dateimanagern.\n\nDie Sammlung umfasst: xterm, xdg-user-dirs, gksu, gnome-keyring, polkit, gvfs, und gnome-icon-theme, etc. Wurde KDE-full installiert, wird keines von den genannten Paketen benötigt.\n\nSollen diese Pakete installiert werden?? Diese Option kann nur EINMAL betätigt werden!.\n\n"
+
 # KDM
 _DmKdeTitle=" KDM aktiviert "
 _DmKdeBody="\nEs wurde KDE-Desktopoberfläche installiert, KDM ist nun als Standard-Loginmanager aktiviert.\n\n"
@@ -264,14 +345,14 @@ _DmGdmBody="\nEs wurde Gnome installiert, GDM ist nun als Standard-Loginmanager 
 
 # KDM and GDM Installed
 _DmChTitle=" Wählen Sie GDM oder KDM "
-_DmChBody="\nBeide Desktopoberflächen Gnome und KDE wurden installiert. Bitte wählen Sie einen von beiden Loginmanagern aus.\n\n"
+_DmChBody="\nBeide Desktopoberflächen Gnome und KDE wurden installiert. Bitte wählen Sie einen von beiden Loginmanagern KDE oder GDM aus.\n\n"
 
 # KDM or GDM Choice Made
 _DmDoneTitle="Aktiviert "
 _DMDoneBody"Wurde erfolgreich aktiviert.\n\n"
 
 # LXDM
-_DmLxdmTitle=" LXDM Enabled "
+_DmLxdmTitle=" LXDM aktiviert "
 _DmLxdmBody="\nEs wurde LXDE installiert, LXDM ist nun als Standard-Loginmanager aktiviert .\n\n"
 
 # LXDM or LightDM
@@ -279,22 +360,23 @@ _DmChoiceTitle="Auswahl des Loginmanagers "
 _DmChoiceBody="\nBitte wählen Sie zwischen LXDM oder LightDM. LXDM wird für Anfänger empfohlen.\n"
 
 # DM Already Installed
-_DmInstTitle=" Display Manager wurde erfolgreich installiert "
+_DmInstTitle=" Display Manager wurde bereits installiert "
 _DmInstBody="\nDer Loginmanager wurde bereits installiert und aktiviert.\n\n"
 
 # Network Manager
 _InstNMTitle=" Auswahl des Netzwerkmanagers "
-_InstNMBody="\n Das Paket Network -Manager wird zur Installation empfohlen,inbesondere für Drahtlosnetzwerkenverbindungen und PPPoE/DSL-Verbidungen.\n
+_InstNMBody="\n Das Paket Network -Manager wird zur Installation empfohlen,inbesondere für Drahtlosnetzwerken-und PPPoE/DSL-Verbidungen.\n"
+
 # Network Manager Installed
 _InstNMDoneTitle=" Netzwerk-Manager wurde erfolgreich installiert "
 _InstNMDoneBody="\nDer Netzwerk-Manager wurde installiert und aktiviert."
 
 # Network Manager Already Installed (no need for seperate title)
-_InstNMErrBody="\nEin Netzwerkmanager wurde bereits installiert und aktiviert.“
+_InstNMErrBody="\nEin Netzwerkmanager wurde bereits installiert und aktiviert."
 
 # Welcome
 _WelTitle=" Willkommen!"
-_WelBody="\nDie hellgekennzeicheneten Optionen können mit der Eingabe ihrer Nummer oder mit den Tasten oben/unten vor der Bestätigung mit ENTER-Taste navigiert werden.\n\nMit der TAB-Taste können Sie zwischen diesen Optionen wechseln oder mit links/rechts-Tasten vor der Bestätigung mit der ENTER-Taste navigiert werden.\n\nEine Maus-oder Touchpadbedienung ist nicht ausgeschlossen.\n\n"
+_WelBody="\nDie hellgekennzeicheneten Schritte können mit der Eingabe ihrer Nummer oder mit den Tasten oben/unten vor der Bestätigung mit ENTER-Taste navigiert werden.\n\nMit der TAB-Taste können Sie zwischen diesen Schritten wechseln oder mit links/rechts-Tasten vor der Bestätigung mit der ENTER-Taste navigiert werden.\n\nEine Maus-oder Touchpadbedienung ist nicht ausgeschlossen.\n\n"
 
 # Preparation Menu
 _PrepTitle=" Installationsvorbereitung "
@@ -313,7 +395,7 @@ _InstBootldr="Installiere Bootloader"
 
 # Configure Base Menu
 _ConfBseTitle=" Konfiguration des Grundsystems"
-_ConfBseBody="\nEs ist notwendig ein Grundsystem zu installieren. Dieses beeinhaltet Netzwerkverbindungsoptionen, Zeit-und Spracheinstellungen,und Standard-Tastaturbelegung für das System."
+_ConfBseBody="\nEs ist notwendig ein vollständiges Grundsystem zu installieren. Dieses beeinhaltet Netzwerkverbindungsoptionen, Zeit-und Spracheinstellungen,und Standard-Tastaturbelegung für das System."
 _ConfBseFstab="Generiere FSTAB"
 _ConfBseHost="Stelle Hostname ein"
 _ConfBseTime="Stelle Timezone ein"
@@ -323,12 +405,12 @@ _ConfBseVirtCon="Stelle Virtual-Konsole ein"
 
 # User Menu
 _ConfUsrTitle="Konfiguration von Benutzerkonten/Gruppen"
-_ConfUsrBody="\nDas root-Passwort bedeutet „Super-user“ oder Administratorkonto. Das gleiche Passwort kann für root sowohl auch als für Benutzer angelegt werden."
+_ConfUsrBody="\nDas root-Passwort bedeutet „Super-user“ oder Administratorkonto. Das gleiche Passwort kann für root sowohl auch als für den Benutzer angelegt werden."
 _ConfUsrRoot="Setze root-Passwort"
 _ConfUsrNew="Füge neue Benutzer ein"
 
 # Desktop Menu
-_InstDEMenuTitle=" Installiere Desktopoberfläche "
+_InstDEMenuTitle=" Installiere Desktopoberfläche(n)"
 _InstDEMenuBody="\n Vor der Installation einer Desktopoberfläche, MÜSSEN zuerst alle Grafikeinheits, Ein-und Ausgabegeräte -und Soundtreiber installiert werden.Die Installation von Grafikkartentreibern gehört ebenso dazu."
 _InstDEMenuGISD="Installiere Grafik, Ein-und Ausgabegeräte, und Soundtreiber"
 _InstDEMenuDE="Installiere Desktopoberfläche(n)"
@@ -338,13 +420,13 @@ _InstDEMenuDM="Installiere Loginmanager"
 # Main Menu
 _MMTitle="Hauptmenü "
 _MMBody="\nAlle Schritte müssen nach der Reihenfolge fertig sein. Wenn alles erledigt wurde, wählen Sie bitte 'Installation abschließen' um die Installation zu beenden.\n"
-_MMPrep="Bereite den Abschluss der Installation vor" \
-_MMInstBse="Installiere Grundsystem" \
-_MMConfBse="Konfiguriere Grundsystem" \
-_MMConfUsr="Konfiguriere Benutzerkonto(konten)" \
-_MMInstDE="Installiere Desktopoberfläche(n)" \
-_MMRunMkinit="Mkinitcpio durchführen" \
-_Done="Installation abschließen"
+_MMPrep="Bereite den Abschluss der Installation vor"
+_MMInstBse="Installiere Grundsystem"
+_MMConfBse="Konfiguriere Grundsystem"
+_MMConfUsr="Konfiguriere Benutzerkonto(konten)"
+_MMInstDE="Installiere Desktopoberfläche(n)"
+_MMRunMkinit="Mkinitcpio durchführen"
+_Done="Abgeschlossen"
 
 # Close Installer
 _CloseInstBody="Soll Installer geschlossen werden?"

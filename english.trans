@@ -3,9 +3,82 @@
 ## English Translation File		
 ##								
 ##
-## Written by Carl Duff for Evo/Lution Linux (1st November 2014)
+## Written by Carl Duff for Evo/Lution Linux (23rd November 2014)
 ##
 ##
+
+# Select Config Files
+_SeeConfOpt="Review Configuration Files (optional)"
+_SeeConfOptTitle=" Configuration Files "
+_SeeConfOptBody="\n.Select any file listed below to be reviewed or amended.\n"
+_SeeConfErrTitle=" Review Error "
+_SeeConfErrBody1="\nFile does not exist.\n\n"
+_SeeConfErrBody2="\nThe Base System must be installed first.\n\n"
+
+# Pacman
+_PrepPacKey="Refresh Pacman Keys (optional)"
+
+# Logical Volume Management
+_PrepLVM="Logical Volume Management (optional)"
+
+_LvmDetTitle=" LVM Detected "
+_LvmDetBody1="\nExisting Logical Volume Management (LVM) has been detected. Partitions already used for LVM cannot be selected. Do you wish to de-active existing LVM?\n\nSelect 'Yes' to remove existing LVM.\nSelect 'No' to keep it.\n"
+_LvmRmTitle=" Deactivating LVM "
+_LvmDetBody2="\nExisting Logical Volume Management (LVM) detected. Activating. Please Wait...\n\n"
+_LvmRmBody="\nDeactivating all existing Physical Volumes (PV), Volume Groups (VG), and Logical Volumes (LV).\n\nPlease wait...\n\n"
+
+_LvmPartErrTitle=" LVM Partition Error "
+_LvmPartErrBody="\nThere are no viable partitions available to use for Logical Volume Management. A minimum of one is required.\n\nIf LVM is already in use, deactivating it will allow the partition(s) used for its Physical Volume(s) to be used again.\n\n"
+
+_LvmNameVgTitle=" LVM - Name Volume Group "
+_LvmNameVgBody="\nEnter the name of the Volume Group (VG) to create.\n\nThe VG is the new 'virtual device / hard-disk' to create out of the partition(s) selected next.\n"
+
+_LvmNameVgErrTitle=" LVM - VG Name Error "
+_LvmNameVgErr="\nInvalid Name Entered. The Volume Group name may be alpha-numeric, but may not contain spaces, start with a '/', or already be in use.\n\n"
+
+
+_LvmPvSelTitle=" LVM - Select Partitions "
+_LvmPvSelBody="\nSelect the partition(s) to use for the Physical Volume (PV).\n"
+_LvmPvCreateTitle=" LVM - Parition Added "
+
+_LvmPvConfTitle=" LVM - Create Volume Group "
+_LvmPvConfBody1="\nConfirm creation of Volume Group "
+_LvmPvConfBody2="with the following partitions:\n\n"
+
+_LvmPvActTitle=" LVM - Creating VG "
+_LvmPvActBody1="\nCreating and activating Volume Group "
+_LvmPvActBody2="\n\nPlease wait...\n\n"
+
+_LvmPvDoneTitle=" LVM - VG Created "
+_LvmPvDoneBody1="\nVolume Group "
+_LvmPvDoneBody2="has been created"
+
+_LvmLvNumTitle=" LVM - Create Logical Volumes "
+_LvmLvNumBody1="\nEnter the number of Logical Volumes (LVs) to create in "
+_LvmLvNumBody2="Minimum is 1, maximum is 9.\n\nLVs are essentially partitions. The last (or only) LV will automatically use 100% of the remaining space in the Volume Group."
+
+_LvmLvNumErrTitle=" LVM - LV Number Error "
+_LvmLvNumErrBody="\nInvalid Number entered. Minimum is 1, maximum is 9.\n\n"
+
+_LvmLvNameTitle=" LVM - Name LV " 
+_LvmLvNameBody1="\nEnter the name of the Logical Volume (LV) to create.\n\nThis is like setting a name / label for a partition.\n"
+_LvmLvNameBody2="\nNOTE: This LV will automatically use up all space remaining on the Volume Group"
+
+_LvmLvNameErrTitle=" LVM - Name LV Error "
+_LvmLvNameErrBody="\nInvalid Name Entered. The Logical Volume (LV) name may be alpha-numeric, but may not contain spaces or be preceeded with a '/'.\n\n"
+
+_LvmLvSizeTitle=" LVM - Set LV Size "
+_LvmLvSizeBody1="remaining"
+_LvmLvSizeBody2="\n\nEnter the size of the Logical Volume (LV) in Megabytes (M) or Gigabytes (G). For example, 100M will create a 100 Megabyte LV. 10G will create a 10 Gigabyte LV.\n"
+
+_LvmLvSizeErrTitle=" LVM - Set LV Size Error "
+_LvmLvSizeErrBody="\nInvalid value Entered. A numeric value must be entered with an 'M' (Megabytes) or a 'G' (Gigabytes) at the end.\n\nExamples include, 100M, 10G, or 250M. The value may also not be equal to or greater than the remaining size of the VG.\n\n"
+
+_LvmLvDoneTitle=" LVM - Logical Volume Created "
+
+_LvmCompTitle=" LVM - Process Complete "
+_LvmCompBody="\nDone! All Logical Volumes have been created for the Volume Group.\n\nDo you wish to view the new LVM scheme?\n\n"
+
 
 # Show devices and partitions
 _DevShowTitle=" Devices / Partitions "
@@ -58,7 +131,7 @@ _TimeZTitle=" Select Time Zone "
 _TimeZBody="\nThe time zone is used to correctly set your system clock."
 _TimeSubZTitle=" Select Time Sub-Zone "
 _TimeSubZBody="\nSelect the city nearest to you."
-_TimeZQ="Set Time Zone as ?" # Note: "${ZONE}/${SUBZONE}" are two variables, so do not need to be translated
+_TimeZQ="Set Time Zone as"
 
 # Set Hardware Clock
 _HwCTitle=" Set Hardware Clock " \
@@ -100,8 +173,8 @@ _NUsrErrBody="\nAn incorrect user name was entered. Please try again.\n\n"
 
 # Set User Password
 _PassNUsrTitle=" Set User Password "
-_PassNUsrBody="\nEnter password for" # Note that "$USER" is a variable (no translation needed)
-_PassNUsrBody2="\nRe-enter password for" # Note that "$USER" is a variable (no translation needed)
+_PassNUsrBody="\nEnter password for" 
+_PassNUsrBody2="\nRe-enter password for"
 
 # Create New User
 _NUsrSetTitle=" Setting User "
@@ -122,6 +195,7 @@ _DevSelBody="\nDevices (/dev) are available hard-disks and USB-sticks to install
 
 # Select Device (Grub) - seperate body text is not required (uses standard device selection text)
 _DevSelGrubTitle=" Select Grub Device "
+
 
 # Partitioning Tool
 _PartToolTitle=" Partitioning Tool "
@@ -276,7 +350,7 @@ _DmChBody="\nBoth Gnome and KDE have been installed. Please select your preferre
 
 # KDM or GDM Choice Made
 _DmDoneTitle="Enabled "
-_DMDoneBody"has been enabled.\n\n"
+_DMDoneBody="has been enabled.\n\n"
 
 # LXDM
 _DmLxdmTitle=" LXDM Enabled "
@@ -333,7 +407,7 @@ _ConfBseVirtCon="Set Virtual Console"
 # User Menu
 _ConfUsrTitle=" Configure User(s)"
 _ConfUsrBody="\nRoot is the default 'super-user' or 'admin' account. The same password can be set for both Root and any personal user accounts created."
-_ConfUsrRoot="Set Root Pasword"
+_ConfUsrRoot="Set Root Password"
 _ConfUsrNew="Add New User(s)"
 
 # Desktop Menu
