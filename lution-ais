@@ -26,7 +26,7 @@
 ANSWER="/tmp/.lution"
 
 # Save retyping
-VERSION="Lution-AIS 0.4"
+VERSION="Lution-AIS 0.4.1"
 
 # Installation
   KDE_INSTALLED=0      	# Has KDE been installed? Used for display manager option
