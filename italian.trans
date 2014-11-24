@@ -3,87 +3,87 @@
 ## Italian Translation File (partial)
 ##
 ##
-## Written by hashcat for Evo/Lution Linux (16th November 2014)
+## Written by hashcat for Evo/Lution Linux (24th November 2014)
 ##
 ##
 
 # Select Config Files
-_SeeConfOpt="Review Configuration Files (optional)"
-_SeeConfOptTitle=" Configuration Files "
-_SeeConfOptBody="\n.Select any file listed below to be reviewed or amended.\n"
-_SeeConfErrTitle=" Review Error "
-_SeeConfErrBody1="\nFile does not exist.\n\n"
-_SeeConfErrBody2="\nThe Base System must be installed first.\n\n"
-
-# Pacman
-_PrepPacKey="Refresh Pacman Keys (optional)"
-
-# Logical Volume Management
-_PrepLVM="Logical Volume Management (optional)"
-
-_LvmDetTitle=" LVM Detected "
-_LvmDetBody1="\nExisting Logical Volume Management (LVM) has been detected. Partitions already used for LVM cannot be selected. Do you wish to de-active existing LVM?\n\nSelect 'Yes' to remove existing LVM.\nSelect 'No' to keep it.\n"
-_LvmRmTitle=" Deactivating LVM "
-_LvmDetBody2="\nExisting Logical Volume Management (LVM) detected. Activating. Please Wait...\n\n"
-_LvmRmBody="\nDeactivating all existing Physical Volumes (PV), Volume Groups (VG), and Logical Volumes (LV).\n\nPlease wait...\n\n"
-
-_LvmPartErrTitle=" LVM Partition Error "
-_LvmPartErrBody="\nThere are no viable partitions available to use for Logical Volume Management. A minimum of one is required.\n\nIf LVM is already in use, deactivating it will allow the partition(s) used for its Physical Volume(s) to be used again.\n\n"
-
-_LvmNameVgTitle=" LVM - Name Volume Group "
-_LvmNameVgBody="\nEnter the name of the Volume Group (VG) to create.\n\nThe VG is the new 'virtual device / hard-disk' to create out of the partition(s) selected next.\n"
-
-_LvmNameVgErrTitle=" LVM - VG Name Error "
-_LvmNameVgErr="\nInvalid Name Entered. The Volume Group name may be alpha-numeric, but may not contain spaces, start with a '/', or already be in use.\n\n"
-
-
-_LvmPvSelTitle=" LVM - Select Partitions "
-_LvmPvSelBody="\nSelect the partition(s) to use for the Physical Volume (PV).\n"
-_LvmPvCreateTitle=" LVM - Parition Added "
-
-_LvmPvConfTitle=" LVM - Create Volume Group "
-_LvmPvConfBody1="\nConfirm creation of Volume Group "
-_LvmPvConfBody2="with the following partitions:\n\n"
-
-_LvmPvActTitle=" LVM - Creating VG "
-_LvmPvActBody1="\nCreating and activating Volume Group "
-_LvmPvActBody2="\n\nPlease wait...\n\n"
-
-_LvmPvDoneTitle=" LVM - VG Created "
-_LvmPvDoneBody1="\nVolume Group "
-_LvmPvDoneBody2="has been created"
-
-_LvmLvNumTitle=" LVM - Create Logical Volumes "
-_LvmLvNumBody1="\nEnter the number of Logical Volumes (LVs) to create in "
-_LvmLvNumBody2="Minimum is 1, maximum is 9.\n\nLVs are essentially partitions. The last (or only) LV will automatically use 100% of the remaining space in the Volume Group."
-
-_LvmLvNumErrTitle=" LVM - LV Number Error "
-_LvmLvNumErrBody="\nInvalid Number entered. Minimum is 1, maximum is 9.\n\n"
-
-_LvmLvNameTitle=" LVM - Name LV " 
-_LvmLvNameBody1="\nEnter the name of the Logical Volume (LV) to create.\n\nThis is like setting a name / label for a partition.\n"
-_LvmLvNameBody2="\nNOTE: This LV will automatically use up all space remaining on the Volume Group"
-
-_LvmLvNameErrTitle=" LVM - Name LV Error "
-_LvmLvNameErrBody="\nInvalid Name Entered. The Logical Volume (LV) name may be alpha-numeric, but may not contain spaces or be preceeded with a '/'.\n\n"
-
-_LvmLvSizeTitle=" LVM - Set LV Size "
-_LvmLvSizeBody1="remaining"
-_LvmLvSizeBody2="\n\nEnter the size of the Logical Volume (LV) in Megabytes (M) or Gigabytes (G). For example, 100M will create a 100 Megabyte LV. 10G will create a 10 Gigabyte LV.\n"
-
-_LvmLvSizeErrTitle=" LVM - Set LV Size Error "
-_LvmLvSizeErrBody="\nInvalid value Entered. A numeric value must be entered with an 'M' (Megabytes) or a 'G' (Gigabytes) at the end.\n\nExamples include, 100M, 10G, or 250M. The value may also not be equal to or greater than the remaining size of the VG.\n\n"
-
-_LvmLvDoneTitle=" LVM - Logical Volume Created "
-
-_LvmCompTitle=" LVM - Process Complete "
-_LvmCompBody="\nDone! All Logical Volumes have been created for the Volume Group.\n\nDo you wish to view the new LVM scheme?\n\n"
-
+_SeeConfOpt="Controlla i file di configurazione (opzionale)"
+_SeeConfOptBody="\n.Seleziona, fra i file elencati di seguito, ognuno di quelli che desideri controllare o modificare.\n"
+_SeeConfOptTitle=" File di configurazione "
+_SeeConfErrTitle=" Errore di verfica "
+_SeeConfErrBody1="\nFile inesistente.\n\n"
+_SeeConfErrBody2="\Prima di proseguire è necessario installare il sistema di base.\n\n"
 
 # Show devices and partitions
-_DevShowTitle=" Devices / Partitions "
-_DevShowOpt="List Devices (optional)"
+_DevShowTitle=" Dispositivi / Partizioni "
+_DevShowOpt="Elenca i dispositivi (opzionale)"
 
+# Pacman
+_PrepPacKey="Aggiorna le chiavi di Pacman (opzionale)"
+
+
+# Logical Volume Management
+_PrepLVM="Logical Volume Management (opzionale)"
+
+_LvmDetTitle=" Identificato LVM "
+_LvmDetBody1="\nE' stata rilevata la presenza di un Logical Volume Management (LVM). Le partizioni già in uso per il LVM non possono essere selezionate. Vuoi disabilitare il LVM esistente?\n\nSeleziona 'Si' per rimuovere il LVM esistente.\nSeleziona 'No' per mantenerlo.\n"
+_LvmRmTitle=" Disattivazione LVM "
+_LvmDetBody2="\nRilevata la presenza di un Logical Volume Management (LVM). Attivazione. Attendere prego...\n\n"
+_LvmRmBody="\nDisattivazione di tutti i Volumi Fisici (PV), Gruppi di Volumi (VG) e Volumi Logici (LV) in corso.\n\nAttendere prego...\n\n"
+
+
+_LvmPartErrTitle=" Errore di partizionamento LVM "
+_LvmPartErrBody="\nNon vi è alcuna partizione utilizzabile per il Logical Volume Management. Ne è necessaria almeno una.\n\nSe l'LVM è già in uso, la sua disattivazione permetterà di riutilizzarne le partizioni impiegate come Volumi Fisici.\n\n"
+
+_LvmNameVgTitle=" LVM - Assegna un nome al Gruppo di Volumi "
+_LvmNameVgBody="\nInserisci un nome per il nuovo Gruppo di Volumi (VG).\n\nIl VG è il nuovo 'dispositivo virtuale / hard-disk' che verrà utilizzato, successivamente, per la creazione delle partizioni.\n"
+
+_LvmNameVgErrTitle=" LVM - Errore del nome del VG "
+_LvmNameVgErr="\nIl nome inserito non è valido. Il nome del Gruppo di Volumi può essere alfanumerico ma non può contenere spazi, iniziare con il carattere '/' o essere già stato assegnato.\n\n"
+
+
+_LvmPvSelTitle=" LVM - Seleziona le partizioni "
+_LvmPvSelBody="\nSeleziona le partizioni da destinare al Volume Fisico.\n"
+_LvmPvCreateTitle=" LVM - Partizioni aggiunte "
+
+_LvmPvConfTitle=" LVM - Crea Gruppo di Volumi "
+_LvmPvConfBody1="\nConferma la creazione del Gruppo di Volumi "
+_LvmPvConfBody2="con le seguenti partizioni:\n\n"
+
+_LvmPvActTitle=" LVM - Creazione del VG "
+_LvmPvActBody1="\nCreazione ed attivazione del Gruppo di Volumi in corso "
+_LvmPvActBody2="\n\nAttendere prego...\n\n"
+
+_LvmPvDoneTitle=" LVM - Creato VG "
+_LvmPvDoneBody1="\nIl Gruppo di Volumi "
+_LvmPvDoneBody2="è stato creato"
+
+_LvmLvNumTitle=" LVM - Crea Volumi Logici "
+_LvmLvNumBody1="\nInserisci il numero di Volumi Logici che vuoi creare "
+_LvmLvNumBody2="Il minimo è 1, il massimo è 9.\n\nI Volumi Logici sono essenzialmente delle partizioni. L'ultimo (o unico) Volume Logico utilizzerà automaticamente tutto lo spazio rimanente nel Gruppo di Volumi."
+
+_LvmLvNumErrTitle=" LVM - Errore del numero di LV "
+_LvmLvNumErrBody="\nIl numero inserito non è valido. Il minimo è 1, il massimo è 9.\n\n"
+
+_LvmLvNameTitle=" LVM - Assegna un nome al LV "
+_LvmLvNameBody1="\nInserisci un nome per il nuovo Volume Logico.\n\nQuest'operazione equivale a quella di impostare un nome / un'etichetta di una partizione.\n"
+_LvmLvNameBody2="\n\nATTENZIONE: Questo LV utilizzerà automaticamente tutto lo spazio rimanente nel Gruppo di Volumi."
+
+_LvmLvNameErrTitle=" LVM - Errore del nome del LV "
+_LvmLvNameErrBody="\nIl nome inserito non è valido. Il nome del Volume Logico (LV) può essere alfanumerico ma non può contenere spazi o iniziare con il carattere '/'.\n\n"
+
+_LvmLvSizeTitle=" LVM - Imposta la dimensione del LV "
+_LvmLvSizeBody1="rimanenti"
+_LvmLvSizeBody2="\n\nInserisci la dimensione del Volume Logico (LV) in Megabyte (M) o Gigabyte (G). Ad esempio, 100M creerà un Volume Logico con una dimensione pari a 100 Megabyte. 10G creerà un Volume Logico con dimensione pari a 10 Gigabyte.\n"
+
+_LvmLvSizeErrTitle=" LVM - Errore d'impostazione della dimensione del LV "
+_LvmLvSizeErrBody="\nIl valore immesso non è valido. E' necessario inserire un valore numerico che termini con una 'M' (Megabyte) o una 'G' (Gigabyte).\n\nAd esempio, 100M, 10G, o 250M. Il valore non deve inoltre essere maggiore o uguale dello spazio rimanente nel VG.\n\n"
+
+_LvmLvDoneTitle=" LVM - Volume Logico creato "
+
+_LvmCompTitle=" LVM - Operazione completata "
+_LvmCompBody="\nFatto! Sono stati creati tutti i Volumi Logici per il Gruppo di Volumi.\n\nDesideri visionare la nuova struttura del LVM?\n\n"
 
 # Check Evo Requirements and Identify System Type
 _ChkEvoTitle=" Verifica dei requisiti di Evo "
