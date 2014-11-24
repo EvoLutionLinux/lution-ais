@@ -421,12 +421,12 @@ _InstDEMenuDM="Install Display Manager / Login Screen"
 # Main Menu
 _MMTitle=" Main Menu "
 _MMBody="\nEach step must be followed IN ORDER. Once complete, select 'Done' to properly finalise the installation.\n"
-_MMPrep="Prepare Installation" \
-_MMInstBse="Install Base" \
-_MMConfBse="Configure Base" \
-_MMConfUsr="Configure User Account(s)" \
-_MMInstDE="Install Desktop(s)" \
-_MMRunMkinit="Run Mkinitcpio" \
+_MMPrep="Prepare Installation"
+_MMInstBse="Install Base"
+_MMConfBse="Configure Base"
+_MMConfUsr="Configure User Account(s)"
+_MMInstDE="Install Desktop(s)"
+_MMRunMkinit="Run Mkinitcpio"
 _Done="Done"
 
 # Close Installer
