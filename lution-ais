@@ -94,7 +94,7 @@ select_language() {
  	"3" $"Nederlands" \
  	"4" $"ελληνικά" \
  	"5" $"Norsk" \
- 	"6" $"Italiano (parziale)" \
+ 	"6" $"Italiano" \
  	"7" $"Español" \
  	"8" $"Русский (частичный)" 2>${ANSWER}
 
