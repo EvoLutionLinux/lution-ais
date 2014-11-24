@@ -420,12 +420,12 @@ _InstDEMenuDM="Installiere Loginmanager"
 # Main Menu
 _MMTitle="Hauptmenü "
 _MMBody="\nAlle Schritte müssen nach der Reihenfolge fertig sein. Wenn alles erledigt wurde, wählen Sie bitte 'Installation abschließen' um die Installation zu beenden.\n"
-_MMPrep="Bereite den Abschluss der Installation vor"
-_MMInstBse="Installiere Grundsystem"
-_MMConfBse="Konfiguriere Grundsystem"
-_MMConfUsr="Konfiguriere Benutzerkonto(konten)"
-_MMInstDE="Installiere Desktopoberfläche(n)"
-_MMRunMkinit="Mkinitcpio durchführen"
+_MMPrep="Vorbereitung der Installation"
+_MMInstBse="Installation des Grundsystems"
+_MMConfBse="Konfiguration des Grundsystems"
+_MMConfUsr="Konfiguration der Benutzerkonten"
+_MMInstDE="Installation der Desktopoberflächen"
+_MMRunMkinit="Durchführung von Mkinitcpio"
 _Done="Abgeschlossen"
 
 # Close Installer
