@@ -89,7 +89,7 @@ _ChkEvoTitle=" Sjekker Evo's avhengigheter "
 _ChkEvoBody="\nSjekker at installereren kjøres som root og at det er en aktiv internett tilkobling. Vennligst vent...\n\n"
 
 _RtFailTitle=" Root Feil "
-_RtFailBody"\nInstallereren må kjøres som root. Avslutter.\n\n"
+_RtFailBody="\nInstallereren må kjøres som root. Avslutter.\n\n"
 
 _ConFailTitle=" Tilkobling Feilet "
 _ConFailBody="\nInternett tilkobling feilet. Avslutter.\n\n"

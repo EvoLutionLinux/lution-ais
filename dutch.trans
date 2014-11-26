@@ -89,7 +89,7 @@ _ChkEvoTitle=" Controle van de Evo Afhankelijkheden "
 _ChkEvoBody="\nControle, ben je aangemeld als ROOT? Is dit systeem verbonden met het internet? Even geduld aub...\n\n"
 
 _RtFailTitle=" Niet aangemeld als ROOT. Afsluiten "
-_RtFailBody"\nJe moet aangemeld zijn als ROOT. Afsluiten.\n\n"
+_RtFailBody="\nJe moet aangemeld zijn als ROOT. Afsluiten.\n\n"
 
 _ConFailTitle=" Geen internetverbinding "
 _ConFailBody="\nTest internetverbinding mislukt. Afsluiten\n\n"

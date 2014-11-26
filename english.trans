@@ -89,7 +89,7 @@ _ChkEvoTitle=" Checking Evo Requirements "
 _ChkEvoBody="\nChecking installer has been run as root and that there is an active internet connection. Please wait...\n\n"
 
 _RtFailTitle=" Root Failure "
-_RtFailBody"\nThe installer must be run as root. Exiting.\n\n"
+_RtFailBody="\nThe installer must be run as root. Exiting.\n\n"
 
 _ConFailTitle=" Connection Failure "
 _ConFailBody="\nInternet connection test failed. Exiting.\n\n"

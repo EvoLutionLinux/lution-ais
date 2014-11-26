@@ -89,7 +89,7 @@ _ChkEvoTitle="Überpüfung der Evo-Abhändigkeiten "
 _ChkEvoBody="\nDie Vorbereitung der Installation wurde mit Superuser-Rechten gestartet. Internetverbindung ist aktiviert, bitte warten...\n\n"
 
 _RtFailTitle="Der Installer muss mit Superuser-Rechten gestartet werden.Schließe.."
-_RtFailBody"\nThe installer must be run as root. Exiting.\n\n"
+_RtFailBody="\nThe installer must be run as root. Exiting.\n\n"
 
 _ConFailTitle=" Verbindung gescheitert "
 _ConFailBody="\nEs konnte keine Verbindung zum Internet hergestellt werden.Schließe.\n\n"
@@ -425,7 +425,7 @@ _MMInstBse="Installation des Grundsystems"
 _MMConfBse="Konfiguration des Grundsystems"
 _MMConfUsr="Konfiguration der Benutzerkonten"
 _MMInstDE="Installation der Desktopoberflächen"
-_MMRunMkinit="Durchführung von Mkinitcpio"
+_MMRunMkinit="Durchführung von Mkinitcpio "
 _Done="Abgeschlossen"
 
 # Close Installer

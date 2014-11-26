@@ -89,7 +89,7 @@ _ChkEvoTitle=" Comprobando los requisitos de Evo"
 _ChkEvoBody="\nComprobando que el instalador se ha ejecutado como root y que estás conectado a Internet. Por favor espera...\n\n"
 
 _RtFailTitle=" No se ha ejecutado como root "
-_RtFailBody"\nEl instalador debe ejecutarse como root. Saliendo del instalador.\n\n"
+_RtFailBody="\nEl instalador debe ejecutarse como root. Saliendo del instalador.\n\n"
 
 _ConFailTitle=" Error de conexión "
 _ConFailBody="\nPrueba de conexión a Internet fallida. Saliendo del instalador.\n\n"
