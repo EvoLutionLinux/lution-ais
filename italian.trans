@@ -1,9 +1,8 @@
 ##
 ##
-## Italian Translation File (partial)
+## Italian Translation File
 ##
-##
-## Written by hashcat for Evo/Lution Linux (24th November 2014)
+## Written by hashcat for Evo/Lution Linux (26th November 2014)
 ##
 ##
 
@@ -90,7 +89,7 @@ _ChkEvoTitle=" Verifica dei requisiti di Evo "
 _ChkEvoBody="\nVerifico che l'installer sia stato eseguito come Root e che vi sia una connessione ad internet attiva. Attendere prego...\n\n"
 
 _RtFailTitle=" Requisito di Root non soddisfatto "
-_RtFailBody"\nL'installer deve essere eseguito come Root. Procedura terminata.\n\n"
+_RtFailBody="\nL'installer deve essere eseguito come Root. Procedura terminata.\n\n"
 
 _ConFailTitle=" Errore della connessione ad Internet "
 _ConFailBody="\nIl test della connessione ad Internet è fallito. Procedura terminata.\n\n"
@@ -132,7 +131,7 @@ _TimeZTitle=" Configura il fuso orario "
 _TimeZBody="\nIl fuso orario è utilizzato per impostare correttamente l'ora del sistema."
 _TimeSubZTitle=" Seleziona la zona di fuso orario "
 _TimeSubZBody="\nSeleziona la città più vicina alla tua posizione."
-_TimeZQ="Imposta il fuso orario come ?"# Note: "${ZONE}/${SUBZONE}" are two variables, so do not need to be translated
+_TimeZQ="Imposta il fuso orario come"
 
 # Set Hardware Clock
 _HwCTitle=" Configura l'orologio hardware "
@@ -174,8 +173,8 @@ _NUsrErrBody="\nE' stato scelto un nome utente non valido. Provare nuovamente.\n
 
 # Set User Password
 _PassNUsrTitle=" Configura la password dell'utente "
-_PassNUsrBody="\nImmetti la password per"# Note that "$USER" is a variable (no translation needed)
-_PassNUsrBody2="\nImmetti nuovamente la password per"# Note that "$USER" is a variable (no translation needed)
+_PassNUsrBody="\nImmetti la password per"
+_PassNUsrBody2="\nImmetti nuovamente la password per"
 
 # Create New User
 _NUsrSetTitle=" Configura l'account utente "
@@ -247,8 +246,8 @@ _ExtPartBody="\nSeleziona le partizioni addizionali in qualsiasi ordine, altrime
 
 # Name Extra Partitions
 _ExtNameTitle=" Assegna un percorso alle partizioni:"
-_ExtNameBodyUefi="\nAd esempio: /home o /var.\n\nAssicurati che il nome sia preceduto da una sbarra (/)."# UEFI Systems
-_ExtNameBodyBios="\nAd esempio: /boot o /home.\n\nAssicurati che il nome sia preceduto da una sbarra (/)."# BIOS Systems
+_ExtNameBodyUefi="\nAd esempio: /home o /var.\n\nAssicurati che il nome sia preceduto da una sbarra (/)."
+_ExtNameBodyBios="\nAd esempio: /boot o /home.\n\nAssicurati che il nome sia preceduto da una sbarra (/)."
 
 # Extra Partition Naming Error
 _ExtErrTitle=" Percorso della partizione non valido "
@@ -277,7 +276,7 @@ _InstGrubDevBody2="\n\nScegli 'Si' se vuoi installarlo su di un solo dispositivo
 
 # Syslinux Installation
 _InstSysTitle=" Verifica della configurazione di Syslinux "
-_InstSysBody="\nPrima di chiudere il file di configurazione di Syslinux si prega di controllarne la validità.\n\nQuesto dovrebbe contenere il comando:\n"# "$ROOT_PART" is a variable
+_InstSysBody="\nPrima di chiudere il file di configurazione di Syslinux si prega di controllarne la validità.\n\nQuesto dovrebbe contenere il comando:\n"
 
 # Install UEFI Bootloader
 _InstUefiBtTitle=" Installa il Bootloader per UEFI "
@@ -349,7 +348,7 @@ _DmChBody="\nSono stati installati sia Gnome che KDE. Seleziona il display manag
 
 # KDM or GDM Choice Made
 _DmDoneTitle="Abilitato "
-_DMDoneBody"è stato abilitato.\n\n"
+_DMDoneBody="è stato abilitato.\n\n"
 
 # LXDM
 _DmLxdmTitle=" Abilitato LXDM "
