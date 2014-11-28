@@ -1753,7 +1753,7 @@ install_nm() {
       NM_INSTALLED=1
    
    else
-      dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstNMDoneTitle" --msgbox "_InstNMErrBody" 0 0
+      dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstNMDoneTitle" --msgbox "$_InstNMErrBody" 0 0
    fi
 }
 
