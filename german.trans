@@ -3,12 +3,12 @@
 ## German/Deutsch Translation File
 ##
 ##
-## Written by Paul Kaminski for Evo/Lution Linux (23rd November 2014)
+## Written by freecaster for Evo/Lution Linux (26th November 2014)
 ##
 ##
 
 # Select Config Files
-_SeeConfOpt="Überprüfung der Konfigurationsdateien (optional)"
+_SeeConfOpt="Überprüfung der Konfigurationsdateien(frewillig)"
 _SeeConfOptTitle=" Konfigurationsdateien "
 _SeeConfOptBody="\n.Wählen Sie unten eine beliebige Datei, welche überprüft oder geändert werden soll.\n"
 _SeeConfErrTitle=" Überprüfung gescheitert! "
@@ -19,11 +19,11 @@ _SeeConfErrBody2="\nDas Base-System muss zuerst installiert werden.\n\n"
 _PrepPacKey="Erneuerung der pacman-keys"
 
 # Logical Volume Management
-_PrepLVM="Logical Volume Management (optional)"
+_PrepLVM="Logical Volume Management (frewillig)"
 
 _LvmDetTitle=" Ein LVM wurde gefunden "
 _LvmDetBody1="\nDer vorhandene Logical Volume Management (LVM) wurde gefunden.Die Partitionen die bereits für LVM benutzt werden, können nicht ausgewählt werden.Wollen Sie das existierende LVM löschen?\n\nWählen Sie 'Ja' um  LVM zu entfernen.\nWählen Sie 'Nein' um abzubrechen.\n"
-_LvmRmTitle=" Deaktivierung LVM " #_LvmRmTitle=" Aktivierung des LVM "
+_LvmRmTitle=" Deaktivierung LVM "
 _LvmDetBody2="\nDas existierende Logical Volume Management (LVM) wurde gefunden. Aktiverung läuft.Bitte warten...\n\n"
 _LvmRmBody="\nDeaktivierung aller vorhanden Physical Volumes (PV), Volume Groups (VG), and Logical Volumes (LV).\n\nBitte warten...\n\n"
 
@@ -85,7 +85,7 @@ _DevShowTitle=" Geräte/ Partitionen "
 _DevShowOpt="Liste der Geräte ( als Option)"
 
 # Check Evo Requirements and Identify System Type
-_ChkEvoTitle="Überpüfung der Evo-Abhändigkeiten "
+_ChkEvoTitle="Überpüfung der Evo-Abhängigkeiten "
 _ChkEvoBody="\nDie Vorbereitung der Installation wurde mit Superuser-Rechten gestartet. Internetverbindung ist aktiviert, bitte warten...\n\n"
 
 _RtFailTitle="Der Installer muss mit Superuser-Rechten gestartet werden.Schließe.."
@@ -94,8 +94,8 @@ _RtFailBody="\nThe installer must be run as root. Exiting.\n\n"
 _ConFailTitle=" Verbindung gescheitert "
 _ConFailBody="\nEs konnte keine Verbindung zum Internet hergestellt werden.Schließe.\n\n"
 
-_ReqMetTitle=" Alle Abhändigkeiten sind erfüllt! "
-_ReqMetBody="\nAlle Überprüfungen erfolgreich abgeschlossen! \n\n"
+_ReqMetTitle=" Alle Abhängigkeiten sind erfüllt! "
+_ReqMetBody="\nAlle Überprüfungen wurden erfolgreich abgeschlossen! \n\n"
 
 _UefiDet="UEFI System erkannt"
 _BiosDet="BIOS System erkannt"
@@ -131,10 +131,10 @@ _TimeZTitle="Zeitzone"
 _TimeZBody="\nDie Zeitzone wird benutzt um die korrekte Uhrzeit von Ihrem System einzustellen."
 _TimeSubZTitle="nIhr Kontinent"
 _TimeSubZBody="\nIhre näheste Stadt"
-_TimeZQ="Zeitzone einstellen als" 
+_TimeZQ="Zeitzone einstellen als"
 
 # Set Hardware Clock
-_HwCTitle="Hardware-Uhrzeit " 
+_HwCTitle="Hardware-Uhrzeit "
 _HwCBody="\nUTC ist das universelle Zeitstandard, und wird besonders für dual-booting mit Windows empfohlen."
 _HwCUTC="UTC"
 _HwLocal="Ortszeit"
@@ -152,12 +152,12 @@ _FstabChkBody="\nBitte überpüfen Sie die FSTAB-Datei, bevor Sie mit der nächs
 
 # Set Hostname
 _HostNameTitle=" Hostname"
-_HostNameBody="\nDer Hostname wird zur Identifizierung des System in einem Netzwerk verwendent.\n\nEs sind alle alphanumerische Zeichen erlaubt, es kann auch einen Bindestrich enthalten (-) - jedoch nicht am Anfang oder Ende des Hostnamens – und darf nicht länger als 63 Zeichen betragen.\n"
+_HostNameBody="\nDer Hostname wird zur Identifizierung des System in einem Netzwerk verwendet.\n\nEs sind alle alphanumerischen Zeichen erlaubt, es kann auch einen Bindestrich enthalten (-) - jedoch nicht am Anfang oder Ende des Hostnamens – und darf nicht länger als 63 Zeichen betragen.\n"
 
 # Set Root Password
 _PassRtTitle=" Root-Passwort "
 _PassRtBody="\nBitte geben Sie den Root-Passwort ein\n\n"
-_PassRtBody2="\nBitte wiederholen Sie Ihren Root-Passwort \n\n"
+_PassRtBody2="\nBitte wiederholen Sie Ihr Root-Passwort \n\n"
 
 # Root Password Error
 _PassRtErrTitle=" Vergabe des Roots-Passwortes gescheitert! "
@@ -173,8 +173,8 @@ _NusrErrBody="\nDer Name des Benutzers stimmt nicht überein.Bitte versuchen Sie
 
 # Set User Password
 _PassNUsrTitle=" Benutzer-Passwort"
-_PassNUsrBody="\nBitte geben Sie einen Passwort für den Benutzer ein." 
-_PassNUsrBody2="\nBitte wiederholen Sie den Passwort"
+_PassNUsrBody="\nBitte geben Sie ein Passwort für den Benutzer ein."
+_PassNUsrBody2="\nBitte wiederholen Sie das Passwort"
 
 # Create New User
 _NusrSetTitle="Erstellung des Benutzerkontos "
@@ -182,7 +182,7 @@ _NusrSetBody="\nErstelle Benutzerkonto und stelle Gruppen ein...\n\n"
 
 # User Password Error
 _PassNUsrErrTitle=" Benutzer-Passwortvergabe gescheitert! "
-_PassNUsrErrBody="\nDer Benutzerpasswort und seine Wiederholung stimmen nicht überein. Bitte versuchen Sie es erneut.\n\n"
+_PassNUsrErrBody="\nDas Benutzerpasswort und seine Wiederholung stimmen nicht überein. Bitte versuchen Sie es erneut.\n\n"
 
 # Mounting (Partitions)
 _MntStatusTitle=" Anbindungsstatus "
@@ -191,7 +191,7 @@ _MntStatusFail="Anbindung durchgefallen!"
 
 # Select Device (installation)
 _DevSelTitle=" Auswahl des Datenträgers "
-_DevSelBody="\nDatenträger (/dev) sind eingebaute und angebundene Festplatten oder USB-sticks für einen Installationsvorgang. Die Partitionen haben je nach Anzahl der Partitionen hinter der Bezeichnung /sda eine Nummer, die Wechseldatenträger haben je nach Anzahl der Partitionen hinter der Bezeichnung /sdb ebenso eine Nummer usw.\n\nFalls ein USB-Stick mit dem hochgefahrenem Evo/Lution-Installer benutzt wird, bitte vorsichtig sein: es wird unter Installationsmedien mitaufgelistet!!!"
+_DevSelBody="\nDatenträger (/dev) sind eingebaute und angebundene Festplatten oder USB-Sticks für einen Installationsvorgang. Die Partitionen haben je nach Anzahl der Partitionen hinter der Bezeichnung /sda eine Nummer, die Wechseldatenträger haben je nach Anzahl der Partitionen hinter der Bezeichnung /sdb ebenso eine Nummer usw.\n\nFalls ein USB-Stick mit dem hochgefahrenem Evo/Lution-Installer benutzt wird, bitte vorsichtig sein: es wird unter Installationsmedien mit aufgelistet!!!"
 
 # Select Device (Grub) - seperate body text is not required (uses standard device selection text)
 _DevSelGrubTitle=" Auswahl des GRUB-Datenträgers "
@@ -276,7 +276,7 @@ _InstGrubDevBody2="\n\nBestätigen Sie mit 'Ja' wenn Sie die Installation nur au
 
 # Syslinux Installation
 _InstSysTitle=" Syslinux Konfigurationscheck "
-_InstSysBody="\nBitte prüfen Sie die syslinux- Konfigurationsdatei.\n\nEs sollte einen Befehl beinhalten:\n" # "$ROOT_PART" is a variable
+_InstSysBody="\nBitte prüfen Sie die syslinux- Konfigurationsdatei.\n\nEs sollte einen Befehl beinhalten:\n" 
 
 # Install UEFI Bootloader
 _InstUefiBtTitle=" Installiere UEFI-Bootloader "
@@ -285,7 +285,7 @@ _InstUefiBtBody="\nGrub2 am meisten eingesetzte und funktionsreiche Option (kein
 # Set UEFI Grub as default
 _SetGrubDefTitle=" Grub als Standardbootloader installieren? "
 _SetGrubDefBody="\nManche UEFI-Firmware findet keinen Grub-Manager,es sei denn es wurde als Standardbootloader eingestellt,was dazu führt,dass Sie startunfähiges System haben.\n\nMöchten Sie Grub als Standardbootloader setzen?\n\nEs wird empfohlen ein 'Ja' auszuwählen,insbesondere als Anfänger. Es wird eine Kopie der bootfähiger Datei grubx64.efi nach"
-_SetGrubDefBody2="erzeugt,und als voraussetzende bootx64.efi umbenannt.\n\n Andernfalls wählen Sie'No', insbesondere dann, wenn bereits ein Standard-Bootloader ausgewählt wurde,und/oder wenn Sie die Verwendung von mehreren Bootloadern beabsichtigen."
+_SetGrubDefBody2="erzeugt,und als voraussetzende bootx64.efi umbenannt.\n\n Andernfalls wählen Sie'Nein', insbesondere dann, wenn bereits ein Standard-Bootloader ausgewählt wurde,und/oder wenn Sie die Verwendung von mehreren Bootloadern beabsichtigen."
 
 # Gummiboot Configuration Check
 _ChkGumTitle=" Gummiboot Konfigurationscheck "
@@ -307,7 +307,7 @@ _RefiErrBody="\nDer rEFInd-Installationsscript wird nicht funktionieren, es sei 
 
 # ALSA, Xorg, Input
 _AXITitle=" ALSA, Xorg, und Eingabegeräte "
-_AXIBody="\nVor der Installation von Grafiktreiber(n) oder Desktop-Oberflächen, werden als Erstes folgende Pakete benötigt:\n\n ALSA - Advanced Linux Sound Architecture\nxorg-* - open-source X-window-system für Grafik \nxf86-input-* - open-source Treiber für Eingabegeräte\n\n"
+_AXIBody="\nVor der Installation von Grafiktreiber(n) oder Desktop-Oberflächen, werden als Erstes folgende Pakete benötigt:\n\n ALSA - Advanced Linux Sound Architekture\nxorg-* - open-source X-window-system für Grafik \nxf86-input-* - open-source Treiber für Eingabegeräte\n\n"
 
 # Graphics Card Menu
 _GCtitle=" Grafikkartenmenü "
@@ -328,8 +328,8 @@ _DEInfoTitle="Desktopoberflächen"
 _DEInfoBody="\nDiese Option kann wiederholt werden, um verschiedene Desktopoberflächen zu installieren.\n\nGnome, KDE, und LXDE installieren automatisch einen eigenen Loginmanager.\n\nCinnamon, Gnome und KDE installieren einen Netzwerkmanager.\n\n"
 
 # Install DE Menu
-_InstDETitle=" Installiere Desktopoberflächen "
-_InstDEBody="\nDie Desktopoberflächen werden zuerst aufgelistetund haben verschiedene Installationsvarianten.\n\nDie Desktopoberfläche KDE hat einen ungefähren Downloadvolumen von 750MB und mehr..."
+_InstDETitle="Installation der Desktopoberflächen"
+_InstDEBody="\nDie Desktopoberflächen werden zuerst aufgelistet und haben verschiedene Installationsvarianten.\n\nDie Desktopoberfläche KDE hat einen ungefähren Downloadvolumen von 750MB und mehr..."
 
 # Install Common Packages
 _InstComTitle=" Installiere Zusatzpakete für Desktopoberflächen?"
@@ -364,8 +364,8 @@ _DmInstTitle=" Display Manager wurde bereits installiert "
 _DmInstBody="\nDer Loginmanager wurde bereits installiert und aktiviert.\n\n"
 
 # Network Manager
-_InstNMTitle=" Auswahl des Netzwerkmanagers "
-_InstNMBody="\n Das Paket Network -Manager wird zur Installation empfohlen,inbesondere für Drahtlosnetzwerken-und PPPoE/DSL-Verbidungen.\n"
+_InstNMTitle="Auswahl des Netzwerkmanagers "
+_InstNMBody="\n Das Paket Network -Manager wird zur Installation empfohlen,insbesondere für Drahtlosnetzwerken-und PPPoE/DSL-Verbidungen.\n"
 
 # Network Manager Installed
 _InstNMDoneTitle=" Netzwerk-Manager wurde erfolgreich installiert "
@@ -379,7 +379,7 @@ _WelTitle=" Willkommen!"
 _WelBody="\nDie hellgekennzeicheneten Schritte können mit der Eingabe ihrer Nummer oder mit den Tasten oben/unten vor der Bestätigung mit ENTER-Taste navigiert werden.\n\nMit der TAB-Taste können Sie zwischen diesen Schritten wechseln oder mit links/rechts-Tasten vor der Bestätigung mit der ENTER-Taste navigiert werden.\n\nEine Maus-oder Touchpadbedienung ist nicht ausgeschlossen.\n\n"
 
 # Preparation Menu
-_PrepTitle=" Installationsvorbereitung "
+_PrepTitle="Vorbereitung der Installation"
 _PrepBody="\nDie Tastaturbelegung wird sowohl für den Installer als auch für die installierte Desktopoberfläche im installiertem System als Standard gesetzt.\n"
 _PrepKBLayout="Tastaturbelegung"
 _PrepMirror="Konfiguration der Spiegelserverliste für den Installer(als Option)"
@@ -388,45 +388,45 @@ _PrepMntPart="Anbindungspunkte von Partitionen"
 _Back="Back"
 
 # Install Base Menu
-_InstBsMenuTitle=" Installation von Grundssystem "
+_InstBsMenuTitle="Installation des Grundsystems"
 _InstBseMenuBody="\nEine Extra-Installation von GRUB auf Datenträgenrn mit bereits installierten Linux-Distributionen ist nicht notwendig; es reicht einen GRUB-update durchzuführen."
-_InstBse="Installiere Grundsyste,"
-_InstBootldr="Installiere Bootloader"
+_InstBse="Installation des Grundsystems"
+_InstBootldr="Installation des Bootloaders"
 
 # Configure Base Menu
-_ConfBseTitle=" Konfiguration des Grundsystems"
-_ConfBseBody="\nEs ist notwendig ein vollständiges Grundsystem zu installieren. Dieses beeinhaltet Netzwerkverbindungsoptionen, Zeit-und Spracheinstellungen,und Standard-Tastaturbelegung für das System."
-_ConfBseFstab="Generiere FSTAB"
-_ConfBseHost="Stelle Hostname ein"
-_ConfBseTime="Stelle Timezone ein"
-_ConfBseHWC="Stelle Hardware-Uhrzeit ein"
-_ConfBseSysLoc="Stelle Systemsprache ein"
-_ConfBseVirtCon="Stelle Virtual-Konsole ein"
+_ConfBseTitle="Konfiguration des Grundsystems"
+_ConfBseBody="\nEs ist notwendig ein vollständiges Grundsystem zu installieren. Dieses beinhaltet Netzwerkverbindungsoptionen, Zeit-und Spracheinstellungen,und Standard-Tastaturbelegung für das System."
+_ConfBseFstab="Generation von FSTAB"
+_ConfBseHost="Einstellung des Hostnamens"
+_ConfBseTime="Einstellung der Uhrzeit"
+_ConfBseHWC="Einstellung der Hardware-Zeit"
+_ConfBseSysLoc="Einstellung der Systemsprache"
+_ConfBseVirtCon="Einstellung der Virtual-Konsole"
 
 # User Menu
 _ConfUsrTitle="Konfiguration von Benutzerkonten/Gruppen"
-_ConfUsrBody="\nDas root-Passwort bedeutet „Super-user“ oder Administratorkonto. Das gleiche Passwort kann für root sowohl auch als für den Benutzer angelegt werden."
-_ConfUsrRoot="Setze root-Passwort"
-_ConfUsrNew="Füge neue Benutzer ein"
+_ConfUsrBody="\nDas root-Passwort bedeutet 'Super-user' oder Administratorkonto.Das gleiche Passwort kann für root sowohl auch als für den Benutzer angelegt werden."
+_ConfUsrRoot="Root-Passwort anlegen"
+_ConfUsrNew="Benutzer anlegen"
 
 # Desktop Menu
-_InstDEMenuTitle=" Installiere Desktopoberfläche(n)"
-_InstDEMenuBody="\n Vor der Installation einer Desktopoberfläche, MÜSSEN zuerst alle Grafikeinheits, Ein-und Ausgabegeräte -und Soundtreiber installiert werden.Die Installation von Grafikkartentreibern gehört ebenso dazu."
-_InstDEMenuGISD="Installiere Grafik, Ein-und Ausgabegeräte, und Soundtreiber"
-_InstDEMenuDE="Installiere Desktopoberfläche(n)"
-_InstDEMenuNM="Installiere Netzwerkverbindungsmanager"
-_InstDEMenuDM="Installiere Loginmanager"
+_InstDEMenuTitle=" Installation von Desktopoberflächen"
+_InstDEMenuBody="\n Vor der Installation einer Desktopoberfläche, MÜSSEN zuerst alle Grafik-sowie Ein-und Ausgabegeräte -und Soundtreiber installiert werden.Die Installation von Grafikkartentreibern gehört ebenso dazu."
+_InstDEMenuGISD="Installation von Grafik, Ein-und Ausgabegeräte, und Soundtreibern"
+_InstDEMenuDE="Installation der Desktopoberflächen"
+_InstDEMenuNM="Installation des Netzwerkmanagers"
+_InstDEMenuDM="Installation des Loginmanagers"
 
 # Main Menu
-_MMTitle="Hauptmenü "
+_MMTitle="Hauptmenü"
 _MMBody="\nAlle Schritte müssen nach der Reihenfolge fertig sein. Wenn alles erledigt wurde, wählen Sie bitte 'Installation abschließen' um die Installation zu beenden.\n"
 _MMPrep="Vorbereitung der Installation"
 _MMInstBse="Installation des Grundsystems"
 _MMConfBse="Konfiguration des Grundsystems"
 _MMConfUsr="Konfiguration der Benutzerkonten"
 _MMInstDE="Installation der Desktopoberflächen"
-_MMRunMkinit="Durchführung von Mkinitcpio "
-_Done="Abgeschlossen"
+_MMRunMkinit="Durchführung von Mkinitcpio"
+_Done="Abschließen"
 
 # Close Installer
-_CloseInstBody="Soll Installer geschlossen werden?"
+_CloseInstBody="Soll der Installer geschlossen werden?"

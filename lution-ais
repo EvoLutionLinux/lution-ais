@@ -1,6 +1,6 @@
 # !/bin/bash
 #
-# Lution-AIS installer (version 0.4.3 - 26th November 2014)
+# Lution-AIS installer (version 0.4.4 - 29th November 2014)
 #
 # Written by Carl Duff for Evo/Lution Linux
 #
@@ -26,58 +26,62 @@
 ANSWER="/tmp/.lution"
 
 # Save retyping
-VERSION="Lution-AIS 0.4.3"
+VERSION="Lution-AIS 0.4.4"
 
 # Installation
-  KDE_INSTALLED=0      	# Has KDE been installed? Used for display manager option
-  GNOME_INSTALLED=0    	# Has Gnome been installed? Used for display manager option
-  LXDE_INSTALLED=0     	# Has LXDE been installed? Used for display manager option
-  DM_INSTALLED=0       	# Has a display manager been installed?
-  COMMON_INSTALLED=0   	# Has the common-packages option been taken?
-  NM_INSTALLED=0       	# Has a network connection manager been installed and enabled?
-  BOOTLOADER="n/a"      # Which bootloader has been installed?
-  EVOBOXFM=""           # Which file manager has been selected for EvoBox?
-  EVOBOXIB=""           # Which Internet Browser has been selected for EvoBox?
-  DM="n/a"              # Which display manager has been installed?
-  KEYMAP="us"          	# Virtual console keymap. Default is "us"
-  XKBMAP="us"      	    # X11 keyboard layout. Default is "us"
-  ZONE=""               # For time
-  SUBZONE=""            # For time
-  LOCALE="en_US.UTF-8"  # System locale. Default is "en_US.UTF-8"
-  LTS=0                	# Has the LTS Kernel been installed?
-  GRAPHIC_CARD=$(hwinfo --gfxcard|grep 'Model:[[:space:]]')  # Auto-detect popular graphics cards
-  GC_DETECTED=""        # Name of Graphics Card Detected
-  NVIDIA_INST=0         # Indicates if NVIDIA proprietary driver has been installed
-  SHOW_ONCE=0           # Show de_wm information only once
+KDE_INSTALLED=0      		# Has KDE been installed? Used for display manager option
+PLASMA_INSTALLED=0    		# Has Plasma 5 been installed? Used for display manager option
+GNOME_INSTALLED=0    		# Has Gnome been installed? Used for display manager option
+LXDE_INSTALLED=0     		# Has LXDE been installed? Used for display manager option
+DM_INSTALLED=0       		# Has a display manager been installed?
+COMMON_INSTALLED=0   		# Has the common-packages option been taken?
+NM_INSTALLED=0       		# Has a network connection manager been installed and enabled?
+BOOTLOADER="n/a"      		# Which bootloader has been installed?
+EVOBOXFM=""           		# Which file manager has been selected for EvoBox?
+EVOBOXIB=""           		# Which Internet Browser has been selected for EvoBox?
+DM="n/a"              		# Which display manager has been installed?
+KEYMAP="us"          		# Virtual console keymap. Default is "us"
+XKBMAP="us"      	    	# X11 keyboard layout. Default is "us"
+ZONE=""               		# For time
+SUBZONE=""            		# For time
+LOCALE="en_US.UTF-8"  		# System locale. Default is "en_US.UTF-8"
+LTS=0                		# Has the LTS Kernel been installed?
+GRAPHIC_CARD=$(hwinfo --gfxcard|grep 'Model:[[:space:]]')  # Auto-detect popular graphics cards
+GC_DETECTED=""        		# Name of Graphics Card Detected
+NVIDIA_INST=0         		# Indicates if NVIDIA proprietary driver has been installed
+SHOW_ONCE=0           		# Show de_wm information only once
   
 # Architecture
-  ARCHI=`uname -m`     	# Display whether 32 or 64 bit system
-  UEFI=0               	# Is the system UEFI?
-  SYSTEM="Unknown"     	# Display whether system is BIOS or UEFI. Default is "unknown"
-  ROOT_PART=""          # ROOT partition
-  UEFI_PART=""			# UEFI partition
-  UEFI_MOUNT=""         # UEFI mountpoint
-  INST_DEV=""           # Device where system has been installed
-  HIGHLIGHT=0           # Highlight items for Main Menu
-  HIGHLIGHT_SUB=0	    # Highlight items for submenus
-  SUB_MENU=""           # Submenu to be highlighted
+ARCHI=`uname -m`     		# Display whether 32 or 64 bit system
+UEFI=0               		# Is the system UEFI?
+SYSTEM="Unknown"     		# Display whether system is BIOS or UEFI. Default is "unknown"
+ROOT_PART=""          		# ROOT partition
+UEFI_PART=""				# UEFI partition
+UEFI_MOUNT=""         		# UEFI mountpoint
+INST_DEV=""           		# Device where system has been installed
+HIGHLIGHT=0           		# Highlight items for Main Menu
+HIGHLIGHT_SUB=0	    		# Highlight items for submenus
+SUB_MENU=""           		# Submenu to be highlighted
 
-# Logical Volume Management and Encryption
-LVM=0                   # Logical Volume Management Detected?
-LUKS=0                  # Luks Detected?
-LVM_ROOT=0              # LVM used for Root?
-LVM_SEP_BOOT=0          # 1 = Seperate /boot, 2 = seperate /boot & LVM
-LVM_DISABLE=0           # Option to allow user to deactive existing LVM
-LVM_MKINIT=0            # determine if mkinitcpio has already been amended
-LVM_VG=""               # Name of volume group to create
-LVM_VG_MB=0             # MB remaining of VG
-LVM_LV_NAME=""          # Name of LV to create
-LV_SIZE_INVALID=0       # Is LVM LV size entered valid?
-VG_SIZE_TYPE=""         # Is VG in Gigabytes or Megabytes?
+# Logical Volume Management
+LVM=0                   	# Logical Volume Management Detected?
+LUKS=0                  	# Luks Detected?
+LVM_ROOT=0              	# LVM used for Root?
+LVM_SEP_BOOT=0          	# 1 = Seperate /boot, 2 = seperate /boot & LVM
+LVM_DISABLE=0           	# Option to allow user to deactive existing LVM
+LVM_VG=""               	# Name of volume group to create
+LVM_VG_MB=0             	# MB remaining of VG
+LVM_LV_NAME=""          	# Name of LV to create
+LV_SIZE_INVALID=0       	# Is LVM LV size entered valid?
+VG_SIZE_TYPE=""         	# Is VG in Gigabytes or Megabytes?
 
 # Installation
-MOUNTPOINT="/mnt"       # Installation
-MOUNT_TYPE=""           # "/dev/" for standard partitions, "/dev/mapper" for LVM
+MOUNTPOINT="/mnt"       	# Installation
+MOUNT_TYPE=""           	# "/dev/" for standard partitions, "/dev/mapper" for LVM
+
+# Language Support
+EVO_LOCALE="en_US.UTF-8"    # What Evo Locale is to be used?
+
 
 ######################################################################
 ##																	##
@@ -85,7 +89,7 @@ MOUNT_TYPE=""           # "/dev/" for standard partitions, "/dev/mapper" for LVM
 ##																	##
 ######################################################################
 
-# Multi-lingual support.
+# Add locale on-the-fly and sets source translation file for installer
 select_language() {
 
     dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " Select Language " --menu "\nLanguage / Sprache / Taal / nγλώσσα / språk / lingua / idioma / язык" 18 30 8 \
@@ -100,46 +104,60 @@ select_language() {
 
 	case $(cat ${ANSWER}) in
         "1") source /lution-ais-master/english.trans
+             EVO_LOCALE="en_US.UTF-8"
              ;;
         "2") source /lution-ais-master/german.trans
+             EVO_LOCALE="de_DE.UTF-8" 
              ;;
         "3") source /lution-ais-master/dutch.trans
+             EVO_LOCALE="nl_NL.UTF-8"
              ;;
         "4") source /lution-ais-master/greek.trans
+             EVO_LOCALE="el_GR.UTF-8"
              ;;
         "5") source /lution-ais-master/norwegian.trans
+             EVO_LOCALE="nl_NL.UTF-8"
              ;;
         "6") source /lution-ais-master/italian.trans
+             EVO_LOCALE="it_IT.UTF-8"
              ;;
         "7") source /lution-ais-master/spanish.trans
+             EVO_LOCALE="es_ES.UTF-8"
              ;;
         "8") source /lution-ais-master/russian.trans
+             EVO_LOCALE="ru_RU.UTF-8"
              ;;             
           *) exit 0
              ;;
     esac
+    
+    # Now generate the chosen locale
+    sed -i "s/#${EVO_LOCALE}/${EVO_LOCALE}/" /etc/locale.gen
+    locale-gen >/dev/null 2>&1
 
 }
+
+
 
 # Check user is root, and that there is an active internet connection
 # Seperated the checks into seperate "if" statements for readability.
 check_evo_requirements() {
 	
-  dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ChkEvoTitle" --infobox "$_ChkEvoBody" 0 0
+  env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ChkEvoTitle" --infobox "$_ChkEvoBody" 0 0
   sleep 2
   
   if [[ `whoami` != "root" ]]; then
-     dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_RtFailTitle" --infobox "$_RtFailBody" 0 0
+     env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_RtFailTitle" --infobox "$_RtFailBody" 0 0
      sleep 2
      exit 1
   fi
   
   if [[ ! ` ping -c 1 google.com ` ]]; then
-     dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ConFailTitle" --infobox "$_ConFailBody" 0 0
+     env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ConFailTitle" --infobox "$_ConFailBody" 0 0
      sleep 2
      exit 1
   else
-     dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ReqMetTitle" --infobox "$_ReqMetBody" 0 0
+     env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ReqMetTitle" --infobox "$_ReqMetBody" 0 0
      sleep 2   
      clear
      pacman -Syy
@@ -186,7 +204,7 @@ arch_chroot() {
 # program.
 show_devices() {
      lsblk -o NAME,MODEL,TYPE,TRAN,FSTYPE,SIZE | grep -v "loop" | grep -v "rom" | grep -v "arch_airootfs" > /tmp/.devlist
-     dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DevShowTitle" --textbox /tmp/.devlist 0 0
+     env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DevShowTitle" --textbox /tmp/.devlist 0 0
 }
 
 ######################################################################
@@ -209,27 +227,27 @@ mirror_by_country() {
      COUNTRY_LIST="${COUNTRY_LIST} ${i} -"
  done
 	
- dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MirrorCntryTitle" --menu "$_MirrorCntryBody" 0 0 16 ${COUNTRY_LIST} 2>${ANSWER} || prep_menu
+ env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MirrorCntryTitle" --menu "$_MirrorCntryBody" 0 0 16 ${COUNTRY_LIST} 2>${ANSWER} || prep_menu
  COUNTRY_CODE=$(cat ${ANSWER} |sed 's/_.*//')
 
  URL="https://www.archlinux.org/mirrorlist/?country=${COUNTRY_CODE}&use_mirror_status=on"
  MIRROR_TEMP=$(mktemp --suffix=-mirrorlist)
 
  # Get latest mirror list and save to tmpfile
- dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MirrorGenTitle" --infobox "$_MirrorGenBody" 0 0
+ env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MirrorGenTitle" --infobox "$_MirrorGenBody" 0 0
   
  curl -so ${MIRROR_TEMP} ${URL}
  sed -i 's/^#Server/Server/g' ${MIRROR_TEMP}
  leafpad ${MIRROR_TEMP}
 
- dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --yesno "$_MirrorGenQ" 0 0 \
+ env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --yesno "$_MirrorGenQ" 0 0 \
  && mv -i -f /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.orig \
  && mv -i -f ${MIRROR_TEMP} /etc/pacman.d/mirrorlist \
  && chmod +r /etc/pacman.d/mirrorlist \
- && dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --msgbox "$_MirrorGenDone" 0 0 || prep_menu
+ && env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --msgbox "$_MirrorGenDone" 0 0 || prep_menu
 }
 
-dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MirrorlistTitle" \
+env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MirrorlistTitle" \
     --menu "$_MirrorlistBody" 0 0 2 \
 	"1" "$_MirrorbyCountry" \
 	"2" "$_MirrorEdit" 2>${ANSWER}	
@@ -237,7 +255,7 @@ dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MirrorlistTitle" \
     case $(cat ${ANSWER}) in
         "1") mirror_by_country
              ;;
-        "2") gksu leafpad /etc/pacman.d/mirrorlist
+        "2") env LANG=$EVO_LOCALE gksu leafpad /etc/pacman.d/mirrorlist
              ;;
           *) prep_menu
              ;;
@@ -253,7 +271,7 @@ set_keymap() {
         KEYMAPS="${KEYMAPS} ${i} -"
     done
     
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_KeymapTitle" \
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_KeymapTitle" \
     --menu "$_KeymapBody" 20 40 16 ${KEYMAPS} 2>${ANSWER} || config_base_menu
     KEYMAP=$(cat ${ANSWER})
     echo "KEYMAP=$KEYMAP" > ${MOUNTPOINT}/etc/vconsole.conf
@@ -270,7 +288,7 @@ set_keymap() {
         XKBMAP_LIST="${XKBMAP_LIST} ${i} -"
     done
 	
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_XkbmapTitle" --menu "$_XkbmapBody" 0 0 16 ${XKBMAP_LIST} 2>${ANSWER} || prep_menu
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_XkbmapTitle" --menu "$_XkbmapBody" 0 0 16 ${XKBMAP_LIST} 2>${ANSWER} || prep_menu
     XKBMAP=$(cat ${ANSWER} |sed 's/_.*//')
     echo -e "Section "\"InputClass"\"\nIdentifier "\"system-keyboard"\"\nMatchIsKeyboard "\"on"\"\nOption "\"XkbLayout"\" "\"${XKBMAP}"\"\nEndSection" > /tmp/00-keyboard.conf
     setxkbmap $XKBMAP
@@ -285,7 +303,7 @@ set_locale() {
       LOCALES="${LOCALES} ${i} -"
   done
 
-  dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LocateTitle" --menu "$_localeBody" 0 0 16 ${LOCALES} 2>${ANSWER} || config_base_menu 
+  env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LocateTitle" --menu "$_localeBody" 0 0 16 ${LOCALES} 2>${ANSWER} || config_base_menu 
   LOCALE=$(cat ${ANSWER})
   
   echo 'LANG="'$LOCALE'"' > ${MOUNTPOINT}/etc/locale.conf  
@@ -301,7 +319,7 @@ set_timezone() {
       ZONE="$ZONE ${i} -"
     done
     
-     dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_TimeZTitle" --menu "$_TimeZBody" 0 0 11 ${ZONE} 2>${ANSWER} || config_base_menu
+     env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_TimeZTitle" --menu "$_TimeZBody" 0 0 11 ${ZONE} 2>${ANSWER} || config_base_menu
      ZONE=$(cat ${ANSWER}) 
     
      SUBZONE=""
@@ -309,16 +327,16 @@ set_timezone() {
         SUBZONE="$SUBZONE ${i} -"
      done
          
-     dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_TimeSubZTitle" --menu "$_TimeSubZBody" 0 0 11 ${SUBZONE} 2>${ANSWER} || config_base_menu
+     env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_TimeSubZTitle" --menu "$_TimeSubZBody" 0 0 11 ${SUBZONE} 2>${ANSWER} || config_base_menu
      SUBZONE=$(cat ${ANSWER}) 
     
-     dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --yesno "$_TimeZQ ${ZONE}/${SUBZONE} ?" 0 0 && arch_chroot "ln -s /usr/share/zoneinfo/${ZONE}/${SUBZONE} /etc/localtime" || config_base_menu
+     env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --yesno "$_TimeZQ ${ZONE}/${SUBZONE} ?" 0 0 && arch_chroot "ln -s /usr/share/zoneinfo/${ZONE}/${SUBZONE} /etc/localtime" || config_base_menu
     
 }
 
 set_hw_clock() {
 	
-   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_HwCTitle" \
+   env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_HwCTitle" \
     --menu "$_HwCBody" 0 0 2 \
  	"1" "$_HwCUTC" \
 	"2" "$_HwLocal" 2>${ANSWER}	
@@ -337,7 +355,7 @@ set_hw_clock() {
 # was worth repeating portions of code.
 generate_fstab() {
 
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_FstabTitle" \
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_FstabTitle" \
     --menu "$_FstabBody" 0 0 3 \
 	"1" "$_FstabDev" \
 	"2" "$_FstabLabel" \
@@ -358,16 +376,15 @@ generate_fstab() {
              ;;
     esac
 
-    #[[ $SWAPFILE -eq 1 ]] && sed -i "s/\/mnt//" ${MOUNTPOINT}/etc/fstab
     [[ -f ${MOUNTPOINT}/swapfile ]] && sed -i "s/\\${MOUNTPOINT}//" ${MOUNTPOINT}/etc/fstab
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_FstabChkTitle" --msgbox "$_FstabChkBody" 0 0
-    gksu leafpad ${MOUNTPOINT}/etc/fstab
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_FstabChkTitle" --msgbox "$_FstabChkBody" 0 0
+    env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}/etc/fstab
 }
 
 # Adapted from AIS.
 set_hostname() {
 
-   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_HostNameTitle" --inputbox "$_HostNameBody" 0 0 "evo" 2>${ANSWER} || config_base_menu
+   env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_HostNameTitle" --inputbox "$_HostNameBody" 0 0 "evo" 2>${ANSWER} || config_base_menu
    HOST_NAME=$(cat ${ANSWER})
 
    echo "$HOST_NAME" > ${MOUNTPOINT}/etc/hostname
@@ -378,10 +395,10 @@ set_hostname() {
 # Adapted and simplified from the Manjaro 0.8 and Antergos 2.0 installers
 set_root_password() {
 
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassRtTitle" --clear --insecure --passwordbox "$_PassRtBody" 0 0 2> ${ANSWER} || config_user_menu
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassRtTitle" --clear --insecure --passwordbox "$_PassRtBody" 0 0 2> ${ANSWER} || config_user_menu
     PASSWD=$(cat ${ANSWER})
     
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassRtTitle" --clear --insecure --passwordbox "$_PassRtBody2" 0 0 2> ${ANSWER} || config_user_menu
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassRtTitle" --clear --insecure --passwordbox "$_PassRtBody2" 0 0 2> ${ANSWER} || config_user_menu
     PASSWD2=$(cat ${ANSWER})
     
     if [[ $PASSWD == $PASSWD2 ]]; then 
@@ -389,7 +406,7 @@ set_root_password() {
        arch_chroot "passwd root" < /tmp/.passwd >/dev/null 2>&1
        rm /tmp/.passwd
     else
-       dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassRtErrTitle" --msgbox "$_PassRtErrBody" 0 0
+       env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassRtErrTitle" --msgbox "$_PassRtErrBody" 0 0
        set_root_password
     fi
 
@@ -398,35 +415,35 @@ set_root_password() {
 # Originally adapted from the Antergos 2.0 installer
 create_new_user() {
 
-        dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NUsrTitle" --inputbox "$_NUsrBody" 0 0 "" 2>${ANSWER} || config_user_menu
+        env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NUsrTitle" --inputbox "$_NUsrBody" 0 0 "" 2>${ANSWER} || config_user_menu
         USER=$(cat ${ANSWER})
         
         # Loop while user name is blank, has spaces, or has capital letters in it.
         while [[ ${#USER} -eq 0 ]] || [[ $USER =~ \ |\' ]] || [[ $USER =~ ^[A-Z] ]]; do
-              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NUsrTitle" --inputbox "$_NUsrErrBody" 0 0 "" 2>${ANSWER} || config_user_menu
+              env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NUsrTitle" --inputbox "$_NUsrErrBody" 0 0 "" 2>${ANSWER} || config_user_menu
               USER=$(cat ${ANSWER})
         done
         
         # Enter password. This step will only be reached where the loop has been skipped or broken.
-        dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrTitle" --clear --insecure --passwordbox "$_PassNUsrBody $USER\n\n" 0 0 2> ${ANSWER} || config_user_menu
+        env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrTitle" --clear --insecure --passwordbox "$_PassNUsrBody $USER\n\n" 0 0 2> ${ANSWER} || config_user_menu
         PASSWD=$(cat ${ANSWER}) 
     
-        dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrTitle" --clear --insecure --passwordbox "$_PassNUsrBody2 $USER\n\n" 0 0 2> ${ANSWER} || config_user_menu
+        env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrTitle" --clear --insecure --passwordbox "$_PassNUsrBody2 $USER\n\n" 0 0 2> ${ANSWER} || config_user_menu
         PASSWD2=$(cat ${ANSWER}) 
     
         # loop while passwords entered do not match.
         while [[ $PASSWD != $PASSWD2 ]]; do
-              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrErrTitle" --msgbox "$_PassNUsrErrBody" 0 0
+              env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrErrTitle" --msgbox "$_PassNUsrErrBody" 0 0
               
-              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrTitle" --clear --insecure --passwordbox "$_PassNUsrBody $USER\n\n" 0 0 2> ${ANSWER} || config_user_menu
+              env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrTitle" --clear --insecure --passwordbox "$_PassNUsrBody $USER\n\n" 0 0 2> ${ANSWER} || config_user_menu
               PASSWD=$(cat ${ANSWER}) 
     
-              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrTitle" --clear --insecure --passwordbox "$_PassNUsrBody2 $USER\n\n" 0 0 2> ${ANSWER} || config_user_menu
+              env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrTitle" --clear --insecure --passwordbox "$_PassNUsrBody2 $USER\n\n" 0 0 2> ${ANSWER} || config_user_menu
               PASSWD2=$(cat ${ANSWER}) 
         done      
     
         # create new user. This step will only be reached where the password loop has been skipped or broken.  
-        dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NUsrSetTitle" --infobox "$_NUsrSetBody" 0 0
+        env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NUsrSetTitle" --infobox "$_NUsrSetBody" 0 0
         sleep 2
         # Create the user, set password, then remove temporary password file
         arch_chroot "useradd ${USER} -m -g users -G wheel,storage,power,network,video,audio,lp -s /bin/bash"
@@ -435,7 +452,6 @@ create_new_user() {
         rm /tmp/.passwd
         # Set up basic configuration files and permissions for user
         arch_chroot "cp /etc/skel/.bashrc /home/${USER}"
-        #arch_chroot "cp /etc/skel/.xinitrc /home/${USER}"
         arch_chroot "chown -R ${USER}:users /home/${USER}"
         arch_chroot "sed -i '/%wheel ALL=(ALL) ALL/s/^#//' /etc/sudoers"
       
@@ -446,10 +462,7 @@ run_mkinitcpio() {
   clear
   
   # If $LVM is being used, add the lvm2 hook
-  if [[ $LVM -eq 1 ]] && [[ $LVM_MKINIT -eq 0 ]]; then
-     sed -i 's/block filesystems/block lvm2 filesystems/g' ${MOUNTPOINT}/etc/mkinitcpio.conf
-     LVM_MKINIT=1
-  fi
+  [[ $LVM -eq 1 ]] && sed -i 's/block filesystems/block lvm2 filesystems/g' ${MOUNTPOINT}/etc/mkinitcpio.conf
     
   # Append command depending on whether LTS kernel was installed or not
   [[ $LTS -eq 1 ]] && arch_chroot "mkinitcpio -p linux-lts" || arch_chroot "mkinitcpio -p linux"
@@ -480,12 +493,12 @@ umount_partitions_and_exit(){
 # Adapted from AIS
 confirm_mount() {
     if mount | grep $1; then
-      dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MntStatusTitle" --infobox "$_MntStatusSucc" 0 0
+      env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MntStatusTitle" --infobox "$_MntStatusSucc" 0 0
       sleep 2
       PARTITIONS="$(echo $PARTITIONS | sed s/${PARTITION}$' -'//)"
       NUMBER_PARTITIONS=$(( NUMBER_PARTITIONS - 1 ))
     else
-      dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MntStatusTitle" --infobox "$_MntStatusFail" 0 0
+      env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MntStatusTitle" --infobox "$_MntStatusFail" 0 0
       sleep 2
       prep_menu
     fi
@@ -503,7 +516,7 @@ select_device() {
         DEVICE="${DEVICE} ${i} -"
     done
     
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DevSelTitle" --menu "$_DevSelBody" 0 0 4 ${DEVICE} 2>${ANSWER} || prep_menu
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DevSelTitle" --menu "$_DevSelBody" 0 0 4 ${DEVICE} 2>${ANSWER} || prep_menu
     DEVICE=$(cat ${ANSWER})
  
   }
@@ -518,7 +531,7 @@ select_grub_device() {
         GRUB_DEVICE="${GRUB_DEVICE} ${i} -"
     done
     
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DevSelGrubTitle" --menu "$_DevSelBody" 0 0 4 ${GRUB_DEVICE} 2>${ANSWER} || install_base_menu
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DevSelGrubTitle" --menu "$_DevSelBody" 0 0 4 ${GRUB_DEVICE} 2>${ANSWER} || install_base_menu
     GRUB_DEVICE=$(cat ${ANSWER})
     clear
     arch_chroot "grub-install --target=i386-pc --recheck ${GRUB_DEVICE}"
@@ -528,7 +541,7 @@ select_grub_device() {
 # Originally adapted from AIS.
 create_partitions(){
 
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PartToolTitle" \
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PartToolTitle" \
     --menu "$_PartToolBody" 0 0 4 \
  	"1" $"GParted (GUI - BIOS & UEFI)" \
 	"2" $"CFDisk  (CLI - BIOS/MBR)" \
@@ -536,13 +549,13 @@ create_partitions(){
 	"4" $"GDisk   (CLI - UEFI/GPT)" 2>${ANSWER}	
 
     case $(cat ${ANSWER}) in
-        "1") gksu gparted ${DEVICE} >/dev/null 2>&1
+        "1") env LANG=$EVO_LOCALE gksu gparted ${DEVICE} >/dev/null 2>&1
              ;;
-        "2") cfdisk ${DEVICE}
+        "2") env LANG=$EVO_LOCALE cfdisk ${DEVICE}
              ;;
-        "3") cgdisk ${DEVICE}
+        "3") env LANG=$EVO_LOCALE cgdisk ${DEVICE}
              ;;       
-        "4") gdisk ${DEVICE}
+        "4") env LANG=$EVO_LOCALE gdisk ${DEVICE}
              ;;
           *) prep_menu
              ;;
@@ -564,12 +577,12 @@ find_partitions() {
     
     # Deal with incorrect partitioning
     if [[ $NUMBER_PARTITIONS < 2 ]] && [[ $UEFI -eq 1 ]]; then
-        dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_UefiPartErrTitle" --msgbox "$_UefiPartErrBody" 0 0
+        env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_UefiPartErrTitle" --msgbox "$_UefiPartErrBody" 0 0
         create_partitions
     fi
     
     if [[ $NUMBER_PARTITIONS -eq 0 ]] && [[ $UEFI -eq 0 ]]; then
-        dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_BiosPartErrTitle" --msgbox "$_BiosPartErrBody" 0 0	
+        env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_BiosPartErrTitle" --msgbox "$_BiosPartErrBody" 0 0	
         create_partitions
     fi
 }
@@ -578,7 +591,7 @@ find_partitions() {
 # to be remotely viable choices.
 select_filesystem(){
 
-dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_FSTitle" \
+env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_FSTitle" \
     --menu "$_FSBody" 0 0 9 \
  	"1" "$_FSSkip" \
 	"2" $"ext2" \
@@ -634,7 +647,7 @@ set_mount_type() {
     # LVM Detection. If detected, activate.
     detect_lvm
     if [[ $LVM -eq 1 ]]; then
-       dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmDetTitle" --infobox "$_LvmDetBody2" 0 0
+       env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmDetTitle" --infobox "$_LvmDetBody2" 0 0
        sleep 2   
        modprobe dm-mod
        vgscan >/dev/null 2>&1
@@ -646,7 +659,7 @@ set_mount_type() {
 	find_partitions
 	
 	# Identify and mount root
-	dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SelRootTitle" --menu "$_SelRootBody" 0 0 4 ${PARTITIONS} 2>${ANSWER} || prep_menu
+	env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SelRootTitle" --menu "$_SelRootBody" 0 0 4 ${PARTITIONS} 2>${ANSWER} || prep_menu
 	PARTITION=$(cat ${ANSWER})
     ROOT_PART=${PARTITION}
     set_mount_type
@@ -667,7 +680,7 @@ set_mount_type() {
     confirm_mount ${MOUNTPOINT}
 	
 	# Identify and create swap, if applicable
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SelSwpTitle" --menu "$_SelSwpBody" 0 0 4 "$_SelSwpNone" $"-" "$_SelSwpFile" $"-" ${PARTITIONS} 2>${ANSWER} || prep_menu  
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SelSwpTitle" --menu "$_SelSwpBody" 0 0 4 "$_SelSwpNone" $"-" "$_SelSwpFile" $"-" ${PARTITIONS} 2>${ANSWER} || prep_menu  
     if [[ $(cat ${ANSWER}) != "None" ]]; then    
        PARTITION=$(cat ${ANSWER})
        
@@ -690,21 +703,21 @@ set_mount_type() {
     # Extra Step for VFAT UEFI Partition. This cannot be in an LVM container.
     if [[ $UEFI -eq 1 ]]; then
     
-       dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SelUefiTitle" --menu "$_SelUefiBody" 0 0 4 ${PARTITIONS} 2>${ANSWER} || config_base_menu  
+       env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SelUefiTitle" --menu "$_SelUefiBody" 0 0 4 ${PARTITIONS} 2>${ANSWER} || config_base_menu  
        PARTITION=$(cat ${ANSWER})
        UEFI_PART=$"/dev/"${PARTITION}
        
        # If there is already a fat/vfat partition...
        if [[ $(fsck -N /dev/$PARTITION | grep fat) ]]; then
-          dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_FormUefiTitle" --yesno "$_FormUefiBody $PARTITION $_FormUefiBody2" 0 0 && mkfs.vfat -F32 $"/dev/"${PARTITION} >/dev/null 2>&1
+          env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_FormUefiTitle" --yesno "$_FormUefiBody $PARTITION $_FormUefiBody2" 0 0 && mkfs.vfat -F32 $"/dev/"${PARTITION} >/dev/null 2>&1
        else 
           mkfs.vfat -F32 $"/dev/"${PARTITION} >/dev/null 2>&1
        fi   
        
        # Inform users of the mountpoint options and consequences
-       dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_OptUefiTitle" --msgbox "$_OptUefiBody" 0 0
+       env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_OptUefiTitle" --msgbox "$_OptUefiBody" 0 0
        
-       dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MntUefiTitle" --menu "$_MntUefiBody"  0 0 2 \
+       env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MntUefiTitle" --menu "$_MntUefiBody"  0 0 2 \
  	   "1" $"/boot" \
 	   "2" $"/boot/efi" 2>${ANSWER}
        
@@ -725,7 +738,7 @@ set_mount_type() {
     
     # All other partitions
        while [[ $NUMBER_PARTITIONS > 0 ]]; do 
-             dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtPartTitle" --menu "$_ExtPartBody" 0 0 4 $"Done" $"-" ${PARTITIONS} 2>${ANSWER} || config_base_menu 
+             env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtPartTitle" --menu "$_ExtPartBody" 0 0 4 $"Done" $"-" ${PARTITIONS} 2>${ANSWER} || config_base_menu 
              PARTITION=$(cat ${ANSWER})
              set_mount_type
              
@@ -739,21 +752,21 @@ set_mount_type() {
 	            
                 # Don't give /boot as an example for UEFI systems!
                 if [[ $UEFI -eq 1 ]]; then
-                   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyUefi" 0 65 "/" 2>${ANSWER} || config_base_menu
+                   env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyUefi" 0 65 "/" 2>${ANSWER} || config_base_menu
                 else
-                   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyBios" 0 65 "/" 2>${ANSWER} || config_base_menu
+                   env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyBios" 0 65 "/" 2>${ANSWER} || config_base_menu
                 fi
                 MOUNT=$(cat ${ANSWER})
                 
                 # loop if the mountpoint specified is incorrect (is only '/', is blank, or has spaces). 
                 while [[ ${MOUNT:0:1} != "/" ]] || [[ ${#MOUNT} -le 1 ]] || [[ $MOUNT =~ \ |\' ]]; do
-                      dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtErrTitle" --msgbox "$_ExtErrBody" 0 0
+                      env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtErrTitle" --msgbox "$_ExtErrBody" 0 0
                       
                       # Don't give /boot as an example for UEFI systems!
                       if [[ $UEFI -eq 1 ]]; then
-                         dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyUefi" 0 65 "/" 2>${ANSWER} || config_base_menu
+                         env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyUefi" 0 65 "/" 2>${ANSWER} || config_base_menu
                       else
-                         dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyBios" 0 65 "/" 2>${ANSWER} || config_base_menu
+                         env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyBios" 0 65 "/" 2>${ANSWER} || config_base_menu
                       fi
                       MOUNT=$(cat ${ANSWER})                     
                 done
@@ -802,12 +815,12 @@ deactivate_lvm() {
  LVM_DISABLE=0
 
     if [[ $LVM -eq 1 ]]; then
-       dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmDetTitle" --yesno "$_LvmDetBody1" 0 0 \
+       env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmDetTitle" --yesno "$_LvmDetBody1" 0 0 \
        && LVM_DISABLE=1 || LVM_DISABLE=0
     fi
     
     if [[ $LVM_DISABLE -eq 1 ]]; then
-       dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmRmTitle" --infobox "$_LvmRmBody" 0 0
+       env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmRmTitle" --infobox "$_LvmRmBody" 0 0
        sleep 2
        
         for i in ${LVM_LV}; do
@@ -895,7 +908,7 @@ check_lv_size() {
 
 	# Check that there is at least one partition available for LVM
     if [[ $NUMBER_LVM_PARTITIONS -lt 1 ]]; then
-        dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmPartErrTitle" --msgbox "$_LvmPartErrBody" 0 0
+        env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmPartErrTitle" --msgbox "$_LvmPartErrBody" 0 0
         prep_menu
     fi
     
@@ -904,19 +917,19 @@ check_lv_size() {
     
     # Name the Volume Group
     LVM_VG=""
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmNameVgTitle" --inputbox "$_LvmNameVgBody" 0 0 "" 2>${ANSWER} || prep_menu
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmNameVgTitle" --inputbox "$_LvmNameVgBody" 0 0 "" 2>${ANSWER} || prep_menu
     LVM_VG=$(cat ${ANSWER})
 
     # Loop while the Volume Group name starts with a "/", is blank, has spaces, or is already being used
     while [[ ${LVM_VG:0:1} == "/" ]] || [[ ${#LVM_VG} -eq 0 ]] || [[ $LVM_VG =~ \ |\' ]] || [[ $(lsblk | grep ${LVM_VG}) != "" ]]; do
-        dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmNameVgErrTitle" --msgbox "$_LvmNameVgErr" 0 0
+        env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmNameVgErrTitle" --msgbox "$_LvmNameVgErr" 0 0
               
-        dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmNameVgTitle" --inputbox "$_LvmNameVgBody" 0 0 "" 2>${ANSWER} || prep_menu
+        env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmNameVgTitle" --inputbox "$_LvmNameVgBody" 0 0 "" 2>${ANSWER} || prep_menu
         LVM_VG=$(cat ${ANSWER})
     done
     
     # Select the first or only partition for the Volume Group
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmPvSelTitle" --menu "$_LvmPvSelBody" 0 0 4 ${LVM_PARTITIONS} 2>${ANSWER} || prep_menu 
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmPvSelTitle" --menu "$_LvmPvSelBody" 0 0 4 ${LVM_PARTITIONS} 2>${ANSWER} || prep_menu 
     LVM_PARTITION=$(cat ${ANSWER})
     
     # add the partition to the temporary file for the vgcreate command
@@ -924,13 +937,13 @@ check_lv_size() {
     sed -i "s/x/\/dev\/${LVM_PARTITION} x/" /tmp/.vgcreate
     LVM_PARTITIONS="$(echo $LVM_PARTITIONS | sed s/${LVM_PARTITION}$' -'//)"
     NUMBER_LVM_PARTITIONS=$(( NUMBER_LVM_PARTITIONS - 1 ))
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmPvCreateTitle" --infobox "\n$_Done\n\n" 0 0
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmPvCreateTitle" --infobox "\n$_Done\n\n" 0 0
     sleep 1
 
     # Where there are viable partitions still remaining, run loop
     while [[ $NUMBER_LVM_PARTITIONS -gt 0 ]]; do
 
-           dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmPvSelTitle" --menu "$_LvmPvSelBody" 0 0 4 $"Done" $"-" ${LVM_PARTITIONS} 2>${ANSWER} || prep_menu 
+           env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmPvSelTitle" --menu "$_LvmPvSelBody" 0 0 4 $"Done" $"-" ${LVM_PARTITIONS} 2>${ANSWER} || prep_menu 
            LVM_PARTITION=$(cat ${ANSWER})
 
            if [[ $LVM_PARTITION == "Done" ]]; then
@@ -939,7 +952,7 @@ check_lv_size() {
               sed -i "s/x/\/dev\/${LVM_PARTITION} x/" /tmp/.vgcreate
               LVM_PARTITIONS="$(echo $LVM_PARTITIONS | sed s/${LVM_PARTITION}$' -'//)"
               NUMBER_LVM_PARTITIONS=$(( NUMBER_LVM_PARTITIONS - 1 ))
-              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmPvCreateTitle" --infobox "\n$_Done\n\n" 0 0
+              env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmPvCreateTitle" --infobox "\n$_Done\n\n" 0 0
               sleep 1
            fi
 
@@ -948,13 +961,13 @@ check_lv_size() {
     # Once all the partitions have been selected, remove 'x' from the .vgcreate file, then use it in 'vgcreate' command.
     # Also determine the size of the VG, to use for creating LVs for it.
     VG_PARTS=$(cat /tmp/.vgcreate | sed 's/x//')
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmPvConfTitle" --yesno "$_LvmPvConfBody1${LVM_VG} $_LvmPvConfBody2${VG_PARTS}" 0 0 \
-    && dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmPvActTitle" --infobox "$_LvmPvActBody1${LVM_VG}.$_LvmPvActBody2" 0 0 \
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmPvConfTitle" --yesno "$_LvmPvConfBody1${LVM_VG} $_LvmPvConfBody2${VG_PARTS}" 0 0 \
+    && env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmPvActTitle" --infobox "$_LvmPvActBody1${LVM_VG}.$_LvmPvActBody2" 0 0 \
     && sleep 2 \
     && vgcreate -f ${LVM_VG} ${VG_PARTS} >/dev/null 2>&1 \
     && VG_SIZE=$(vgdisplay | grep 'VG Size' | awk '{print $3}' | sed 's/\..*//') \
     && VG_SIZE_TYPE=$(vgdisplay | grep 'VG Size' | awk '{print $4}' | sed 's/\..*//') \
-    && dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmPvDoneTitle" --msgbox "$_LvmPvDoneBody1 '${LVM_VG}' $_LvmPvDoneBody2 (${VG_SIZE} ${VG_SIZE_TYPE}).\n\n" 0 0 \
+    && env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmPvDoneTitle" --msgbox "$_LvmPvDoneBody1 '${LVM_VG}' $_LvmPvDoneBody2 (${VG_SIZE} ${VG_SIZE_TYPE}).\n\n" 0 0 \
     && sleep 2 \
     || prep_menu
 
@@ -962,65 +975,65 @@ check_lv_size() {
     [[ ${VG_SIZE_TYPE:0:1} == "G" ]] && LVM_VG_MB=$(( VG_SIZE * 1000 )) || LVM_VG_MB=$VG_SIZE
     
     # Specify number of Logical volumes to create.
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNumTitle" --inputbox "$_LvmLvNumBody1 ${LVM_VG}.$_LvmLvNumBody2" 0 0 "" 2>${ANSWER} || prep_menu
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNumTitle" --inputbox "$_LvmLvNumBody1 ${LVM_VG}.$_LvmLvNumBody2" 0 0 "" 2>${ANSWER} || prep_menu
     NUMBER_LOGICAL_VOLUMES=$(cat ${ANSWER})
     
     # Loop if the number of LVs is no 1-9 (including non-valid characters)
     while [[ $NUMBER_LOGICAL_VOLUMES != [1-9] ]]; do
-          dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNumErrTitle" --msgbox "$_LvmLvNumErrBody" 0 0
+          env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNumErrTitle" --msgbox "$_LvmLvNumErrBody" 0 0
  
-          dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNumTitle" --inputbox "$_LvmLvNumBody1 ${LVM_VG}.$_LvmLvNumBody2" 0 0 "" 2>${ANSWER} || prep_menu
+          env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNumTitle" --inputbox "$_LvmLvNumBody1 ${LVM_VG}.$_LvmLvNumBody2" 0 0 "" 2>${ANSWER} || prep_menu
           NUMBER_LOGICAL_VOLUMES=$(cat ${ANSWER})
     done
 
     # Loop while the number of LVs is greater than 1. This is because the size of the last LV is automatic.
     while [[ $NUMBER_LOGICAL_VOLUMES -gt 1 ]]; do
-          dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNameTitle" --inputbox "$_LvmLvNameBody1" 0 0 "lvol" 2>${ANSWER} || prep_menu
+          env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNameTitle" --inputbox "$_LvmLvNameBody1" 0 0 "lvol" 2>${ANSWER} || prep_menu
           LVM_LV_NAME=$(cat ${ANSWER})
 
           # Loop if preceeded with a "/", if nothing is entered, if there is a space, or if that name already exists.
           while [[ ${LVM_LV_NAME:0:1} == "/" ]] || [[ ${#LVM_LV_NAME} -eq 0 ]] || [[ ${LVM_LV_NAME} =~ \ |\' ]] || [[ $(lsblk | grep ${LVM_LV_NAME}) != "" ]]; do
-              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNameErrTitle" --msgbox "$_LvmLvNameErrBody" 0 0
+              env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNameErrTitle" --msgbox "$_LvmLvNameErrBody" 0 0
 
-              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNameTitle" --inputbox "$_LvmLvNameBody1" 0 0 "lvol" 2>${ANSWER} || prep_menu
+              env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNameTitle" --inputbox "$_LvmLvNameBody1" 0 0 "lvol" 2>${ANSWER} || prep_menu
               LVM_LV_NAME=$(cat ${ANSWER})
           done
 
-          dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvSizeTitle" --inputbox "\n${LVM_VG}: ${VG_SIZE}${VG_SIZE_TYPE} (${LVM_VG_MB}MB $_LvmLvSizeBody1).$_LvmLvSizeBody2" 0 0 "" 2>${ANSWER} || prep_menu
+          env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvSizeTitle" --inputbox "\n${LVM_VG}: ${VG_SIZE}${VG_SIZE_TYPE} (${LVM_VG_MB}MB $_LvmLvSizeBody1).$_LvmLvSizeBody2" 0 0 "" 2>${ANSWER} || prep_menu
           LVM_LV_SIZE=$(cat ${ANSWER})          
           check_lv_size 
           
           # Loop while an invalid value is entered.
           while [[ $LV_SIZE_INVALID -eq 1 ]]; do
-                dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvSizeErrTitle" --msgbox "$_LvmLvSizeErrBody=" 0 0
+                env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvSizeErrTitle" --msgbox "$_LvmLvSizeErrBody=" 0 0
           
-                dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvSizeTitle" --inputbox "\n${LVM_VG}: ${VG_SIZE}${VG_SIZE_TYPE} (${LVM_VG_MB}MB $_LvmLvSizeBody1).$_LvmLvSizeBody2" 0 0 "" 2>${ANSWER} || prep_menu
+                env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvSizeTitle" --inputbox "\n${LVM_VG}: ${VG_SIZE}${VG_SIZE_TYPE} (${LVM_VG_MB}MB $_LvmLvSizeBody1).$_LvmLvSizeBody2" 0 0 "" 2>${ANSWER} || prep_menu
                 LVM_LV_SIZE=$(cat ${ANSWER})          
                 check_lv_size
           done
           
           # Create the LV
           lvcreate -L ${LVM_LV_SIZE} ${LVM_VG} -n ${LVM_LV_NAME}
-          dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvDoneTitle" --msgbox "\n$_Done\n\nLV ${LVM_LV_NAME} (${LVM_LV_SIZE}) $_LvmPvDoneBody2.\n\n" 0 0
+          env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvDoneTitle" --msgbox "\n$_Done\n\nLV ${LVM_LV_NAME} (${LVM_LV_SIZE}) $_LvmPvDoneBody2.\n\n" 0 0
           NUMBER_LOGICAL_VOLUMES=$(( NUMBER_LOGICAL_VOLUMES - 1 ))
     done
     
     # Now the final LV. Size is automatic.      
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNameTitle" --inputbox "$_LvmLvNameBody1 $_LvmLvNameBody2 (${LVM_VG_MB}MB)." 0 0 "lvol" 2>${ANSWER} || prep_menu
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNameTitle" --inputbox "$_LvmLvNameBody1 $_LvmLvNameBody2 (${LVM_VG_MB}MB)." 0 0 "lvol" 2>${ANSWER} || prep_menu
     LVM_LV_NAME=$(cat ${ANSWER})
 
           # Loop if preceeded with a "/", if nothing is entered, if there is a space, or if that name already exists.
           while [[ ${LVM_LV_NAME:0:1} == "/" ]] || [[ ${#LVM_LV_NAME} -eq 0 ]] || [[ ${LVM_LV_NAME} =~ \ |\' ]] || [[ $(lsblk | grep ${LVM_LV_NAME}) != "" ]]; do
-              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNameErrTitle" --msgbox "$_LvmLvNameErrBody" 0 0
+              env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNameErrTitle" --msgbox "$_LvmLvNameErrBody" 0 0
 
-              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNameTitle" --inputbox "$_LvmLvNameBody1 $_LvmLvNameBody2 (${LVM_VG_MB}MB)." 0 0 "lvol" 2>${ANSWER} || prep_menu
+              env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmLvNameTitle" --inputbox "$_LvmLvNameBody1 $_LvmLvNameBody2 (${LVM_VG_MB}MB)." 0 0 "lvol" 2>${ANSWER} || prep_menu
               LVM_LV_NAME=$(cat ${ANSWER})
           done
 
     # Create the final LV
     lvcreate -l +100%FREE ${LVM_VG} -n ${LVM_LV_NAME}
     NUMBER_LVM_PARTITIONS=$(( NUMBER_LVM_PARTITIONS - 1 ))
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmCompTitle" --yesno "$_LvmCompBody" 0 0 \
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_LvmCompTitle" --yesno "$_LvmCompBody" 0 0 \
     && show_devices || prep_menu
 }
 
@@ -1032,7 +1045,7 @@ check_lv_size() {
 
 install_base() {
     
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstBseTitle" \
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstBseTitle" \
     --menu "$_InstBseBody" 0 0 4 \
  	"1" "$_InstBaseLK" \
 	"2" "$_InstBaseLKBD" \
@@ -1065,10 +1078,10 @@ install_base() {
   #check for a wireless device
   WIRELESS_DEV=`ip link | grep wlp | awk '{print $2}'| sed 's/://' | sed '1!d'`
   if [[ -n $WIRELESS_DEV ]]; then
-     dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstWirTitle" --infobox "$_InstWirBody" 0 0 
+     env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstWirTitle" --infobox "$_InstWirBody" 0 0 
      sleep 2
      clear
-     pacstrap ${MOUNTPOINT} iw wireless_tools wpa_actiond wpa_supplicant dialog
+     pacstrap ${MOUNTPOINT} iw wireless_tools wpa_actiond wpa_supplicant env LANG=$EVO_LOCALE dialog
   fi
 
 }
@@ -1079,7 +1092,7 @@ install_bootloader() {
 
 bios_bootloader() {	
 	
-   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstBiosBtTitle" \
+   env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstBiosBtTitle" \
     --menu "$_InstBiosBtBody" 0 0 2 \
  	"1" $"Grub2" \
 	"2" $"Syslinux" 2>${ANSWER}
@@ -1090,7 +1103,7 @@ bios_bootloader() {
              
              # An LVM VG/LV can consist of multiple devices. Where LVM used, user must select the device manually.
              if [[ $LVM_ROOT -eq 0 ]]; then
-                dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstGrubDevTitle" --yesno "$_InstGrubDevBody ($INST_DEV)?$_InstGrubDevBody2" 0 0 \
+                env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstGrubDevTitle" --yesno "$_InstGrubDevBody ($INST_DEV)?$_InstGrubDevBody2" 0 0 \
 			    && clear && arch_chroot "grub-install --target=i386-pc --recheck ${INST_DEV}" || select_grub_device
 			 else
 			    select_grub_device
@@ -1120,13 +1133,13 @@ bios_bootloader() {
              [[ $LTS -eq 1 ]] && sed -i 's/linux/linux-lts/g' ${MOUNTPOINT}/boot/syslinux/syslinux.cfg
              
              if [[ $LVM_ROOT -eq 0 ]]; then
-                dialog --title "$_InstSysTitle" --msgbox "$_InstSysBody APPEND root=/dev/$ROOT_PART rw\n" 0 0
+                env LANG=$EVO_LOCALE dialog --title "$_InstSysTitle" --msgbox "$_InstSysBody APPEND root=/dev/$ROOT_PART rw\n" 0 0
              else
-                dialog --title "$_InstSysTitle" --msgbox "$_InstSysBody APPEND root=/dev/mapper/$ROOT_PART rw\n" 0 0
+                env LANG=$EVO_LOCALE dialog --title "$_InstSysTitle" --msgbox "$_InstSysBody APPEND root=/dev/mapper/$ROOT_PART rw\n" 0 0
              fi
              
              BOOTLOADER="Syslinux"
-             gksu leafpad ${MOUNTPOINT}/boot/syslinux/syslinux.cfg
+             env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}/boot/syslinux/syslinux.cfg
              ;;
           *) install_base_menu
              ;;
@@ -1138,7 +1151,7 @@ uefi_bootloader() {
     #Ensure again that efivarfs is mounted
 	[[ -z $(mount | grep /sys/firmware/efi/efivars) ]] && mount -t efivarfs efivarfs /sys/firmware/efi/efivars
      
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstUefiBtTitle" \
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstUefiBtTitle" \
     --menu "$_InstUefiBtBody" 0 0 3 \
     "1" $"Grub2" \
     "2" $"Gummiboot" \
@@ -1152,10 +1165,10 @@ uefi_bootloader() {
           arch_chroot "grub-mkconfig -o /boot/grub/grub.cfg"
 
           # Ask if user wishes to set Grub as the default bootloader and act accordingly
-          dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SetGrubDefTitle" --yesno "$_SetGrubDefBody ${UEFI_MOUNT}/EFI/boot $_SetGrubDefBody2" 0 0 \
+          env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SetGrubDefTitle" --yesno "$_SetGrubDefBody ${UEFI_MOUNT}/EFI/boot $_SetGrubDefBody2" 0 0 \
           && arch_chroot "mkdir ${UEFI_MOUNT}/EFI/boot" \
           && arch_chroot "cp -r ${UEFI_MOUNT}/EFI/arch_grub/grubx64.efi ${UEFI_MOUNT}/EFI/boot/bootx64.efi" \
-          && dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "_SetDefDoneTitle" --infobox "\nGrub $_SetDefDoneBody" 0 0 \
+          && env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "_SetDefDoneTitle" --infobox "\nGrub $_SetDefDoneBody" 0 0 \
           && sleep 2
           
           BOOTLOADER="Grub"
@@ -1183,9 +1196,9 @@ uefi_bootloader() {
           BOOTLOADER="Gummiboot"
           # Set and check the config files  
           echo -e "default  arch\ntimeout  5" > ${MOUNTPOINT}${UEFI_MOUNT}/loader/loader.conf
-          dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ChkGumTitle" --msgbox "$_ChkGumBody" 0 0
-          gksu leafpad ${MOUNTPOINT}${UEFI_MOUNT}/loader/entries/arch.conf
-          gksu leafpad ${MOUNTPOINT}${UEFI_MOUNT}/loader/loader.conf
+          env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ChkGumTitle" --msgbox "$_ChkGumBody" 0 0
+          env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}${UEFI_MOUNT}/loader/entries/arch.conf
+          env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}${UEFI_MOUNT}/loader/loader.conf
           ;;
           
       "3") # rEFInd
@@ -1194,11 +1207,11 @@ uefi_bootloader() {
            if [[ $UEFI_MOUNT == "/boot/efi" ]]; then      
               clear
               pacstrap ${MOUNTPOINT} refind-efi efibootmgr dosfstools    
-              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SetRefiDefTitle" --yesno "$_SetRefiDefBody ${UEFI_MOUNT}/EFI/boot $_SetRefiDefBody2" 0 0 \
+              env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SetRefiDefTitle" --yesno "$_SetRefiDefBody ${UEFI_MOUNT}/EFI/boot $_SetRefiDefBody2" 0 0 \
               && clear && arch_chroot "refind-install --usedefault ${UEFI_PART} --alldrivers" || clear && arch_chroot "refind-install"
               BOOTLOADER="rEFInd"
            else 
-              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_RefiErrTitle" --msgbox $"_RefiErrBody" 0 0
+              env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_RefiErrTitle" --msgbox $"_RefiErrBody" 0 0
               uefi_bootloader
            fi
            ;;
@@ -1223,7 +1236,7 @@ uefi_bootloader() {
 # Also copy the xkbmap configuration file created earlier to the installed system
 install_alsa_xorg_input() {
 
-  dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_AXITitle" --msgbox "$_AXIBody" 0 0
+  env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_AXITitle" --msgbox "$_AXIBody" 0 0
   clear	
   pacstrap ${MOUNTPOINT} alsa-utils xorg-server xorg-server-utils xorg-xinit xf86-input-synaptics xf86-input-keyboard xf86-input-mouse
   cp /tmp/00-keyboard.conf ${MOUNTPOINT}/etc/X11/xorg.conf.d/00-keyboard.conf
@@ -1242,7 +1255,7 @@ setup_graphics_card() {
 # basically this is used to manually set the GC_DETECTED variable. Includes proprietary NVIDIA drivers.
 gc_driver_menu() {
 
-   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_GCtitle" \
+   env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_GCtitle" \
     --menu "$_GCBody" 0 0 10 \
  	"1" $"AMD/ATI" \
 	"2" $"Intel" \
@@ -1341,7 +1354,7 @@ install_gc() {
       "Intel") pacstrap ${MOUNTPOINT} xf86-video-intel libva-intel-driver mesa-libgl mesa
                sed -i 's/^MODULES=(/MODULES=(i915 /' ${MOUNTPOINT}/etc/mkinitcpio.conf
                ;;
- "VirtualBox") dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " VirtualBox Installation " --msgbox "\nIf for any reason the VirtualBox guest modules do not load for the installed system (e.g. low resolution and scrollbars after booting), a one-off series of commands will fix this:\n\n$ su\n# depmod -a\n# modprobe -a vboxvideo vboxguest vboxsf\n# reboot" 0 0
+ "VirtualBox") env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " VirtualBox Installation " --msgbox "\nIf for any reason the VirtualBox guest modules do not load for the installed system (e.g. low resolution and scrollbars after booting), a one-off series of commands will fix this:\n\n$ su\n# depmod -a\n# modprobe -a vboxvideo vboxguest vboxsf\n# reboot" 0 0
                clear
                [[ $LTS == 0 ]] && pacstrap ${MOUNTPOINT} virtualbox-guest-utils virtualbox-guest-modules mesa-libgl \
                || pacstrap ${MOUNTPOINT} virtualbox-guest-utils virtualbox-guest-modules-lts mesa-libgl
@@ -1376,8 +1389,8 @@ install_gc() {
  
  # Where NVIDIA has been installed allow user to check and amend the file
  if [[ $NVIDIA_INST == 1 ]]; then
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NvidiaConfTitle" --msgbox "$_NvidiaConfBody" 0 0
-    gksu leafpad ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NvidiaConfTitle" --msgbox "$_NvidiaConfBody" 0 0
+    env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}/etc/X11/xorg.conf.d/20-nvidia.conf
  fi
 
 }
@@ -1386,7 +1399,7 @@ install_gc() {
     if [[ $GC_DETECTED == "Unknown" ]]; then
        gc_driver_menu
     else
-       dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " $GC_DETECTED $_GCDetTitle " --yesno "$_GCDetBody $GC_DETECTED?\n\n $_GCDetBody2" 0 0 && install_gc || gc_driver_menu
+       env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " $GC_DETECTED $_GCDetTitle " --yesno "$_GCDetBody $GC_DETECTED?\n\n $_GCDetBody2" 0 0 && install_gc || gc_driver_menu
     fi
 
 }
@@ -1396,19 +1409,19 @@ install_de_wm() {
 
    # Only show this information box once
    if [[ $SHOW_ONCE -eq 0 ]]; then
-      dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DEInfoTitle" --msgbox "$_DEInfoBody" 0 0
+      env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DEInfoTitle" --msgbox "$_DEInfoBody" 0 0
       SHOW_ONCE=1
    fi
    
-	dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstDETitle" \
+	env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstDETitle" \
     --menu "$_InstDEBody" 0 0 8 \
  	"1" $"Cinnamon" \
 	"2" $"Enlightenment" \
 	"3" $"Gnome-Shell (minimal)" \
 	"4" $"Gnome" \
 	"5" $"Gnome + Extras" \
-    "6" $"KDE Base (minimal)" \
-    "7" $"KDE" \
+    "6" $"KDE4 Base (minimal)" \
+    "7" $"KDE4" \
     "8" $"LXDE" \
     "9" $"MATE" \
     "10" $"MATE + Extras" \
@@ -1458,12 +1471,12 @@ install_de_wm() {
            
              GNOME_INSTALLED=1
              ;;
-        "6") # KDE BASE
+        "6") # KDE4 BASE
              clear
-             pacstrap ${MOUNTPOINT} kdebase-workspace kdeplasma-applets-plasma-nm
+             pacstrap ${MOUNTPOINT} kdebase-workspace kdeplasma-applets-plasma-nm xdg-utils rp-pppoe
              KDE_INSTALLED=1
              ;;
-        "7") # KDE 
+        "7") # KDE4 
              clear
              pacstrap ${MOUNTPOINT} kde kdeplasma-applets-plasma-nm xdg-user-dirs xdg-utils rp-pppoe
 
@@ -1518,7 +1531,7 @@ install_de_wm() {
         "18") #EvoBox
               
               # Pick File Manager
-              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " EvoBox File Manager " \
+              env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " EvoBox File Manager " \
               --menu "" 9 0 3 \
  	          "1" $"PCManFM" \
 	          "2" $"SpaceFM" \
@@ -1536,7 +1549,7 @@ install_de_wm() {
 			  esac
 			  
 			  # Pick Internet Browser
-			  dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " EvoBox Browser " \
+			  env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " EvoBox Browser " \
 			  --menu "" 11 0 5 \
 			  "1" $"Chromium" \
 			  "2" $"FireFox" \
@@ -1607,7 +1620,7 @@ install_de_wm() {
     
     # Offer to install common packages
     if [[ $COMMON_INSTALLED -eq 0 ]]; then
-       dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstComTitle" --yesno "$_InstComBody" 0 0 \
+       env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstComTitle" --yesno "$_InstComBody" 0 0 \
        && clear && pacstrap ${MOUNTPOINT} xterm gksu gnome-keyring polkit xdg-user-dirs xdg-utils gamin gvfs gvfs-afc gvfs-smb ttf-dejavu gnome-icon-theme python2-xdg bash-completion
     fi
     
@@ -1621,27 +1634,27 @@ install_dm() {
 
  if 	[[ $DM_INSTALLED -eq 0 ]]; then
 	
-         if    [[ $KDE_INSTALLED -eq 1 ]] && [[ $GNOME_INSTALLED -eq 0 ]]; then
+          if  [[ $KDE_INSTALLED -eq 1 ]] && [[ $GNOME_INSTALLED -eq 0 ]]; then
                arch_chroot "systemctl enable kdm.service" >/dev/null 2>&1
-               dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmKdeTitle" --msgbox "$_DmKdeBody" 0 0
+               env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmKdeTitle" --msgbox "$_DmKdeBody" 0 0
     
          elif  [[ $KDE_INSTALLED -eq 0 ]] && [[ $GNOME_INSTALLED -eq 1 ]]; then
                arch_chroot "systemctl enable gdm.service" >/dev/null 2>&1
-               dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmGdmTitle" --msgbox "$_DmGdmBody" 0 0
+               env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmGdmTitle" --msgbox "$_DmGdmBody" 0 0
 
          elif  [[ $KDE_INSTALLED -eq 1 ]] && [[ $GNOME_INSTALLED -eq 1 ]]; then
          
-               dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmChTitle" \
+               env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmChTitle" \
                --menu "$_DmChBody" 12 45 2 \
  	           "1" $"GDM (Gnome)" \
 	           "2" $"KDM (KDE)" 2>${ANSWER}	
 	
 	          case $(cat ${ANSWER}) in
               "1") arch_chroot "systemctl enable gdm.service" >/dev/null 2>&1
-                   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " GDM $_DmDoneTitle" --msgbox "\nGDM $_DMDoneBody" 0 0
+                   env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " GDM $_DmDoneTitle" --msgbox "\nGDM $_DMDoneBody" 0 0
                 ;;
               "2") arch_chroot "systemctl enable kdm.service" >/dev/null 2>&1
-                   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " KDM $_DmDoneTitle" --msgbox "\nKDM $_DMDoneBody" 0 0
+                   env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " KDM $_DmDoneTitle" --msgbox "\nKDM $_DMDoneBody" 0 0
                 ;;
                 *) install_desktop_menu
                 ;;
@@ -1649,10 +1662,10 @@ install_dm() {
          
          elif [[ $LXDE_INSTALLED -eq 1 ]]; then
               arch_chroot "systemctl enable lxdm.service" >/dev/null 2>&1
-              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmLxdmTitle" --msgbox "$_DmLxdmBody" 0 0
+              env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmLxdmTitle" --msgbox "$_DmLxdmBody" 0 0
          
          else 
-               dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmChoiceTitle" \
+               env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmChoiceTitle" \
                --menu "$_DmChoiceBody" 0 0 4 \
  	           "1" $"LXDM" \
 	           "2" $"LightDM" \
@@ -1665,14 +1678,14 @@ install_dm() {
                    pacstrap ${MOUNTPOINT} lxdm
                    arch_chroot "systemctl enable lxdm.service" >/dev/null 2>&1
                    DM="LXDM"
-                   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " LXDM $_DmDoneTitle" --msgbox "\nLXDM $_DMDoneBody" 0 0
+                   env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " LXDM $_DmDoneTitle" --msgbox "\nLXDM $_DMDoneBody" 0 0
                    ;;
               "2") # LIGHTDM
                    clear
                    pacstrap ${MOUNTPOINT} lightdm lightdm-gtk3-greeter
                    arch_chroot "systemctl enable lightdm.service" >/dev/null 2>&1
                    DM="LightDM"
-                   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " LightDM $_DmDoneTitle" --msgbox "\nLightDM $_DMDoneBody" 0 0
+                   env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " LightDM $_DmDoneTitle" --msgbox "\nLightDM $_DMDoneBody" 0 0
                    ;;
               "3") # SDDM
                    clear
@@ -1680,7 +1693,7 @@ install_dm() {
                    arch_chroot "sddm --example-config > /etc/sddm.conf"
                    arch_chroot "systemctl enable sddm.service" >/dev/null 2>&1
                    DM="SDDM"
-                   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " SDDM $_DmDoneTitle" --msgbox "\nSDDM $_DMDoneBody" 0 0
+                   env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " SDDM $_DmDoneTitle" --msgbox "\nSDDM $_DMDoneBody" 0 0
                    ;;
               "4") # SLiM
                    clear
@@ -1698,7 +1711,7 @@ install_dm() {
                        echo 'exec $1' >> ${MOUNTPOINT}/home/$i/.xinitrc
                    done
                    
-                   dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " SLiM $_DmDoneTitle" --msgbox "\nSLiM $_DMDoneBody" 0 0
+                   env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " SLiM $_DmDoneTitle" --msgbox "\nSLiM $_DMDoneBody" 0 0
                    ;;                
                 *) install_desktop_menu
                    ;;
@@ -1710,7 +1723,7 @@ install_dm() {
          
    # if A display manager has already been installed and enabled (DM_INSTALLED=1), show a message instead.
    else  
-         dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmInstTitle" --msgbox "$_DmInstBody" 0 0
+         env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_DmInstTitle" --msgbox "$_DmInstBody" 0 0
    fi       
 
 }
@@ -1718,7 +1731,7 @@ install_dm() {
 install_nm() {
    # Check to see if a NM has already been installed and enabled
    if [[ $NM_INSTALLED -eq 0 ]]; then
-      dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstNMTitle" \
+      env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstNMTitle" \
       --menu "$_InstNMBody" 0 0 4 \
  	  "1" $"Connman (CLI)" \
 	  "2" $"dhcpcd  (CLI)" \
@@ -1749,11 +1762,11 @@ install_nm() {
            ;;
       esac
       
-      dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstNMDoneTitle" --msgbox "$_InstNMDoneBody" 0 0
+      env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstNMDoneTitle" --msgbox "$_InstNMDoneBody" 0 0
       NM_INSTALLED=1
    
    else
-      dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstNMDoneTitle" --msgbox "$_InstNMErrBody" 0 0
+      env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstNMDoneTitle" --msgbox "$_InstNMErrBody" 0 0
    fi
 }
 
@@ -1761,7 +1774,7 @@ install_nm() {
 test() {
 	
 	ping -c 3 google.com > /tmp/.outfile &
-    dialog --title "checking" --no-kill --tailboxbg /tmp/.outfile 20 60 
+    env LANG=$EVO_LOCALE dialog --title "checking" --no-kill --tailboxbg /tmp/.outfile 20 60 
 
 }
 	
@@ -1776,7 +1789,7 @@ test() {
 # Greet the user when first starting the installer
 greeting() {
 
-dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_WelTitle $VERSION " --msgbox "$_WelBody" 0 0	
+env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_WelTitle $VERSION " --msgbox "$_WelBody" 0 0	
 
 }
 
@@ -1792,7 +1805,7 @@ prep_menu() {
 	   fi
 	fi
 	
-   dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PrepTitle" \
+   env LANG=$EVO_LOCALE dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PrepTitle" \
     --menu "$_PrepBody" 0 0 7 \
  	"1" "$_PrepKBLayout" \
 	"2" "$_PrepMirror" \
@@ -1841,7 +1854,7 @@ install_base_menu() {
 	   fi
 	fi
 
-   dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstBsMenuTitle" --menu "$_InstBseMenuBody" 0 0 4 \
+   env LANG=$EVO_LOCALE dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstBsMenuTitle" --menu "$_InstBseMenuBody" 0 0 4 \
  	"1" "$_PrepPacKey" \
  	"2" "$_InstBse" \
 	"3" "$_InstBootldr" \
@@ -1880,7 +1893,7 @@ config_base_menu() {
 	   fi
 	fi
 
-    dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ConfBseTitle" --menu "$_ConfBseBody" 0 0 7 \
+    env LANG=$EVO_LOCALE dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ConfBseTitle" --menu "$_ConfBseBody" 0 0 7 \
  	"1" "$_ConfBseFstab" \
 	"2" "$_ConfBseHost" \
 	"3" "$_ConfBseTime" \
@@ -1923,7 +1936,7 @@ config_user_menu() {
 	   fi
 	fi
 
-    dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ConfUsrTitle" --menu "$_ConfUsrBody" 0 0 3 \
+    env LANG=$EVO_LOCALE dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ConfUsrTitle" --menu "$_ConfUsrBody" 0 0 3 \
  	"1" "$_ConfUsrRoot" \
 	"2" "$_ConfUsrNew" \
 	"3" "$_Back" 2>${ANSWER}
@@ -1953,7 +1966,7 @@ install_desktop_menu() {
 	   fi
 	fi
 
-    dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstDEMenuTitle" --menu "$_InstDEMenuBody" 0 0 5 \
+    env LANG=$EVO_LOCALE dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstDEMenuTitle" --menu "$_InstDEMenuBody" 0 0 5 \
  	"1" "$_InstDEMenuGISD" \
 	"2" "$_InstDEMenuDE" \
 	"3" "$_InstDEMenuNM" \
@@ -1989,7 +2002,7 @@ edit_configs() {
 	   fi
 	fi
 
-   dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SeeConfOptTitle" --menu "$_SeeConfOptBody" 0 0 9 \
+   env LANG=$EVO_LOCALE dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SeeConfOptTitle" --menu "$_SeeConfOptBody" 0 0 9 \
    "1" "vconsole.conf" \
    "2" "locale.conf" \
    "3" "hostname" \
@@ -2002,50 +2015,50 @@ edit_configs() {
 	
 	HIGHLIGHT_SUB=$(cat ${ANSWER})
 	case $(cat ${ANSWER}) in
-	    "1") gksu leafpad ${MOUNTPOINT}/etc/vconsole.conf
+	    "1") env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}/etc/vconsole.conf
              ;;
-        "2") gksu leafpad ${MOUNTPOINT}/etc/locale.conf
+        "2") env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}/etc/locale.conf
              ;;
-        "3") gksu leafpad ${MOUNTPOINT}/etc/hostname
+        "3") env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}/etc/hostname
              ;;
-        "4") gksu leafpad ${MOUNTPOINT}/etc/sudoers
+        "4") env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}/etc/sudoers
              ;;
-        "5") gksu leafpad ${MOUNTPOINT}/etc/mkinitcpio.conf
+        "5") env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}/etc/mkinitcpio.conf
              ;;
         "6") user_list=$(ls ${MOUNTPOINT}/home/)
 				   for i in ${user_list[@]}; do
                        if [[ -e ${MOUNTPOINT}/home/$i/.xinitrc ]]; then
-                          gksu leafpad ${MOUNTPOINT}/home/$i/.xinitrc
+                          env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}/home/$i/.xinitrc
 	                   else
-	                      dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$__SeeConfErrTitle" --msgbox "$_SeeConfErrBody1" 0 0
+	                      env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$__SeeConfErrTitle" --msgbox "$_SeeConfErrBody1" 0 0
 	                      break;
                        fi
                    done
              ;;
         "7") case $BOOTLOADER in
-                   "Grub") gksu leafpad ${MOUNTPOINT}/etc/default/grub
+                   "Grub") env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}/etc/default/grub
                            ;;
-               "Syslinux") gksu leafpad ${MOUNTPOINT}/boot/syslinux/syslinux.cfg
+               "Syslinux") env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}/boot/syslinux/syslinux.cfg
                            ;;
-              "Gummiboot") gksu leafpad ${MOUNTPOINT}${UEFI_MOUNT}/loader/entries/arch.conf
-                           gksu leafpad ${MOUNTPOINT}${UEFI_MOUNT}/loader/loader.conf
+              "Gummiboot") env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}${UEFI_MOUNT}/loader/entries/arch.conf
+                           env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}${UEFI_MOUNT}/loader/loader.conf
                            ;;
-                 "rEFInd") gksu leafpad ${MOUNTPOINT}${UEFI_MOUNT}/EFI/refind/refind.conf
+                 "rEFInd") env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}${UEFI_MOUNT}/EFI/refind/refind.conf
                            ;;
-                        *) dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$__SeeConfErrTitle" --msgbox "$_SeeConfErrBody1" 0 0
+                        *) env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$__SeeConfErrTitle" --msgbox "$_SeeConfErrBody1" 0 0
                            ;;
               esac
             ;;
         "8") case $DM in
-                   "LXDM") gksu leafpad ${MOUNTPOINT}/etc/lxdm/lxdm.conf
+                   "LXDM") env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}/etc/lxdm/lxdm.conf
                            ;;
-                "LightDM") gksu leafpad ${MOUNTPOINT}/etc/lightdm/lightdm.conf
+                "LightDM") env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}/etc/lightdm/lightdm.conf
                            ;;
-                   "SDDM") gksu leafpad ${MOUNTPOINT}/etc/sddm.conf
+                   "SDDM") env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}/etc/sddm.conf
                            ;;
-                   "SLiM") gksu leafpad ${MOUNTPOINT}/etc/slim.conf
+                   "SLiM") env LANG=$EVO_LOCALE gksu leafpad ${MOUNTPOINT}/etc/slim.conf
                            ;;
-                        *) dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$__SeeConfErrTitle" --msgbox "$_SeeConfErrBody1" 0 0
+                        *) env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$__SeeConfErrTitle" --msgbox "$_SeeConfErrBody1" 0 0
                            ;;
               esac
             ;;       
@@ -2062,7 +2075,7 @@ main_menu_online() {
 	   HIGHLIGHT=$(( HIGHLIGHT + 1 ))
 	fi
 	
-    dialog --default-item ${HIGHLIGHT} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MMTitle" \
+    env LANG=$EVO_LOCALE dialog --default-item ${HIGHLIGHT} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_MMTitle" \
     --menu "$_MMBody" 0 0 8 \
  	"1" "$_MMPrep" \
 	"2" "$_MMInstBse" \
@@ -2089,7 +2102,7 @@ main_menu_online() {
              ;;
         "7") edit_configs
              ;;            
-          *) dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --yesno "$_CloseInstBody" 0 0 \
+          *) env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --yesno "$_CloseInstBody" 0 0 \
              && umount_partitions_and_exit || main_menu_online
              ;;
     esac
