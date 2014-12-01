@@ -277,7 +277,8 @@ _InstBiosBtBody="\nGrub2 jest zalecany początkującym. Można tu też wybrać d
 
 # Grub Installation
 _InstGrubDevTitle=" Wybór urządzenia dla programu Grub "
-_InstGrubDevBody="\nZainstalować Grub na partycji ROOT ($INST_DEV)?\nWybierz 'Tak', w przypadku instalacji tylko na jednym urządzeniu."
+_InstGrubDevBody="\nZainstalować Grub na partycji ROOT"
+_InstGrubDevBody2="\nWybierz 'Tak', w przypadku instalacji tylko na jednym urządzeniu."
 
 # Syslinux Installation
 _InstSysTitle=" Sprawdzenie konfiguracji programu Syslinux "
