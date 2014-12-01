@@ -1,6 +1,6 @@
 # !/bin/bash
 #
-# Lution-AIS installer (version 0.4.4 - 29th November 2014)
+# Lution-AIS installer (version 0.4.6 - 30th November 2014)
 #
 # Written by Carl Duff for Evo/Lution Linux
 #
@@ -26,7 +26,7 @@
 ANSWER="/tmp/.lution"
 
 # Save retyping
-VERSION="Lution-AIS 0.4.4"
+VERSION="Lution-AIS 0.4.6 (30-Nov-2014)"
 
 # Installation
 KDE_INSTALLED=0      		# Has KDE been installed? Used for display manager option
@@ -92,7 +92,7 @@ EVO_LOCALE="en_US.UTF-8"    # What Evo Locale is to be used?
 # Add locale on-the-fly and sets source translation file for installer
 select_language() {
 
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " Select Language " --menu "\nLanguage / Sprache / Taal / nγλώσσα / språk / lingua / idioma / язык" 18 30 8 \
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " Select Language " --menu "\nLanguage / sprache / taal / nγλώσσα / språk / lingua / idioma / язык / język" 19 30 9 \
  	"1" $"English" \
  	"2" $"Deutsch" \
  	"3" $"Nederlands" \
@@ -100,7 +100,8 @@ select_language() {
  	"5" $"Norsk" \
  	"6" $"Italiano" \
  	"7" $"Español" \
- 	"8" $"Русский (частичный)" 2>${ANSWER}
+ 	"8" $"Русский (частичный)" \
+ 	"9" $"Polski" 2>${ANSWER}
 
 	case $(cat ${ANSWER}) in
         "1") source /lution-ais-master/english.trans
@@ -126,7 +127,10 @@ select_language() {
              ;;
         "8") source /lution-ais-master/russian.trans
              EVO_LOCALE="ru_RU.UTF-8"
-             ;;             
+             ;;
+        "9") source /lution-ais-master/polish.trans
+             EVO_LOCALE="pl_PL.UTF-8"
+             ;;           
           *) exit 0
              ;;
     esac
@@ -308,7 +312,7 @@ set_locale() {
   
   echo 'LANG="'$LOCALE'"' > ${MOUNTPOINT}/etc/locale.conf  
   arch_chroot "sed -i '/'${LOCALE}'/s/^#//' /etc/locale.gen"
-  arch_chroot "locale-gen"
+  arch_chroot "locale-gen" >/dev/null 2>&1
 }
 
 # Zone and sub-zone array generation code taken from the Manjaro 0.8 Installer
@@ -752,9 +756,9 @@ set_mount_type() {
 	            
                 # Don't give /boot as an example for UEFI systems!
                 if [[ $UEFI -eq 1 ]]; then
-                   env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyUefi" 0 65 "/" 2>${ANSWER} || config_base_menu
+                   env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyUefi" 0 0 "/" 2>${ANSWER} || config_base_menu
                 else
-                   env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyBios" 0 65 "/" 2>${ANSWER} || config_base_menu
+                   env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyBios" 0 0 "/" 2>${ANSWER} || config_base_menu
                 fi
                 MOUNT=$(cat ${ANSWER})
                 
@@ -764,9 +768,9 @@ set_mount_type() {
                       
                       # Don't give /boot as an example for UEFI systems!
                       if [[ $UEFI -eq 1 ]]; then
-                         env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyUefi" 0 65 "/" 2>${ANSWER} || config_base_menu
+                         env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyUefi" 0 0 "/" 2>${ANSWER} || config_base_menu
                       else
-                         env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyBios" 0 65 "/" 2>${ANSWER} || config_base_menu
+                         env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_ExtNameTitle $PARTITON " --inputbox "$_ExtNameBodyBios" 0 0 "/" 2>${ANSWER} || config_base_menu
                       fi
                       MOUNT=$(cat ${ANSWER})                     
                 done
@@ -1076,12 +1080,11 @@ install_base() {
     esac  	
 
   #check for a wireless device
-  WIRELESS_DEV=`ip link | grep wlp | awk '{print $2}'| sed 's/://' | sed '1!d'`
-  if [[ -n $WIRELESS_DEV ]]; then
+  if [[ $(lspci | grep -i "Network Controller") != "" ]]; then
      env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstWirTitle" --infobox "$_InstWirBody" 0 0 
      sleep 2
      clear
-     pacstrap ${MOUNTPOINT} iw wireless_tools wpa_actiond wpa_supplicant env LANG=$EVO_LOCALE dialog
+     pacstrap ${MOUNTPOINT} iw wireless_tools wpa_actiond wpa_supplicant dialog
   fi
 
 }
@@ -1230,6 +1233,53 @@ uefi_bootloader() {
     else
        uefi_bootloader
     fi
+}
+
+# Needed for broadcom and other network controllers
+install_wireless_firmware() {
+
+    env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_WirelssFirmTitle" --menu "$_WirelssFirmBody" 0 0 6 \
+ 	"1" "$_SeeWirelessDev" \
+ 	"2" $"Broadcom 802.11b/g/n" \
+ 	"3" $"Intel PRO/Wireless 2100" \
+ 	"4" $"Intel PRO/Wireless 2200" \
+ 	"5" $"ZyDAS ZD1211(b) 802.11a/b/g USB WLAN" \
+ 	"6" "$_All" 2>${ANSWER}
+
+    case $(cat ${ANSWER}) in
+    "1") # Identify the Wireless Device 
+        lspci | grep -i "Network Controller" > /tmp/.wireless
+        if [[ $(cat /tmp/.wireless) != "" ]]; then
+           env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_WirelessShowTitle" --textbox /tmp/.wireless 0 0
+        else
+           env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_WirelessShowTitle" --msgbox "$_WirelessErrBody" 7 30
+        fi
+        ;;
+    "2") # Broadcom
+         clear
+         pacstrap ${MOUNTPOINT} b43-fwcutter
+        ;;
+    "3") # Intel 2100
+         clear
+         pacstrap ${MOUNTPOINT} ipw2100-fw
+        ;;
+    "4") # Intel 2200
+         clear
+         pacstrap ${MOUNTPOINT} ipw2200-fw
+        ;;
+    "5") # ZyDAS
+         clear
+         pacstrap ${MOUNTPOINT} zd1211-firmware
+        ;;
+    "6") clear
+         pacstrap ${MOUNTPOINT} b43-fwcutter ipw2100-fw ipw2200-fw zd1211-firmware
+        ;;
+      *) install_base_menu
+        ;;
+    esac
+    
+    install_wireless_firmware
+
 }
 
 # Install alsa, xorg and input drivers
@@ -1621,7 +1671,7 @@ install_de_wm() {
     # Offer to install common packages
     if [[ $COMMON_INSTALLED -eq 0 ]]; then
        env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstComTitle" --yesno "$_InstComBody" 0 0 \
-       && clear && pacstrap ${MOUNTPOINT} xterm gksu gnome-keyring polkit xdg-user-dirs xdg-utils gamin gvfs gvfs-afc gvfs-smb ttf-dejavu gnome-icon-theme python2-xdg bash-completion
+       && clear && pacstrap ${MOUNTPOINT} xterm gksu gnome-keyring polkit xdg-user-dirs xdg-utils gamin gvfs gvfs-afc gvfs-smb ttf-dejavu gnome-icon-theme python2-xdg bash-completion ntfs-3g
     fi
     
     # Either way, the option will no longer be presented.
@@ -1632,7 +1682,7 @@ install_de_wm() {
 # Determine if LXDE, Gnome, and/or KDE has been installed, and act accordingly.
 install_dm() {
 
- if 	[[ $DM_INSTALLED -eq 0 ]]; then
+ if [[ $DM_INSTALLED -eq 0 ]]; then
 	
           if  [[ $KDE_INSTALLED -eq 1 ]] && [[ $GNOME_INSTALLED -eq 0 ]]; then
                arch_chroot "systemctl enable kdm.service" >/dev/null 2>&1
@@ -1849,16 +1899,17 @@ install_base_menu() {
 	   SUB_MENU="install_base_menu"
 	   HIGHLIGHT_SUB=1
 	else
-	   if [[ $HIGHLIGHT_SUB != 4 ]]; then
+	   if [[ $HIGHLIGHT_SUB != 5 ]]; then
 	      HIGHLIGHT_SUB=$(( HIGHLIGHT_SUB + 1 ))
 	   fi
 	fi
 
-   env LANG=$EVO_LOCALE dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstBsMenuTitle" --menu "$_InstBseMenuBody" 0 0 4 \
+   env LANG=$EVO_LOCALE dialog --default-item ${HIGHLIGHT_SUB} --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_InstBsMenuTitle" --menu "$_InstBseMenuBody" 0 0 5 \
  	"1" "$_PrepPacKey" \
  	"2" "$_InstBse" \
 	"3" "$_InstBootldr" \
-	"4" "$_Back" 2>${ANSWER}	
+	"4" "$_InstWirelessFirm" \
+	"5" "$_Back" 2>${ANSWER}	
 	
 	HIGHLIGHT_SUB=$(cat ${ANSWER})
 	case $(cat ${ANSWER}) in
@@ -1871,9 +1922,11 @@ install_base_menu() {
              ;;
         "3") install_bootloader
              ;;
+        "4") install_wireless_firmware
+             ;;
           *) main_menu_online
              ;;
-    esac
+     esac
     
     install_base_menu 	
 }

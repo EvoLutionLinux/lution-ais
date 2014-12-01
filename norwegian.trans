@@ -7,6 +7,15 @@
 ##
 ##
 
+# Select Wireless Firmware Driver(s)
+_InstWirelessFirm="Install Wireless Device Firmware"
+_WirelssFirmTitle=" Select Wireless Device Firmware "
+_WirelssFirmBody="\nSome wireless devices require additional firmware to be installed in order to work.\n\nWhere unsure if additional firmware is required - or which to select - then all of them can be installed."
+_SeeWirelessDev="Display Wireless Device (optional)"
+_WirelessShowTitle=" Wireless Device "
+_WirelessErrBody="\nNone Detected."
+_All="All"
+
 # Select Config Files
 _SeeConfOpt="Se over konfigurasjonsfilene (frivillig)"
 _SeeConfOptTitle=" konfigurasjonsfilene "
@@ -349,7 +358,7 @@ _DmChBody="\nBåde Gnome og KDE har blitt installert. Vennligst velg din foretru
 
 # KDM or GDM Choice Made
 _DmDoneTitle="Aktivert "
-_DMDoneBody"har blitt aktivert.\n\n"
+_DMDoneBody="har blitt aktivert.\n\n"
 
 # LXDM
 _DmLxdmTitle=" LXDM Aktivert "

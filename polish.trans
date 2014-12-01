@@ -1,0 +1,436 @@
+##
+##
+## Polish Translation File   ##
+##
+## Written by Tomasz "Ludvick" Niedzielski for Evo/Lution Linux (30th November 2014)
+##
+##
+
+# Select Wireless Firmware Driver(s)
+_InstWirelessFirm="Instaluj oprogramowanie dla urządzenia bezprzewodowego"
+_WirelssFirmTitle=" Wybór oprogramowania dla urządzenia bezprzewodowego "
+_WirelssFirmBody="\nNiektóre urządzenia bezprzewodowe, aby działać, wynagają dodatkowego oprogramowania.\n\nJeżeli nie wiadomo, czy wymagane jest dodatkowe oprogramowanie lub które wybrać, można zainstalować wszystkie."
+_SeeWirelessDev="Pokaż urządzenie bezprzewodowe (opcjonalnie)"
+_WirelessShowTitle=" Urządzenie bezprzewodowe "
+_WirelessErrBody="\nNie wykryto."
+_All="Wszystko"
+
+# Select Config Files
+_SeeConfOpt="Przegląd plików konfiguracyjnych (opcjonalnie)"
+_SeeConfOptTitle=" Pliki konfiguracyjne "
+_SeeConfOptBody="\nWybierz dowolny plik, spośród niżej podanych, by go przejrzeć lub zmienić.\n"
+_SeeConfErrTitle=" Błąd pliku "
+_SeeConfErrBody1="\nPlik nie istnieje.\n\n"
+_SeeConfErrBody2="\nNajpierw trzeba zainstalować system podstawowy.\n\n"
+
+# Pacman
+_PrepPacKey="Odśwież klucze pacmana (opcjonalnie)"
+
+# Logical Volume Management
+_PrepLVM="LVM - menedżer woluminów logicznych (opcjonalnie)"
+
+_LvmDetTitle=" Wykryto woluminy logiczne "
+_LvmDetBody1="\nWykryto woluminy logiczne (LVM). Przypisanych do nich partycji, nie można wybierać. Czy chcesz dezaktywować istniejące woluminy logiczne?\n\nWybierz 'Tak', jeżeli chcesz odłączyć woluminy logiczne.\nWybierz 'Nie', aby je zachować.\n"
+_LvmRmTitle=" Dezaktywacja LVM "
+_LvmDetBody2="\nWykryto woluminy logiczne. Aktywacja. Proszę czekać...\n\n"
+_LvmRmBody="\nDezaktywacja wszystkich woluminów fizycznych (PV), woluminów logicznych (LV) oraz grup tych woluminów (VG).\n\nProszę czekać...\n\n"
+
+_LvmPartErrTitle=" LVM - Błąd partycji "
+_LvmPartErrBody="\nNie są dostępne żadne fizyczne partycje do wykorzystania przez LVM. Wymagana jest przynajmniej jedna.\n\nJeżeli LVM jest już używany, dezaktywacja partycji pozwoli na ponowne wykorzystanie ich objętości przez wolumin fizyczny (PV).\n\n"
+
+_LvmNameVgTitle=" LVM - Nazwa grupy woluminów "
+_LvmNameVgBody="\nPodaj nazwę tworzonej grupy woluminów (VG).\n\nGrupa woluminów (VG) jest nowym 'wirtualnym twardym dyskiem', złożonym z partycji, wybranych w dalszym etapie.\n"
+
+_LvmNameVgErrTitle=" LVM - Błąd nazwy grupy woluminów "
+_LvmNameVgErr="\nPodano nieprawidłową nazwę. Nazwa grupy woluminów (VG) może składać się ze znaków alfanumerycznych, ale nie może zawierać spacji, rozpoczynać się od ukośnika (/), czy być nazwą już używaną.\n\n"
+
+_LvmPvSelTitle=" LVM - Wybierz partycje "
+_LvmPvSelBody="\nWybierz partycje do wykorzystania jako wolumin fizyczny (PV).\n"
+_LvmPvCreateTitle=" LVM - Dodano partycje "
+
+_LvmPvConfTitle=" LVM - Tworzenie grupy woluminów (VG) "
+_LvmPvConfBody1="\nZatwierdź tworzenie grupy woluminów (VG) "
+_LvmPvConfBody2="z następujących partycji:\n\n"
+
+_LvmPvActTitle=" LVM - Tworzenie grupy woluminów (VG) "
+_LvmPvActBody1="\nTworzenie i aktywacja grupy woluminów (VG) "
+_LvmPvActBody2="\n\nProszę czekać...\n\n"
+
+_LvmPvDoneTitle=" LVM - Utworzono grupę woluminów (VG) "
+_LvmPvDoneBody1="\nGrupa woluminów (VG) "
+_LvmPvDoneBody2="została utworzona"
+
+_LvmLvNumTitle=" LVM - Tworzenie woluminów logicznych (LV) "
+_LvmLvNumBody1="\nPodaj liczbę woluminów logicznych (LV) do utworzenia "
+_LvmLvNumBody2="Minimalnie: 1, maksymalnie: 9.\n\nWoluminy logiczne (LV), co do zasady, są partycjami. Ostatni z nich (lub jedyny) automatycznie wykorzysta 100% przestrzeni, pozostałej w grupie woluminów (VG)."
+
+_LvmLvNumErrTitle=" LVM - Błąd liczby woluminów logicznych (LV) "
+_LvmLvNumErrBody="\nPodano nieprawidłową liczbę. Minimalnie: 1, maksymalnie: 9.\n\n"
+
+_LvmLvNameTitle=" LVM - Nazwa woluminu logicznego (LV) "
+_LvmLvNameBody1="\nPodaj nazwę tworzonego woluminu logicznego (LV).\n\nPodobnie, jak nadawanie nazwy / etykiety partycji.\n"
+_LvmLvNameBody2="\nUWAGA: Ten wolumin (LV) automatycznie wykorzysta 100% przestrzeni, pozostałej w grupie woluminów (VG)"
+
+_LvmLvNameErrTitle=" LVM - Błąd nazwy woluminu logicznego (LV) "
+_LvmLvNameErrBody="\nPodano nieprawidłową nazwę. Nazwa woluminu logicznego może składać się ze znaków alfanumerycznych, ale nie może zawierać spacji lub rozpoczynać się od ukośnika (/).\n\n"
+
+_LvmLvSizeTitle=" LVM - Ustawienie wielkości woluminu logicznego (LV) "
+_LvmLvSizeBody1="pozostało"
+_LvmLvSizeBody2="\n\nPodaj wielkość woluminu logicznego (LV) w Megabajtach (M) lub Gigabajtach (G). Na przykład, 100M utworzy wolumin o wielkości 100 Megabajtów. 10G - wolumin o wielkości 10 Gigabajtów.\n"
+
+_LvmLvSizeErrTitle=" LVM - Błąd ustalania wielkości woluminu logicznego (LV) "
+_LvmLvSizeErrBody="\nPodano nieprawidłową wartość. Wartość liczbowa musi być zakończona literą 'M' (Megabajty) lub 'G' (Gigabajty).\n\nPrzykładowo: 100M, 10G lub 250M. Wartość nie może być również równa lub większa, niż pozostała przestrzeń w grupie woluminów (VG).\n\n"
+
+_LvmLvDoneTitle=" LVM - Utworzono wolumin logiczny (LV) "
+
+_LvmCompTitle=" LVM - Zakończenie procesu "
+_LvmCompBody="\nGotowe! Utworzono wszystkie woluminy logiczne (LV) dla grupy woluminów (VG).\n\nChcesz zobaczyć nowy schemat LVM?\n\n"
+
+# Show devices and partitions
+_DevShowTitle=" Dyski / Partycje "
+_DevShowOpt="Pokaż listę urządzeń (opcjonalnie)"
+
+# Check Evo Requirements and Identify System Type
+_ChkEvoTitle=" Sprawdzanie wymagań Evo "
+_ChkEvoBody="\nSprawdzanie, czy instalator jest uruchomiony w trybie administratora (root) oraz, czy aktywne jest połączenie z internetem. Proszę czekać...\n\n"
+
+_RtFailTitle=" Błąd uprawnień "
+_RtFailBody="\nInstalator musi być uruchomiony z konta administratora (root). Wyjście.\n\n"
+
+_ConFailTitle=" Błąd połączenia "
+_ConFailBody="\nTest połączenia z Internetem nie powiódł się. Wyjście.\n\n"
+
+_ReqMetTitle=" Wymagania spełnione "
+_ReqMetBody="\nWszystkie testy zakończono pomyślnie! \n\n"
+
+_UefiDet="Wykryto UEFI"
+_BiosDet="Wykryto BIOS"
+
+# Installer Mirrorlist
+_MirrorlistTitle=" Lista serwerów lustrzanych (mirrorlist) "
+_MirrorlistBody="\nPlik mirrorlist zawiera adresy serwerów, z których korzysta pacman, instalując poszczególne pakiety. Serwery są udostępniane w kolejności, określonej w pliku mirrorlist.\n\n"
+_MirrorbyCountry="Autogenerowanie listy według kraju"
+_MirrorEdit="Samodzielna edycja pliku mirrorlist"
+
+# Generate Mirrorlist by country
+_MirrorCntryTitle=" Wybór kraju "
+_MirrorCntryBody="\nZostanie wygenerowana lista serwerów według wybranego kraju.\n\nPo weryfikacji, można zadecydować o jej użyciu lub nie."
+_MirrorGenTitle=" Generowanie listy serwerów (mirrorlist) "
+_MirrorGenBody="\nGenerowanie listy serwerów (mirrorlist). Proszę czekać... "
+_MirrorGenQ="Użyć tej listy serwerów do instalacji?"
+_MirrorGenDone="\nGotowe! Oryginalny lista serwerów została zapisana jako:\n\n/etc/pacman.d/mirrorlist.orig\n\n"
+
+# Set Keymap (vconsole)
+_KeymapTitle=" Ustawienie klawiatury "
+_KeymapBody="\nDo poruszania się po liście, proszę używać klawiszy kierunkowych [ w górę ]/[ w dół ] oraz [ pg up ]/[ pg dwn ] lub nacisnąć odpowiedni klawisz z pierwszą literą wybranej klawiatury."
+
+# Set Xkbmap (environment)
+_XkbmapTitle=" Ustawienie układu klawiatury (xkbmap) "
+_XkbmapBody="Wybierz układ klawiatury"
+
+# Set Locale
+_LocateTitle=" Ustawienie lokalizacji systemu "
+_localeBody="Wybierz lokalizację systemu"
+
+# Set Timezone
+_TimeZTitle=" Ustawienie strefy czasowej "
+_TimeZBody="\nStrefa czasowa jest używana do prawidłowego ustawienia czasu w systemie."
+_TimeSubZTitle=" Wybór podstrefy czasowej "
+_TimeSubZBody="\nWybierz miasto, położone najbliżej Ciebie."
+_TimeZQ="Ustaw strefę czasową na"
+
+# Set Hardware Clock
+_HwCTitle=" Ustawienie zegara sprzętowego "
+_HwCBody="\nUTC (standard czasu uniwersalnego) jest zalecanym ustawieniem, poza przypadkiem wspólnego rozruchu (dual-boot) z systemem Windows."
+_HwCUTC="UTC"
+_HwLocal="Czas lokalny"
+
+# Generate FSTAB
+_FstabTitle=" Generowanie pliku FSTAB "
+_FstabBody="\nFSTAB (File System TABle) określa, jakie dyski i partycje mają być montowane oraz sposób ich użycia.\n\nZaleca się wybranie opcji UUID/PARTUUID (Universally Unique IDentifier).\n\nJeżeli wcześniej nie ustawiono etykiet partycji, nazwy dysków będą użyte dla tej opcji."
+_FstabDev="Dev (symbol napędu/partycji)"
+_FstabLabel="Label (określona przez użytkownika etykieta)"
+_FstabUUID="UUID/PARTUUID (unikalny identyfikator partycji)"
+
+# Check FSTAB
+_FstabChkTitle=" Sprawdzenie pliku FSTAB "
+_FstabChkBody="\nProszę sprawdzić plik FSTAB przed dalszym jego użyciem.\n\n"
+
+# Set Hostname
+_HostNameTitle=" Ustawienie nazwy hosta "
+_HostNameBody="\nNazwa hosta jest używana do identyfikacji systemu w sieci.\n\nMoże się ona składać maksymalnie z 63 znaków alfanumerycznych, ewentualnie myślnika (-), przy czym nie może on się znaleźć na jej początku lub końcu.\n"
+
+# Set Root Password
+_PassRtTitle=" Ustawienie hasła dla konta root "
+_PassRtBody="\nWprowadź hasło dla konta root\n\n"
+_PassRtBody2="\nPowtórz hasło dla konta root\n\n"
+
+# Root Password Error
+_PassRtErrTitle=" Błąd hasła "
+_PassRtErrBody="\nWprowadzone hasła dla konta root nie są zgodne. Spróbuj ponownie.\n\n"
+
+# Create New User
+_NUsrTitle=" Tworzenie konta użytkownika "
+_NUsrBody="\nWprowadź nazwę konta użytkownika. Użyj WYŁĄCZNIE małych liter.\n"
+
+# Username Error
+_NUsrErrTitle=" Błąd nazwy "
+_NUsrErrBody="\nWprowadzona nazwa konta użytkownika jest nieprawidłowa. Spróbuj ponownie.\n\n"
+
+# Set User Password
+_PassNUsrTitle=" Ustawienie hasła dla konta użytkownika "
+_PassNUsrBody="\nWprowadź hasło dla konta" # Note that "$USER" is a variable (no translation needed)
+_PassNUsrBody2="\nPowtórz hasło dla konta" # Note that "$USER" is a variable (no translation needed)
+
+# Create New User
+_NUsrSetTitle=" Ustawienie konta użytkownika "
+_NUsrSetBody="\nTworzenie konta użytkownika i ustawienie grup...\n\n"
+
+# User Password Error
+_PassNUsrErrTitle=" Błąd hasła "
+_PassNUsrErrBody="\nWprowadzone hasła dla konta użytkownika nie są zgodne. Spróbuj ponownie.\n\n"
+
+# Mounting (Partitions)
+_MntStatusTitle=" Status montowania partycji "
+_MntStatusSucc="\nMontowanie partycji zakończone pomyślnie!\n"
+_MntStatusFail="Montowanie partycji nie powiodło się!"
+
+# Select Device (installation)
+_DevSelTitle=" Wybór urządzenia "
+_DevSelBody="\nUrządzenia (/dev), to dyski twarde i pamięci USB dostępne dla instalacji. Pierwszym z nich jest /sda, drugim - /sdb itd.\n\nKorzystając z pamięci USB do uruchomienia Evo, należy uważać, gdyż urządzenie to znajdzie się również na liście napędów do instalacji!"
+
+# Select Device (Grub) - seperate body text is not required (uses standard device selection text)
+_DevSelGrubTitle=" Wybór urządzenia dla Gruba "
+
+# Partitioning Tool
+_PartToolTitle=" Wybór narzędzia partycjonowania "
+_PartToolBody="\nGParted jest zalecanym, łatwym w obsłudze, graficznym narzędziem, które obsługuje BIOS i UEFI.\n\nNIE WYBIERAJ programu obsługującego wyłącznie system UEFI/GPT do tworzenia partycji BIOS/MBR, ponieważ może to powodować poważne problemy, włącznie z niestartującym systemem."
+
+# UEFI Partitioning Error
+_UefiPartErrTitle=" Błąd tworzenia partycji UEFI "
+_UefiPartErrBody="\nUEFI wymaga do instalacji minimum dwu partycji (UEFI i ROOT).\n\nSkonfiguruj partycje.\n\n"
+
+# BIOS Partitioning Error
+_BiosPartErrTitle=" Błąd tworzenia partycji BIOS "
+_BiosPartErrBody="\nBIOS wymaga do instalacji minimum jednej partycji (ROOT).\n\nSkonfiguruj partycje.\n\n"
+
+# File System
+_FSTitle=" Wybór systemu plików "
+_FSBody="\nZaleca się użycie systemu Ext4. Nie każdy system plików jest odpowiedni dla partycji Root, czy Boot. Wszystkie posiadają określone funkcje i ograniczenia."
+_FSSkip="Pomiń / Żaden"
+
+# Select Root
+_SelRootTitle=" Wybór partycji ROOT (głównej) "
+_SelRootBody="\nTo jest partycja, na której zostanie zainstalowany Arch Linux."
+
+# Select SWAP
+_SelSwpTitle=" Wybór partycji SWAP "
+_SelSwpBody="\nW przypadku pliku wymiany (swapfile), będzie on miał wielkość pamięci RAM."
+_SelSwpNone="Żadna"
+_SelSwpFile="Plik wymiany (swapfile)"
+
+# Select UEFI
+_SelUefiTitle=" Wybór partycji UEFI "
+_SelUefiBody="\nTo jest specjalna partycja dla interfejsu UEFI."
+
+# Format UEFI
+_FormUefiTitle=" Partycja UEFI "
+_FormUefiBody="Partycja UEFI"
+_FormUefiBody2="jest już sformatowana.\n\nFormatować ponownie? Spowoduje to usunięcie wszystkich danych, znajdujących się na tej partycji.\n\n"
+
+# UEFI Options
+_OptUefiTitle=" Opcje punktu montowania partycji UEFI "
+_OptUefiBody="\nWybór, instalowanego później, programu rozruchowego (bootloadera) zależy od miejsce zamontowania partycji UEFI.\n\nWybierz katalog /boot dla programu Gummiboot. Tę opcję zaleca się początkującym, jako najprostsza opcja, zwłaszcza, w przypadku  korzystania z dual-boot.\n\nWybierz katalog /boot/efi dla programu rEFInd. Chociaż jest efektowny, jest zalecany doświadczonym użytkownikom, z powodu konieczności ręcznej aktualizacji.\n\nPoza tym, Grub zadziała z dowolnym punktem montowania partycji UEFI.\n\n"
+
+# UEFI Mountpoint
+_MntUefiTitle=" Wybór punktu montowania partycji UEFI "
+_MntUefiBody="\nGummiboot (zalecany) wymaga /boot, rEFInd wymaga /boot/efi, a Grub zadziała z każdym z nich."
+
+# Extra Partitions
+_ExtPartTitle=" Wybór dodatkowych partycji "
+_ExtPartBody="\nUstaw dodatkowe partycje, w dowolnej kolejności, albo 'Gotowe', aby zakończyć."
+
+# Name Extra Partitions
+_ExtNameTitle=" Nazwa partycji:"
+_ExtNameBodyUefi="\nPrzykładowo: /home lub /var.\n\nUpewnij się, że nazwa jest poprzedzona ukośnikiem (/)." # UEFI Systems
+_ExtNameBodyBios="\nPrzykładowo: /boot lub /home.\n\nUpewnij się, że nazwa jest poprzedzona ukośnikiem (/)." # BIOS Systems
+
+# Extra Partition Naming Error
+_ExtErrTitle=" Błąd nazwy partycji "
+_ExtErrBody="\nPartycja nie może być zamontowany. Jej nazwa musi być poprzedzona ukośnikiem (/).\n\n"
+
+# Install Base
+_InstBseTitle=" Instalacja systemu podstawowego "
+_InstBseBody="\nNajnowszy kernel obsługuje nowszy sprzęt, a wersja LTS jest bardziej stabilna i ma dłuższy okres wsparcia.\n\nPakiety z grupy base-devel umożliwią korzystania z Arch User Repository (AUR)."
+_InstBaseLK="Najnowszy Kernel"
+_InstBaseLKBD="Najnowszy Kernel + base-devel"
+_InstBaseLTS="Kernel w wersji LTS"
+_InstBaseLTSBD="Kernel w wersji LTS + base-devel"
+
+# Install Wireless Packages
+_InstWirTitle=" Wykryto urządzenie bezprzewodowe "
+_InstWirBody="\nInstalacja dodatkowych pakietów do obsługi sieci bezprzewodowych...\n\n"
+
+# Install BIOS Bootloader
+_InstBiosBtTitle=" Instalacja bootloadera BIOS "
+_InstBiosBtBody="\nGrub2 jest zalecany początkującym. Można tu też wybrać dodatkową partycję dla jego ustawień (/boot).\n\nSyslinux, to lżejsza i prostsza alternatywa dla Gruba i jest, zazwyczaj, wykorzystywany w mediach instalacyjnych Linuksa. Zadziała, jednak, jedynie z systemami plików ext."
+
+# Grub Installation
+_InstGrubDevTitle=" Wybór urządzenia dla programu Grub "
+_InstGrubDevBody="\nZainstalować Grub na partycji ROOT ($INST_DEV)?\nWybierz 'Tak', w przypadku instalacji tylko na jednym urządzeniu."
+
+# Syslinux Installation
+_InstSysTitle=" Sprawdzenie konfiguracji programu Syslinux "
+_InstSysBody="\nProszę sprawdzić plik konfiguracyjny programu Syslinux.\n\nPowinien on zawierać komendę:\n" # "$ROOT_PART" is a variable
+
+# Install UEFI Bootloader
+_InstUefiBtTitle=" Instalacja bootloadera UEFI "
+_InstUefiBtBody="\nGrub2 jest najbardziej popularnym i funkcjonalnym rozwiązaniem (bez specjalnych wymagań wobec partycji UEFI).\n\nGummiboot jest alternatywą, którą zaleca się początkującym (partycja UEFI musi być zamontowana w /boot).\n\nrEFInd jest przeznaczony dla bardziej doświadczonych użytkowników (partycja UEFI musi być zamontowana w /boot/efi)."
+
+# Set UEFI Grub as default
+_SetGrubDefTitle=" Ustawić program Grub jako domyślny bootloader? "
+_SetGrubDefBody="\nFirmware UEFI może niekiedy nie wykryć programu Grub, jeżeli nie jest on ustawiony jako domyślny bootloader, co będzie skutkować niestartującym systemem.\n\nChcesz, aby Grub był domyślnym bootloaderem?\n\nZaleca się wybranie 'Tak', zwłaszcza początkującym. Spowoduje to skopiowanie pliku grubx64.efi"
+_SetGrubDefBody2="i wymaganą zmianę jego nazwy na bootx64.efi.\n\nW innych przypadkach wybierz 'Nie;, zwłaszcza, jeżeli istnieje już domyślny bootloader lub chcesz używać wielu bootloaderów."
+
+# Gummiboot Configuration Check
+_ChkGumTitle=" Sprawdzenie konfiguracji programu Gummiboot "
+_ChkGumBody="\nProszę sprawdzić pliki konfiguracyjne Archa i bootloadera przed dalszym ich użyciem.\n"
+
+# Set rEFInd as default
+_SetRefiDefTitle=" Ustawić program rEFInd jako domyślny bootloader? "
+_SetGrubDefBody="\nFirmware UEFI może niekiedy nie wykryć programu Grub, jeżeli nie jest on ustawiony jako domyślny bootloader, co będzie skutkować niestartującym systemem.\n\nChcesz, aby Grub był domyślnym bootloaderem?\n\nZaleca się wybranie 'Tak', zwłaszcza początkującym. Spowoduje to zainstalowanie programu rEFInd"
+_SetGrubDefBody2="z wymaganym plikiem bootx64.efi.\n\nW innych przypadkach wybierz 'Nie', zwłaszcza, jeżeli istnieje już domyślny bootloader lub chcesz używać wielu bootloaderów."
+
+# efi file set for Grub or Refind
+_SetDefDoneTitle=" Skopiowano plik UEFI "
+_SetDefDoneBody="jest teraz ustawiony jako domyślny bootloader.\n\n"
+
+# rEFInd Mountpoint error
+_RefiErrTitle=" Punkt montowania partycji UEFI dla programu rEFInd "
+_RefiErrBody="\nSkrypt instalacyjny programu rEFInd nie będzie działać, dopóki partycja UEFI nie jest montowa w /boot/efi. Proszę wybrać, albo program Gummiboot (zalecany), albo Grub.\n\n"
+
+# ALSA, Xorg, Input
+_AXITitle=" ALSA, Xorg i urządzenia wejściowe "
+_AXIBody="\nPrzed instalacją sterownika karty graficznej oraz środowisk graficznych, wymagane są inne pakiety:\n\nALSA (Advanced Linux Sound Architecture) - system obsługi dźwięku\nxorg-* (X window system) - otwartoźródłowy system grafiki\nxf86-input-* - otwartoźródłowe sterowniki urządzeń wejściowych\n\n"
+
+# Graphics Card Menu
+_GCtitle=" Menu karty graficznej "
+_GCBody="Dla starszych kart nVidia wybierz sterownik Nouveau. Jeżeli urządzenie nie jest wyszczególnione, wybierz 'Nieznane / Ogólne'.\n"
+_GCUnknOpt="Nieznane / Ogólne"
+
+# NVIDIA Configruation Check
+_NvidiaConfTitle=" Sprawdzenie konfiguracji karty nVidia "
+_NvidiaConfBody="\nUtworzono podstawowy plik konfiguracyjny karty nVidia. Proszę sprawdzić ten plik przed dalszym jego użyciem\n"
+
+# Graphics Card Detection
+_GCDetTitle="Wykryto urządzenie"
+_GCDetBody="\nCzy Twoja karta graficzna to"
+_GCDetBody2="- Wybierz 'Tak', aby zainstalować sterownik otwartoźródłowy.\n\n- Wybierz 'Nie', aby przejść do menu karty graficznej, z którego można wybrać własnościowy sterownik dla kart nVidia."
+
+# Install DE Info
+_DEInfoTitle=" Instalacja środowisk graficznych "
+_DEInfoBody="\nTę opcję można wybrać wielokrotnie, jeżeli chcesz zainstalować kilka środowisk graficznych.\n\nGnome, KDE i LXDE posiadają menedżera wyświetlania.\n\nCinnamon, Gnome i KDE posiadają menedżera sieci.\n\n"
+
+# Install DE Menu
+_InstDETitle=" Instalacja środowisk graficznych "
+_InstDEBody="\nŚrodowiska graficzne są wymienione na początku i mogą być pobierane w kilku etapach.\n\nKDE wymaga pobrania z Internetu około 750 MB (lub więcej) danych."
+
+# Install Common Packages
+_InstComTitle=" Instalacja dodatkowych pakietów "
+_InstComBody="\nNiektóre środowiska wymagają instalacji dodatkowych pakietów, szczególnie w zakresie uprawnień, tworzenia katalogów lokalnych, czy funkcjonowania menedżera plików.\n\nPakiety te obejmują: xterm, xdg-user-dirs, gksu, gnome-keyring, polkit, gvfs, gnome-icon-theme itp. Instalacja pełnego środowiska KDE nie wymaga ich instalowania.\n\nZainstalować teraz te pakiety (opcja będzie dostępna tylko RAZ)?\n\n"
+
+# KDM
+_DmKdeTitle=" Aktywowano KDM "
+_DmKdeBody="\nZainstalowano środowisko graficzne KDE, zatem jego natywny menedżer wyświetlania (KDM) został automatycznie aktywowany.\n\n"
+
+# GDM
+_DmGdmTitle=" Aktywowano GDM "
+_DmGdmBody="\nZainstalowano środowisko graficzne Gnome, zatem jego natywny menedżer wyświetlania (GDM) został automatycznie aktywowany.\n\n"
+
+# KDM and GDM Installed
+_DmChTitle=" Wybór GDM lub KDM "
+_DmChBody="\nZainstalowano zarówno środowiska Gnome, jak i KDE. Proszę, więc, wybrać preferowany menedżer wyświetlania.\n\n"
+
+# KDM or GDM Choice Made
+_DmDoneTitle="Aktywowano "
+_DMDoneBody="został aktywowany.\n\n"
+
+# LXDM
+_DmLxdmTitle=" Aktywowano LXDM "
+_DmLxdmBody="\nZainstalowano środowisko graficzne LXDM, zatem jego natywny menedżer wyświetlania (LXDM) został automatycznie aktywowany.\n\n"
+
+# LXDM or LightDM
+_DmChoiceTitle=" Wybór menedżera wyświetlania "
+_DmChoiceBody="\nProszę wybrać jeden z menedżerów: LXDM lub LightDM. LXDM jest zalecany początkującym.\n"
+
+# DM Already Installed
+_DmInstTitle=" Zainstalowano menedżer wyświetlania "
+_DmInstBody="\nMenedżer wyświetlania został zainstalowany i aktywowany.\n\n"
+
+# Network Manager
+_InstNMTitle=" Wybór menedżera sieci "
+_InstNMBody="\nMenedżer połączeń sieciowych jest zalecany, zwłaszcza dla połączeń bezprzewodowych (WiFi) i PPPoE/DSL.\n"
+
+# Network Manager Installed
+_InstNMDoneTitle=" Zainstalowano menedżer połączeń sieciowych "
+_InstNMDoneBody="\nMenedżer połączeń sieciowych został zainstalowany i aktywowany."
+
+# Network Manager Already Installed (no need for seperate title)
+_InstNMErrBody="\nMenedżer połączeń sieciowych jest już zainstalowany i aktywowany."
+
+# Welcome
+_WelTitle=" Witaj "
+_WelBody="\nDo poruszania się po menu, proszę używać klawiszy kierunkowych [ w górę ]/[ w dół ] lub nacisnąć klawisz z numerem wybranej opcji oraz klawisza [ enter ] do zatwierdzania wyboru.\n\nDo przełączania przycisków menu służy [ tab ] oraz klawisze kierunkowe [ w lewo ]/[ w prawo ], natomiast [ enter ] - zatwierdza wybór.\n\nDo powyższych czynności można również używać myszy lub touchpada.\n\n"
+
+# Preparation Menu
+_PrepTitle=" Przygotowanie instalacji "
+_PrepBody="\nWybrany układ klawiatury pulpitu, wykorzystany będzie zarówno przez instalator, jak i instalowane środowisko graficzne.\n"
+_PrepKBLayout="Ustawienie układu klawiatury pulpitu"
+_PrepMirror="Konfiguracja listy serwerów lustrzanych (mirrorlist) dla instalatora (opcjonalnie)"
+_PrepPartDisk="Partycjonowanie dysku"
+_PrepMntPart="Montowanie partycji"
+_Back="Powrót"
+
+# Install Base Menu
+_InstBsMenuTitle=" Instalacja systemu podstawowego "
+_InstBseMenuBody="\nInstalacja programu rozruchowego (bootloadera) nie jest konieczna, jeżeli jest już zainstalowany system Linux, który używa programu Grub i wystarczy uaktualnić jego ustawienia."
+_InstBse="Instaluj system podstawowy"
+_InstBootldr="Instaluj program rozruchowy (bootloader)"
+
+# Configure Base Menu
+_ConfBseTitle=" Konfiguracja systemu podstawowego "
+_ConfBseBody="\nWymagana jest wstępna konfiguracja systemu podstawowego. Obejmuje to: podstawowe ustawienie sieci, czasu, języka i domyślnego układu klawiatury."
+_ConfBseFstab="Generuj plik FSTAB"
+_ConfBseHost="Ustaw nazwę hosta"
+_ConfBseTime="Ustaw strefę czasową"
+_ConfBseHWC="Ustaw zegar sprzętowy"
+_ConfBseSysLoc="Konfiguruj lokalizację systemu"
+_ConfBseVirtCon="Konfiguruj konsolę wirtualną"
+
+# User Menu
+_ConfUsrTitle=" Konfiguracja kont użytkowników "
+_ConfUsrBody="\nKonto root (super-użytkownik) jest instalowane domyślnie i służy do administrowania systemem. To samo hasło może być użyte dla konta root i kont zwykłych użytkowników."
+_ConfUsrRoot="Ustaw hasło dla konta root"
+_ConfUsrNew="Dodaj nowego użytkownika"
+
+# Desktop Menu
+_InstDEMenuTitle=" Instalacja środowisk graficznych "
+_InstDEMenuBody="\nPrzed instalacją środowisk graficznych, MUSZĄ być zainstalowane sterowniki dźwięku, grafiki i urządzeń wejściowych. Obejmie to instalację sterownika karty graficznej."
+_InstDEMenuGISD="Instaluj sterowniki dźwięku, grafiki i urządzeń wejściowych"
+_InstDEMenuDE="Instaluj środowiska graficzne"
+_InstDEMenuNM="Instaluj menedżer połączeń sieciowych"
+_InstDEMenuDM="Instaluj menedżer wyświetlania / ekran logowania"
+
+# Main Menu
+_MMTitle=" Menu główne "
+_MMBody="\nWszystkie etapy muszą być wykonywane W OKREŚLONEJ KOLEJNOŚCI. Kończąc, wybierz opcję 'Gotowe', aby prawidłowo zakończyć instalację.\n"
+_MMPrep="Przygotowanie instalacji"
+_MMInstBse="Instalacja systemu podstawowego"
+_MMConfBse="Konfiguracja systemu podstawowego"
+_MMConfUsr="Konfiguracja kont użytkowników"
+_MMInstDE="Instalacja środowisk graficznych"
+_MMRunMkinit="Uruchomienie mkinitcpio"
+_Done="Gotowe"
+
+# Close Installer
+_CloseInstBody="Zakończyć program instalacyjny?"

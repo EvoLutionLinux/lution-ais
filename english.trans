@@ -3,14 +3,23 @@
 ## English Translation File		
 ##								
 ##
-## Written by Carl Duff for Evo/Lution Linux (23rd November 2014)
+## Written by Carl Duff for Evo/Lution Linux (30th November 2014)
 ##
 ##
+
+# Select Wireless Firmware Driver(s)
+_InstWirelessFirm="Install Wireless Device Firmware"
+_WirelssFirmTitle=" Select Wireless Device Firmware "
+_WirelssFirmBody="\nSome wireless devices require additional firmware to be installed in order to work.\n\nWhere unsure if additional firmware is required - or which to select - then all of them can be installed."
+_SeeWirelessDev="Display Wireless Device (optional)"
+_WirelessShowTitle=" Wireless Device "
+_WirelessErrBody="\nNone Detected."
+_All="All"
 
 # Select Config Files
 _SeeConfOpt="Review Configuration Files (optional)"
 _SeeConfOptTitle=" Configuration Files "
-_SeeConfOptBody="\n.Select any file listed below to be reviewed or amended.\n"
+_SeeConfOptBody="\nSelect any file listed below to be reviewed or amended.\n"
 _SeeConfErrTitle=" Review Error "
 _SeeConfErrBody1="\nFile does not exist.\n\n"
 _SeeConfErrBody2="\nThe Base System must be installed first.\n\n"

@@ -3,9 +3,19 @@
 ## Español/Spanish Translation File
 ##
 ##
-## Written by Kat Krow & Métèque for Evo/Lution Linux (23rd November 2014)
+## Written by Kat Krow & Métèque for Evo/Lution Linux (30th November 2014)
 ##
 ##
+
+# Select Wireless Firmware Driver(s)
+_InstWirelessFirm="Instalar el firmware de tu tarjeta de red"
+_WirelssFirmTitle=" Seleccionar el firmware para la tarjeta de ted "
+_WirelssFirmBody="\nAlgunas tarjetas de red necesitan firmware adicional para que funcionen correctamente.\n\nSi no estás seguro de si necesitas instalar un controlador - o no sabes cual seleccionar - puedes simplemente instalarlos todos."
+_SeeWirelessDev="Ver la tarjeta de red (opcional)"
+_WirelessShowTitle=" Tarjeta de red"
+_WirelessErrBody="\nNinguno detectado."
+_All="Todos"
+
 
 # Select Config Files
 _SeeConfOpt="Ver archivos de configuración (opcional)"
@@ -351,7 +361,7 @@ _DmChBody="\nGNOME y KDE han sido instalados. Por favor, selecciona que gestor d
 
 # KDM or GDM Choice Made
 _DmDoneTitle="Activado "
-_DMDoneBody"Se ha Habilitado.\n\n"
+_DMDoneBody="Se ha Habilitado.\n\n"
 
 # LXDM
 _DmLxdmTitle=" LXDM Activado "

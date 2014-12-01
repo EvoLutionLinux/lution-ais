@@ -3,9 +3,18 @@
 ## Dutch/Nederlands Translation File   
 ##   
 ##
-## Written by ErwinC for Evo/Lution Linux (23rd November 2014)
+## Written by ErwinC for Evo/Lution Linux (30th November 2014)
 ##
 ##
+
+# Select Wireless Firmware Driver(s)
+_InstWirelessFirm="Installeer een stuurprogramma voor uw draadloze netwerkkaart"
+_WirelssFirmTitle=" Selecteer een stuurprogramma voor uw draadloze netwerkkaart "
+_WirelssFirmBody="\nSommige draadloze netwerkkaarten vereisen een bijkomende stuurprogramma vooraleer ze kunnen functioneren.\n\nBen je niet zeker of er een extra stuurprogamma nodig is - of welk stuurprogramma er nodig is - dan mag je alle stuurprogramma's installeren."
+_SeeWirelessDev="Toon uw draadloze netwerkapparatuur (optioneel)"
+_WirelessShowTitle=" Draadloos netwerkapparaat "
+_WirelessErrBody="\nGeen gedetecteerd."
+_All="Alle"
 
 # Select Config Files
 _SeeConfOpt="Herziening van de Configuratiebestanden (optioneel)"
