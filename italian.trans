@@ -2,18 +2,21 @@
 ##
 ## Italian Translation File
 ##
-## Written by hashcat for Evo/Lution Linux (26th November 2014)
+## Written by hashcat for Evo/Lution Linux (4th December 2014)
 ##
 ##
 
 # Select Wireless Firmware Driver(s)
-_InstWirelessFirm="Install Wireless Device Firmware"
-_WirelssFirmTitle=" Select Wireless Device Firmware "
-_WirelssFirmBody="\nSome wireless devices require additional firmware to be installed in order to work.\n\nWhere unsure if additional firmware is required - or which to select - then all of them can be installed."
-_SeeWirelessDev="Display Wireless Device (optional)"
-_WirelessShowTitle=" Wireless Device "
-_WirelessErrBody="\nNone Detected."
-_All="All"
+
+# Select Wireless Firmware Driver(s)
+_InstWirelessFirm="Installa il firmware per le periferiche wireless"
+_WirelssFirmTitle=" Seleziona il firmware per le periferiche wireless "
+_WirelssFirmBody="\nAlcune periferiche wireless richiedono l'installazione di firmware opzionale per garantirne un corretto funzionamento.\n\nIn caso di dubbio (se sia necessario installare del firmware opzionale o quale selezionare), è possibile installarli tutti."
+_SeeWirelessDev="Mostra le periferiche wireless (opzionale)"
+_WirelessShowTitle=" Periferica wireless "
+_WirelessErrBody="\nNessuno rilevato."
+_All="Tutte"
+
 
 # Select Config Files
 _SeeConfOpt="Controlla i file di configurazione (opzionale)"
