@@ -1214,7 +1214,7 @@ uefi_bootloader() {
               && clear && arch_chroot "refind-install --usedefault ${UEFI_PART} --alldrivers" || clear && arch_chroot "refind-install"
               BOOTLOADER="rEFInd"
            else 
-              env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_RefiErrTitle" --msgbox $"_RefiErrBody" 0 0
+              env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_RefiErrTitle" --msgbox "$_RefiErrBody" 0 0
               uefi_bootloader
            fi
            ;;
