@@ -3,9 +3,12 @@
 ## German/Deutsch Translation File
 ##
 ##
-## Written by freecaster for Evo/Lution Linux (26th November 2014)
+## Written by freecaster for Evo/Lution Linux (7th December 2014)
 ##
 ##
+
+_VBoxInstTitle=" VirtualBox Installation "
+_VBoxInstBody="\nSollten aus irgendwelchen Gründen die guest-Module von VirtualBox nicht im installierten System geladen werden (z.B. geringe Auflösung und Bildlaufleisten nach dem Booten) führen Sie diese Befehle aus damit das Problem gelöst wird:\n\n$ su\n# depmod -a\n# modprobe -a vboxvideo vboxguest vboxsf\n# reboot"
 
 # Select Wireless Firmware Driver(s)
 _InstWirelessFirm="Install Wireless Device Firmware"

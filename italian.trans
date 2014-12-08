@@ -2,11 +2,13 @@
 ##
 ## Italian Translation File
 ##
-## Written by hashcat for Evo/Lution Linux (4th December 2014)
+## Written by hashcat for Evo/Lution Linux (5th December 2014)
 ##
 ##
 
-# Select Wireless Firmware Driver(s)
+# Vbox Installations
+_VBoxInstTitle=" VirtualBox Installation "
+_VBoxInstBody="\nIf for any reason the VirtualBox guest modules do not load for the installed system (e.g. low resolution and scrollbars after booting), a one-off series of commands will fix this:\n\n$ su\n# depmod -a\n# modprobe -a vboxvideo vboxguest vboxsf\n# reboot"
 
 # Select Wireless Firmware Driver(s)
 _InstWirelessFirm="Installa il firmware per le periferiche wireless"
@@ -17,10 +19,9 @@ _WirelessShowTitle=" Periferica wireless "
 _WirelessErrBody="\nNessuno rilevato."
 _All="Tutte"
 
-
 # Select Config Files
 _SeeConfOpt="Controlla i file di configurazione (opzionale)"
-_SeeConfOptBody="\n.Seleziona, fra i file elencati di seguito, ognuno di quelli che desideri controllare o modificare.\n"
+_SeeConfOptBody="\nSeleziona, tra i file elencati di seguito, ognuno di quelli che desideri controllare o modificare.\n"
 _SeeConfOptTitle=" File di configurazione "
 _SeeConfErrTitle=" Errore di verfica "
 _SeeConfErrBody1="\nFile inesistente.\n\n"
@@ -115,7 +116,7 @@ _BiosDet="Identificato sistema operativo BIOS"
 # Installer Mirrorlist
 _MirrorlistTitle=" Lista dei mirror "
 _MirrorlistBody="\nLa lista dei mirror contiene gli indirizzi dei server utilizzati da pacman per installare i pacchetti. Pacman contatta i server seguendo l'ordine configurato.\n\n"
-_MirrorbyCountry="Crea lista in base alla Nazione"
+_MirrorbyCountry="Crea una lista in base alla Nazione"
 _MirrorEdit="Modifica manualmente la lista dei mirror"
 
 # Generate Mirrorlist by country
@@ -210,7 +211,7 @@ _DevSelGrubTitle=" Seleziona il dispositivo su cui installare il Grub "
 
 # Partitioning Tool
 _PartToolTitle=" Strumenti di partizionamento disco "
-_PartToolBody="\nGParted è uno strumento grafico intuitivo e consigliato che supporta sia i sistemi BIOS che quelli UEFI.\n\nNON utilizzare uno strumento di partizionamento compatibile solo con UEFI/GPT per un sistema che supporta solo BIOS/MBR poichè ciò potrebbe causare gravi problemi all'installazione; ad esempio rendere sistema operativo non avviabile."
+_PartToolBody="\nGParted è uno strumento grafico intuitivo e consigliato che supporta sia i sistemi BIOS che quelli UEFI.\n\nNON utilizzare uno strumento di partizionamento compatibile solo con UEFI/GPT per un sistema che supporta solo BIOS/MBR poichè ciò potrebbe causare gravi problemi all'installazione; ad esempio rendere il sistema operativo non avviabile."
 
 # UEFI Partitioning Error
 _UefiPartErrTitle=" Errore di partizionamento UEFI "
@@ -318,7 +319,7 @@ _RefiErrBody="\nLo script d'installazione di rEFInd funzionerà solo se la parti
 
 # ALSA, Xorg, Input
 _AXITitle=" ALSA, Xorg, e periferiche di Input "
-_AXIBody="\nPrima d'installare i driver delle schede video o gli ambienti desktop, è necessario installare i pacchetti richiesti:\n\nalsa - Architettura Avanzata per il Suono su Linux\nxorg-* - i driver a sorgente aperto per il gestore grafico X window system\nxf86-input-* - i driver per le periferiche di input\n\n"
+_AXIBody="\nPrima d'installare i driver delle schede video o gli ambienti desktop, è necessario installare i pacchetti richiesti:\n\nalsa - Architettura Avanzata per il Suono su Linux\nxorg-* - Driver a sorgente aperto per il gestore grafico X window system\nxf86-input-* - Driver per le periferiche di input\n\n"
 
 # Graphics Card Menu
 _GCtitle=" Menu delle Schede Video "
@@ -344,7 +345,7 @@ _InstDEBody="\nGli ambienti desktop sono elencati per primi e potrebbero disporr
 
 # Install Common Packages
 _InstComTitle=" Installare pacchetti comuni? "
-_InstComBody="\nAlcuni ambienti necessitando dell'installazione di pacchetti comuni, in particolare per i permessi di sistema, la creazione delle cartelle home e le funzionalità del file manager.\n\nI pacchetti includono: xterm, xdg-user-dirs, gksu, gnome-keyring, polkit, gvfs, gnome-icon-theme, etc. Coloro che avessero installato il solo desktop completo di KDE non avranno bisogno d'installarli.\n\nVuoi installare questi pacchetti? Questa domanda verrà proposta una SOLA volta.\n\n"
+_InstComBody="\nAlcuni ambienti necessitando dell'installazione di pacchetti comuni. Questi sono necessari per amministrare i permessi di sistema, creare delle cartelle home ed arricchire le funzionalità del file manager.\n\nI pacchetti includono: xterm, xdg-user-dirs, gksu, gnome-keyring, polkit, gvfs, gnome-icon-theme, etc. Coloro che avessero installato il solo desktop completo di KDE non avranno bisogno d'installarli.\n\nVuoi installare questi pacchetti? Questa domanda verrà proposta una SOLA volta.\n\n"
 
 # KDM
 _DmKdeTitle=" Abilitato KDM "
@@ -376,7 +377,7 @@ _DmInstBody="\nE' già stato installato ed abilitato un display manager.\n\n"
 
 # Network Manager
 _InstNMTitle=" Scegli il gestore di rete "
-_InstNMBody="\nE' consigliato Network Manager, in particolare per le connessioni Wireless e PPPoE/DSL.\n"
+_InstNMBody="\nLa scelta consigliata è 'Network Manager': in particolare in caso di connessioni Wireless e PPPoE/DSL.\n"
 
 # Network Manager Installed
 _InstNMDoneTitle=" Gestore di rete installato "
@@ -387,7 +388,7 @@ _InstNMErrBody="\nE' già stato installato ed abilitato un gestore delle conness
 
 # Welcome
 _WelTitle=" Benvenuto su"
-_WelBody="\nEvidenzia le opzioni premendo il numero corrispondente o utilizzando i tasti con le frecce Su/Giù prima di premere [Invio] per confermarle.\n\nNaviga fra i pulsanti utilizzando il tasto [Tab] o le frecce sinistra/destra prima di premere [Invio] per confermarli.\n\nPuò essere utilizzato anche un mouse/touchpad.\n\n"
+_WelBody="\nEvidenzia le opzioni premendone il numero corrispondente o utilizzando i tasti con le frecce Su/Giù, infine premi [Invio] per confermarle.\n\nNaviga tra i pulsanti utilizzando il tasto [Tab] o le frecce sinistra/destra, infine premi [Invio] per confermarli.\n\nPuò essere utilizzato anche un mouse/touchpad.\n\n"
 
 # Preparation Menu
 _PrepTitle=" Preparazione dell'installazione "
@@ -410,27 +411,27 @@ _ConfBseBody="\nE' necessario configurare alcuni parametri basilari. Ciò includ
 _ConfBseFstab="Genera FSTAB"
 _ConfBseHost="Imposta Hostname"
 _ConfBseTime="Configura fuso orario"
-_ConfBseHWC="Configura l'Orologgio Hardware"
+_ConfBseHWC="Configura l'Orologio Hardware"
 _ConfBseSysLoc="Configura il linguaggio del sistema"
 _ConfBseVirtCon="Configura Console Virtuale"
 
 # User Menu
 _ConfUsrTitle=" Configura gli Utenti"
-_ConfUsrBody="\nRoot rappresenta l'account delll'utente 'super-utente' o 'amministratore'. E' possibile impostare la stessa password per tutti gli utenti."
+_ConfUsrBody="\nRoot rappresenta l'account 'super-utente' o 'amministratore'. E' possibile impostare la stessa password per tutti gli utenti."
 _ConfUsrRoot="Imposta la password di Root"
 _ConfUsrNew="Aggiungi nuovi utenti"
 
 # Desktop Menu
 _InstDEMenuTitle=" Installa l'ambiente grafico "
-_InstDEMenuBody="\nPrima di installare l'ambiente grafico, è necessario installare i driver per scheda video, input ed audio."
-_InstDEMenuGISD="Installa i driver per scheda video, Input ed Audio"
+_InstDEMenuBody="\nPrima di installare l'ambiente grafico, è necessario installare i driver per scheda video, periferiche di input ed audio."
+_InstDEMenuGISD="Installa i driver per scheda video, input ed audio"
 _InstDEMenuDE="Installa gli ambienti grafici"
 _InstDEMenuNM="Installa un gestore delle connessioni di rete"
 _InstDEMenuDM="Installa un Display Manager / Schermata di Login"
 
 # Main Menu
 _MMTitle=" Menu Principale "
-_MMBody="\nOgni passaggio deve essere eseguito IN ORDINE. Non appena terminata l'installazione, selezionare 'Fatto' per finalizzarla.\n"
+_MMBody="\nOgni passaggio deve essere eseguito IN ORDINE. Non appena sarà terminata l'installazione, selezionare 'Fatto' per finalizzarla.\n"
 _MMPrep="Prepara l'Installazione"
 _MMInstBse="Installa il sistema di base"
 _MMConfBse="Configura il sistema di base"

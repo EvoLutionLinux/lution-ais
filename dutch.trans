@@ -3,9 +3,14 @@
 ## Dutch/Nederlands Translation File   
 ##   
 ##
-## Written by ErwinC for Evo/Lution Linux (30th November 2014)
+## Written by ErwinC for Evo/Lution Linux (7th December 2014)
 ##
 ##
+
+# Virtualbox
+_VBoxInstTitle=" VirtualBox Installeren "
+_VBoxInstBody="\nIndien, om welke reden ook, de VirtualBox gastmodules niet laden voor het geïnstalleerde systeem (o.a. lage resolutie en scrollbars na het opstarten), dan zal één van de volgende commando's dit verhelpen:\n\n$ su\n# depmod -a\n# modprobe -a vboxvideo vboxguest vboxsf\n# reboot"
+
 
 # Select Wireless Firmware Driver(s)
 _InstWirelessFirm="Installeer een stuurprogramma voor uw draadloze netwerkkaart"
@@ -17,7 +22,7 @@ _WirelessErrBody="\nGeen gedetecteerd."
 _All="Alle"
 
 # Select Config Files
-_SeeConfOpt="Herziening van de Configuratiebestanden (optioneel)"
+_SeeConfOpt="Nazicht van de Configuratiebestanden (optioneel)"
 _SeeConfOptTitle=" Configuratiebestanden "
 _SeeConfOptBody="\n.Selecteer een bestand in de lijst dat moet worden herzien of aangepast.\n"
 _SeeConfErrTitle=" Fout "
@@ -25,25 +30,25 @@ _SeeConfErrBody1="\nBestand bestaat niet.\n\n"
 _SeeConfErrBody2="\nHet basissyteem moet eerst worden geïnstalleerd.\n\n"
 
 # Pacman
-_PrepPacKey="Ververs Pacman Toetsen (optioneel)"
+_PrepPacKey="Ververs Pacman sleutelbestanden (optioneel)"
 
 # Logical Volume Management
 _PrepLVM="Logical Volume Management (optioneel)"
 
 _LvmDetTitle=" LVM Gedetecteerd "
-_LvmDetBody1="\nBestaand Logical Volume Management (LVM) werd gedetecteerd. Partities reeds in gebruik voor LVM kunnen niet worden geselecteerd. Wil je het bestaande LVM de-activeren?\n\nSelecteer 'Yes' om de bestaande LVM te verwijderen.\nSelecteer 'No' om het te behouden.\n"
+_LvmDetBody1="\nBestaand Logical Volume Management (LVM) werd gedetecteerd. Partities reeds in gebruik voor LVM kunnen niet worden geselecteerd. Wil je het bestaande LVM deactiveren?\n\nSelecteer 'Yes' om de bestaande LVM te verwijderen.\nSelecteer 'No' om het te behouden.\n"
 _LvmRmTitle="  LVM stoppen "
 _LvmDetBody2="\nBestaand Logical Volume Management (LVM) gedetecteerd. Opstarten. Even geduld aub...\n\n"
-_LvmRmBody="\nAlle bestaande Physical Volumes (PV) de-activeren, Volume Groepen (VG), en Logical Volumes (LV).\n\nEven geduld aub...\n\n"
+_LvmRmBody="\nAlle bestaande Physical Volumes (PV) deactiveren, Volume Groepen (VG), en Logical Volumes (LV).\n\nEven geduld aub...\n\n"
 
 _LvmPartErrTitle=" LVM Partitie fout "
-_LvmPartErrBody="\nEr zijn geen partities geschikt om te gebruiken als Logical Volume Management. Er is minimum één zo'n partitie nodig.\n\nWanneer er een LVM-partitie in gebruik is, dan kun je, door deze te de-activeren, de partitie(s) terug gebruiken als Physical Volume(s).\n\n"
+_LvmPartErrBody="\nEr zijn geen partities geschikt om te gebruiken als Logical Volume Management. Er is minimaal één zo'n partitie nodig.\n\nWanneer er een LVM-partitie in gebruik is, dan kun je, door deze te deactiveren, de partitie(s) terug gebruiken als Physical Volume(s).\n\n"
 
 _LvmNameVgTitle=" LVM - Volume Groepsnaam "
 _LvmNameVgBody="\nMaak een Volume Groepsnaam (VG) aan.\n\nDe VG is de/het nieuwe 'virtuele hardeschijf/opslagmedium ' die je kunt selecteren uit de partitie(s) op het volgende scherm.\n"
 
 _LvmNameVgErrTitle=" LVM - VG ongeldige naam "
-_LvmNameVgErr="\nOngeldige Naam ingegeven. De Volume Groepsnaam mag in alpha-numeric , maar mag geen spacies bevatten, niet beginnen met een '/', en mag nog niet in gebruik zijn.\n\n"
+_LvmNameVgErr="\nOngeldige Naam ingegeven. De Volume Groepsnaam mag in alfanumeriek , maar mag geen spaties bevatten, niet beginnen met een '/', en mag nog niet in gebruik zijn.\n\n"
 
 
 _LvmPvSelTitle=" LVM - Selecteer Partities "
@@ -74,14 +79,14 @@ _LvmLvNameBody1="\nGeef de naam van het Logical Volume (LV) dat aangemaakt wordt
 _LvmLvNameBody2="\n\nNOTE: Deze LV zal automatisch alle resterende vrije ruimte in de Volume Groep innemen."
 
 _LvmLvNameErrTitle=" LVM - Fout in Naam LV "
-_LvmLvNameErrBody="\nOngeldige Naam ingegeven. Het Logical Volume (LV) mag in alpha-numeric , maar mag geen spacies bevatten en niet beginnen met een '/'.\n\n"
+_LvmLvNameErrBody="\nOngeldige Naam ingegeven. Het Logical Volume (LV) mag in alfanumeriek , maar mag geen spaties bevatten en niet beginnen met een '/'.\n\n"
 
 _LvmLvSizeTitle=" LVM - Stel de  LV-grootte in "
 _LvmLvSizeBody1="Resterend"
 _LvmLvSizeBody2="\n\nStel de grootte van het Logical Volume (LV) in, in Megabytes (M) of Gigabytes (G).  Voorbeeld, 100M maakt een 100 Megabyte LV aan. 10G maakt een 10 Gigabyte LV aan.\n"
 
 _LvmLvSizeErrTitle=" LVM -  LV ongeldige waarde"
-_LvmLvSizeErrBody="\nOngeldige waarde ingegeven. Na een getal moet een 'M' (Megabytes) of een 'G' (Gigabytes) ingegeven worden.\n\nVoorbeelden, 100M, 10G, of 250M. De waarde mag niet gelijk zijn en moet kleiner zijn dan de resterend grootte van de VG.\n\n"
+_LvmLvSizeErrBody="\nOngeldige waarde ingegeven. Na een getal moet een 'M' (Megabytes) of een 'G' (Gigabytes) ingegeven worden.\n\nVoorbeelden, 100M, 10G, of 250M. De waarde mag niet gelijk zijn en moet kleiner zijn dan de resterende grootte van de VG.\n\n"
 
 _LvmLvDoneTitle=" LVM - Logical Volume aangemaakt "
 
@@ -98,7 +103,7 @@ _ChkEvoTitle=" Controle van de Evo Afhankelijkheden "
 _ChkEvoBody="\nControle, ben je aangemeld als ROOT? Is dit systeem verbonden met het internet? Even geduld aub...\n\n"
 
 _RtFailTitle=" Niet aangemeld als ROOT. Afsluiten "
-_RtFailBody="\nJe moet aangemeld zijn als ROOT. Afsluiten.\n\n"
+_RtFailBody"\nJe moet aangemeld zijn als ROOT. Afsluiten.\n\n"
 
 _ConFailTitle=" Geen internetverbinding "
 _ConFailBody="\nTest internetverbinding mislukt. Afsluiten\n\n"
@@ -111,7 +116,7 @@ _BiosDet="BIOS Systeem gedetecteerd"
 
 # Installer Mirrorlist
 _MirrorlistTitle=" Mirrorlijst "
-_MirrorlistBody="\nOp deze mirrorlijst staan de nodige serveradressen.  Ze worden door pacman geraadpleegd volgens hun plaats op de lijst.\n\n"
+_MirrorlistBody="\nOp deze mirrorlijst staan de nodige serveradressen.  Ze worden door pacman geraadpleegd volgens hun volgorde op de lijst.\n\n"
 _MirrorbyCountry="Gegenereerde lijst per land"
 _MirrorEdit="Manueel bewerkte lijst"
 
@@ -139,12 +144,12 @@ _localeBody="Selecteer een taal"
 _TimeZTitle=" Selecteer de TijdZone "
 _TimeZBody="\nDeze tijdzone wordt gebruikt om de systeemklok correct in te stellen."
 _TimeSubZTitle=" Selecteer Sub-Tijdzone "
-_TimeSubZBody="\nSelecteer de dichtst bijliggende stad."
+_TimeSubZBody="\nSelecteer de dichtstbijliggende stad."
 _TimeZQ="Stel de Tijdzone in als"
 
 # Set Hardware Clock
 _HwCTitle=" Stel de Hardware-klok in "
-_HwCBody="\nUTC is de universele standaard tijd, en is aangewezen behalve bij een dual-installatie met Windows."
+_HwCBody="\nUTC is de universele standaardtijd, en is aangewezen behalve bij een dual-installatie met Windows."
 _HwCUTC="UTC"
 _HwLocal="Locale Tijd"
 
@@ -164,13 +169,13 @@ _HostNameTitle=" Configureer Host-Naam "
 _HostNameBody="\nAan de hand van de Host-Naam wordt een systeem in een netwerk geïdentificeerd.\n\nDe Host-Naam mag enkel uit alfabetische karakters bestaan maar kan ook een streepje (-) bevatten - doch niet in het begin of op het einde - en mag uit maximum 63 karakters bestaan.\n"
 
 # Set Root Password
-_PassRtTitle=" Stel Root-paswoord in "
-_PassRtBody="\nGeef een Root-paswoord in\n\n"
-_PassRtBody2="\nHerhaal het Root-paswoord\n\n"
+_PassRtTitle=" Stel Root-wachtwoord in "
+_PassRtBody="\nGeef een Root-wachtwoord in\n\n"
+_PassRtBody2="\nHerhaal het Root-wachtwoord\n\n"
 
 # Root Password Error
-_PassRtErrTitle=" Fout Root-paswoord "
-_PassRtErrBody="\nHet Root-paswoord en de herhaling ervan zijn niet identiek. Probeer opnieuw aub.\n\n"
+_PassRtErrTitle=" Fout Root-wachtwoord "
+_PassRtErrBody="\nHet Root-wachtwoord en de herhaling ervan zijn niet identiek. Probeer opnieuw aub.\n\n"
 
 # Create New User
 _NUsrTitle=" Maak een nieuwe gebruiker aan "
@@ -181,17 +186,17 @@ _NUsrErrTitle=" Foute gebruikersnaam "
 _NUsrErrBody="\nEen foute gebruikersnaam werd ingegeven. probeer opnieuw aub.\n\n"
 
 # Set User Password
-_PassNUsrTitle=" Stel het gebruikerspaswoord in "
-_PassNUsrBody="\nGeef paswoord in voor"
-_PassNUsrBody2="\Herhaal het paswoord voor"
+_PassNUsrTitle=" Stel het gebruikerswachtwoord in "
+_PassNUsrBody="\nGeef wachtwoord in voor"
+_PassNUsrBody2="\Herhaal het wachtwoord voor"
 
 # Create New User
 _NUsrSetTitle=" Aanmaken van een nieuwe Gebruiker "
 _NUsrSetBody="\nMaak een Gebruiker aan en stel Groepen in...\n\n"
 
 # User Password Error
-_PassNUsrErrTitle=" Fout Gebruikerspaswoord "
-_PassNUsrErrBody="\nHet Gebruikerspaswoord en de herhaling ervan zijn niet identiek, Probeer opnieuw aub.\n\n"
+_PassNUsrErrTitle=" Fout Gebruikerswachtwoord "
+_PassNUsrErrBody="\nHet Gebruikerswachtwoord en de herhaling ervan zijn niet identiek, Probeer opnieuw aub.\n\n"
 
 # Mounting (Partitions)
 _MntStatusTitle=" Aankoppelstatus "
@@ -200,7 +205,7 @@ _MntStatusFail="Aankoppeling mislukt!"
 
 # Select Device (installation)
 _DevSelTitle=" Selecteer opslagmedia "
-_DevSelBody="\Opslagmedia (/dev) zijn de beschikbare en beschrijfbare opslagmedia, harde schijven en USB-sticks. De eerste is /sda, de tweede /sdb, en zo verder.\n\nWanneer er een USB-stick gebruikt wordt om EVO op te starten zal deze ook op deze lijst voorkomen!"
+_DevSelBody="\Opslagmedia (/dev) zijn de beschikbare en beschrijfbare harde schijven en USB-sticks. De eerste is /sda, de tweede /sdb, en zo verder.\n\nWanneer er een USB-stick gebruikt wordt om EVO op te starten zal deze ook op deze lijst voorkomen!"
 
 # Select Device (Grub) - seperate body text is not required (uses standard device selection text)
 _DevSelGrubTitle=" Selecteer Grub opslagmedia "
@@ -216,7 +221,7 @@ _UefiPartErrBody="\nUEFI systemen moeten geinstalleerd worden op minimum twee pa
 
 # BIOS Partitioning Error
 _BiosPartErrTitle=" Foute BIOS Partitionering "
-_BiosPartErrBody="\nBIOS systemen moeten geinstalleerd worden op minimum één partitie (ROOT).\n\nCofigureer uw partities aub."
+_BiosPartErrBody="\nBIOS systemen moeten geinstalleerd worden op minimum één partitie (ROOT).\n\nConfigureer uw partities aub."
 
 # File System
 _FSTitle=" Kies uw bestandsysteem "
@@ -294,12 +299,12 @@ _InstUefiBtBody="\nGrub2 is de populairste en veelzijdigste optie (geen voorkeur
 
 # Set UEFI Grub as default
 _SetGrubDefTitle=" Grub als de standaard Bootlader installeren? "
-_SetGrubDefBody="\nHet is mogelijk dat sommige UEFI firmware Grub niet kan detecteren,tenzij deze is ingesteld als de standaard bootlader. Dit kan resulteren in een niet-opstartbaar systeem.\n\nWil je Grub als standaard bootlader installeren?\n\Voor beginners is het aangewezen 'Yes' te selecteren. Hierdoor wordt ook de bootable grubx64.efi gekopieerd"
+_SetGrubDefBody="\nHet is mogelijk dat sommige UEFI firmware Grub niet kan detecteren, tenzij deze is ingesteld als de standaard bootlader. Dit kan resulteren in een niet-opstartbaar systeem.\n\nWil je Grub als standaard bootlader installeren?\n\Voor beginners is het aangewezen 'Yes' te selecteren. Hierdoor wordt ook de bootable grubx64.efi gekopieerd"
 _SetGrubDefBody2="en weggeschreven als bootx64.efi, zoals het hoort.\n\nAnderzijds selecteer 'No', zeker in het geval er al een standaard bootlader is ingesteld, en/of wanneer je van plan bent meerdere bootladers te gebruiken."
 
 # Gummiboot Configuration Check
 _ChkGumTitle=" Controle Gummiboot Configuratie "
-_ChkGumBody="\nSluit dit venster na de controle van de Arch en bootlader configuratiebestanden om verder te gaan.\n"
+_ChkGumBody="\nSluit dit venster na de controle van de Arch- en bootlader- configuratiebestanden om verder te gaan.\n"
 
 # Set rEFInd as default
 _SetRefiDefTitle=" rEFInd als standaard Bootlader installeren? "
@@ -342,7 +347,7 @@ _InstDETitle=" Installeer Desktop-Suites "
 _InstDEBody="\nDesktop-suites staat bovenaan op de lijst, en kunnen meerdere download-opties hebben.\n\nKDE is een 750MB+ download."
 
 # Install Common Packages
-_InstComTitle=" Installeer gemeenschappelijk pakketten? "
+_InstComTitle=" Installeer gemeenschappelijke pakketten? "
 _InstComBody="\nSommige desktop-suites hebben de volgende pakketten nodig: in het bijzonder deze voor de toegangsrechten van bestanden, het aanmaken van de Thuismappen (Home) en de bestandbeheerdersfucties.  xterm, xdg-user-dirs, gksu, gnome-keyring, polkit, gvfs, en het gnome-icon-theme, enz... Enkel wanneer je de full KDE desktop alleen installeert, heb je deze bestanden niet nodig.\n\nDeze pakketten installeren? Je krijgt deze optie maar EENMAAL te zien.\n\n"
 
 # KDM
@@ -371,22 +376,22 @@ _DmChoiceBody="\nMaak een keuze tussen LXDM of LightDM. LXDM is aanbevolen voor 
 
 # DM Already Installed
 _DmInstTitle=" Een Loginmanager is ingesteld "
-_DmInstBody="\nEr is reeds een Loginmanager geinstalleerd en ingesteld.\n\n"
+_DmInstBody="\nEr is reeds een Loginmanager geïnstalleerd en ingesteld.\n\n"
 
 # Network Manager
 _InstNMTitle=" Kies een Netwerkmanager "
 _InstNMBody="\nEen Netwerkmanager is aanbevolen, vooral bij draadloze en PPPoE/DSL verbindingen.\n"
 
 # Network Manager Installed
-_InstNMDoneTitle=" Een Netwerkmanager werd geinstalleerd "
-_InstNMDoneBody="\nDe netwerkmanager werd geinstalleerd en ingesteld."
+_InstNMDoneTitle=" Een Netwerkmanager werd geïnstalleerd "
+_InstNMDoneBody="\nDe netwerkmanager werd geïnstalleerd en ingesteld."
 
 # Network Manager Already Installed (no need for seperate title)
-_InstNMErrBody="\nEr werd reeds een netwerkmanager geinstalleerd en ingesteld."
+_InstNMErrBody="\nEr werd reeds een netwerkmanager geïnstalleerd en ingesteld."
 
 # Welcome
 _WelTitle=" Welkom! "
-_WelBody="\nSelecteer de optie door hun nummer in te tikken of door de pijljestoetsen [op]/[neer] te gebruiken. Bevestig door op [enter] te drukken.\n\nSchakel tussen de knoppen door de [Tab] toets of de pijltjestoets [links]/[rechts] te gebruiken. Bevestig door op [enter] te drukken.\n\U kun ook uw muis/touchpad gebruiken.\n\n"
+_WelBody="\nSelecteer door het nummer van de gewenste optie in te tikken of door de pijljestoetsen [op]/[neer] te gebruiken. Bevestig door op [enter] te drukken.\n\nSchakel tussen de knoppen door de [Tab] toets of de pijltjestoets [links]/[rechts] te gebruiken. Bevestig door op [enter] te drukken.\n\U kunt ook uw muis/touchpad gebruiken.\n\n"
 
 # Preparation Menu
 _PrepTitle=" Voorbereiding installatie "
@@ -415,7 +420,7 @@ _ConfBseVirtCon="Stel Virtuele Console in"
 
 # User Menu
 _ConfUsrTitle=" Configureer Gebruiker(s)"
-_ConfUsrBody="\nRoot is de Standaard 'super-user' of 'beheerder'van de ROOT account. U kunt hetzelfde paswoord instellen voor zowel ROOT als de persoonlijke gebruikersaccount."
+_ConfUsrBody="\nRoot is de Standaard 'super-user' of 'beheerder'van de ROOT account. U kunt hetzelfde paswoord instellen voor zowel ROOT als het persoonlijke gebruikersaccount."
 _ConfUsrRoot="Stel het Root Paswoord in"
 _ConfUsrNew="Voeg nieuwe gebruiker(s) toe"
 
@@ -436,7 +441,7 @@ _MMConfBse="Configureer het Basissysteem"
 _MMConfUsr="Configureer de Gebruikerbestand(en)"
 _MMInstDE="Installeer Desktop-Suite(s)"
 _MMRunMkinit="Voer Mkinitcpio uit"
-_Done="Afsluiten"
+_Done="Klaar"
 
 # Close Installer
 _CloseInstBody="Installer Afsluiten?"

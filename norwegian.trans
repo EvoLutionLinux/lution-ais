@@ -3,20 +3,15 @@
 ## English/Norsk Translation File
 ##
 ##
-## Written by Per-Johan Halsli for Evo/Lution Linux (23rd November 2014)
+## Written by Per-Johan Halsli for Evo/Lution Linux (7th December 2014)
 ##
 ##
 
-# Select Wireless Firmware Driver(s)
-_InstWirelessFirm="Install Wireless Device Firmware"
-_WirelssFirmTitle=" Select Wireless Device Firmware "
-_WirelssFirmBody="\nSome wireless devices require additional firmware to be installed in order to work.\n\nWhere unsure if additional firmware is required - or which to select - then all of them can be installed."
-_SeeWirelessDev="Display Wireless Device (optional)"
-_WirelessShowTitle=" Wireless Device "
-_WirelessErrBody="\nNone Detected."
-_All="All"
+# Virtualbox
+_VBoxInstTitle=" VirtualBox Installasjon "
+_VBoxInstBody="\nHvis gjestemoduler i VirtualBox av noen grunn ikke laster for det installerte systemet (lav oppløsning og rullefelt etter boot),  vil en engangs serie av kommandoer fikse dette:\n\n$ su\n# depmod -a\n# modprobe -a vboxvideo vboxguest vboxsf\n# reboot"
 
-# Select Config Files
+# Velg konfigurasjonsfiler
 _SeeConfOpt="Se over konfigurasjonsfilene (frivillig)"
 _SeeConfOptTitle=" konfigurasjonsfilene "
 _SeeConfOptBody="\n.Velg en av filene nedenfor for å se over eller endre.\n"
@@ -25,80 +20,80 @@ _SeeConfErrBody1="\nFilen eksisterer ikke.\n\n"
 _SeeConfErrBody2="\nBase systemet må være installert først.\n\n"
 
 # Pacman
-_PrepPacKey="Gjenopprett Pacman's  Nøkler (optional)"
+_PrepPacKey="Gjenopprett Pacman's  Nøkler (frivillig)"
 
-# Logical Volume Management
-_PrepLVM="Logical Volume Management (optional)"
+# Logisk Volum Management
+_PrepLVM="Logisk Volum Management (frivillig)"
 
 _LvmDetTitle=" LVM Oppdaget "
-_LvmDetBody1="\nEksisterende Logical Volume Management (LVM) har blitt oppdaget. Partisjoner allerede brukt for LVM kan ikke velges. Ønsker du å re-aktivere eksisterende LVM?\n\nVelg 'Ja' for å fjerne eksisterende LVM.\nVelg 'Nei' for å beholde den.\n"
+_LvmDetBody1="\nEksisterende Logisk Volum Management (LVM) har blitt oppdaget. Partisjoner allerede brukt for LVM kan ikke velges. Ønsker du å re-aktivere eksisterende LVM?\n\nVelg 'Ja' for å fjerne eksisterende LVM.\nVelg 'Nei' for å beholde.\n"
 _LvmRmTitle=" Deaktiverer LVM "
-_LvmDetBody2="\nEksisterende Logical Volume Management (LVM) oppdaget. Aktiverer. Vennligst Vent...\n\n"
-_LvmRmBody="\nDeaktiverer alle eksisterende Physical Volumes (PV), Volume Groups (VG), og Logical Volumes (LV).\n\nVennligst vent...\n\n"
+_LvmDetBody2="\nEksisterende Logisk Volum Management  (LVM) oppdaget. Aktiverer. Vennligst Vent...\n\n"
+_LvmRmBody="\nDeaktiverer alle eksisterende fysiske volum (PV), Volum Grupper (VG), og Logiske Volum (LV).\n\nVennligst vent...\n\n"
 
 _LvmPartErrTitle=" LVM Partisjonsfeil "
-_LvmPartErrBody="\nDet er ingen brukbare partisjoner tilgjengelig for Logical Volume Management. Ett minimum av en kreves.\n\nHvis LVM allerede er i bruk, så vil deaktivering tillate partisjon(er) brukt for dets Physical Volume(s) å brukes igjen.\n\n"
+_LvmPartErrBody="\nDet er ingen brukelige partisjoner tilgjengelig for Logisk Volum Management. Det kreves et minimum av en.\n\nHvis LVM allerede er i bruk, så vil deaktivering tillate partisjon(er) brukt som fysiske volum(er) å brukes igjen.\n\n"
 
-_LvmNameVgTitle=" LVM - Navn Volume Group "
-_LvmNameVgBody="\nSkriv navnet på Volume Group (VG) for å lage.\n\nVG er den nye 'virtuelle enhet/hard-disk' som skapes fra partisjon(er) som velges etterpå.\n"
+_LvmNameVgTitle=" LVM - Navn Volum Gruppe "
+_LvmNameVgBody="\nSkriv navnet på Volum Gruppen (VG) for å lage.\n\nVG er den nye 'virtuelle enhet/hard-disk' som skapes fra partisjon(er) som velges etterpå.\n"
 
 _LvmNameVgErrTitle=" LVM - VG Navn feil "
-_LvmNameVgErr="\nUgyldig navn brukt. Volume Group navnet kan være alfa-numerisk, men kan ikke inneholde mellomrom, starte med '/', eller allerede være i bruk.\n\n"
+_LvmNameVgErr="\nUgyldig navn brukt. Volum Gruppe navnet kan være alfa-numerisk, men kan ikke inneholde mellomrom, starte med '/', eller allerede være i bruk.\n\n"
 
 
 _LvmPvSelTitle=" LVM - Velg partisjoner "
-_LvmPvSelBody="\nVelg partisjon(er) til å bruke som Physical Volume (PV).\n"
+_LvmPvSelBody="\nVelg partisjon(er) til å bruke som fysiske volum (PV).\n"
 _LvmPvCreateTitle=" LVM - Partisjon lagt til "
 
-_LvmPvConfTitle=" LVM - Lag Volume Group "
-_LvmPvConfBody1="\nBekreft Confirm opprettelsen Volume Group "
+_LvmPvConfTitle=" LVM - Lag Volum Gruppe "
+_LvmPvConfBody1="\nBekreft opprettelse av Volum Gruppe "
 _LvmPvConfBody2="med følgende partisjoner:\n\n"
 
 _LvmPvActTitle=" LVM - Lager VG "
-_LvmPvActBody1="\nLager og aktiverer Volume Group "
+_LvmPvActBody1="\nLager og aktiverer Volum Gruppe "
 _LvmPvActBody2="\n\nVennligst Vent...\n\n"
 
 _LvmPvDoneTitle=" LVM - VG opprettet "
-_LvmPvDoneBody1="\nVolume Group "
+_LvmPvDoneBody1="\nVolum Gruppe "
 _LvmPvDoneBody2="har blitt opprettet"
 
-_LvmLvNumTitle=" LVM - Lag Logical Volumes "
-_LvmLvNumBody1="\nTast inn antallet Logical Volumes (LVs) for å opprette i "
-_LvmLvNumBody2="Minimum er 1,maximim er 9.\n\nLVs are essentially partitions. Den siste (eller eneste) LV vil automatisk bruke 100% av gjenværende plass i Volume Group."
+_LvmLvNumTitle=" LVM - Lag Logisk Volum "
+_LvmLvNumBody1="\nTast inn antallet Logiske Volum (LVer) for å opprette i "
+_LvmLvNumBody2="Minimum er 1,maximum er 9.\n\nLVer er egentlig partisjoner. Den siste (eller eneste) LV vil automatisk bruke 100% av gjenværende plass i Volum Gruppen."
 
 _LvmLvNumErrTitle=" LVM - LV Nummer feil "
 _LvmLvNumErrBody="\nUgyldig tall inntastet. Minimum er 1, maximum er 9.\n\n"
 
 _LvmLvNameTitle=" LVM - Navn LV "
-_LvmLvNameBody1="\nTast inn navnet på Logical Volume (LV) for å lage.\n\nDette er som å velge navn/etikett for en partisjonn.\n"
-_LvmLvNameBody2="\n\nNOTE: Denne LV vil automatisk bruke all gjenværende plass i Volume Group."
+_LvmLvNameBody1="\nTast inn navnet på Logisk Volum (LV) for å lage.\n\nDette er som å velge navn/etikett for en partisjonn.\n"
+_LvmLvNameBody2="\n\nNOTE: Denne LV vil automatisk bruke all gjenværende plass i Volum Gruppen."
 
 _LvmLvNameErrTitle=" LVM - LV Navn Feil "
-_LvmLvNameErrBody="\nUgyldig navn inntastet. Logical Volume (LV) navnet kan være alfa-numerisk, men kan ikke inneholde mellomrom eller starte med '/'.\n\n"
+_LvmLvNameErrBody="\nUgyldig navn inntastet. Logisk Volum (LV) navnet kan være alfa-numerisk, men kan ikke inneholde mellomrom eller starte med '/'.\n\n"
 
 _LvmLvSizeTitle=" LVM - Velg LV størrelse "
 _LvmLvSizeBody1="gjenværende"
-_LvmLvSizeBody2="\n\nTast inn størrelse på Logical Volume (LV) i Megabytes (M) eller Gigabytes (G). For eksempel, 100M vil opprette en 100 Megabyte LV. 10G vil opprette 10 Gigabyte LV.\n"
+_LvmLvSizeBody2="\n\nTast inn størrelse på Logisk Volum (LV) i Megabytes (M) eller Gigabytes (G). For eksempel, 100M vil opprette en 100 Megabyte LV. 10G vil opprette 10 Gigabyte LV.\n"
 
-_LvmLvSizeErrTitle=" LVM - Velg LV størrelse Feil "
+_LvmLvSizeErrTitle=" LVM - Feil ved valgt LV størrelse "
 _LvmLvSizeErrBody="\nUgyldig verdi inntastet.  En numerisk størrelse må avsluttes med 'M' (Megabytes) eller 'G' (Gigabytes).\n\nEksempler inkluderer, 100M, 10G, or 250M. Verdien må heller ikke være like stor eller større enn gjenværende plass på VG.\n\n"
 
-_LvmLvDoneTitle=" LVM - Logical Volume Opprettet "
+_LvmLvDoneTitle=" LVM - Logisk Volum Opprettet "
 
 _LvmCompTitle=" LVM - Prosessen er ferdig "
-_LvmCompBody="\nDone! Alle Logical Volumes har blitt opprettet forr Volume Group.\n\nØnsker du å se over det nye LVM skjemaet?\n\n"
+_LvmCompBody="\nDone! Alle Logisk Volum har blitt opprettet for Volum Gruppen.\n\nØnsker du å se over det nye LVM skjemaet?\n\n"
 
 
-# Show devices and partitions
+# Vis enheter og partisjoner
 _DevShowTitle=" Enheter / Partisjoner "
-_DevShowOpt="List enheter (frivillig)"
+_DevShowOpt="Liste med enheter (frivillig)"
 
-# Check Evo Requirements and Identify System Type
+# Sjekker Evos krav og identifiserer system type
 _ChkEvoTitle=" Sjekker Evo's avhengigheter "
 _ChkEvoBody="\nSjekker at installereren kjøres som root og at det er en aktiv internett tilkobling. Vennligst vent...\n\n"
 
 _RtFailTitle=" Root Feil "
-_RtFailBody="\nInstallereren må kjøres som root. Avslutter.\n\n"
+_RtFailBody"\nInstallereren må kjøres som root. Avslutter.\n\n"
 
 _ConFailTitle=" Tilkobling Feilet "
 _ConFailBody="\nInternett tilkobling feilet. Avslutter.\n\n"
@@ -109,160 +104,160 @@ _ReqMetBody="\nAlle sjekker bestått! \n\n"
 _UefiDet="UEFI System Oppdaget"
 _BiosDet="BIOS System Oppdaget"
 
-# Installer Mirrorlist
-_MirrorlistTitle=" Mirrorlist "
-_MirrorlistBody="\nMirrorlist inneholder server adresser brukt av pacman for å installere pakker. De blir brukt av pacman i den rekkefølgen de er listet.\n\n"
+# Installerer Pakkedatabase
+_MirrorlistTitle=" Pakkedatabase "
+_MirrorlistBody="\nPakkedatabasen inneholder server adresser brukt av pacman for å installere pakker. De blir brukt av pacman i den rekkefølgen de er listet.\n\n"
 _MirrorbyCountry="Generer liste etter land"
-_MirrorEdit="Rediger mirrorlist manuelt"
+_MirrorEdit="Rediger Pakkedatabasen manuelt"
 
-# Generate Mirrorlist by country
+# Genererer Pakkedatabase etter land
 _MirrorCntryTitle=" Velg et Land "
 _MirrorCntryBody="\nen liste over mirrors fra det valgte landet genereres.\n\nNår sett, kan du velge å bruke den eller ikke."
-_MirrorGenTitle=" Genererer Mirrorlist "
-_MirrorGenBody="\nGenererer Mirrorlist. Vennligst vent... "
+_MirrorGenTitle=" Genererer Pakkedatabase "
+_MirrorGenBody="\nGenererer Pakkedatabase. Vennligst vent... "
 _MirrorGenQ="Bruke den genererte listen for installasjon?"
-_MirrorGenDone="\nFerdig! Original Mirrorlist har blitt lagret som:\n\n/etc/pacman.d/mirrorlist.orig\n\n"
+_MirrorGenDone="\nFerdig! Original Pakkedatabase har blitt lagret som:\n\n/etc/pacman.d/mirrorlist.orig\n\n"
 
-# Set Keymap (vconsole)
+# Velg Tastaturkart (vconsole)
 _KeymapTitle=" Velg et tastaturkart"
 _KeymapBody="\nBruk [pg up] og [pg dwn] taster for å navigere, eller trykk den første bokstaven i navnet hvis kjent."
 
-# Set Xkbmap (environment)
+# Velg xkbkart (miljø)
 _XkbmapTitle=" Velg xkbkart "
 _XkbmapBody="Velg Tastaturets Utforming"
 
-# Set Locale
+# Velg Språk
 _LocateTitle=" Velg språk "
 _localeBody="Velg ett språk"
 
-# Set Timezone
-_TimeZTitle=" Velg Tidsone "
+# Velg Tidssone
+_TimeZTitle=" Velg Tidssone "
 _TimeZBody="\nTidssone blir bruk for å korrekt velge ditt systems tid."
-_TimeSubZTitle=" Velg tid Sub-Zone "
+_TimeSubZTitle=" Velg tid under-sone "
 _TimeSubZBody="\nVelg den byen som er nærmest deg."
 _TimeZQ="Sett tidssone som"
 
-# Set Hardware Clock
+# Velg Hardware Klokke
 _HwCTitle=" Velg Hardware Klokke "
 _HwCBody="\nUTC er en universiell tidstandard, og er å anbefale såfremt man ikke dual-booter med Windows."
 _HwCUTC="UTC"
 _HwLocal="Lokal Tid"
 
-# Generate FSTAB
+# Generer FSTAB
 _FstabTitle=" Generer FSTAB "
 _FstabBody="\nFSTAB filen (File System TABle) velger hvilke lagringsenheter og partisjoner som skal tilkobles, og hvordan de skal brukes.\n\nUUID/PARTUUID (Universally Unique IDentifier) er anbefalt.\n\nHvis et navn ikke ble valgt tidligerer,vil enhetens navn bli brukt."
 _FstabDev="Dev (partisjon kode)"
 _FstabLabel="Label (definert av bruker)"
 _FstabUUID="UUID/PARTUUID (unik kode)"
 
-# Check FSTAB
+# Sjekk FSTAB
 _FstabChkTitle=" Kontroller FSTAB "
-_FstabChkBody="\nVennligst kontroller FSTAB filen, før man lukker for å fortsette.\n\n"
+_FstabChkBody="\nVennligst kontroller FSTAB filen, lukk for å fortsette.\n\n"
 
-# Set Hostname
+# Velg Vertsnavn
 _HostNameTitle=" Konfigurer Vertsnavn "
-_HostNameBody="\nVertsnavn blir brukt for å identifisere systemet på ett nettverk.\n\nDet er begrenset til alfanumeriske bokstaver, kan inneholde bindestrek (-) - men ikke i begynnelsen eller på slutten - må ikke være lengre enn 63 bokstaver.\n"
+_HostNameBody="\nVertsnavn blir brukt for å identifisere systemet på ett nettverk.\n\nDet er begrenset til alfanumeriske bokstaver, kan inneholde bindestrek (-) - men ikke i begynnelsen eller på slutten - må heller ikke være lengre enn 63 bokstaver.\n"
 
-# Set Root Password
+# Velg Root Passord
 _PassRtTitle=" Velg Root Passord "
 _PassRtBody="\nTast inn Root passord\n\n"
 _PassRtBody2="\nGjenta Root passord\n\n"
 
-# Root Password Error
-_PassRtErrTitle=" Root Passord Feil "
+# Feil Roor Passord
+_PassRtErrTitle=" Feil Root Passord "
 _PassRtErrBody="\nRoot passord tastet inn, stemmer ikke overens. Vennligst prøv igjen.\n\n"
 
-# Create New User
+# Lag Ny Bruker
 _NUsrTitle=" Lag Ny Bruker "
 _NUsrBody="\nTast inn brukernavn. Kun SMÅ bokstaver kan brukes.\n"
 
-# Username Error
-_NUsrErrTitle=" Brukernavn Feil "
+# Feil Brukernavn
+_NUsrErrTitle=" Feil Brukernavn "
 _NUsrErrBody="\nFeil brukernavn ble inntastet. Vennligst prøv igjen.\n\n"
 
-# Set User Password
-_PassNUsrTitle=" Velg User passord "
-_PassNUsrBody="\nTast passord for" 
+# Velg Bruker Passord
+_PassNUsrTitle=" Velg Bruker passord "
+_PassNUsrBody="\nTast passord for"
 _PassNUsrBody2="\nGjenta passord for"
 
-# Create New User
+# Lag Ny Bruker
 _NUsrSetTitle=" Lager bruker "
 _NUsrSetBody="\nLager bruker og velger grupper...\n\n"
 
-# User Password Error
-_PassNUsrErrTitle=" Bruker passord feil "
+# Feil Bruker Passord
+_PassNUsrErrTitle=" Feil Bruker Passord "
 _PassNUsrErrBody="\nBruker passord tastet inn stemmer ikke overens. Vennligst prøv igjen.\n\n"
 
-# Mounting (Partitions)
+# Tilkobling (Partisjoner)
 _MntStatusTitle=" Tilkobling status "
 _MntStatusSucc="\nTilkobling vellykket!\n"
 _MntStatusFail="Tilkobling mislyktes!"
 
-# Select Device (installation)
+# Velg Enhet (installasjon)
 _DevSelTitle=" Velg enhet "
-_DevSelBody="\nEnheter (/dev) er tilgjengelige harddisker og usb. Den første er /sda, den andre /sdb, og så videre.\n\nHvis Evo startes fra usb, vær forsiktig da også den listes!"
+_DevSelBody="\nEnheter (/dev) er tilgjengelige harddisker og usb. Den første er /sda, den andre /sdb, og så videre.\n\nHvis Evo startes fra usb, vær forsiktig da også den listes opp!"
 
-# Select Device (Grub) - seperate body text is not required (uses standard device selection text)
+# Velg Enhet (Grub) - seperate body text is not required (uses standard device selection text)
 _DevSelGrubTitle=" Velg Grub enhet "
 
-# Partitioning Tool
+# Partisjoneringsverktøy
 _PartToolTitle=" Verktøy for Partisjonering "
-_PartToolBody="\nGparted er ett anbefalt brukervennlig, grafisk verktøy som støtter både BIOS og UEFI system.\n\nIKKE velg ett UEFI/GPT partisjoneringsverktøy for BIOS/MBR system da dette kan forårsake seriøse problemer,inkludert en ikke bootbar installasjon."
+_PartToolBody="\nGparted er ett anbefalt brukervennlig, grafisk verktøy som støtter både BIOS og UEFI system.\n\nIKKE velg ett UEFI/GPT partisjoneringsverktøy for BIOS/MBR system da dette kan forårsake alvorlige problem,inkludert en ikke bootbar installasjon."
 
-# UEFI Partitioning Error
+# UEFI Partisjoneringsfeil
 _UefiPartErrTitle=" UEFI Partisjonering Feil "
 _UefiPartErrBody="\nUEFI systemer krever minimum to partisjoner for installering. (ROOT and UEFI).\n\nVennligst tilpass dine partisjoner.\n\n"
 
-# BIOS Partitioning Error
+# BIOS Partisjoneringsfeil
 _BiosPartErrTitle=" BIOS Partisjonering Feil "
-_BiosPartErrBody="\nBIOS systemer kreverminimum en partisjon for installasjon (ROOT).\n\nVennligst tilpass dine partisjoner. "
+_BiosPartErrBody="\nBIOS systemer krever minimum en partisjon for installasjon (ROOT).\n\nVennligst tilpass dine partisjoner. "
 
-# File System
+# Fil System
 _FSTitle=" Velg Filsystem "
-_FSBody="\nExt4 anbefales. Ikke alle filsystem er brukelige for Root og Boot partisjoner. Alle har forskjellige fordeler og ulemper. "
+_FSBody="\nExt4 er anbefalt. Ikke alle filsystem er brukelige for Root og Boot partisjoner. Alle har forskjellige fordeler og ulemper. "
 _FSSkip="Hopp over / Ingen"
 
-# Select Root
+# Velg Root
 _SelRootTitle=" Velg ROOT Partisjon "
 _SelRootBody="\nDette er partisjonen hvor Arch vil bli installert."
 
-# Select SWAP
+# Velg SWAP
 _SelSwpTitle=" Velg SWAP Partisjon "
-_SelSwpBody="\nHvis Swapfil brukes, vil den bli samme størrelse som din RAM."
+_SelSwpBody="\nHvis Swapfil brukes, vil den ha samme størrelse som din RAM."
 _SelSwpNone="Ingen"
 _SelSwpFile="Swapfil"
 
-# Select UEFI
+# Velg UEFI
 _SelUefiTitle=" Velg UEFI Partisjon "
 _SelUefiBody="\nDette er en spesiell partisjon for å starte UEFI systemer."
 
-# Format UEFI
+# Formater UEFI
 _FormUefiTitle=" UEFI Partisjon "
 _FormUefiBody="UEFI partisjonen"
 _FormUefiBody2="er allerede formatert.\n\nReformatere? Det vil slette ALLE data som er på partisjonen.\n\n"
 
-# UEFI Options
-_OptUefiTitle=" UEFI Tilkoblibngspunkt Valg "
-_OptUefiBody="\nBootloader(ne) som kan installeres senere vil være avhenging av hvor UEFI partisjone er tilkoblet.\n\nVelg /boot for Gummiboot. Dette er anbefalt for nybegynnere som den enkleste løsningen, spesielt hvis man dualbooter.\n\nVelg /boot/efi for rEFInd. Selv om den er fin, er den anbefalt for erfarne brukere da det trengs manuelle oppdateringer.\n\nFor Grub vil begge tilkoblingspunkt virke.\n\n"
+# UEFI Valg
+_OptUefiTitle=" UEFI Velg Tilkoblingspunkt "
+_OptUefiBody="\nBootloader(ene) som kan installeres senere vil være avhenging av hvor UEFI partisjone er tilkoblet.\n\nVelg /boot for Gummiboot. Dette er anbefalt for nybegynnere som den enkleste løsningen, spesielt hvis man dualbooter.\n\nVelg /boot/efi for rEFInd. Selv om den er fargerik, er den anbefalt for erfarne brukere da det trengs manuelle oppdateringer.\n\nFor Grub vil begge tilkoblingspunkt virke.\n\n"
 
-# UEFI Mountpoint
+# UEFI Tilkoblingspunkt
 _MntUefiTitle=" Velg UEFI tilkoblingspunkt "
 _MntUefiBody="\nGummiboot (anbefalt) krever /boot, rEFInd krever /boot/efi, og Grub vil virke med begge."
 
-# Extra Partitions
+# Ekstra Partisjoner
 _ExtPartTitle=" Velg ekstra partisjon "
 _ExtPartBody="\nVelg eksta partisjon, eller 'Ferdig' for å avslutte."
 
-# Name Extra Partitions
+# Ekstra Partisjons Navn
 _ExtNameTitle=" Navngi partisjon:"
 _ExtNameBodyUefi="\nEksempler inkluderer: /home eller /var.\n\nHusk (/) foran navnet." # UEFI Systemer
-_ExtNameBodyBios="\nExamples include: /boot or /home.\n\nEnsure the name is preceeded by a forward slash (/)." # BIOS Systemer
+_ExtNameBodyBios="\nEksempler inkluderer: /boot or /home.\n\nHusk (/) foran navnet." # BIOS Systemer
 
-# Extra Partition Naming Error
+# Ekstra Partisjons Navn Feil
 _ExtErrTitle=" Partisjon navnefeil"
 _ExtErrBody="\nPartisjon kan ikke tilkobles. Et navn må gis etter (/) .\n\n"
 
-# Install Base
+# Installer Base
 _InstBseTitle=" Installer Base "
 _InstBseBody="\nTNyeste kernel støtter nyere hardware. LTS kernel er mer stabil, og har støtte mye lengre.\n\nTBase-devel gruppen kreves for å bruke Arch User Repository (AUR)."
 _InstBaseLK="Nyeste Kernel"
@@ -270,141 +265,141 @@ _InstBaseLKBD="Nyeste Kernel & base-devel"
 _InstBaseLTS="LTS Kernel"
 _InstBaseLTSBD="LTS Kernel & base-devel"
 
-# Install Wireless Packages
+# Installer pakker for WiFi
 _InstWirTitle=" Trådløs enhet oppdaget "
-_InstWirBody="\nInstallerer supplerende trådløse pakker...\n\n"
+_InstWirBody="\nInstallerer supplerende pakker for WiFi...\n\n"
 
-# Install BIOS Bootloader
+# Installer BIOS Bootloader
 _InstBiosBtTitle=" Installer BIOS Bootloader "
 _InstBiosBtBody="\nGrub2 er anbefalt for nybegynnere. Installasjonsenheten kan også velges.\n\nSyslinux er et lettere og enklere alternativ, som oftes brukt for å boote Linux installasjons media. Den vil bare virke med'ext' filesystemer."
 
-# Grub Installation
+# Grub Installasjon
 _InstGrubDevTitle=" Velg Grub Enhet"
 _InstGrubDevBody="\nInstaller Grub på samme enhet/harddisk som Root"
 _InstGrubDevBody2="\n\nVelg 'Ja' hvis du installerer på kun en enhet."
 
-# Syslinux Installation
-_InstSysTitle=" Syslinux Konfigureringsjekk "
-_InstSysBody="\nVennligst undersøk Syslinux konfigureringsfil.\n\nDen skal inneholde kommandoen:\n" # "$ROOT_PART" is a variable
+# Syslinux Installasjon
+_InstSysTitle=" Syslinux Sjekk Kongigurering "
+_InstSysBody="\nVennligst undersøk Syslinux konfigureringsfil.\n\nDen skal inneholde kommandoen:\n" 
 
-# Install UEFI Bootloader
+# Installer UEFI Bootloader
 _InstUefiBtTitle=" Installer UEFI Bootloader "
 _InstUefiBtBody="\nGrub2 er den mest populære og funksjonsrike (ikke mulighet for UEFI tilkobling ).\n\nGummiboot  er anbefalt som ett alternativ for nybegynnere (UEFI partitisjon må settes til /boot).\n\nrEFInd er ett alternative for erfarne brukere (UEFI partisjon må settes til /boot/efi)."
 
-# Set UEFI Grub as default
-_SetGrubDefTitle=" Sett Grub som standard Bootloader? "
+# Velg UEFI Grub som standard
+_SetGrubDefTitle=" Velg Grub som standard Bootloader? "
 _SetGrubDefBody="\nNoe UEFI firmware klarer ikke oppdage Grub såfremt den ike er satt som standard bootloader, noe som reulterer i ett system det ikke går å starte.\n\nØnsker du å sette Grub som standard bootloader?\n\nDet anbefales å velge  'Ja', spesielt for nybegynnere. Dette vil kopiere den bootbare grubx64.efi stub til"
 _SetGrubDefBody2="og navngi den til bootx64.efi, som krevd.\n\nEllers velg 'Nei', spesielt hvis det allerede er en standartd bootloader, og/eller hvor intensjonen er å bruke flere bootloadere."
 
-# Gummiboot Configuration Check
+# Gummiboot Sjekk Konfigurasjon
 _ChkGumTitle=" Gummiboot Konfigureringsjekk "
-_ChkGumBody="\nVennligst sjekk arch og loader konfigurasjonsfiler før man lukker de for å fortsette.\n"
+_ChkGumBody="\nVennligst sjekk arch og loader konfigurasjonsfiler, lukk for å fortsette.\n"
 
-# Set rEFInd as default
+# Velg rEFInd som standard
 _SetRefiDefTitle=" Sett rEFInd som standard Bootloader? "
-_SetRefiDefBody="\nNoeUEFI firmware klarer ikke oppdage rEFInd  såfremt den ike er satt som standard bootloader, rnoe som reulterer i ett system det ikke går å starte.\n\nØnsker du å sette  rEFInd som standard bootloader?\n\nDet anbefales å velge  'Ja', spesielt for nybegynnere. Dette vil installere rEFInd til"
+_SetRefiDefBody="\nNoeUEFI firmware klarer ikke oppdage rEFInd  såfremt den ike er satt som standard bootloader, noe som resulterer i ett system det ikke går å starte.\n\nØnsker du å sette  rEFInd som standard bootloader?\n\nDet anbefales å velge  'Ja', spesielt for nybegynnere. Dette vil installere rEFInd til"
 _SetRefiDefBody2="med bootx64.efi stub som kreves.\n\nEllers velg 'Nei', spesielt hvis det allerede er en standartd bootloader, og/eller hvor intensjonen er å bruke flere bootloadere."
 
 
-# efi file set for Grub or Refind
+# Velg efi fil for  Grub eller Refind
 _SetDefDoneTitle=" UEFI Fil Kopiert "
 _SetDefDoneBody="har blitt satt som standard bootloader.\n\n"
 
-# rEFInd Mountpoint error
+# rEFInd Tilkoblingsfeil
 _RefiErrTitle=" rEFInd UEFI Tilkoblingspunkt "
 _RefiErrBody="\nrEFInd installasjonskriptet vil ikke virke hvis UEFI partisjonen ikke er tilkoblet  /boot/efi. Vennligs velg enten Gummiboot (anbefalt) eller Grub.\n\n"
 
 # ALSA, Xorg, Input
 _AXITitle=" ALSA, Xorg, og Input "
-_AXIBody="\nFør installasjon av grafikkort driver(e), eller skrivebordsmiljø, trengs andre pakker:\n\nalsa - Advanced Linux Sound Architecture\nxorg-* - open-source X window system for graphics\nxf86-input-* - open-source drivers for input devices\n\n"
+_AXIBody="\nFør installasjon av grafikkort driver(e), eller skrivebordsmiljø, trengs andre pakker:\n\nalsa - Advanced Linux Sound Architecture\nxorg-* - open-source X window system for grafikk\nxf86-input-* - open-source drivers for input devices\n\n"
 
-# Graphics Card Menu
+# Grafikkort Meny
 _GCtitle=" Grafikkort Meny "
 _GCBody="Velg Nouveau for eldre NVIDIA kort. Hvis ditt kort ikke er på listen, velg 'Ukjent / Generisk'.\n"
-_GCUnknOpt="Unknown / Generic"
+_GCUnknOpt="Ukjent / Generisk"
 
-# NVIDIA Configruation Check
+# NVIDIA Konfigureringsjekk
 _NvidiaConfTitle=" NVIDIA Konfigurasjonsjekk "
-_NvidiaConfBody="\nEn grunnleggende NVIDIA konfigurasjonsfil er lagd. Vennligst se over før lukking for å fortsette.\n"
+_NvidiaConfBody="\nEn grunnleggende NVIDIA konfigurasjonsfil er lagd. Vennligst se over, lukk for å fortsette.\n"
 
-# Graphics Card Detection
+# Grafikkort Oppdaget
 _GCDetTitle="Oppdaget"
 _GCDetBody="\nEr ditt grafikkort"
 _GCDetBody2="-Velg 'Ja' for å installere OPEN-SOURCE driver.\n\n-Velg 'Nei' for å åpne grafikkort meny, som inkluderer propretiære NVIDIA drivere."
 
-# Install DE Info
+# Installer Skrivebordsmiljø Info
 _DEInfoTitle=" Installer Skrivebordsmiljø "
-_DEInfoBody="\nDette valget kan gjentas for å installere flere miljøer.\n\nGnome, KDE, og LXDE leveres med en dispaly manager.\n\nCinnamon, Gnome og KDE leveres med network manager.\n\n"
+_DEInfoBody="\nDette valget kan gjentas for å installere flere miljøer.\n\nGnome, KDE, og LXDE leveres med en innloggingskjerm.\n\nCinnamon, Gnome og KDE leveres med nettverks manager.\n\n"
 
-# Install DE Menu
+# Installer Skrivebordsmiljø Meny
 _InstDETitle=" Installer Skrivebordsmiljø "
 _InstDEBody="\nkrivebordsmiljøer er listet førstt, og kan ha flere nedlastingsvalg.\n\nKDE er 750MB+ å laste ned."
 
-# Install Common Packages
+# Installer Common Pakker
 _InstComTitle=" Installer Common Pakker? "
 _InstComBody="\nNoen miljøer krever at common filer installeres, spesielt for rettigheter, skape hjemmemappe, og filbehandlers funnksjonalitet.\n\nPakker inkluderer: xterm, xdg-user-dirs, gksu, gnome-keyring, polkit, gvfs, og gnome-icon-theme, etc. De som installerer kun fullt KDE skrivebord vil ikke trenge disse.\n\nInstaller disse pakkene? Dette valget presenteres kun EN gang.\n\n"
 
 # KDM
 _DmKdeTitle=" KDM Aktivert "
-_DmKdeBody="\nDa KDE er installert, har dens egen dispaly manager - KDM - nå blitt aktivert.\n\n"
+_DmKdeBody="\nDa KDE er installert, har dens egen innloggingskjerm - KDM - nå blitt aktivert.\n\n"
 
 # GDM
 _DmGdmTitle=" GDM Aktivert "
-_DmGdmBody="\nDa Gnome er installert, har dens egen dispaly manager - GDM - nå blitt aktivert.\n\n"
+_DmGdmBody="\nDa Gnome er installert, har dens egen innloggingskjerm - GDM - nå blitt aktivert.\n\n"
 
-# KDM and GDM Installed
+# KDM og GDM Installert
 _DmChTitle=" Velg GDM eller KDM "
-_DmChBody="\nBåde Gnome og KDE har blitt installert. Vennligst velg din foretruktne display manager.\n\n"
+_DmChBody="\nBåde Gnome og KDE har blitt installert. Vennligst velg din foretruktne innloggingskjerm.\n\n"
 
-# KDM or GDM Choice Made
+# KDM eller GDM Valg Tatt
 _DmDoneTitle="Aktivert "
 _DMDoneBody="har blitt aktivert.\n\n"
 
 # LXDM
 _DmLxdmTitle=" LXDM Aktivert "
-_DmLxdmBody="\nDa LXDE er installert, har dens egen dispaly manager - LXDM - nå blitt aktivert.\n\n"
+_DmLxdmBody="\nDa LXDE er installert, har dens egen innloggingskjerm - LXDM - nå blitt aktivert.\n\n"
 
-# LXDM or LightDM
-_DmChoiceTitle=" Velg Display Manager "
+# LXDM eller LightDM
+_DmChoiceTitle=" Velg innloggingskjerm "
 _DmChoiceBody="\nVennligst velg mellom LXDM og LightDM. LXDM er anbefalt for nybegynnere.\n"
 
-# DM Already Installed
-_DmInstTitle=" Display Manager Installert "
-_DmInstBody="\nEn display manager er alllerede installert og aktivert.\n\n"
+# DM Allerede Installert
+_DmInstTitle=" innloggingskjerm Installert "
+_DmInstBody="\nEn innloggingskjerm er alllerede installert og aktivert.\n\n"
 
-# Network Manager
-_InstNMTitle=" Velg Network manager "
-_InstNMBody="\nNetwork Manager er anbefalt, spesielt for trådløs og PPPoE/DSL tilkoblinger.\n"
+# Nettverks Manager
+_InstNMTitle=" Velg Nettverks manager "
+_InstNMBody="\nNetwork Manager er anbefalt, spesielt for trådløs og PPPoE/DSL tilkobling.\n"
 
-# Network Manager Installed
-_InstNMDoneTitle=" Network Manager Installert "
+# Nettverks Manager Installert
+_InstNMDoneTitle=" Nettverks Manager Installert "
 _InstNMDoneBody="\nNettverksbehandler har blitt installert og aktivert."
 
-# Network Manager Already Installed (no need for seperate title)
+# Nettverks Manager Allerede Installert
 _InstNMErrBody="\nEn nettverksbehandler har blitt installert og er aktivert."
 
-# Welcome
+# Velkommen
 _WelTitle=" Velkommen til"
-_WelBody="\nMerk valg gjenom å trykke deres nummer eller gjenom å bruke opp/ned piltaster og enter for å bekrefte.\n\nBytt mellom knapper med (Tab) eller å bruke venstre/høyre piltaster før Enter for å bekrefte.\n\nEn mus/touchpad kan også brukes.\n\n"
+_WelBody="\nMerk valg gjenom å trykke deres nummer eller gjenom å bruke opp/ned piltaster og enter for å bekrefte.\n\nBytt mellom knapper med (Tab) eller å bruke venstre/høyre piltast og Enter for å bekrefte.\n\nEn mus/touchpad kan også brukes.\n\n"
 
-# Preparation Menu
+# Klargjørings Meny
 _PrepTitle=" Forbered Installasjon "
 _PrepBody="\nTastaturets utforming vil bli brukt i både installereren og - hvor skrivebordsmilø er installert - det installerte systemet.\n"
 _PrepKBLayout="Velg skrivebordets tastatur utforming"
-_PrepMirror="Konfigurer Installerer Mirrorlist (valgfritt)"
+_PrepMirror="Konfigurer Installerer Pakkedatabasen (valgfritt)"
 _PrepPartDisk="Partisjoner Disk"
 _PrepMntPart="Tilkoble partisjoner"
 _Back="Tilbake"
 
-# Install Base Menu
+# Installer Base Meny
 _InstBsMenuTitle=" Installer Base "
-_InstBseMenuBody="\nDet vil ikke være nødvendig å installere en bootloadernår man installerer ved siden av ett eksiterende Linuxsystem som bruker Grub; bare oppdater dets Grub istedenfor."
+_InstBseMenuBody="\nDet vil ikke være nødvendig å installere en bootloader når man installerer ved siden av ett eksiterende Linuxsystem som bruker Grub; bare oppdater dets Grub istedenfor."
 _InstBse="Installer Base"
 _InstBootldr="Installer Bootloader"
 
-# Configure Base Menu
+# Konfigurer Base Meny
 _ConfBseTitle=" Konfigurer Base"
-_ConfBseBody="\nGrunnleggende konfigurering av basen er påkrevd. Dette inkluderer, grunnleggende nettverksinnstillinger, tid, språk, og tastatur standaard for det installerte systemet."
+_ConfBseBody="\nGrunnleggende konfigurering av basen er påkrevd. Dette inkluderer, grunnleggende nettverksinnstillinger, tid, språk, og tastatur standard for det installerte systemet."
 _ConfBseFstab="Generer FSTAB"
 _ConfBseHost="Sett Vertsnavn"
 _ConfBseTime="Sett Tidssone"
@@ -412,19 +407,19 @@ _ConfBseHWC="Sett Hardware Klokke"
 _ConfBseSysLoc="Sett System Språk"
 _ConfBseVirtCon="Sett Virtual Console"
 
-# User Menu
+# Bruker Meny
 _ConfUsrTitle=" Konfigurer Bruker(e)"
 _ConfUsrBody="\nRoot er standard 'super-bruker' eller 'admin' konto. Samme passord kan settes for både Root og hvilken som helst personlig bruker konto som opprettes."
-_ConfUsrRoot="Sett Root Passord"
+_ConfUsrRoot="Velg Root Passord"
 _ConfUsrNew="Legg til Ny(e)  Bruker(e)"
 
-# Desktop Menu
+# Skrivebord Meny
 _InstDEMenuTitle=" Installer Skrivebord "
-_InstDEMenuBody="\nFør installasjon av skrivebordsmiljø, grafikk, input, og drivere for lyd MÅ installeres først. Dette inkluderer drivere for grafikkort."
+_InstDEMenuBody="\nFør installasjon av skrivebordsmiljø, MÅ grafikk, input, og drivere for lyd installeres. Dette inkluderer drivere for grafikkort."
 _InstDEMenuGISD="Installer Grafikk, Input, of lyddriver"
 _InstDEMenuDE="Installer skrivebordsmiljø(er)"
-_InstDEMenuNM="Installer Network Connection Manager"
-_InstDEMenuDM="Installer Display Manager / Påloggingskjerm"
+_InstDEMenuNM="Installer Nettverks Manager"
+_InstDEMenuDM="Installer Innloggingskjerm / Påloggingskjerm"
 
 # Hovedmeny
 _MMTitle=" Hovedmeny "
@@ -432,10 +427,10 @@ _MMBody="\nHvert steg må følges i REKKEFØlGE. Når fullført, velg 'FERDIG' f
 _MMPrep="Forbered Installasjon"
 _MMInstBse="Installer Base"
 _MMConfBse="Konfigurer Base"
-_MMConfUsr="Konfigurer Brukerkonto(er)" 
-_MMInstDE="Installer Skrivebordsmiljø(er)" 
-_MMRunMkinit="Kjør Mkinitcpio" 
+_MMConfUsr="Konfigurer Brukerkonto(er)"
+_MMInstDE="Installer Skrivebordsmiljø(er)"
+_MMRunMkinit="Kjør Mkinitcpio"
 _Done="Fullført"
 
 # Avslutt Installerer
-_CloseInstBody="Avslutt installerer?" 
+_CloseInstBody="Avslutt installerer?"

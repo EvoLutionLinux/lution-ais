@@ -3,17 +3,21 @@
 ## Español/Spanish Translation File
 ##
 ##
-## Written by Kat Krow & Métèque for Evo/Lution Linux (30th November 2014)
+## Written by Métèque for Evo/Lution Linux (6th December 2014)
 ##
 ##
 
-# Select Wireless Firmware Driver(s)
-_InstWirelessFirm="Instalar el firmware de tu tarjeta de red"
+# Vbox Installations
+_VBoxInstTitle=" VirtualBox Installation "
+_VBoxInstBody="\nIf for any reason the VirtualBox guest modules do not load for the installed system (e.g. low resolution and scrollbars after booting), a one-off series of commands will fix this:\n\n$ su\n# depmod -a\n# modprobe -a vboxvideo vboxguest vboxsf\n# reboot"
+
+#  Wireless Connections
+_InstWirelessFirm="Instalar el firmware de tu tarjeta de red WiFi"
 _WirelssFirmTitle=" Seleccionar el firmware para la tarjeta de ted "
 _WirelssFirmBody="\nAlgunas tarjetas de red necesitan firmware adicional para que funcionen correctamente.\n\nSi no estás seguro de si necesitas instalar un controlador - o no sabes cual seleccionar - puedes simplemente instalarlos todos."
 _SeeWirelessDev="Ver la tarjeta de red (opcional)"
 _WirelessShowTitle=" Tarjeta de red"
-_WirelessErrBody="\nNinguno detectado."
+_WirelessErrBody="\nNada detectado."
 _All="Todos"
 
 
@@ -32,27 +36,27 @@ _PrepPacKey="Actualiar las llaves de pacman (opcional)"
 _PrepLVM="Gestor de volúmenes lógicos (LVM) (opcional)"
 
 _LvmDetTitle=" LVM Detectado "
-_LvmDetBody1="\nUn gestor de volúmenes lógicos (LVM) ha sido detectado. No puedes seleccionar las particiones que usa el LVM. Quieres desactivar el LVM?\n\nSelecciona 'Sí' para borrar el LVM existente.\nSelecciona 'No' para conservarlo.\n"
+_LvmDetBody1="\nUn gestor de volúmenes lógicos (LVM) ha sido detectado. No puedes seleccionar las particiones que usa el LVM actual. Quieres desactivar el LVM?\n\nSelecciona 'Sí' para borrar el LVM existente.\nSelecciona 'No' para conservarlo.\n"
 _LvmRmTitle=" Desactivando LVM "
 _LvmDetBody2="\nSe ha detectado un gestor de volúmenes lógicos (LVM). Activando. Por favor espera...\n\n"
-_LvmRmBody="\nDesactivando todos los Volúmenes físicos(PV), Grupo de volúmenes (VG), y Volúmenes lógicos (LV).\n\nPor favor espera...\n\n"
+_LvmRmBody="\nDesactivando todos los Volúmenes físicos (PV), Grupo de volúmenes (VG) y Volúmenes lógicos (LV).\n\nPor favor espera...\n\n"
 
 _LvmPartErrTitle=" No se puede particionar el LVM "
-_LvmPartErrBody="\nNo hay ninguna partición disponible para el LVM. Se necesita al menos una.\n\nSi está usando el LVM, al desactivarlo se podrán usar de nuevo sus Volúmenes físicos (PV).\n\n"
+_LvmPartErrBody="\nNo hay ninguna partición disponible para el LVM. Se necesita al menos una.\n\nSi estás usando el LVM, al desactivarlo se podrán usar de nuevo sus Volúmenes físicos (PV).\n\n"
 
 _LvmNameVgTitle=" LVM - Nombre del Grupo de volúmenes "
-_LvmNameVgBody="\nEscribe el nombre del Grupo de volúmenes (VG).\n\n El VG actuará como un nuevo 'dispositivo virtual/disco duro' en el que a continuación, podrás seleccionar las particiones.\n"
+_LvmNameVgBody="\nElige un nombre para el Grupo de volúmenes (VG).\n\n El VG actuará como un nuevo 'dispositivo virtual/disco duro' en el que a continuación, podrás seleccionar las particiones.\n"
 
 _LvmNameVgErrTitle=" LVM - Nombre del VG incorrecto "
-_LvmNameVgErr="\nEl nombre que has seleccionado no se puede utilizar. El nombre del Grupo de volúmenes tiene que estar compuesto de carácteres alfanuméricos pero no puede contener espacios, empezar con una '/' o haber sido utilizado anteriormente.\n\n"
+_LvmNameVgErr="\nEl nombre que has escogido no se puede utilizar. El nombre del Grupo de volúmenes tiene que estar compuesto de caracteres alfanuméricos pero no puede contener espacios, empezar con una '/' o haber sido utilizado anteriormente.\n\n"
 
 _LvmPvSelTitle=" LVM - Seleccionar Particiones "
-_LvmPvSelBody="\nSelecciona la(s) particion(es) que usará el Volúmen físico (PV).\n"
-_LvmPvCreateTitle=" LVM - Parición Añadida "
+_LvmPvSelBody="\nSelecciona la(s) partición(es) que usará el Volumen físico (PV).\n"
+_LvmPvCreateTitle=" LVM - Partición Añadida "
 
 _LvmPvConfTitle=" LVM - Crear Grupo de volúmenes "
-_LvmPvConfBody1="\nConfirmar la creación del Grupo de volúmenes "
-_LvmPvConfBody2="con las siguientes particiones:\n\n"
+_LvmPvConfBody1="\nEstás seguro de que quieres crear el Grupo de volúmenes "
+_LvmPvConfBody2="en estas particiones:\n\n"
 
 _LvmPvActTitle=" LVM - Creando VG "
 _LvmPvActBody1="\nCreando y activando el Grupo de volúmenes "
@@ -63,43 +67,43 @@ _LvmPvDoneBody1="\nEl Grupo de volúmenes "
 _LvmPvDoneBody2="ha sido creado"
 
 _LvmLvNumTitle=" LVM - Crear Volúmenes lógicos "
-_LvmLvNumBody1="\nSelecciona un número para los Volúmenes Lógicos (LV) "
-_LvmLvNumBody2="1 como mínimo, 9 como máximo.\n\nLos LVs son como particiones. El último (o el único) LV usará automáticamente el 100% del espacio restante del Grupo de Volúmenes."
+_LvmLvNumBody1="\nAsigna un número para los Volúmenes Lógicos (LV) "
+_LvmLvNumBody2=" 1 como mínimo, 9 como máximo.\n\nLos LVs son como particiones. El último (o el único) LV usará automáticamente el 100% del espacio restante del Grupo de Volúmenes."
 
 _LvmLvNumErrTitle=" LVM - Número del LV incorrecto "
 _LvmLvNumErrBody="\nEl número seleccionado no se puede utilizar. El mínimo es 1 y el máximo 9.\n\n"
 
 _LvmLvNameTitle=" LVM - Nombre del LV "
-_LvmLvNameBody1="\nEscoge el nombre para el Volúmen Lógico (LV).\n\nEsto es como darle un nombre/etiqueta a una partición.\n"
+_LvmLvNameBody1="\nEscoge el nombre para el Volumen Lógico (LV).\n\nEsto es como darle un nombre/etiqueta a una partición.\n"
 _LvmLvNameBody2="\n\nNOTA: Este LV usará automáticamente el espacio restante del Grupo de Volúmenes."
 
 _LvmLvNameErrTitle=" LVM - Nombre del LV Incorrecto "
-_LvmLvNameErrBody="\nEl nombre que has elegido no es correcto. El Volúmen Lógico (LV) tiene que estar compuesto de carácteres alfanumericos pero no puede contener espacios o empezar por una '/'.\n\n"
+_LvmLvNameErrBody="\nEl nombre que has elegido no es correcto. El Volumen Lógico (LV) tiene que estar compuesto de caracteres alfanuméricos pero no puede contener espacios o empezar por una '/'.\n\n"
 
 _LvmLvSizeTitle=" LVM - Seleccionar el tamaño del LV "
-_LvmLvSizeBody1="Restante"
-_LvmLvSizeBody2="\n\nSelecciona el tamaño del Volúmen Lógico (LV) en Megabytes (M) o Gigabytes (G). 10G creará un LV de 10 Gigabytes.\n"
+_LvmLvSizeBody1="Disponibles"
+_LvmLvSizeBody2="\n\nSelecciona el tamaño del Volumen Lógico (LV) en Megabytes (M) o Gigabytes (G). 10G creará un LV de 10 Gigabytes.\n"
 
 _LvmLvSizeErrTitle=" LVM - Tamaño seleccionado incorrecto "
 _LvmLvSizeErrBody="\nNo se puede crear un LV de ese tamaño. Tienes que escribir un número con una 'M' (Megabyte) o una 'G' al final.\n\nPor ejemplo 100M, 10G o 250M. No puede tener el mismo tamaño o ser más grande que el espacio restante del Grupo de Volúmenes (VG).\n\n"
 
-_LvmLvDoneTitle=" LVM - Volúmen Lógico creado "
+_LvmLvDoneTitle=" LVM - Volumen Lógico creado "
 
 _LvmCompTitle=" LVM - Proceso completado "
-_LvmCompBody="\nHecho! Todos los Volúmenes Lógicos del Grupo de Volúmenes han sido creados.\n\nQuieres ver el nuevo esqumema del LVM?\n\n"
+_LvmCompBody="\nTodos los Volúmenes Lógicos del Grupo de Volúmenes han sido creados.\n\nQuieres ver el nuevo esquema del LVM?\n\n"
 
 
 
 # Show devices and partitions
 _DevShowTitle=" Dispositivos / Particiones "
-_DevShowOpt="Listar los Dispositivos (opcional)"
+_DevShowOpt="Ver particiones (opcional)"
 
 # Check Evo Requirements and Identify System Type
 _ChkEvoTitle=" Comprobando los requisitos de Evo"
 _ChkEvoBody="\nComprobando que el instalador se ha ejecutado como root y que estás conectado a Internet. Por favor espera...\n\n"
 
 _RtFailTitle=" No se ha ejecutado como root "
-_RtFailBody="\nEl instalador debe ejecutarse como root. Saliendo del instalador.\n\n"
+_RtFailBody"\nEl instalador debe ejecutarse como root. Saliendo del instalador.\n\n"
 
 _ConFailTitle=" Error de conexión "
 _ConFailBody="\nPrueba de conexión a Internet fallida. Saliendo del instalador.\n\n"
@@ -112,7 +116,7 @@ _BiosDet="Sistema BIOS detectado"
 
 # Installer Mirrorlist
 _MirrorlistTitle=" Mirrorlist "
-_MirrorlistBody="\nEl mirrorlist contiene los servidores que usará pacman para instalar los paquetes. Pacman accederá a ellos según en el orden en que se hayan establecido.\n\n"
+_MirrorlistBody="\nEl mirrorlist contiene los servidores que usará pacman para instalar los paquetes. Pacman accederá a ellos en el orden en que se hayan establecido.\n\n"
 _MirrorbyCountry="Generar una lista con los servidores de un solo país"
 _MirrorEdit="Editar manualmente el Mirrorlist"
 
@@ -120,63 +124,63 @@ _MirrorEdit="Editar manualmente el Mirrorlist"
 _MirrorCntryTitle=" Selecciona un país "
 _MirrorCntryBody="\nUna lista de los Mirrors del país seleccionado se generará.\n\Después de haberlo revisado, puedes elegir si quieres utilizarlo o no."
 _MirrorGenTitle=" Generando Mirrorlist "
-_MirrorGenBody="\nGenerando un Mirrorlist. Por favor espere... "
+_MirrorGenBody="\nGenerando un Mirrorlist. Por favor espera... "
 _MirrorGenQ="Quiere usar el Mirrorlist generado durante la instalación?"
 _MirrorGenDone="\nHecho! El Mirrorlist original se ha guardado en:\n\n/etc/pacman.d/mirrorlist.orig\n\n"
 
 # Set Keymap (vconsole)
-_KeymapTitle=" Seleccione la distribución de su teclado "
-_KeymapBody="\nUtilice las flechas del teclado para seleccionarlo o pulse la primera letra, si la conoce."
+_KeymapTitle=" Selecciona la distribución de tu teclado "
+_KeymapBody="\nUtiliza las flechas del teclado para seleccionar la distribución en el menú. Puedes pulsar también la primera letra para moverte más rápido."
 
 # Set Xkbmap (environment)
-_XkbmapTitle=" Seleccione su Xkbmap "
-_XkbmapBody="Seleccione la distribución de su teclado"
+_XkbmapTitle=" Selecciona tu Xkbmap "
+_XkbmapBody="Selecciona la distribución de tu teclado"
 
 # Set fe
-_LocateTitle=" Seleccione un idioma "
-_localeBody="Seleccione el idioma del sistema"
+_LocateTitle=" Selecciona un idioma "
+_localeBody="Selecciona el idioma del sistema"
 
 # Set Timezone
-_TimeZTitle=" Seleccione un huso horario "
+_TimeZTitle=" Selecciona un huso horario "
 _TimeZBody="\nLa zona horaria se utilizará para ajustar correctamente el reloj del sistema."
-_TimeSubZTitle=" Seleccione el huso horario de su región"
+_TimeSubZTitle=" Selecciona el huso horario de tu región"
 _TimeSubZBody="\nElija la ciudad más próxima."
-_TimeZQ="Quiere usar este huso horario"
+_TimeZQ="Quieres seguir con este huso horario?"
 
 # Set Hardware Clock
-_HwCTitle=" Seleccione el reloj del hardware "
-_HwCBody="\nRecomendamos usar UTC si no está usando también Windows en su equipo en dual-boot."
+_HwCTitle=" Selecciona el reloj del hardware "
+_HwCBody="\nRecomendamos usar UTC si no estás usando también Windows en tu equipo en dual-boot."
 
 _HwCUTC="UTC"
 _HwLocal="Hora Local"
 
 # Generate FSTAB
 _FstabTitle=" Generando FSTAB "
-_FstabBody="\nEl archivo FSTAB (File System TABle) establece que dispositivos y particiones se van a montar y como se van a utilizar.\n\nUUID/Recomendamos usar PARTUUID (Universally Unique IDentifier).\n\nSi no ha seleccionado ninguna etiqueta para las particiones, se usarán los nombres de los dispositivos."
-_FstabDev="Dev (partition code)"
-_FstabLabel="Label (user defined)"
-_FstabUUID="UUID/PARTUUID (unique code)"
+_FstabBody="\nEl archivo FSTAB (File System TABle) establece que dispositivos y particiones se van a montar y como van a ser utilizadas.\n\nRecomendamos usar UUID/PARTUUID (Universally Unique IDentifier).\n\nSi no has seleccionado ninguna etiqueta para las particiones, se usarán los nombres de los dispositivos."
+_FstabDev="Dev (Código de la partición)"
+_FstabLabel="Label (Etiqueta definida por el usuario)"
+_FstabUUID="UUID/PARTUUID (Código único)"
 
 # Check FSTAB
 _FstabChkTitle=" Comprueba el FSTAB "
-_FstabChkBody="\nPor favor, comprueba el archivo FSTAB antes de cerrarlo para continuar.\n\n"
+_FstabChkBody="\nPor favor, comprueba el archivo FSTAB antes de cerrarlo y continuar.\n\n"
 
 # Set Hostname
-_HostNameTitle=" Configure el nombre del equipo "
-_HostNameBody="\nEl nombre del equipo se utiliza para identificar el sistema en una red.\n\nPodrá usar carácteres alfanuméricos, un guión (-) - pero no al principio o al final del nombre - y no debe tener más de 63 caracteres.\n"
+_HostNameTitle=" Configura el nombre del equipo "
+_HostNameBody="\nEl nombre del equipo se utiliza para identificar el sistema en una red.\n\nPodrás usar caracteres alfanuméricos, un guión (-) - pero no al principio o al final del nombre - y no debe tener más de 63 caracteres.\n"
 
 # Set Root Password
-_PassRtTitle=" Elija una contraseña para Root"
-_PassRtBody="\nEscriba  la contraseña de Root\n\n"
-_PassRtBody2="\nEscriba la contraseña de Root otra vez\n\n"
+_PassRtTitle=" Elige una contraseña para Root"
+_PassRtBody="\nEscoge una contraseña para la cuenta Root\n\n"
+_PassRtBody2="\nEscribe la contraseña de Root otra vez\n\n"
 
 # Root Password Error
-_PassRtErrTitle=" Se ha detecado un error en la contraseña "
-_PassRtErrBody="\nLas contraseñas de Root que ha escrito no coinciden. Por favor, inténtalo otra vez.\n\n"
+_PassRtErrTitle=" Se ha detectado un error en la contraseña "
+_PassRtErrBody="\nLas contraseñas de Root que has escrito no coinciden. Por favor, inténtalo otra vez.\n\n"
 
 # Create New User
 _NUsrTitle=" Crear un nuevo usuario "
-_NUsrBody="\nIntroduzca el nombre de usuario, en minúsculas.\n"
+_NUsrBody="\nIntroduce el nombre de usuario, en minúsculas.\n"
 
 # Username Error
 _NUsrErrTitle=" El nombre del usuario no es correcto "
@@ -184,8 +188,8 @@ _NUsrErrBody="\nEl nombre del usuario que has escrito no es correcto. Por favor,
 
 # Set User Password
 _PassNUsrTitle=" Establecer contraseña para el usuario "
-_PassNUsrBody="\nEscoge una contraseña para" # Note that "$USER" is a variable (no translation needed)
-_PassNUsrBody2="\nIntroce nuevamente la contraseña de" # Note that "$USER" is a variable (no translation needed)
+_PassNUsrBody="\nEscoge una contraseña para" 
+_PassNUsrBody2="\nIntroduce nuevamente la contraseña de"
 
 # Create New User
 _NUsrSetTitle=" Configuración de Usuario "
@@ -193,7 +197,7 @@ _NUsrSetBody="\nCreando el usuario y estableciendo los grupos...\n\n"
 
 # User Password Error
 _PassNUsrErrTitle=" Las contraseñas no coinciden "
-_PassNUsrErrBody="\nLas contraseñas que ha escrito no coinciden. Por favor, escríbalas otra vez.\n\n"
+_PassNUsrErrBody="\nLas contraseñas que has escrito no coinciden. Por favor, inténtalo otra vez.\n\n"
 
 # Mounting (Partitions)
 _MntStatusTitle=" Estado del dispositivo montado "
@@ -201,23 +205,23 @@ _MntStatusSucc="\nSe ha montado correctamente!\n"
 _MntStatusFail="Error al montar la partición!"
 
 # Select Device (installation)
-_DevSelTitle=" Seleccione el dispositivo "
-_DevSelBody="\n Los dispositivos (/dev) son los discos duros o memorias USB en los que se puede hacer la instalación. El primero es /sda, el segundo /sdb, etc.\n\nSi has inciciado el livecd desde una memoria USB aparecerá en la lista, ten cuidado!"
+_DevSelTitle=" Selecciona el dispositivo "
+_DevSelBody="\n Los dispositivos (/dev) son los discos duros o memorias USB en los que se puede hacer la instalación. El primero es /sda, el segundo /sdb, etc.\n\nSi has iniciado el livecd desde una memoria USB aparecerá en la lista, ten cuidado!"
 
 # Select Device (Grub) - seperate body text is not required (uses standard device selection text)
-_DevSelGrubTitle=" Seleccione el dispositivo para Grub "
+_DevSelGrubTitle=" Selecciona el dispositivo donde se instalará Grub "
 
 # Partitioning Tool
 _PartToolTitle=" Herramientas de Particionado "
-_PartToolBody="\nGParted es una aplicación gráfica, la recomendamos porque es fácil de usar y soporta sistemas UEFI y BIOS .\n\nNo seleccione una aplicación que solo soporte UEFI/GPT para un sistema con BIOS/MBR, podría causar graves problemas, incluso puede que no se incie el sistema."
+_PartToolBody="\nGParted es una aplicación gráfica, la recomendamos porque es fácil de usar y soporta sistemas UEFI y BIOS .\n\nNo selecciones una aplicación que solo soporte UEFI/GPT para un sistema con BIOS/MBR, podría causar graves problemas, incluso puede que no se inicie el sistema."
 
 # UEFI Partitioning Error
 _UefiPartErrTitle=" Error en el particionado UEFI "
-_UefiPartErrBody="\nLos sistemas UEFI requieren un mínimo de dos particiones para la instalación (ROOT y UEFI).\n\nPor favor, configure las particiones.\n\n"
+_UefiPartErrBody="\nLos sistemas UEFI requieren un mínimo de dos particiones para la instalación (ROOT y UEFI).\n\nPor favor, configura las particiones.\n\n"
 
 # BIOS Partitioning Error
 _BiosPartErrTitle=" Error en el particionado BIOS "
-_BiosPartErrBody="\nLos sistemas BIOS requieren al menos una partición para la instalación (ROOT).\n\nPor favor, configure las particiones."
+_BiosPartErrBody="\nLos sistemas BIOS requieren al menos una partición para la instalación (ROOT).\n\nPor favor, configura las particiones."
 
 # File System
 _FSTitle=" Elige un Sistema de archivos "
@@ -230,44 +234,43 @@ _SelRootBody="\nEsta es la partición donde se instalará Arch."
 
 # Select SWAP
 _SelSwpTitle=" Selecciona la partición SWAP"
-_SelSwpBody="\nSi se utiliza un Swapfile , será del mismo tamaño que su memoria RAM."
+_SelSwpBody="\nSi se utiliza un Swapfile , será del mismo tamaño que la memoria RAM."
 _SelSwpNone="Ninguno"
 _SelSwpFile="Swapfile"
 
 # Select UEFI
-_SelUefiTitle=" Seleccine la partición UEFI "
+_SelUefiTitle=" Selecciona la partición UEFI "
 _SelUefiBody="\nEsta es una partición especial para arrancar sistemas UEFI."
 
 # Format UEFI
 _FormUefiTitle=" Partición UEFI "
 _FormUefiBody="La partición UEFI"
-_FormUefiBody2="ya ha sido formateada.\n\nQuiere formatearla otra vez?
-Si lo hace se borrarán todos los datos.\n\n"
+_FormUefiBody2="ya ha sido formateada.\n\nQuieres formatearla otra vez? Si lo haces, se borrarán todos los datos.\n\n"
 
 # UEFI Options
 _OptUefiTitle=" Opciones de Punto de Montaje UEFI"
-_OptUefiBody="\nLos gestores de arranque que podrás instalar más tarde dependerá de donde se monte la partición UEFI.\n\nSelecciona /boot para Gummiboot. Es la opción que recomendamos para los principiantes, sobretodo si es una instalación con dual boot.\n\nSelecciona /boot/efi para rEFInd. Es un arranque más llamativo, recomendado para usuarios experimentados ya que es necesario actualizarlo manualmente.\n\nPara Grub, puedes seleccionar cualquiera de las dos opciones\n\n"
+_OptUefiBody="\nDependiendo del punto de montaje que elijas para la partición UEFI, podrás seleccionar gestores de arranque distintos.\n\nSelecciona /boot para Gummiboot. Es la opción que recomendamos para los principiantes, sobretodo si es una instalación con dual boot.\n\nSelecciona /boot/efi para rEFInd. Es un arranque más llamativo, recomendado para usuarios experimentados ya que es necesario actualizarlo manualmente.\n\nPara Grub, puedes escoger cualquiera de las dos opciones\n\n"
 
 # UEFI Mountpoint
 _MntUefiTitle=" Selecciona el punto de montaje para la partición UEFI "
-_MntUefiBody="\nGummiboot (recomendado) debe instalarse en /boot, rEFInd en /boot/efi,y Grub en cualquiera de los dos."
+_MntUefiBody="\nGummiboot (recomendado) debe instalarse en /boot, rEFInd en /boot/efi y Grub en cualquiera de los dos."
 
 # Extra Partitions
 _ExtPartTitle=" Añade las Particiones Adicionales "
-_ExtPartBody="\n Puedes establecer las particiones en el orden que quieras. Cuando hayas acabado, dale a 'Hecho'."
+_ExtPartBody="\n Puedes establecer las particiones en el orden que quieras. Cuando hayas acabado, pulsa 'Hecho'."
 
 # Name Extra Partitions
 _ExtNameTitle=" Ruta de la Partición:"
 _ExtNameBodyUefi="\nPor ejemplo: /home o /var.\n\nAsegúrate de poner una barra (/) antes." # UEFI Systems
-_ExtNameBodyBios="\nPor ejemplo: /boot o /home.\n\nAsegúrarte de poner una barra (/) antes." # BIOS Systems
+_ExtNameBodyBios="\nPor ejemplo: /boot o /home.\n\nAsegúrate de poner una barra (/) antes." # BIOS Systems
 
 # Extra Partition Naming Error
-_ExtErrTitle=" La ruta de la partición no es correcto "
+_ExtErrTitle=" La ruta de la partición no es correcta "
 _ExtErrBody="\nLa partición no se puede montar. Tienes que poner una barra (/) antes del nombre\n\n"
 
 # Install Base
 _InstBseTitle=" Instalar la Base del sistema "
-_InstBseBody="\nEl último kernel soporta hardware más reciente. El kernel LTS es más estable y tiene más tiempo de soporte.\n\n El grupo paquetes base-devel será necesario para utilizar el repositorio de usuarios Arch (AUR)."
+_InstBseBody="\nEl último kernel incorpora las ultimas mejoras, si usas hardware reciente, es la mejor opción. El kernel LTS es más estable y tiene más tiempo de soporte.\n\n El grupo de paquetes base-devel será necesario para utilizar el repositorio de usuarios Arch (AUR)."
 _InstBaseLK="Último Kernel"
 _InstBaseLKBD="Último Kernel y base-devel"
 _InstBaseLTS="Kernel LTS"
@@ -288,7 +291,7 @@ _InstGrubDevBody2="\n\nSelecciona 'Sí' si estás ejecutando la instalación en 
 
 # Syslinux Installation
 _InstSysTitle=" Comprobando la configuración de Syslinux "
-_InstSysBody="\nPor favor, revisa el archivo de configuración de syslinux.\n\nDebe contener el comando:\n" 
+_InstSysBody="\nPor favor, revisa el archivo de configuración de syslinux.\n\nDebe contener el comando:\n"
 
 # Install UEFI Bootloader
 _InstUefiBtTitle=" Instalar el Gestor de Arranque UEFI"
@@ -296,8 +299,8 @@ _InstUefiBtBody="\nGrub2 es la opción más popular y funcional (puede instalars
 
 # Set UEFI Grub as default
 _SetGrubDefTitle=" Establecer Grub como gestor de arranque predeterminado? "
-_SetGrubDefBody="\nAlgunos firmware UEFI no pueden detectar Grub si no se establece como el gestor de arranque predeterminado, en algunos casos no arrancará el sistema.\n\nQuieres configurar GRUB como el gestor de arranque predeterminado?\n\nSe recomienda seleccionar "Sí", especialmente para los principiantes. Se copiará el archivo grubx64.efi en"
-_SetGrubDefBody2="y se cambiará el nombre a bootx64.efi si es necesario.\n\nSi ya tiene un gestor de arranque predeterminado,y/o si tiene la intención de utilizar varios gestores de arranque, selecciona 'No'."
+_SetGrubDefBody="\nAlgunos firmware UEFI no pueden detectar Grub si no se establece como el gestor de arranque predeterminado, en algunos casos no arrancará el sistema.\n\nQuieres configurar GRUB como el gestor de arranque predeterminado?\n\nSe recomienda seleccionar "Sí", especialmente si todavía eres principiante. Se copiará el archivo grubx64.efi en"
+_SetGrubDefBody2="y se cambiará el nombre a bootx64.efi si es necesario.\n\nSi ya tienes un gestor de arranque predeterminado y/o si tienes la intención de utilizar varios gestores de arranque, selecciona 'No'."
 
 # Gummiboot Configuration Check
 _ChkGumTitle=" Comprobando la Configuración de Gummiboot "
@@ -305,25 +308,25 @@ _ChkGumBody="\nPor favor, revisa los archivos de configuración del gestor y de 
 
 # Set rEFInd as default
 _SetRefiDefTitle=" Establecer rEFInd como gestor de arranque predeterminado? "
-_SetRefiDefBody="\nAlgunos firmware UEFI no pueden detectar rEFInd si no es establecido como el gestor de arranque predeterminado, en algunos casos no arrancará el sistema.\n\nQuieres configurar rEFInd  como el gestor de arranque predeterminado ?\n\nSe recomienda seleccionar "Sí", especialmente si eres principiante. Esto  instalará rEFInd en"
-_SetRefiDefBody2="con el BOOTX64.EFI requerido.\n\nSi no selecciona 'No',  si ya tienes un gestor de arranque predeterminado, y/o si tiene la intención de utilizar varios gestores de arranque."
+_SetRefiDefBody="\nAlgunos firmware UEFI no pueden detectar rEFInd si no es establecido como el gestor de arranque predeterminado, en algunos casos no arrancará el sistema.\n\nQuieres configurar rEFInd  como el gestor de arranque predeterminado?\n\nSe recomienda seleccionar "Sí", en particular si eres principiante. Esto  instalará rEFInd en"
+_SetRefiDefBody2="con el BOOTX64.EFI necesario.\n\nSi no, selecciona 'No'  si ya tienes un gestor de arranque predeterminado y/o si tienes la intención de utilizar varios gestores de arranque."
 
 
 # efi file set for Grub or Refind
-_SetDefDoneTitle=" Copiado Archivo UEFI  "
-_SetDefDoneBody="se ha establecido como el gestor de arranque predeterminado .\n\n"
+_SetDefDoneTitle=" Archivo UEFI copiado  "
+_SetDefDoneBody="Se ha establecido como el gestor de arranque predeterminado .\n\n"
 
 # rEFInd Mountpoint error
 _RefiErrTitle=" Punto de Montaje UEFI de rEFInd"
-_RefiErrBody="\nEl script de instalación rEFInd no funcionará si la partición UEFI se ha montado en /boot/efi. Por favor selecciona Gummiboot (recomendado) o Grub.\n\n"
+_RefiErrBody="\nEl script de instalación de rEFInd no funcionará si la partición UEFI se ha montado en /boot/efi. Por favor selecciona Gummiboot (recomendado) o Grub.\n\n"
 
 # ALSA, Xorg, Input
 _AXITitle=" ALSA, Xorg, y Input "
-_AXIBody="\nAntes de instalar los controladores de su tarjeta gráfica o entornos de escritorio,  se necesitan instalar otros paquetes primero:\n\nalsa - Advanced Linux Sound Architecture\nxorg-* - open-source X window system for graphics\nxf86-input-* - open-source drivers for input devices\n\n"
+_AXIBody="\nAntes de instalar los controladores de su tarjeta gráfica o entornos de escritorio,  se necesitan instalar otros paquetes primero:\n\nalsa - Advanced Linux Sound Architecture (Gestor de los dispositivos y tarjetas de sonido)\nxorg-* - Sistema implementación de código abierto del sistema de ventanas X\nxf86-input-* - Controladores de código abierto para periféricos\n\n"
 
 # Graphics Card Menu
 _GCtitle=" Menú de la Tarjeta Gráfica "
-_GCBody="Elige Nouveau para tarjetas NVIDIA antiguas. Si su tarjeta no aparece en la lista, selecciona 'Desconocido / Genérico'.\n"
+_GCBody="Elige Nouveau para tarjetas NVIDIA antiguas. Si tu tarjeta no aparece en la lista, selecciona 'Desconocido / Genérico'.\n"
 _GCUnknOpt="Desconocido / Genérico"
 
 # NVIDIA Configruation Check
@@ -332,12 +335,12 @@ _NvidiaConfBody="\nUn archivo con la configuración básica de NVIDIA ha sido cr
 
 # Graphics Card Detection
 _GCDetTitle="Detectada"
-_GCDetBody="\nEs su Tarjeta Gráfica"
-_GCDetBody2="-Selecciona 'Sí' para instalar el controlador OPEN-SOURCE.\n\n-Selecciona 'No' para abrir el menú de la tarjeta gráfica, podrás seleccionar los controladores privativos de NVIDIA ".
+_GCDetBody="\nTienes una tarjeta gráfica"
+_GCDetBody2="-Selecciona 'Sí' para instalar el controlador de código abierto.\n\n-Selecciona 'No' para abrir el menú de la tarjeta gráfica, podrás seleccionar los controladores privativos de NVIDIA ".
 
 # Install DE Info
 _DEInfoTitle=" Instalar Entornos de Escritorio "
-_DEInfoBody="\nEsta opción se puede repetir para instalar varios escritorios distintos.\n\nGnome, KDE, y LXDE tienen un Gestor de Pantalla propio.\n\nCinnamon, Gnome y KDE tienen un Gestor de  Red propio.\n\n"
+_DEInfoBody="\nEsta opción se puede repetir para instalar varios escritorios diferentes.\n\nGnome, KDE, y LXDE tienen un Gestor de Pantalla propio.\n\nCinnamon, Gnome y KDE tienen un Gestor de  Red propio.\n\n"
 
 # Install DE Menu
 _InstDETitle=" Instalación de los Escritorios "
@@ -361,7 +364,7 @@ _DmChBody="\nGNOME y KDE han sido instalados. Por favor, selecciona que gestor d
 
 # KDM or GDM Choice Made
 _DmDoneTitle="Activado "
-_DMDoneBody="Se ha Habilitado.\n\n"
+_DMDoneBody"Se ha Habilitado.\n\n"
 
 # LXDM
 _DmLxdmTitle=" LXDM Activado "
@@ -377,23 +380,23 @@ _DmInstBody="\nYa se ha instalado y activado un gestor de pantalla .\n\n"
 
 # Network Manager
 _InstNMTitle=" Elige un Gestor de la Red "
-_InstNMBody="\Recomendamos seleccionar Network Manager, especialmente para PPPoE/DSL y conexiones inalámbricas .\n"
+_InstNMBody=" Recomendamos seleccionar Network Manager, especialmente para PPPoE/DSL y conexiones inalámbricas .\n"
 
 # Network Manager Installed
 _InstNMDoneTitle=" Gestor de Red Instalado "
-_InstNMDoneBody="\nEl Gestor de Red se ha instalado y activado."
+_InstNMDoneBody="\nEl Gestor de Red se ha instalado y ha sido activado."
 
 # Network Manager Already Installed (no need for seperate title)
-_InstNMErrBody="\nUn Gestor de Red ya ha sido instalado y activado."
+_InstNMErrBody="\nYa has instalado y activado un gestor de red."
 
 # Welcome
 _WelTitle=" Bienvenido a"
-_WelBody="\nPuedes moverte por el menú pulsando el número o usando las flechas del teclado arriba/abajo  antes de pulsar [ENTER] para confirmar.\n\nPuedes saltar de un botón a otro con [Tab] o las flechas izquierda/derecha, pulsa [ENTER] para confirmar.\n\nTambién podrás usar un ratón/touchpad.\n\n"
+_WelBody="\nPuedes moverte por el menú pulsando el número o usando las flechas del teclado arriba/abajo, pulsa [ENTER] para confirmar.\n\nPuedes saltar de un botón a otro con [Tab] o las flechas izquierda/derecha, pulsa [ENTER] para confirmar.\n\nTambién podrás usar un ratón/touchpad.\n\n"
 
 # Preparation Menu
 _PrepTitle=" Preparar Instalación "
-_PrepBody="\nLa distribución de teclado que escoja, se utilizará para el instalador y - si instala un entorno de escritorio - para el sistema instalado.\n"
-_PrepKBLayout="Selecciona la Distribución de tu Teclado"
+_PrepBody="\nLa distribución de teclado que escojas, se utilizará para el instalador y - si instala un entorno de escritorio - para el sistema instalado.\n"
+_PrepKBLayout="Seleccionar la Distribución de tu Teclado"
 _PrepMirror="Configura el Mirrorlist del instalador (opcional) "
 _PrepPartDisk="Particionar el Disco"
 _PrepMntPart="Montar las particiones"
@@ -401,7 +404,7 @@ _Back="Volver"
 
 # Install Base Menu
 _InstBsMenuTitle=" Instalar la Base del sistema "
-_InstBseMenuBody="\nNo es necesario instalar un gestor de arranque si tiene una instalacion de Linux con Grub, solamente tienes que actualizarlo ."
+_InstBseMenuBody="\nNo es necesario instalar un gestor de arranque si tienes una instalación de Linux con Grub, solamente tienes que actualizarlo ."
 _InstBse="Instalar la Base del sistema"
 _InstBootldr="Instalar el Gestor de Arranque"
 
@@ -424,21 +427,21 @@ _ConfUsrNew="Añadir Nuevo Usuario(s)"
 
 # Desktop Menu
 _InstDEMenuTitle=" Instalar el Escritorio "
-_InstDEMenuBody="\nAntes de instalar un entorno de escritorio, primero se DEBEN configurar e instalar el entorno gráfico, los periféricos y los controladores de sonido. La instalación de los controladores de su tarjeta gráfica está incluída."
-_InstDEMenuGISD="Instalar el entorno gráfico, periféricos y los controladores de sonido"
+_InstDEMenuBody="\nAntes de instalar un entorno de escritorio, primero se DEBEN configurar e instalar el entorno gráfico, los controladores de sonido y de periféricos. Se instalarán también los controladores de la tarjeta gráfica en el mismo La instalación de los controladores de la tarjeta gráfica está incluida."
+_InstDEMenuGISD="Instalar entorno gráfico, controladores de sonido y de periféricos"
 _InstDEMenuDE="Instalar Escritorio(s)"
 _InstDEMenuNM="Instalar Gestor de Red"
 _InstDEMenuDM="Instalar Gestor de Pantalla / Pantalla de inicio "
 
 # Main Menu
 _MMTitle=" Menú Principal "
-_MMBody="\nSe deben ejecutar todos los pasos EN ORDEN. Una vez completado, selecciona 'Hecho' para finalizar correctamente la instalación.\n"
-_MMPrep="Preparar Instalación" 
-_MMInstBse="Instalar Base" 
-_MMConfBse="Configurar Base" 
-_MMConfUsr="Configurar la(s) Cuenta(s) de Usuario(s)" 
-_MMInstDE="Instalar Escritorio(s)" 
-_MMRunMkinit="Ejecutar Mkinitcpio" 
+_MMBody="\nSe deben ejecutar todos los pasos EN ORDEN. Una vez completado, selecciona 'Hecho' para terminar la  instalación.\n"
+_MMPrep="Preparar Instalación"
+_MMInstBse="Instalar Base"
+_MMConfBse="Configurar Base"
+_MMConfUsr="Configurar la(s) Cuenta(s) de Usuario"
+_MMInstDE="Instalar Escritorio(s)"
+_MMRunMkinit="Ejecutar Mkinitcpio"
 _Done="Hecho"
 
 # Close Installer

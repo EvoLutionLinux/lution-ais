@@ -1,6 +1,6 @@
 # !/bin/bash
 #
-# Lution-AIS installer (version 0.4.6 - 30th November 2014)
+# Lution-AIS installer (version 0.4.8 - 7th December 2014)
 #
 # Written by Carl Duff for Evo/Lution Linux
 #
@@ -26,7 +26,7 @@
 ANSWER="/tmp/.lution"
 
 # Save retyping
-VERSION="Lution-AIS 0.4.6 (30-Nov-2014)"
+VERSION="Lution-AIS 0.4.8 (07-Dec-2014)"
 
 # Installation
 KDE_INSTALLED=0      		# Has KDE been installed? Used for display manager option
@@ -46,7 +46,7 @@ ZONE=""               		# For time
 SUBZONE=""            		# For time
 LOCALE="en_US.UTF-8"  		# System locale. Default is "en_US.UTF-8"
 LTS=0                		# Has the LTS Kernel been installed?
-GRAPHIC_CARD=$(hwinfo --gfxcard|grep 'Model:[[:space:]]')  # Auto-detect popular graphics cards
+GRAPHIC_CARD=$(hwinfo --gfxcard | grep 'Model')  # Auto-detect popular graphics cards
 GC_DETECTED=""        		# Name of Graphics Card Detected
 NVIDIA_INST=0         		# Indicates if NVIDIA proprietary driver has been installed
 SHOW_ONCE=0           		# Show de_wm information only once
@@ -100,7 +100,7 @@ select_language() {
  	"5" $"Norsk" \
  	"6" $"Italiano" \
  	"7" $"Español" \
- 	"8" $"Русский (частичный)" \
+ 	"8" $"Русский" \
  	"9" $"Polski" 2>${ANSWER}
 
 	case $(cat ${ANSWER}) in
@@ -267,11 +267,11 @@ env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$
 
 }
 
-# Simplified from the Arch --> Cinnarch/Antergos --> Manjaro installer code.
+# virtual console keymap
 set_keymap() { 
 	
 	KEYMAPS=""
-    for i in $(find /usr/share/kbd/keymaps -follow -name "*.gz" | sed 's|^.*/||g' | sed 's/.map.*//' | sort); do
+    for i in $(localectl --no-pager list-keymaps); do
         KEYMAPS="${KEYMAPS} ${i} -"
     done
     
@@ -1348,17 +1348,17 @@ gc_driver_menu() {
 # Adapted from Antergos' CLI installer
 detect_graphics_card() {
 	
-    if   [[ `echo ${GRAPHIC_CARD}|grep -i 'ati[[:space:]]'` != "" ]]; then
+    if   [[ $(echo ${GRAPHIC_CARD} | grep -i 'ati') != "" ]]; then
          GC_DETECTED="ATI" 
-    elif [[ `echo ${GRAPHIC_CARD}|grep -i 'nvidia[[:space:]]'` != "" ]]; then
+    elif [[ $(echo ${GRAPHIC_CARD} | grep -i 'nvidia') != "" ]]; then
          GC_DETECTED="NVIDIA" 
-    elif [[ `echo ${GRAPHIC_CARD}|grep -i 'intel[[:space:]]'` != "" ]] || [[ `echo ${GRAPHIC_CARD}|grep -i 'lenovo[[:space:]]'` != "" ]]; then
+    elif [[ $(echo ${GRAPHIC_CARD} | grep -i 'intel') != "" ]] || [[ $(echo ${GRAPHIC_CARD} | grep -i 'lenovo') != "" ]]; then
          GC_DETECTED="Intel"
-    elif [[ `echo ${GRAPHIC_CARD}|grep -i 'virtualbox[[:space:]]'` != "" ]]; then
+    elif [[ $(echo ${GRAPHIC_CARD} | grep -i 'virtualbox') != "" ]]; then
          GC_DETECTED="VirtualBox"
-    elif [[ `echo ${GRAPHIC_CARD}|grep -i 'vmware[[:space:]]'` != "" ]]; then
+    elif [[ $(echo ${GRAPHIC_CARD} | grep -i 'vmware') != "" ]]; then
          GC_DETECTED="VMware"
-    elif [[ `echo ${GRAPHIC_CARD}|grep -i 'via[[:space:]]'` != "" ]]; then
+    elif [[ $(echo ${GRAPHIC_CARD} | grep -i 'via') != "" ]]; then
          GC_DETECTED="Via"
     else
          GC_DETECTED="Unknown"
@@ -1404,7 +1404,7 @@ install_gc() {
       "Intel") pacstrap ${MOUNTPOINT} xf86-video-intel libva-intel-driver mesa-libgl mesa
                sed -i 's/^MODULES=(/MODULES=(i915 /' ${MOUNTPOINT}/etc/mkinitcpio.conf
                ;;
- "VirtualBox") env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " VirtualBox Installation " --msgbox "\nIf for any reason the VirtualBox guest modules do not load for the installed system (e.g. low resolution and scrollbars after booting), a one-off series of commands will fix this:\n\n$ su\n# depmod -a\n# modprobe -a vboxvideo vboxguest vboxsf\n# reboot" 0 0
+ "VirtualBox") env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_VBoxInstTitle" --msgbox "$_VBoxInstBody" 0 0
                clear
                [[ $LTS == 0 ]] && pacstrap ${MOUNTPOINT} virtualbox-guest-utils virtualbox-guest-modules mesa-libgl \
                || pacstrap ${MOUNTPOINT} virtualbox-guest-utils virtualbox-guest-modules-lts mesa-libgl

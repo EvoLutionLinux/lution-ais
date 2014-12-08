@@ -3,9 +3,13 @@
 ## English Translation File		
 ##								
 ##
-## Written by Carl Duff for Evo/Lution Linux (30th November 2014)
+## Written by Carl Duff for Evo/Lution Linux (7th December 2014)
 ##
 ##
+
+# Vbox Installations
+_VBoxInstTitle=" VirtualBox Installation "
+_VBoxInstBody="\nIf for any reason the VirtualBox guest modules do not load for the installed system (e.g. low resolution and scrollbars after booting), a one-off series of commands will fix this:\n\n$ su\n# depmod -a\n# modprobe -a vboxvideo vboxguest vboxsf\n# reboot"
 
 # Select Wireless Firmware Driver(s)
 _InstWirelessFirm="Install Wireless Device Firmware"

@@ -6,6 +6,11 @@
 ##
 ##
 
+# Vbox Installations
+_VBoxInstTitle=" VirtualBox Installation "
+_VBoxInstBody="\nIf for any reason the VirtualBox guest modules do not load for the installed system (e.g. low resolution and scrollbars after booting), a one-off series of commands will fix this:\n\n$ su\n# depmod -a\n# modprobe -a vboxvideo vboxguest vboxsf\n# reboot"
+
+
 # Select Wireless Firmware Driver(s)
 _InstWirelessFirm="Instaluj oprogramowanie dla urządzenia bezprzewodowego"
 _WirelssFirmTitle=" Wybór oprogramowania dla urządzenia bezprzewodowego "

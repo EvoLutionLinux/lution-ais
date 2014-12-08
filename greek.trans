@@ -1,11 +1,15 @@
 ##
-##
-## Greek Translation File
-##
-##
-## Written by Kat Krow for Evo/Lution Linux (10th November 2014)
+## Greek / Eλληνικά Translation File (Partial)
 ##
 ##
+## Written by Kat Krow for Evo/Lution Linux (4th December 2014)
+##
+##
+
+# Vbox Installations
+_VBoxInstTitle=" VirtualBox Installation "
+_VBoxInstBody="\nIf for any reason the VirtualBox guest modules do not load for the installed system (e.g. low resolution and scrollbars after booting), a one-off series of commands will fix this:\n\n$ su\n# depmod -a\n# modprobe -a vboxvideo vboxguest vboxsf\n# reboot"
+
 
 # Select Wireless Firmware Driver(s)
 _InstWirelessFirm="Install Wireless Device Firmware"
@@ -22,32 +26,32 @@ _SeeConfOptTitle=" Διαμόρφωση αρχεία "
 _SeeConfOptBody="\n.Επιλέξτε οποιοδήποτε αρχείο παρακάτω για να ελέγχονται και να τροποποιηθεί.\n"
 _SeeConfErrTitle=" Aναθεώρηση Σφάλμα "
 _SeeConfErrBody1="\nΤο αρχείο δεν υπάρχει.\n\n"
-_SeeConfErrBody2="\nΤο Base System πρέπει να εγκατασταθεί πρώτα.\n\n"
+_SeeConfErrBody2="\n Το Σύστημα Base πρέπει να εγκατασταθεί πρώτα.\n\n"
 
 # Pacman
 _PrepPacKey="Ανανεώστε τα κλειδιά του Pacman (προαιρετικός)"
 
 # Logical Volume Management
-_PrepLVM="Λογικών Τόμων Διαχειρισμός (προαιρετικός)"
+_PrepLVM="Διαχείρισης λογικών τόμων (προαιρετικός)"
 
-_LvmDetTitle=" LVM Εντοπίστηκε "
+_LvmDetTitle=" Εντοπίστηκε LVM  "
 _LvmDetBody1="\n Διαχείριση Λογικών Τόμων (LVM) ήδη υπάρχει και έχει ανιχνευθεί. Kατάτμησης που έχουν ήδη χρησιμοποιηθεί για την LVM δεν μπορεί να επιλεγεί. θέλετε να απενεργοποιήσετε τις υπάρχουσες LVM?\n\nΕπιλέξτε «Ναι» για να αφαιρέσετε τις υπάρχουσες LVM.\nΕπιλέξτε "Όχι" για να τις κρατήσετε.\n"
 _LvmRmTitle=" Απενεργοποίηση LVM "
 _LvmDetBody2="\nΔιαχείριση Λογικών Τόμων (LVM) ήδη υπάρχει και έχει ανιχνευθεί. Eνεργοποιοντας. Παρακαλώ περιμένετε...\n\n"
-_LvmRmBody="\nΑπενεργοποίηση τις ήδη υπάρχουσες Φυσική Τόμοι (PV),Ομάδας Τόμων (VG), και Λογικών Τόμων,: (LV).\n\nΠαρακαλώ περιμένετε...\n\n"
+_LvmRmBody="\nΑπενεργοποίηση τις ήδη υπάρχουσες Φυσικούς Τόμους(PV),Ομάδας Τόμων (VG), και Λογικούς Τόμους,: (LV).\n\nΠαρακαλώ περιμένετε...\n\n"
  
-_LvmPartErrTitle=" LVM Κατάτμηση Σφάλμα "
-_LvmPartErrBody="\nΔεν υπάρχουν βιώσιμες κατάτμησης διαθέσιμες για να χρησιμοποιηθούν για την Διαχείριση Λογικών Τόμων.Απαιτείται τουλάχιστον Ένα.\n\nΑν LVM είναι ήδη σε χρήση, tin απενεργοποίηση θα επιτρέπει την κατάτμηση(s) που χρησιμοποιουνται για την Φυσική Τόμοι(s)  να χρησιμοποιηθούν ξανά.\n\n"
+_LvmPartErrTitle=" Κατάτμηση LVM  Σφάλμα "
+_LvmPartErrBody="\nΔεν υπάρχουν βιώσιμες κατάτμησης διαθέσιμες για να χρησιμοποιηθούν για την Διαχείριση Λογικών Τόμων.Απαιτείται τουλάχιστον Ένα.\n\nΑν LVM είναι ήδη σε χρήση, tin απενεργοποίηση θα επιτρέπει την κατάτμηση(s) που χρησιμοποιουνται για τους Φυσικούς Τόνους να χρησιμοποιηθούν ξανά.\n\n"
 
-_LvmNameVgTitle=" LVM - Όνομα της Ομάδας Τόμων "
-_LvmNameVgBody="\nΠληκτρολογήστε το όνομα της Ομάδας Τόμων (VG) για να δημιουργήθει.\n\nΗ VG είναι η νέα 'Συσκευή Virtual / Σκληρός Δίσκος' για να δημιουργηθεί από τα κατατμησης(s) η οποία θα επιλέγεται το επόμενο.\n"
+_LvmNameVgTitle=" LVM - Όνομα τους Ομάδας Τόμων "
+_LvmNameVgBody="\nΠληκτρολογήστε το όνομα τους  Ομάδας Τόμων (VG) για να δημιουργήθει.\n\nΗ VG είναι η νέα 'Συσκευή Virtual / Σκληρός Δίσκος' για να δημιουργηθεί από τα κατατμησης(s) η οποία θα επιλέγεται το επόμενο.\n"
 
 _LvmNameVgErrTitle=" LVM - VG Όνομα Σφάλμα "
 _LvmNameVgErr="\nΛάθος όνομα έχει εγγραφεί.Το Όνομα της Ομάδας Τόμων μπορεί να είναι αλφαριθμητικό, αλλά δεν μπορεί να περιέχει κενά, ξεκινά με ένα '/', ή είναι ήδη σε χρήση.\n\n"
 
 
 _LvmPvSelTitle=" LVM - Επιλέξτε Kατάτμησης "
-_LvmPvSelBody="\nΕπιλέξτε Kατάτμηση (s) Επιλέξετε Κατάτμηση που θα χρησιμοποιηθεί για τον Φυσικων Τόμον (PV).\n"
+_LvmPvSelBody="\nΕπιλέξτε Kατάτμηση (s) Επιλέξετε μια κατάτμηση  που θα χρησιμοποιηθεί για τον Φυσικων Τόμον (PV).\n"
 _LvmPvCreateTitle=" LVM - Κατάτμηση Προστέθηκε "
 
 _LvmPvConfTitle=" LVM - Δημιουργίας Ομάδας Τόμων "
@@ -55,16 +59,16 @@ _LvmPvConfBody1="\nΕπιβεβαίωση δημιουργίας Tης Ομάδ�
 _LvmPvConfBody2="με τις ακόλουθες κατάτμησης:\n\n"
 
 _LvmPvActTitle=" LVM - Δημιουργώντας VG "
-_LvmPvActBody1="\nΔημιουργώντας and ενεργοποιοντας της Ομάδας Τόμων "
+_LvmPvActBody1="\nΔημιουργώντας Eνεργοποιοντας της Ομάδας Τόμων "
 _LvmPvActBody2="\n\nΠαρακαλώ περιμένετε...\n\n"
 
 _LvmPvDoneTitle=" LVM - VG Δημιουργήθηκε "
 _LvmPvDoneBody1="\nΟμάδας Τόμων "
 _LvmPvDoneBody2="Eχει δημιουργηθεί"
 
-_LvmLvNumTitle=" LVM - Δημιουργία Λογικού Tόμου "
-_LvmLvNumBody1="\nΕισάγετε τον αριθμό του λογικού τόμου (LVs) για να δημιουργήσε στο"
-_LvmLvNumBody2="Ελάχιστη είναι 1, το μέγιστο είναι 9.\n\nLVs είναι ουσιαστικά κατάτμησης. Η τελευταία (ή μόνο) LV θα χρησιμοποιήσει αυτόματα το 100% του υπόλοιπου χώρου στον Ομάδας Τόμων."
+_LvmLvNumTitle=" LVM - Δημιουργία Λογικούς Τόμους "
+_LvmLvNumBody1="\nΕισάγετε τον αριθμό τους Λογικούς Τόμους (LVs) για να δημιουργήσουν στο"
+_LvmLvNumBody2="Ελάχιστη είναι 1, το μέγιστο είναι 9.\n\nLVs είναι ουσιαστικές κατάτμησης. Η τελευταία (ή μόνο) LV θα χρησιμοποιήσει αυτόματα το 100% του υπόλοιπου χώρου στον Ομάδας Τόμων."
 
 _LvmLvNumErrTitle=" LVM - LV Αριθμός Σφάλμα"
 _LvmLvNumErrBody="\nΛάθος αριθμός έχει εισαχθεί. Ελάχιστη είναι 1, το μέγιστο είναι 9.\n\n"
@@ -86,41 +90,41 @@ _LvmLvSizeErrBody="\nΛάθος αξία έχει εισαχθεί. Μια αρ�
 _LvmLvDoneTitle=" LVM -  Λογικών Τόμων δημιουργήθηκε "
 
 _LvmCompTitle=" LVM - Η διαδικασία  έχει ολοκληρωθεί "
-_LvmCompBody="\nΈγινε! Όλες οι λογικοί τόμοι έχουν δημιουργηθεί για της Ομάδας Τόμων.\n\nΘέλετε να δείτε το νέο σχέδιο LVM ?\n\n"
+_LvmCompBody="\nΈγινε! Όλους τους Λογικούς Τόμους έχουν δημιουργηθεί για της Ομάδας Τόμων.\n\nΘέλετε να δείτε το νέο σχέδιο LVM ?\n\n"
 
 
 # Show devices and partitions
 _DevShowTitle=" Συσκευές / Kατάτμησης "
-_DevShowOpt="Λίστα Συσκευές (προαιρετικός)"
+_DevShowOpt="Λίστα τις συσκευές (προαιρετικός)"
 
 # Check Evo Requirements and Identify System Type
-_ChkEvoTitle=" Έλεγχος Απαιτήσεις Evo "
+_ChkEvoTitle=" Έλεγχος τις Απαιτήσεις του Evo "
 _ChkEvoBody="\nΈλέγχοντας ότι η εγκαταστάτη έχει εκτελεστεί ως root και ότι υπάρχει μια ενεργή σύνδεση στο Internet. Παρακαλώ περιμένετε...\n\n"
 
 _RtFailTitle="Aποτυχία Root"
-_RtFailBody="\nΤον εγκαταστάτη πρέπει να εκτελούνται ως root. Έξοδος.\n\n"
+_RtFailBody"\nΤον εγκαταστάτη πρέπει να εκτελούνται ως root. Kλείνοντας τον εγκαταστάτη\n\n"
 
 _ConFailTitle="Αποτυχία Σύνδεσης"
-_ConFailBody="\nΔοκιμή σύνδεσης στο Internet απέτυχε. Έξοδος.\n\n"
+_ConFailBody="\nΔοκιμή σύνδεσης στο Internet απέτυχε. Kλείνοντας τον εγκαταστάτη.\n\n"
 
 _ReqMetTitle=" Πληρούν Τις Απαιτήσεις"
 _ReqMetBody="\nΌλοι οι έλεγχοι πέρασαν! \n\n"
 
-_UefiDet="UEFI Σύστημα Εντοπίστηκε"
-_BiosDet="BIOS Σύστημα Εντοπίστηκε"
+_UefiDet="Εντοπίστηκε Σύστημα UEFI"
+_BiosDet="Εντοπίστηκε Σύστημα BIOS"
 
 # Installer Mirrorlist
 _MirrorlistTitle=" Mirrorlist "
 _MirrorlistBody="\nTο mirrorlist περιέχει διευθύνσεις του διακομιστή που χρησιμοποιούνται από τον pacman για να εγκαταστήσει πακέτα. Aυτοί είναι προσβάσιμα από τον pacman με τη σειρά που παρατίθενται.\n\n"
-_MirrorbyCountry="Δημιουργα λίστα Με Χώρα"
+_MirrorbyCountry="Δημιουργίας της λίστας Με Χώρα"
 _MirrorEdit="Επεξεργασία χειροκίνητη του mirrorlist"
 
 # Generate Mirrorlist by country
 _MirrorCntryTitle=" Επιλέξτε Χώρα "
-_MirrorCntryBody="\nΜια λίστα με mirrors από την επιλεγμένη χώρα θα δημιουργούνται.\n\nΜόλις επανεξεταστεί, μπορείτε να επιλέξετε να το χρησιμοποιήσετε ή όχι."
+_MirrorCntryBody="\nΜια λίστα με Mirrors από την επιλεγμένη χώρα θα δημιουργηθεί.\n\nΜόλις επανεξεταστεί, μπορείτε να επιλέξετε για να την χρησιμοποιήσετε ή όχι."
 _MirrorGenTitle=" Δημιουργώντας  Mirrorlist "
-_MirrorGenBody="\n Δημιουργώντας ένα  mirrorlist. Παρακαλώ περιμένετε... "
-_MirrorGenQ="Xρησιμοποιείτε mirrorlist που έχει δημιουργηθεί για τον εγκαταστάτη?"
+_MirrorGenBody="\n Δημιουργώντας μια Mirrorlist. Παρακαλώ περιμένετε... "
+_MirrorGenQ="Θέλετε να χρησιμοποιήσετε την mirrorlist που έχει δημιουργηθεί για τον εγκαταστάτη?"
 _MirrorGenDone="\nΈγινε! Αρχικό Mirrorlist έχει αποθηκευτεί ως:\n\n/etc/pacman.d/mirrorlist.orig\n\n"
 
 # Set Keymap (vconsole)
@@ -129,47 +133,47 @@ _KeymapBody="\nΧρησιμοποιήστε το [pg up] και [pg dwn] πλή�
 
 # Set Xkbmap (environment)
 _XkbmapTitle=" Επιλέξτε xkbmap "
-_XkbmapBody="Επιλέξτε Διάταξη πληκτρολογίου"
+_XkbmapBody="Επιλέξτε Διάταξη πληκτρολογίου xkbmap"
 
 # Set Locale
 _LocateTitle=" Επιλέξτε Τοπικών Ρυθμίσεων "
-_localeBody="Επιλέξτε ένα Τοπικών Ρυθμίσεων"
+_localeBody="Επιλέξτε τοπικές ρυθμίσεις"
 
 # Set Timezone
-_TimeZTitle=" Επιλέξτε Χρονικές Ζώνες "
-_TimeZBody="\nΗ Ζώνης Ώρας  χρησιμοποιείται για να ρυθμίσει σωστά το ρολόι του συστήματός σας."
-_TimeSubZTitle=" Επιλέξτε Ώρα Υπο-Ζώνη "
+_TimeZTitle=" Επιλέξτε των Xρονικών ζωνών "
+_TimeZBody="\n Tων Xρονικών ζωνών χρησιμοποιείται για να ρυθμίσει σωστά το ρολόι του συστήματός σας."
+_TimeSubZTitle=" Επιλέξτε Ώρα Sub-Zone "
 _TimeSubZBody="\nΕπιλέξτε την πόλη πλησιέστερο σε σας."
-_TimeZQ="Ρύθμιση της Ζώνης Ώρας ως"
+_TimeZQ="Ρύθμιση των Sub-Zone ως"
 
 # Set Hardware Clock
-_HwCTitle=" Ρυθμίστε το ρολόι των Υπολογιστών "
+_HwCTitle=" Ρύθμιση το ρολόι του συστήματός σας "
 _HwCBody="\nUTC είναι το παγκόσμιο πρότυπο του χρόνου, και συνιστάται, εκτός εάν έχεις διπλή εκκίνηση με τα Windows."
 _HwCUTC="UTC"
 _HwLocal="Τοπική Ώρα"
 
 # Generate FSTAB
 _FstabTitle=" Δημιουργία FSTAB "
-_FstabBody="\nTο FSTAB αρχείο (File System TABle) ορίζει Τι συσκευές αποθήκευσης και κατάτμησης πρέπει να τοποθετηθεί, και πώς πρόκειται να χρησιμοποιηθούν.\n\nUUID/PARTUUID (Universally Unique IDentifier) συνιστάται.\n\nΑν δεν έχουν ρυθμιστεί ετικέτες για τις κατατμήσεις νωρίτερα,ονομασίες θα χρησιμοποιηθούν για την επιλογή ετικέτας."
-_FstabDev="Dev (κωδικός κατάτμηση)"
-_FstabLabel="Label (καθορίζονται από το χρήστη)"
-_FstabUUID="UUID/PARTUUID (μοναδικός κωδικός)"
+_FstabBody="\nTο αρχείο FSTAB (File System TABle) ορίζει ποιές συσκευές αποθήκευσης και κατάτμησης τα οποία θα τοποθετηθουν, και πώς πρόκειται να χρησιμοποιηθούν.\n\nUUID/PARTUUID (Universally Unique IDentifier) συνιστάται.\n\nΑν δεν έχουν ρυθμιστεί ετικέτες για τις κατατμήσεις νωρίτερα,ονομασίες θα τις χρησιμοποιηθούν για αυτες."
+_FstabDev="Dev (partition code)"
+_FstabLabel="Label (user defined)"
+_FstabUUID="UUID/PARTUUID (unique code)"
 
 # Check FSTAB
 _FstabChkTitle=" Έλεγχος FSTAB "
-_FstabChkBody="\nΠαρακαλώ ελέγξετε Tο FSTAB αρχείο, πριν το κλείσιμο για να συνεχίσετε.\n\n"
+_FstabChkBody="\nΠαρακαλώ ελέγξετε Tο αρχείο FSTAB, πριν το κλείσιμο του εγκαταστάτη για να συνεχίσετε.\n\n"
 
 # Set Hostname
-_HostNameTitle=" Ορισμός ονόματος υπολογιστή "
+_HostNameTitle=" Ορισμός του ονόματος υπολογιστή "
 _HostNameBody="\nΤο όνομα του υπολογιστή χρησιμοποιείται για τον προσδιορισμό του συστήματος σε ένα δίκτυο.\n\nΠρέπει να περιορίζεται στις αλφαριθμητικών χαρακτήρων, μπορεί να περιέχει ένα ενωτικό (-) - αλλά όχι στην αρχή ή στο τέλος - και όχι περισσότερο από 63 χαρακτήρες.\n"
 
 # Set Root Password
 _PassRtTitle=" Θέστε τον κωδικό του root "
 _PassRtBody="\nΠληκτρολογήστε ένα κωδικό του root\n\n"
-_PassRtBody2="\nΠληκτρολογήστε ξανά το κωδικό του root\n\n"
+_PassRtBody2="\nΠληκτρολογήστε ξανά τον κωδικό για τον root\n\n"
 
 # Root Password Error
-_PassRtErrTitle=" κωδικό του root ΣΦΑΛΜΑ  "
+_PassRtErrTitle=" κωδικό του root Σφαλμα  "
 _PassRtErrBody="\nTo κωδικό του root δεν ταιριάζουν. Παρακαλώ δοκιμάστε ξανά.\n\n"
 
 # Create New User
@@ -177,65 +181,65 @@ _NUsrTitle=" Δημιουργία Λογαριασμός Χρήστη "
 _NUsrBody="\nΠληκτρολογήστε το όνομα χρήστη. Γράμματα πρέπει να έχει πεζούς χαρακτήρες.\n"
 
 # Username Error
-_NUsrErrTitle=" Όνομα Χρήστη ΣΦΑΛΜΑ "
+_NUsrErrTitle=" Όνομα Χρήστη Σφαλμα "
 _NUsrErrBody="\nΈνα λανθασμένο όνομα χρήστη καταχωρήθηκε. Παρακαλώ δοκιμάστε ξανά.\n\n"
 
 # Set User Password
 _PassNUsrTitle=" Θέστε τον κωδικό του χρήστη "
-_PassNUsrBody="\nΠληκτρολογήστε τον κωδικό για" 
+_PassNUsrBody="\nΠληκτρολογήστε τον κωδικό για"
 _PassNUsrBody2="\nΠληκτρολογήστε ξανά τον κωδικό για"
 
 # Create New User
 _NUsrSetTitle=" Δημιουργία Νέου Χρήστη "
-_NUsrSetBody="\nΔημιουργώντας Χρήστη και ρύθμιση των ομάδων...\n\n"
+_NUsrSetBody="\nΔημιουργώντας Χρήστη και η ρύθμιση των ομάδων...\n\n"
 
 # User Password Error
-_PassNUsrErrTitle=" Κωδικός Χρήστης ΣΦΑΛΜΑ "
-_PassNUsrErrBody="\nΟι passwords του χρήστη δεν ταιριάζουν. Παρακαλώ δοκιμάστε ξανά.\n\n"
+_PassNUsrErrTitle=" Κωδικός Χρήστης Σφαλμα "
+_PassNUsrErrBody="\nΟι κωδικοί του χρήστη δεν ταιριάζουν. Παρακαλώ δοκιμάστε ξανά.\n\n"
 
 # Mounting (Partitions)
-_MntStatusTitle=" Mount Κατάσταση "
-_MntStatusSucc="\nMount πετυχημένος!\n"
-_MntStatusFail="Mount αποτυχημένος!"
+_MntStatusTitle=" Κατάσταση του σημείο προσάρτησης"
+_MntStatusSucc="\nΣημείo προσάρτησης πετυχημένος!\n"
+_MntStatusFail="Σημείo προσάρτησης αποτυχημένος!"
 
 # Select Device (installation)
 _DevSelTitle=" Επιλέξτε Συσκευές "
-_DevSelBody="\nΣυσκευές (/dev) είναι τους διαθέσιμους σκληρούς δίσκους και USB-sticks για να εγκαταστήσετε. Το πρώτο είναι /sda, η δεύτερη /sdb, και ούτω καθεξής.\n\nΌταν χρησιμοποιείτε ένα USB-stick για να εγκαταστήσετε Evo, να είστε προσεκτικοί γιατί θα είναι επίσης στη λίστα!"
+_DevSelBody="\nΣυσκευές (/dev) είναι τους διαθέσιμους σκληρούς δίσκους και USB-sticks το οποίο θα χρησιμοποιηθούν για την εγκατάσταση. Το πρώτο είναι /sda, η δεύτερη /sdb, και ούτω καθεξής.\n\nΌταν χρησιμοποιείτε ένα USB-stick για να εγκαταστήσετε Evo, να είστε προσεκτικοί γιατί θα είναι επίσης στη λίστα!"
 
 # Select Device (Grub) - seperate body text is not required (uses standard device selection text)
-_DevSelGrubTitle=" Επιλέξτε Grub Συσκευή "
+_DevSelGrubTitle=" Επιλέξτε Συσκευή για το Grub "
 
 
 # Partitioning Tool
 _PartToolTitle=" Εργαλείο Διαμέριση του δίσκου "
-_PartToolBody="\nGParted είναι μια συνιστώμενη φιλικό προς το χρήστη γραφικό εργαλείο που υποστηρίζει τόσο BIOS και συστήματα UEFI.\n\nΜΗΝ επιλέξετε μια UEFI/GPT-μονάκριβος εργαλείο κατατμήσεις για ένα BIOS / MBR σύστημα διότι αυτό θα μπορούσε να προκαλέσει σοβαρά προβλήματα, συμπεριλαμβανομένου ενός unbootable εγκατάσταση."
+_PartToolBody="\nGParted είναι ένα συνιστώμενο φιλικό προς το χρήστη γραφικό εργαλείο που υποστηρίζει το BIOS και επισης συστήματα UEFI.\n\nΜΗΝ επιλέξετε μια UEFI/GPT-μονάκριβος εργαλείο διαμέρισης δίσκων για ένα BIOS / MBR σύστημα διότι αυτό θα μπορούσε να προκαλέσει σοβαρά προβλήματα, συμπεριλαμβανει μια αποτυχημένη εκκινηση."
 
 # UEFI Partitioning Error
-_UefiPartErrTitle=" UEFI Κατάτμηση ΣΦΑΛΜΑ "
-_UefiPartErrBody="\nΣυστήματα UEFI απαιτούν τουλάχιστον δύο κατάτμησης για την εγκατάσταση (ROOT και UEFI).\n\nΠαρακαλούμε να διαμορφώσετε τις κατατμήσεις σας.\n\n"
+_UefiPartErrTitle=" Σφαλμα της Κατάτμησης UEFI "
+_UefiPartErrBody="\nΤα Συστήματα UEFI απαιτούν τουλάχιστον δύο κατάτμησης για την εγκατάσταση (ROOT και UEFI).\n\nΠαρακαλώ να διαμορφώσετε τις κατατμήσεις σας.\n\n"
 
 # BIOS Partitioning Error
-_BiosPartErrTitle=" BIOS Κατάτμηση ΣΦΑΛΜΑ "
-_BiosPartErrBody="\nΣυστήματα BIOS απαιτούν τουλάχιστον μια κατάτμηση για την εγκατάσταση (ROOT).\n\nΠαρακαλούμε να διαμορφώσετε τις κατατμήσεις σας."
+_BiosPartErrTitle=" Σφαλμα της Κατάτμησης BIOS  "
+_BiosPartErrBody="\nΤα Συστήματα BIOS απαιτούν τουλάχιστον μια κατάτμηση για την εγκατάσταση (ROOT).\n\nΠαρακαλώ να διαμορφώσετε τις κατατμήσεις σας."
 
 # File System
 _FSTitle=" Επιλέξτε Σύστημα αρχείων "
-_FSBody="\nExt4 συνιστάται. Δεν είναι όλα τα συστήματα αρχείων βιώσιμες για Root ή Boot κατατμήσεις. Όλα έχουν διαφορετικά χαρακτηριστικά και περιορισμούς."
+_FSBody="\nExt4 συνιστάται. Δεν είναι όλα τα συστήματα αρχείων βιώσιμες για τις κατατμήσεις του Root ή Boot. Όλα έχουν διαφορετικά χαρακτηριστικά και περιορισμούς."
 _FSSkip=" Προβαίνω / Κανένα "
 
 # Select Root
-_SelRootTitle=" Επιλέξτε Κατάτμηση ROOT "
+_SelRootTitle="Επιλέξτε μια Κατάτμηση για το ROOT "
 _SelRootBody="\nΑυτή είναι η κατάτμηση όπου Arch θα εγκατασταθεί."
 
 # Select SWAP
-_SelSwpTitle="Επιλέξτε Κατάτμηση SWAP "
+_SelSwpTitle="Επιλέξτε μια Κατάτμηση για το SWAP "
 _SelSwpBody="\nΕάν χρησιμοποιείτε μια κατάτμηση SWAP, θα είναι το ίδιο μέγεθος με τον RAM σας."
 _SelSwpNone="Κανένα"
 _SelSwpFile="Swapfile"
 
 # Select UEFI
-_SelUefiTitle=" Επιλέξτε Κατάτμηση UEFI "
-_SelUefiBody="\nΑυτό είναι ένα ειδικό κατάτμηση για booting συστήματα UEFI."
+_SelUefiTitle=" Επιλέξτε μια Κατάτμηση για το UEFI "
+_SelUefiBody="\nΑυτό είναι ένα ειδικό κατάτμηση για ένα εκκινήσιμο συστήμα UEFI."
 
 # Format UEFI
 _FormUefiTitle="Κατάτμηση UEFI"
@@ -243,11 +247,11 @@ _FormUefiBody="Την κατάτμηση UEFI"
 _FormUefiBody2="έχει ήδη σχηματοποιηθεί.\n\nΘέλετε να σχηματοποιηθεί ξανά ? Κάτι τέτοιο θα διαγράψει ΟΛΑ τα περιεχόμενα ήδη σε αυτην την κατάτμηση.\n\n"
 
 # UEFI Options
-_OptUefiTitle=" UEFI Mountpoint Επιλογές "
-_OptUefiBody="\nTο bootloader(s) το οποίο μπορούν να εγκατασταθούν αργότερα θα εξαρτηθεί από το πού το κατάτμηση UEFI θα είναι mounted.\n\nΕπιλέξτε /boot για Gummiboot. Αυτό συνιστάται για αρχάριους, όπως η ευκολότερη επιλογή, ειδικά όταν είναι για διπλή εκκίνηση.\n\nΕπιλέξτε /boot/efi για rEFInd. Μπορεί να είναι φανταχτερός,αλλά συνιστάται για έμπειρους χρήστες επειδή χρειάζεται χειροκίνητη update.\n\nΑλλιώς,και οι δύο mountpoint θα λειτουργήσει για το Grub.\n\n"
+_OptUefiTitle="Επιλογές σημείο προσάρτησης UEFI"
+_OptUefiBody="\nTο bootloader(s) το οποίο μπορούν να εγκατασταθούν αργότερα θα εξαρτηθεί από το σημείο προσάρτησης του UEFI .\n\nΕπιλέξτε /boot για Gummiboot. Αυτό συνιστάται για αρχάριους, όπως η ευκολότερη επιλογή, ειδικά όταν είναι για διπλή εκκίνηση.\n\nΕπιλέξτε /boot/efi για rEFInd. Μπορεί να είναι φανταχτερός,αλλά συνιστάται για έμπειρους χρήστες επειδή χρειάζεται χειροκίνητη αναβάθμιση .\n\nΑλλιώς,και οι δύο σημείο προσάρτησης θα λειτουργήσει για το Grub.\n\n"
 
 # UEFI Mountpoint
-_MntUefiTitle=" Επιλέξτε UEFI Mountpoint "
+_MntUefiTitle=" Επιλέξτε σημείο προσάρτησης UEFI "
 _MntUefiBody="\nGummiboot (Αυτό συνιστάται) απαιτεί /boot, rEFInd απαιτεί /boot/efi, και Grub θα λειτουργήσει με τα δύο."
 
 # Extra Partitions
@@ -260,102 +264,102 @@ _ExtNameBodyUefi="\nΠαραδείγματα περιλαμβάνουν: /home �
 _ExtNameBodyBios="\nΠαραδείγματα περιλαμβάνουν: /boot ή /home.\n\nΒεβαιωθείτε ότι το όνομα προηγείται με μια κάθετο (/)." # BIOS Systems
 
 # Extra Partition Naming Error
-_ExtErrTitle=" Ονομασία Κατάτμηση ΣΦΑΛΜΑ "
-_ExtErrBody="\nΚατάτμηση δεν μπορεί να είναι mounted. Ένα όνομα πρέπει να δοθεί μετά από μια κάθετο.\n\n"
+_ExtErrTitle=" Ονομασία Κατάτμηση Σφαλμα "
+_ExtErrBody="\nH Κατάτμηση δεν μπορεί να κάνει mount. Ένα όνομα πρέπει να δοθεί μετά από μια κάθετο.\n\n"
 
 # Install Base
-_InstBseTitle=" Install Base "
-_InstBseBody="\nΤο τελευταίο πυρήνα υποστηρίζει νεότερα μηχανήματα. Ο πυρήνας LTS είναι πιο σταθερή, και υποστηρίζεται πολύ περισσότερο.\n\nΗ ομάδα πακέτο base-devel απαιτείται να χρησιμοποιήσετε το Arch User Repository (AUR)."
-_InstBaseLK="Latest Kernel"
-_InstBaseLKBD="Ο Τελευταίος Πυρήνας & base-devel"
-_InstBaseLTS="LTS Kernel"
-_InstBaseLTSBD="LTS Kernel ή base-devel"
+_InstBseTitle=" Εγκατάσταση του Base "
+_InstBseBody="\nΟ τελευταίος πυρήνας υποστηρίζει νεότερα μηχανήματα. Ο πυρήνας LTS είναι πιο σταθερή, και υποστηρίζεται πολύ περισσότερο.\n\nΗ ομάδα πακέτο base-devel απαιτείται να χρησιμοποιήσετε το Arch User Repository (AUR)."
+_InstBaseLK="Ο Τελευταίος Πυρήνας"
+_InstBaseLKBD="Ο Τελευταίος Πυρήνας ή base-devel"
+_InstBaseLTS="Ο πυρήνας LTS"
+_InstBaseLTSBD="Ο πυρήνας LTS ή base-devel"
 
 # Install Wireless Packages
-_InstWirTitle=" Ασύρματη συσκευή Εντοπίστηκε "
+_InstWirTitle=" Μια ασύρματη συσκευή εντοπίστηκε "
 _InstWirBody="\nΕγκατάσταση συμπληρωματικών ασύρματη πακέτα...\n\n"
 
 # Install BIOS Bootloader
-_InstBiosBtTitle=" Εγκατάσταση του BIOS Bootloader "
-_InstBiosBtBody="\nGrub2 συνιστάται για αρχάριους. Η Συσκευή της εγκατάστασης μπορεί επίσης να επιλεγεί.\n\nSyslinux is a lighter and simpler alternative, usually used to boot Linux installation media. It will only work with 'ext' filesystems, however."
+_InstBiosBtTitle=" Εγκατάσταση του Bootloader BIOS "
+_InstBiosBtBody="\nGrub2 συνιστάται για αρχάριους. Η Συσκευή της εγκατάστασης μπορεί επίσης να επιλεχθεί.\n\nSyslinux είναι ένα ελαφρύτερο και πιο απλή εναλλακτική λύση, που συνήθως χρησιμοποιείται για την εκκίνηση του Linux.Aλλά Θα λειτουργήσει μόνο με τα συστήματα αρχείων 'ext',. "
 
 # Grub Installation
 _InstGrubDevTitle=" Επιλέξτε Grub Συσκευή"
 _InstGrubDevBody="\nΕγκαταστήσετε το GRUB στην ίδια συσκευή/σκληρό δίσκο όπως Root"
-_InstGrubDevBody2="\n\nΕπιλέξτε 'Nαί' αν εγκαθιστάτε μόνο σε μία συσκευή."
+_InstGrubDevBody2="\n\nΕπιλέξτε 'Nαί' αν η εγκατάσταση γίνεται μόνο σε μία συσκευή."
 
 # Syslinux Installation
 _InstSysTitle=" Έλεγχος Διαμόρφωση Syslinux"
 _InstSysBody="\nΠαρακαλώ ελέγξτε Το αρχείο ρυθμίσεων syslinux.\n\nΘα πρέπει να περιέχει την εντολή:\n"
 
 # Install UEFI Bootloader
-_InstUefiBtTitle=" Εγκατάσταση του UEFI Bootloader "
-_InstUefiBtBody="\nGrub2 είναι το πιο δημοφιλές και χαρακτηριστικό ή πλούσια επιλογή (ουδείς προτίμηση για UEFI mount).\n\nGummiboot είναι μια συνιστώμενη εναλλακτική λύση για αρχάριους (Tην κατάτμηση UEFI πρέπει να είναι στο /boot).\n\nrEFInd είναι μια εναλλακτική λύση για πιο έμπειρους χρήστες (Tην κατάτμηση UEFI πρέπει να είναι στο /boot/efi)."
+_InstUefiBtTitle=" Εγκατάσταση του Bootloader UEFI "
+_InstUefiBtBody="\nGrub2 είναι το πιο δημοφιλές και πλούσια επιλογή (ουδείς προτίμηση για τον σημείο προσάρτησης του UEFI ).\n\nGummiboot είναι μια συνιστώμενη εναλλακτική λύση για αρχάριους (Tην κατάτμηση UEFI πρέπει να είναι στο /boot).\n\nrEFInd είναι μια εναλλακτική λύση για πιο έμπειρους χρήστες (Tην κατάτμηση UEFI πρέπει να είναι στο /boot/efi)."
 
 # Set UEFI Grub as default
 _SetGrubDefTitle=" Χρησιμοποιήστε το Grub ως προεπιλεγμένο Bootloader? "
-_SetGrubDefBody="\nΚάποια firmware UEFI δεν μπορεί να ανιχνεύσει το Grub, εκτός αν έχει οριστεί ως το προεπιλεγμένο bootloader, με αποτέλεσμα την αδυναμία εκκίνησης του συστήματος σε τέτοιες περιπτώσεις.\n\nΘέλετε να χρησιμοποιήσετε το Grub ως το προεπιλεγμένο bootloader?\n\nΣυνιστάται να επιλέξετε 'Ναί', ειδικά για αρχάριους. Αυτό θα αντιγράψει το grubx64.efi stub στο"
+_SetGrubDefBody="\nΚάποια firmware UEFI δεν μπορεί να ανιχνεύσει το Grub,εκτός αν έχει οριστεί ως το προεπιλεγμένο bootloader, με αποτέλεσμα την αδυναμία εκκίνησης του συστήματος σε τέτοιες περιπτώσεις.\n\nΘέλετε να χρησιμοποιήσετε το Grub ως το προεπιλεγμένο bootloader?\n\nΣυνιστάται να επιλέξετε 'Ναί', ειδικά για αρχάριους. Αυτό θα αντιγράψει το grubx64.efi stub στο"
 _SetGrubDefBody2="και να το μετονομάσετε σε bootx64.efi, όπως απαιτείται.\n\nΔιαφορετικά επιλέξτε 'ΟΧΙ', ιδιαίτερα αν υπάρχει ήδη ένα προεπιλεγμένο bootloader,και/ή όπου προτίθενται να χρησιμοποιήσουν πολλαπλές bootloaders."
 
 # Gummiboot Configuration Check
 _ChkGumTitle=" Έλεγχος Διαμόρφωση Gummiboot "
-_ChkGumBody="\nΠαρακαλούμε ελέγξτε τα αρχεία arch ή loader πριν το κλείσιμο για να συνεχίσετε.\n"
+_ChkGumBody="\nΠαρακαλώ ελέγξτε τα αρχεία arch ή loader πριν το κλείσιμο του εγκαταστάτη για να συνεχίσετε.\n"
 
 # Set rEFInd as default
-_SetRefiDefTitle=" Set rEFInd as προεπιλεγμένο Bootloader? "
-_SetRefiDefBody="\nSome UEFI firmware may not detect rEFInd unless it is set ως το προεπιλεγμένο bootloader, με αποτέλεσμα την αδυναμία εκκίνησης του συστήματος σε τέτοιες περιπτώσεις.\n\nΘέλετε να χρησιμοποιήσετε το rEFInd ως το προεπιλεγμένο bootloader?\n\nΣυνιστάται να επιλέξετε 'Ναί', ειδικά για αρχάριους. Αυτό θα εγκαταστήσει rEFInd στο"
+_SetRefiDefTitle=" Χρησιμοποιήστε το rEFInd ως προεπιλεγμένο Bootloader? "
+_SetRefiDefBody="\nΚάποια firmware UEFI δεν μπορεί να ανιχνεύσει το rEFInd,εκτός αν έχει οριστεί ως το προεπιλεγμένο bootloader, με αποτέλεσμα την αδυναμία εκκίνησης του συστήματος.\n\nΘέλετε να χρησιμοποιήσετε το rEFInd ως το προεπιλεγμένο bootloader?\n\nΣυνιστάται να επιλέξετε 'Ναί', ειδικά για αρχάριους. Αυτό θα εγκαταστήσει rEFInd στο"
 _SetRefiDefBody2="με την bootx64.efi stub όπως απαιτείται.\n\nΔιαφορετικά επιλέξτε 'ΟΧΙ', ιδιαίτερα αν υπάρχει ήδη ένα προεπιλεγμένο bootloader, και/ή όπου προτίθενται να χρησιμοποιήσουν πολλαπλές bootloaders."
 
 
 # efi file set for Grub or Refind
-_SetDefDoneTitle=" Αντιγραφή UEFI αρχείου "
+_SetDefDoneTitle=" Αντιγραφή αρχείου UEFI "
 _SetDefDoneBody="έχει οριστεί ως το προεπιλεγμένο bootloader.\n\n"
 
 # rEFInd Mountpoint error
-_RefiErrTitle=" rEFInd UEFI Mountpoint "
+_RefiErrTitle=" rEFInd σημείο προσάρτησης του UEFI"
 _RefiErrBody="\nΤο script εγκατάστασης refind δεν θα λειτουργήσει εάν η κατάτμηση UEFI έχει ήδη τοποθετηθεί στο /boot/efi. Παρακαλώ επιλέξτε είτε Gummiboot (συνιστάται) ή Grub.\n\n"
 
 # ALSA, Xorg, Input
 _AXITitle=" ALSA, Xorg, and Input "
-_AXIBody="\nΠριν από την εγκατάσταση του driver(s)της κάρτας γραφικών or desktop environments,  άλλα πακέτα χρειάζονται πρώτα:\n\nalsa - Advanced Linux Sound Architecture\nxorg-* - open-source X window system for graphics\nxf86-input-* - open-source drivers for input devices\n\n"
+_AXIBody="\nΠριν από την εγκατάσταση του driver(s)της κάρτας γραφικών ή των Desktops, χρειάζονται άλλα πακέτα πρώτα:\n\nalsa - Advanced Linux Sound Architecture\nxorg-* - open-source X window system for graphics\nxf86-input-* - open-source drivers for input devices\n\n"
 
 # Graphics Card Menu
-_GCtitle="Μενού Κάρτα γραφικών"
+_GCtitle="Μενού της κάρτας γραφικών"
 _GCBody="Διαλέξτε Nouveau για παλιότερες κάρτες NVIDIA. Αν η κάρτα σας δεν εμφανίζεται στη λίστα, επιλέξτε 'Άγνωστος / Generic'.\n"
 _GCUnknOpt="Άγνωστος / Generic"
 
 # NVIDIA Configruation Check
 _NvidiaConfTitle="Έλεγχος Διαμόρφωση NVIDIA"
-_NvidiaConfBody="\nΈνα βασικό αρχείο ρυθμίσεων NVIDIA έχει δημιουργηθεί. Παρακαλώ ελέγξτε πριν από το κλείσιμο για να συνεχίσετε.\n"
+_NvidiaConfBody="\nΈνα βασικό αρχείο ρυθμίσεων NVIDIA έχει δημιουργηθεί. Παρακαλώ ελέγξτε πριν το κλείσιμο του εγκαταστάτη για να συνεχίσετε.\n"
 
 # Graphics Card Detection
 _GCDetTitle="Εντοπίστηκε"
 _GCDetBody="\nΕίναι η κάρτα γραφικών σας"
-_GCDetBody2="-Επιλέξτε 'Ναι' για να εγκαταστήσετε του driver OPEN-SOURCE.\n\n-Επιλέξτε 'Όχι' για να ανοίξετε το μενού της κάρτας γραφικών, η οποία περιλαμβάνει proprietary NVIDIA drivers."
+_GCDetBody2="-Επιλέξτε 'Ναι' για να εγκαταστήσετε του driver OPEN-SOURCE.\n\n-Επιλέξτε 'Όχι' για να ανοίξετε το μενού της κάρτας γραφικών, η οποία περιλαμβάνει drivers proprietary NVIDIA."
 
 # Install DE Info
-_DEInfoTitle=" Εγκατάσταση Desktop Περιβάλλοντα "
-_DEInfoBody="\nΑυτή η επιλογή μπορεί να επαναληφθεί για να εγκαταστήσετε πολλαπλά περιβάλλοντα.\n\nGnome, KDE, και LXDE έρχονται με ένα display manager.\n\nCinnamon, Gnome και KDE έρχονται με ένα Διαχειριστή Δικτύου.\n\n"
+_DEInfoTitle=" Εγκατάσταση Desktops "
+_DEInfoBody="\nΑυτή η επιλογή μπορεί να επαναληφθεί για να εγκαταστήσετε πολλαπλά περιβάλλοντα.\n\nGnome, KDE, και LXDE έρχονται με ένα διαχειριστής οθόνης.\n\nCinnamon, Gnome και KDE έρχονται με ένα διαχειριστής δικτύου.\n\n"
 
 # Install DE Menu
-_InstDETitle=" Εγκατάσταση Desktop Περιβάλλοντα "
-_InstDEBody="\nΤα περιβάλλοντα Desktop παρατίθενται πρώτα,και μπορεί να έχουν πολλαπλές επιλογές download.\n\nKDE είναι μια 750MB+ download."
+_InstDETitle=" Εγκατάσταση Desktops "
+_InstDEBody="\nΟι Desktops παρατίθενται πρώτα,και μπορεί να έχουν πολλαπλές επιλογές κατεβάσεις.\n\nKDE είναι μια 750MB+ κατεβάσει."
 
 # Install Common Packages
 _InstComTitle=" Εγκαταστήστε Κοινή Πακέτα? "
-_InstComBody="\nΟρισμένα περιβάλλοντα χρειάζονται κοινά πακέτα να εγκατασταθεί,ιδιαίτερα για τα permissions, δημιουργία φακέλων στο home,και τη λειτουργικότητα του διαχειριστή αρχείων.\n\nΤα πακέτα περιλαμβάνουν: xterm, xdg-user-dirs, gksu, gnome-keyring, polkit, gvfs, and the gnome-icon-theme, etc. Για εκείνους που θέλουν μια πλήρη εγκατάσταση KDE μόνο Δεν θα χρειαστεί να εγκαταστήσετε αυτά.\n\nΕγκαταστήστε αυτά τα πακέτα? Αυτή η επιλογή θα παρουσιαστεί μόνο ΜΙΑ ΦΟΡΑ.\n\n"
+_InstComBody="\nΟρισμένα Desktops χρειάζονται κοινά πακέτα να εγκατασταθεί,ιδιαίτερα για τα permissions, δημιουργία φακέλων στο home,και τη λειτουργικότητα του διαχειριστή αρχείων.\n\nΤα πακέτα περιλαμβάνουν: xterm, xdg-user-dirs, gksu, gnome-keyring, polkit, gvfs, and the gnome-icon-theme, etc. Για εκείνους που θέλουν μια πλήρη εγκατάσταση KDE μόνο Δεν θα χρειαστεί να εγκαταστήσετε αυτά.\n\nΕγκαταστήστε αυτά τα πακέτα? Αυτή η επιλογή θα παρουσιαστεί μόνο ΜΙΑ ΦΟΡΑ.\n\n"
 
 # KDM
 _DmKdeTitle=" KDM Ενεργοποιημένο "
-_DmKdeBody="\nΌπως έχει εγκατασταθεί το KDE,του προεπιλεγμένο display manager - KDM - έχει πλέον ενεργοποιηθεί.\n\n"
+_DmKdeBody="\nΌπως έχει εγκατασταθεί το KDE,το προεπιλεγμένο διαχειριστής οθόνης - KDM - έχει πλέον ενεργοποιηθεί.\n\n"
 
 # GDM
 _DmGdmTitle=" GDM Ενεργοποιημένο "
-_DmGdmBody="\nΌπως έχει εγκατασταθεί το Gnome,του προεπιλεγμένο display manager - GDM - έχει πλέον ενεργοποιηθεί.\n\n"
+_DmGdmBody="\nΌπως έχει εγκατασταθεί το Gnome,το προεπιλεγμένο διαχειριστής οθόνης - GDM - έχει πλέον ενεργοποιηθεί.\n\n"
 
 # KDM and GDM Installed
 _DmChTitle=" Επιλέξτε το GDM ή το KDM "
-_DmChBody="\nΤο Gnome και το KDE έχει εγκατασταθεί. Παρακαλώ επιλέξτε την προτιμώμενη σας display manager.\n\n"
+_DmChBody="\nΤο Gnome και το KDE έχει εγκατασταθεί. Παρακαλώ επιλέξτε την προτιμώμενη διαχειριστής οθόνης σας.\n\n"
 
 # KDM or GDM Choice Made
 _DmDoneTitle="Ενεργοποιημένο "
@@ -363,18 +367,18 @@ _DMDoneBody="έχει ενεργοποιηθεί.\n\n"
 
 # LXDM
 _DmLxdmTitle=" LXDM Ενεργοποιημένο "
-_DmLxdmBody="\nΌπως έχει εγκατασταθεί το LXDE, του προεπιλεγμένο display manager - LXDM - έχει πλέον ενεργοποιηθεί.\n\n"
+_DmLxdmBody="\nΌπως έχει εγκατασταθεί το LXDE, το προεπιλεγμένο διαχειριστής οθόνης - LXDM - έχει πλέον ενεργοποιηθεί.\n\n"
 
 # LXDM or LightDM
-_DmChoiceTitle=" Επιλέξτε Display Manager "
+_DmChoiceTitle=" Επιλέξτε διαχειριστής οθόνης "
 _DmChoiceBody="\nΠαρακαλώ επιλέξετε μεταξύ LXDM ή LightDM. LXDM συνιστάται για αρχάριους.\n"
 
 # DM Already Installed
-_DmInstTitle=" Display Manager έχει εγκατασταθεί "
-_DmInstBody="\nΕνα display manager έχει ήδη εγκατασταθεί και ενεργοποιηθεί.\n\n"
+_DmInstTitle=" Ο διαχειριστής οθόνης έχει εγκατασταθεί "
+_DmInstBody="\nΕνα διαχειριστής οθόνης έχει ήδη εγκατασταθεί και ενεργοποιηθεί.\n\n"
+_InstNMTitle=" Επιλέξτε το Διαχειριστή Δικτύου "
 
 # Network Manager
-_InstNMTitle=" Επιλέξτε το Διαχειριστή Δικτύου "
 _InstNMBody="\nΕνα Διαχειριστή Δικτύου συνιστάται, ειδικά για ασύρματα και PPPoE/DSL συνδέσεις.\n"
 
 # Network Manager Installed
@@ -386,26 +390,26 @@ _InstNMErrBody="\nΈνας διαχειριστής σύνδεσης με το �
 
 # Welcome
 _WelTitle=" Καλώς ήλθατε"
-_WelBody="\nΕπισημάνετε τις επιλογές πατώντας τους αριθμούς τους ή χρησιμοποιώντας τα πλήκτρα πάνω / κάτω βέλος πριν πατήσετε [Enter] για να επιβεβαιώσετε.\n\nΕναλλαγή μεταξύ κουμπιά χρησιμοποιώντας [Tab] ή τα πλήκτρα με τα βέλη αριστερά / δεξιά πριν πατήσετε [enter] για επιβεβαίωση. \n\nΜπορεί επίσης να χρησιμοποιηθεί ένα mouse/touchpad επίσης.\n\n"
+_WelBody="\nΕπισημάνετε τις επιλογές πατώντας τους αριθμούς τους ή χρησιμοποιώντας τα πλήκτρα πάνω / κάτω βέλος πριν πατήσετε [Enter] για να επιβεβαιώσετε.\n\nΕπιλέξτε χρησιμοποιώντας [Tab] ή τα πλήκτρα με τα βέλη αριστερά / δεξιά πριν πατήσετε [enter] για επιβεβαίωση. \n\nΜπορεί επίσης να χρησιμοποιηθεί ένα mouse/touchpad επίσης.\n\n"
 
 # Preparation Menu
 _PrepTitle=" Προετοιμασία εγκατάστασης"
-_PrepBody="\nΤο Σχεδιάγραμμα πληκτρολογίου του Desktop θα χρησιμοποιηθεί τόσο για τον εγκαταστάτη και - κατά την εγκατάσταση ενός desktop περιβάλλον- το εγκατεστημένο σύστημα.\n"
+_PrepBody="\nΤο Σχεδιάγραμμα πληκτρολογίου του Desktop θα χρησιμοποιηθεί τόσο για τον εγκαταστάτη και - κατά την εγκατάσταση ενός desktop περιβάλλον- και στο εγκατεστημένο σύστημα.\n"
 _PrepKBLayout="Σχεδιάγραμμα πληκτρολογίου Desktop"
-_PrepMirror="Διαμόρφωση Mirrorlist του εγκαταστάτη (optional)"
+_PrepMirror="Διαμόρφωση Mirrorlist του εγκαταστάτη (προαιρετικός)"
 _PrepPartDisk="Διαμέριση δίσκου"
-_PrepMntPart="Κατάτμησης Mount "
+_PrepMntPart="Κατάτμησης σημείο προσάρτησης "
 _Back="Back"
 
 # Install Base Menu
-_InstBsMenuTitle="Εγκατάσταση Βάσης"
-_InstBseMenuBody="\nΔεν θα είναι απαραίτητη η εγκατάσταση ενός bootloaderόπου εγκαθιστάτε παράλληλα με μία υπάρχουσα Linux distro που χρησιμοποιεί το Grub; απλά τρέξτε sudo update-grub."
-_InstBse="Εγκατάσταση Βάσης"
+_InstBsMenuTitle="Εγκατάσταση Base"
+_InstBseMenuBody="\nΔεν θα είναι απαραίτητη η εγκατάσταση ενός bootloader όπου εγκαθιστάτε παράλληλα με μία υπάρχουσα Linux distro που χρησιμοποιεί το Grub; απλά τρέξτε sudo update-grub αργότερα."
+_InstBse="Εγκατάσταση Base"
 _InstBootldr="Εγκατάσταση Bootloader"
 
 # Configure Base Menu
 _ConfBseTitle=" Διαμόρφωση Base"
-_ConfBseBody="\nΒασική διαμόρφωση της βάσης είναι απαραίτητη. Αυτό περιλαμβάνει τον καθορισμό του βασικού δικτύου, το χρόνο, τη γλώσσα, και προεπιλογές πληκτρολόγιο για το εγκατεστημένο σύστημα."
+_ConfBseBody="\nΒασική διαμόρφωση της Base είναι απαραίτητη. Αυτό περιλαμβάνει τον καθορισμό του βασικού δικτύου, το χρόνο, τη γλώσσα, και προεπιλογές πληκτρολόγιο για το εγκατεστημένο σύστημα."
 _ConfBseFstab="Δημιουργία FSTAB"
 _ConfBseHost="Ορισμός ονόματος υπολογιστή"
 _ConfBseTime="Επιλέξτε χρονικής ζώνης"
@@ -421,21 +425,21 @@ _ConfUsrNew="Προσθήκη Νέου Χρήστη(s)"
 
 # Desktop Menu
 _InstDEMenuTitle=" Εγκατάσταση Desktop "
-_InstDEMenuBody="\nΠριν να εγκαταστήσετε ένα  desktop περιβάλλον, drivers για τα γραφικά και ήχο ΠΡΕΠΕΙ να εγκατασταθεί πρώτα. Αυτό θα περιλαμβάνει την εγκατάσταση drivers για τα κάρτα γραφικών."
-_InstDEMenuGISD="Εγκατάσταση γραφικών, Input, και Drivers του ήχου"
+_InstDEMenuBody="\nΠριν να εγκαταστήσετε ένα  desktop περιβάλλον, drivers για τα γραφικά και ήχο ΠΡΕΠΕΙ να εγκατασταθεί πρώτα. Αυτό θα περιλαμβάνει την εγκατάσταση του drivers για τα κάρτα γραφικών."
+_InstDEMenuGISD="Εγκατάσταση γραφικών, Input, και drivers του ήχου"
 _InstDEMenuDE="Εγκατάσταση Desktop Περιβάλλοντα(s)"
 _InstDEMenuNM="Εγκατάσταση Διαχειριστή του Δικτύου "
-_InstDEMenuDM="Εγκατάσταση Διαχειριστή Display  / Login Screen"
+_InstDEMenuDM="Εγκατάσταση διαχειριστής οθόνης  / Login Screen"
 
 # Main Menu
 _MMTitle=" Αρχη Μενού "
 _MMBody="\nΚάθε βήμα πρέπει να ακολουθείται με τη σειρά. Μόλις ολοκληρωθεί η διαδικασία, επιλέξτε 'Τέλος' για να ολοκληρώσουν σωστά την εγκατάσταση.\n"
-_MMPrep="Προετοιμασία εγκατάστασης" 
-_MMInstBse="Εγκατάσταση Base" 
-_MMConfBse="Διαμόρφωση βάσης" 
-_MMConfUsr="Διαμόρφωση λογαριασμού χρήστη(s)" 
-_MMInstDE="Εγκατάσταση Desktop(s)" 
-_MMRunMkinit="Run Mkinitcpio" 
+_MMPrep="Προετοιμασία εγκατάστασης"
+_MMInstBse="Εγκατάσταση Base"
+_MMConfBse="Διαμόρφωση Base"
+_MMConfUsr="Διαμόρφωση λογαριασμού χρήστη(s)"
+_MMInstDE="Εγκατάσταση Desktop(s)"
+_MMRunMkinit="Run Mkinitcpio"
 _Done="Τέλος"
 
 # Close Installer
