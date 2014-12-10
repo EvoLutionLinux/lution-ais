@@ -685,7 +685,7 @@ set_mount_type() {
 	
 	# Identify and create swap, if applicable
     env LANG=$EVO_LOCALE dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_SelSwpTitle" --menu "$_SelSwpBody" 0 0 4 "$_SelSwpNone" $"-" "$_SelSwpFile" $"-" ${PARTITIONS} 2>${ANSWER} || prep_menu  
-    if [[ $(cat ${ANSWER}) != "None" ]]; then    
+    if [[ $(cat ${ANSWER}) != "$_SelSwpNone" ]]; then    
        PARTITION=$(cat ${ANSWER})
        
        if [[ $PARTITION == "$_SelSwpFile" ]]; then
