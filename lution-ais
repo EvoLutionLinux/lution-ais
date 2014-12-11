@@ -2046,6 +2046,9 @@ install_desktop_menu() {
 }
 
 edit_configs() {
+
+    user_list=""
+   
 	if [[ $SUB_MENU != "edit configs" ]]; then
 	   SUB_MENU="edit configs"
 	   HIGHLIGHT_SUB=1
