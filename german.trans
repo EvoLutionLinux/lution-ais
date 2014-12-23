@@ -108,8 +108,8 @@ _DevShowOpt="Liste der Geräte ( als Option)"
 _ChkEvoTitle="Überpüfung der Evo-Abhängigkeiten "
 _ChkEvoBody="\nDie Vorbereitung der Installation wurde mit Superuser-Rechten gestartet. Internetverbindung ist aktiviert, bitte warten...\n\n"
 
-_RtFailTitle="Der Installer muss mit Superuser-Rechten gestartet werden.Schließe.."
-_RtFailBody="\nThe installer must be run as root. Exiting.\n\n"
+_RtFailTitle=" Root Fehler "
+_RtFailBody="\nDer Installer muss mit Superuser-Rechten gestartet werden. Schließe.\n\n"
 
 _ConFailTitle=" Verbindung gescheitert "
 _ConFailBody="\nEs konnte keine Verbindung zum Internet hergestellt werden.Schließe.\n\n"

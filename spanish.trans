@@ -3,7 +3,7 @@
 ## Español/Spanish Translation File
 ##
 ##
-## Written by Métèque for Evo/Lution Linux (11th December 2014)
+## Written by Métèque for Evo/Lution Linux (23rd December 2014)
 ##
 ##
 
@@ -17,17 +17,16 @@ _ErrNoBase="\nLa base del sistema de Arch tiene que instalarse antes.\n\n"
 
 # Virtualbox Installations
 _VBoxInstTitle=" Instalación en VirtualBox "
-_VBoxInstBpody="\nSi no cargan los 'guest modules'  de VirtualBox en el sistema instalado (baja resolución y problemas con los scrollbars después de reiniciar, por ejemplo), ejecutando una vez estos comandos lo solucionará:\n\n$ su\n# depmod -a\n# modprobe -a vboxvideo vboxguest vboxsf\n# reboot"
+_VBoxInstBpody="\nSi no cargan los 'guest modules'  de VirtualBox en el sistema instalado (baja resolución y problemas con los scrollbars después de reiniciar, por ejemplo), ejecutan una vez estos comandos para solucionarlo:\n\n$ su\n# depmod -a\n# modprobe -a vboxvideo vboxguest vboxsf\n# reboot"
 
 #  Wireless Connections
 _InstWirelessFirm="Instalar el firmware de tu tarjeta de red WiFi"
-_WirelssFirmTitle=" Seleccionar el firmware para la tarjeta de ted "
+_WirelssFirmTitle=" Selecciona el firmware para la tarjeta de ted "
 _WirelssFirmBody="\nAlgunas tarjetas de red necesitan firmware adicional para que funcionen correctamente.\n\nSi no estás seguro de si necesitas instalar un controlador - o no sabes cual seleccionar - puedes simplemente instalarlos todos."
 _SeeWirelessDev="Ver la tarjeta de red (opcional)"
 _WirelessShowTitle=" Tarjeta de red"
 _WirelessErrBody="\nNada detectado."
 _All="Todos"
-
 
 # Select Config Files
 _SeeConfOpt="Ver archivos de configuración (opcional)"
