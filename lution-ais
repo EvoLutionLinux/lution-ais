@@ -96,7 +96,7 @@ FILE2=""                    # Some configs use two files. Not using an array.
 # Add locale on-the-fly and sets source translation file for installer
 select_language() {
 
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " Select Language " --menu "\nLanguage / sprache / taal / nγλώσσα / språk / lingua / idioma / язык / język" 19 30 9 \
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " Select Language " --menu "\nLanguage / sprache / taal / nγλώσσα / språk / lingua / idioma / язык / język / língua" 19 30 9 \
  	"1" $"English" \
  	"2" $"Deutsch" \
  	"3" $"Nederlands" \
@@ -105,7 +105,8 @@ select_language() {
  	"6" $"Italiano" \
  	"7" $"Español" \
  	"8" $"Русский" \
- 	"9" $"Polski" 2>${ANSWER}
+ 	"9" $"Polski" \
+ 	"10" $"Português" 2>${ANSWER}
 
 	case $(cat ${ANSWER}) in
         "1") source /lution-ais-master/english.trans
@@ -134,7 +135,10 @@ select_language() {
              ;;
         "9") source /lution-ais-master/polish.trans
              EVO_LOCALE="pl_PL.UTF-8"
-             ;;           
+             ;;
+        "10") source /lution-ais-master/portuguese.trans
+             EVO_LOCALE="pt_PT.UTF-8"
+             ;;
           *) exit 0
              ;;
     esac
