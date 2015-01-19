@@ -1,6 +1,6 @@
 # !/bin/bash
 #
-# Lution-AIS installer (version 0.4.14 - 29th December 2014)
+# Lution-AIS installer (version 0.4.15 - 14th January 2015)
 #
 # Written by Carl Duff for Evo/Lution Linux
 #
@@ -26,7 +26,7 @@
 ANSWER="/tmp/.lution"
 
 # Save retyping
-VERSION="Lution-AIS 0.4.14 (29-Dec-2014)"
+VERSION="Lution-AIS 0.4.15 (14-Jan-2015)"
 
 # Installation
 KDE_INSTALLED=0      		# Has KDE been installed? Used for display manager option
@@ -96,7 +96,7 @@ FILE2=""                    # Some configs use two files. Not using an array.
 # Add locale on-the-fly and sets source translation file for installer
 select_language() {
 
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " Select Language " --menu "\nLanguage / sprache / taal / nγλώσσα / språk / lingua / idioma / язык / język / nyelv" 21 30 10 \
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " Select Language " --menu "\nLanguage / sprache / taal / nγλώσσα / språk / lingua / idioma / язык / język / nyelv / língua" 22 30 11 \
  	"1" $"English" \
  	"2" $"Deutsch" \
  	"3" $"Nederlands" \
@@ -106,7 +106,8 @@ select_language() {
  	"7" $"Español" \
  	"8" $"Русский" \
  	"9" $"Polski" \
- 	"10" $"Magyar" 2>${ANSWER}
+ 	"10" $"Magyar" \
+ 	"11" $"Portugese" 2>${ANSWER}
 
 	case $(cat ${ANSWER}) in
         "1") source /lution-ais-master/english.trans
@@ -138,6 +139,9 @@ select_language() {
              ;;
        "10") source /lution-ais-master/hungarian.trans
              EVO_LOCALE="hu_HU.UTF-8"  
+             ;;
+       "11") source /lution-ais-master/portuguese.trans
+             EVO_LOCALE="pt_PT.UTF-8"
              ;;
           *) exit 0
              ;;
