@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 #
 # Lution-AIS installer (version 0.4.15 - 14th January 2015)
 #
@@ -14,7 +14,21 @@
 # or modify it as you wish.
 #
 
+# Current Script details
+SCRIPT="$(basename $0)"
+pushd "$(dirname $0)" >/dev/null
+SCRIPT_DIR="$(pwd -P)"
+popd >/dev/null
+PWD="$(pwd -P)"
 
+# Make sure the script is run from its proper path.
+# OR Since we know the path, why don't we do it ourselves ?
+if [ $PWD != $SCRIPT_DIR ]
+then
+    echo "Run the script from the lution-ais directory like:"
+    echo "cd $SCRIPT_DIR && ./$SCRIPT"
+    exit 1
+fi
 
 ######################################################################
 ##																	##
@@ -110,37 +124,37 @@ select_language() {
  	"11" $"Portugese" 2>${ANSWER}
 
 	case $(cat ${ANSWER}) in
-        "1") source /lution-ais-master/english.trans
+        "1") source $SCRIPT_DIR/english.trans
              EVO_LOCALE="en_US.UTF-8"
              ;;
-        "2") source /lution-ais-master/german.trans
+        "2") source $SCRIPT_DIR/german.trans
              EVO_LOCALE="de_DE.UTF-8" 
              ;;
-        "3") source /lution-ais-master/dutch.trans
+        "3") source $SCRIPT_DIR/dutch.trans
              EVO_LOCALE="nl_NL.UTF-8"
              ;;
-        "4") source /lution-ais-master/greek.trans
+        "4") source $SCRIPT_DIR/greek.trans
              EVO_LOCALE="el_GR.UTF-8"
              ;;
-        "5") source /lution-ais-master/norwegian.trans
+        "5") source $SCRIPT_DIR/norwegian.trans
              EVO_LOCALE="nl_NL.UTF-8"
              ;;
-        "6") source /lution-ais-master/italian.trans
+        "6") source $SCRIPT_DIR/italian.trans
              EVO_LOCALE="it_IT.UTF-8"
              ;;
-        "7") source /lution-ais-master/spanish.trans
+        "7") source $SCRIPT_DIR/spanish.trans
              EVO_LOCALE="es_ES.UTF-8"
              ;;
-        "8") source /lution-ais-master/russian.trans
+        "8") source $SCRIPT_DIR/russian.trans
              EVO_LOCALE="ru_RU.UTF-8"
              ;;
-        "9") source /lution-ais-master/polish.trans
+        "9") source $SCRIPT_DIR/polish.trans
              EVO_LOCALE="pl_PL.UTF-8"
              ;;
-       "10") source /lution-ais-master/hungarian.trans
+       "10") source $SCRIPT_DIR/hungarian.trans
              EVO_LOCALE="hu_HU.UTF-8"  
              ;;
-       "11") source /lution-ais-master/portuguese.trans
+       "11") source $SCRIPT_DIR/portuguese.trans
              EVO_LOCALE="pt_PT.UTF-8"
              ;;
           *) exit 0
@@ -1782,8 +1796,8 @@ install_de_wm() {
               clear
               pacstrap ${MOUNTPOINT} openbox oblogout openbox-themes numix-themes xcursor-vanilla-dmz tint2 conky libgnomeui obconf lxappearance-obconf lxinput lxrandr lxterminal volumeicon gnome-alsamixer dmenu xlockmore flashplugin polkit-gnome ${EVOBOXFM} ${EVOBOXIB} 2>/tmp/.errlog
               
-              cp -f /lution-ais-master/evobox/oblogout.conf ${MOUNTPOINT}/etc
-              cp -f /lution-ais-master/evobox/.gtkrc-2.0 ${MOUNTPOINT}/root
+              cp -f $SCRIPT_DIR/evobox/oblogout.conf ${MOUNTPOINT}/etc
+              cp -f $SCRIPT_DIR/evobox/.gtkrc-2.0 ${MOUNTPOINT}/root
               sed -i "s/evo/root/" ${MOUNTPOINT}/root/.gtkrc-2.0
               
               user_list=""
@@ -1794,15 +1808,15 @@ install_de_wm() {
 				[[ -n ${MOUNTPOINT}/home/$i/.config/gtk-3.0 ]] && mkdir -p ${MOUNTPOINT}/home/$i/.config/gtk-3.0
 				[[ -n ${MOUNTPOINT}/home/$i/.config/volumeicon ]] && mkdir -p ${MOUNTPOINT}/home/$i/.config/volumeicon
 				
-				cp -f /lution-ais-master/evobox/.conkyrc ${MOUNTPOINT}/home/$i
-				cp -f /lution-ais-master/evobox/.gtkrc-2.0 ${MOUNTPOINT}/home/$i
-				cp -f /lution-ais-master/evobox/settings.ini ${MOUNTPOINT}/home/$i/.config/gtk-3.0
-				cp -f /lution-ais-master/evobox/tint2rc ${MOUNTPOINT}/home/$i/.config/tint2
-				cp -f /lution-ais-master/evobox/volumeicon ${MOUNTPOINT}/home/$i/.config/volumeicon
-				cp -f /lution-ais-master/evobox/autostart ${MOUNTPOINT}/home/$i/.config/openbox
-				cp -f /lution-ais-master/evobox/environment ${MOUNTPOINT}/home/$i/.config/openbox
-				cp -f /lution-ais-master/evobox/menu.xml ${MOUNTPOINT}/home/$i/.config/openbox
-				cp -f /lution-ais-master/evobox/rc.xml ${MOUNTPOINT}/home/$i/.config/openbox
+				cp -f $SCRIPT_DIR/evobox/.conkyrc ${MOUNTPOINT}/home/$i
+				cp -f $SCRIPT_DIR/evobox/.gtkrc-2.0 ${MOUNTPOINT}/home/$i
+				cp -f $SCRIPT_DIR/evobox/settings.ini ${MOUNTPOINT}/home/$i/.config/gtk-3.0
+				cp -f $SCRIPT_DIR/evobox/tint2rc ${MOUNTPOINT}/home/$i/.config/tint2
+				cp -f $SCRIPT_DIR/evobox/volumeicon ${MOUNTPOINT}/home/$i/.config/volumeicon
+				cp -f $SCRIPT_DIR/evobox/autostart ${MOUNTPOINT}/home/$i/.config/openbox
+				cp -f $SCRIPT_DIR/evobox/environment ${MOUNTPOINT}/home/$i/.config/openbox
+				cp -f $SCRIPT_DIR/evobox/menu.xml ${MOUNTPOINT}/home/$i/.config/openbox
+				cp -f $SCRIPT_DIR/evobox/rc.xml ${MOUNTPOINT}/home/$i/.config/openbox
 				
 				sed -i "s/evo/${i}/" ${MOUNTPOINT}/home/$i/.gtkrc-2.0
 				sed -i "s/thunar/${EVOBOXFM}/" ${MOUNTPOINT}/home/$i/.config/openbox/menu.xml ${MOUNTPOINT}/home/$i/.config/openbox/rc.xml
