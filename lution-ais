@@ -1,6 +1,6 @@
 # !/bin/bash
 #
-# Lution-AIS installer (version 0.4.16 - 8th February 2015)
+# Lution-AIS installer (version 0.4.17b - 16th March 2015)
 #
 # Written by Carl Duff for Evo/Lution Linux
 #
@@ -26,7 +26,7 @@
 ANSWER="/tmp/.lution"
 
 # Save retyping
-VERSION="Lution-AIS 0.4.16 (18-Feb-2015)"
+VERSION="Lution-AIS 0.4.17b (16-Mar-2015)"
 
 # Installation
 KDE_INSTALLED=0      		# Has KDE been installed? Used for display manager option
@@ -1906,7 +1906,7 @@ install_dm() {
                    ;;
               "2") # LIGHTDM
                    clear
-                   pacstrap ${MOUNTPOINT} lightdm lightdm-gtk3-greeter 2>/tmp/.errlog
+                   pacstrap ${MOUNTPOINT} lightdm lightdm-gtk-greeter 2>/tmp/.errlog
                    arch_chroot "systemctl enable lightdm.service" >/dev/null 2>>/tmp/.errlog
                    DM="LightDM"
                    ;;
