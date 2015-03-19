@@ -1572,7 +1572,7 @@ install_gc() {
                ;;
         "Via") pacstrap ${MOUNTPOINT} xf86-video-openchrome 2>/tmp/.errlog
                ;;
-    "Generic") pacstrap ${MOUNTPOINT} xf86-video-modesetting 2>/tmp/.errlog
+    "Generic") pacstrap ${MOUNTPOINT} xf86-video-fbdev 2>/tmp/.errlog
                ;;
             *) gc_driver_menu  
                ;;
