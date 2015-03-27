@@ -1,6 +1,6 @@
 # !/bin/bash
 #
-# Lution-AIS installer (version 0.4.17b - 16th March 2015)
+# Lution-AIS installer (version 0.4.18 - 27th March 2015)
 #
 # Written by Carl Duff for Evo/Lution Linux
 #
@@ -26,7 +26,7 @@
 ANSWER="/tmp/.lution"
 
 # Save retyping
-VERSION="Lution-AIS 0.4.17b (16-Mar-2015)"
+VERSION="Lution-AIS 0.4.18 (27-Mar-2015)"
 
 # Installation
 KDE_INSTALLED=0      		# Has KDE been installed? Used for display manager option
@@ -1314,7 +1314,7 @@ uefi_bootloader() {
           fi
           
           # Fix LVM Root installations
-          sed -i "s/PARTUUID=//g" ${MOUNTPOINT}/boot/loader/entries/arch.conf
+          [[ $LVM_ROOT -eq 1 ]] && sed -i "s/PARTUUID=//g" ${MOUNTPOINT}/boot/loader/entries/arch.conf
           
           BOOTLOADER="Gummiboot"
           # Set the loader file  
